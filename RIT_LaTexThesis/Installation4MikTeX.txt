@@ -1,0 +1,17 @@
+RIT MS Thesis Style Version 1.2 - March 2009
+
+Installation for MikTeX 
+
+1. Use Miktex package manager to install the gloss style
+2. Copy the styles files in the directory RITthesis
+   in you "local miktex directory"
+   (for example LocalTexmf/tex/latex/RITthesis)
+3. Refresh Miktex's database running the "Settings"
+   program and clicking on [Refresh FNDB]
+4. Check the installation by compiling the Thesis.tex file
+   under the directory doc (note that you need to compile it
+   several times - see the buildit.bat file)
+
+Juan C. Cockburn
+
+PS: If you need help email me at Juan.Cockburn@rit.edu

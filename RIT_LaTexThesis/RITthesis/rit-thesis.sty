@@ -1,0 +1,496 @@
+% Rochester Institute of Technology, Department of Computer Engineering dissertation/thesis style                    @adv
+% Based on Oregon Graduate Institute which was based on the Stanford University Thesis style
+% For LaTeX version 2e
+%
+\typeout{Document Style Option `rit-thesis v1.2' <March 13, 2009>.}
+% May 22, 2008   - Fixed typo: reporduce changed to reproduce.
+% Feb 13, 2009   - Fixed problems with spacing and xcolor
+% March 13, 2009 - Fixed signature page and abstract spacing
+\RequirePackage{setspace}
+
+\long\def\comment#1{}
+\comment{
+
+  Example of use:
+    \documentstyle[12pt,rit-thesis]{report}
+    \begin{document}
+    \title{How to Write Theses\\
+ 	    With Two Line Titles}
+    \titleline{How to Write Theses With Two Line Titles}
+
+    \author{John Henry Candidate}
+    \dept{Computer Engineering}  % Optional, default is Computer Engineering
+    \principaladviser{Dr. Juan C. Cockburn}{Associate Professor}
+    \advdept{Computer Engineering}
+    \firstreader{Dr. Shanchieh Yang}{Associate Professor}
+    \firstdept{Computer Engineering}
+    \secondreader{Dr. Joseph Geigel}{Associate Professor}%
+    \seconddept{Computer Science}
+
+    \beforepreface
+    \prefacesection{Dedication}
+        I dedicate this thesis to...
+    \prefacesection{Acknowledgements}
+        I would like to thank...
+    \afterpreface
+    \abstractpage
+	Your abstract goes here...
+    \body
+    \chapter{Introduction}
+         ...
+    \chapter{Conclusions}
+         ...
+    \appendix
+    \chapter{A Long Proof}
+         ...
+    \bibliographystyle{alpha}
+    \bibliography{mybib}
+    \end{document}
+
+Documentation:
+    This style file modifies the standard report style to follow the
+    Education Offices's "Style Manual for Theses and Dissertations".
+    It sets the margins and interline spacing and disallows page breaks at
+    hyphens.
+
+    The \beforepreface command creates the title page, a copyright page
+    (optionally), and a  page.  Then the user should put
+    preface section(s), using the \prefacesection{section title}
+    command.  The \afterpreface command then produces the tables of
+    contents, tables and figures. The \abstractpage command sets up the
+    abstract page. The \body command sets things up to start the main
+    body (on arabic page 1).
+
+    The following commands can control what goes in the front matter
+    material:
+
+	\MSthesistrue or \MSthesisfalse (default)
+		- Sets up wording for M.S. thesis of Ph.D. dissertation.
+	\title{thesis title}
+	\titleline{thesis title with no line breaks}
+		- titleline is required until I can figure out how to strip
+		- line breaks from the title.
+	\author{author's name}
+	\prevdegrees{degree, institution, year}
+		- \predegrees{} can be repeated for multiple degrees.
+	\dept{author's department}
+		- Computer Engineering if omitted
+	\principaladviser{the principal advisor's name}{title}
+	   (or \principaladvisor, if you prefer advisor spelled with o)
+	\advdept{Adviser's department}
+	\firstreader{the first reader's name}
+	\firstdept{First reader department}
+	\secondreader{the second reader's name}
+	\seconddept{First reader department}
+	\foursigstrue or \foursigsfalse (default)
+		- specifies four signatures on signature page
+	\fivesigstrue or \fivesigsfalse (default)
+		- specifies five signatures on signature page
+	\thirdreader{the third reader's name}
+		- Only used when \foursigstrue or \fivesigstrue
+	\fourthreader{the fourth reader's name}
+		- Only used when \fivesigstrue
+	\grantdate{month}{year} in which signed by the thesis committee
+		- date LaTeX'd if omitted
+	\copyrightyear{year degree conferred}
+		- year LaTeX'd (or next year, in December) if omitted
+	\copyrighttrue or \copyrightfalse
+		- produce or don't produce a copyright page (true by default)
+	\figurespagetrue or \figurespagefalse
+		- produce or don't produce a List of Figures page
+		  (true by default)
+	\tablespagetrue or \tablespagefalse
+		- produce or don't produce a List of Tables page
+		  (true by default)
+
+This style uses double spacing, except in the figure and table environments
+where normal spacing is used. That can be changed by doing:
+    \renewcommand{\baselinestretch}{1.6}
+(or whatever you want instead of 1.6)
+Unfortunately, that command probably won't take effect unless it comes
+before the \begin{document} or after something like \small \normalsize.
+
+The example above shows the 11pt substyle being used.  This seems to give
+acceptable looking results, but it may be omitted to get smaller print.
+}
+
+% First thing we do is make sure that report has been loaded.  A
+% common error is to try to use rit-thesis as a documentstyle.
+\@ifundefined{chapter}{\@latexerr{The `rit-thesis' option should be used
+with the `report' document style}{You should probably read the
+rit-thesis documentation.}}{}
+
+% All margins should be 1.5", left MUST be 1.5"
+\topmargin -0.25in
+\advance \topmargin by -\headheight
+\headsep 0.5in
+%\textheight 8.4in GPS
+\textheight 8.5in
+
+% We need 1" margins except on the binding edge, where it is 1 1/2"
+% Theses are single-sided, so we don't care about \evensidemargin
+% To be extra sure, set right hand margin to 1.1 inches.
+\oddsidemargin 0.3in % \evensidemargin 0in GPS
+\evensidemargin 0.3in
+\marginparwidth 40pt \marginparsep 10pt
+\textwidth 6.0in
+
+% Disallow page breaks at hyphens (this will give some underfull vbox's,
+% so an alternative is to use \brokenpenalty=100 and manually search
+% for and fix such page breaks)
+\brokenpenalty=10000
+
+% Use 1.5 times the normal baseline-to-baseline skip (double space)
+\renewcommand{\baselinestretch}{1}
+
+% Redefine the macro used for floats (including figures and tables)
+% so that single spacing is used.
+% (Note \def\figure{\@float{figure}set single spacing} doesn't work
+%  because figure has an optional argument)
+%\def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
+%   \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+%      \@parmoderr\@floatpenalty\z@
+%    \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+%       \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+%       \@tfor \@tempa :=#2\do
+%                        {\if\@tempa h\advance\@tempcnta \@ne\fi
+%                         \if\@tempa t\advance\@tempcnta \tw@\fi
+%                         \if\@tempa b\advance\@tempcnta 4\relax\fi
+%                         \if\@tempa p\advance\@tempcnta 8\relax\fi
+%         }\global\count\@currbox\@tempcnta}\@fltovf\fi
+%    \global\setbox\@currbox\vbox\bgroup
+%    \def\baselinestretch{1}\@normalsize
+%    \boxmaxdepth\z@
+%    \hsize\columnwidth \@parboxrestore}
+
+% Redefine the macro used for footnotes to use single spacing
+\long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut}}}
+
+% Define a single space environment (copied from doublespace.sty)
+% e.g. \begin{singlespace}
+%         single-spaced text
+%      \end{singlespace}
+\def\singlespace{%
+    \vskip\parskip
+    \vskip\baselineskip
+    \def\baselinestretch{1.2}
+    \ifx\@currsize\normalsize\@normalsize\else\@currsize\fi
+    \vskip-\parskip
+    \vskip-\baselineskip
+}
+\def\endsinglespace{\par}
+
+% Increase the space between the last line of text and footnote rule.
+\skip\footins 20pt plus4pt minus4pt
+
+% Change the l@chapter command. Now this commands uses dotted fills
+% for chapter level contentlines in the Table of Contents.
+\renewcommand\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      {\bfseries #1}\nobreak\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern
+	 \@dotsep mu$}\hfill \nobreak
+             \hbox to\@pnumwidth{\hss \bfseries #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+
+% \author, \title are defined in report; here are the rest of the
+% front matter defining macros
+\def\titleline#1{\gdef\@titleline{#1}}
+\def\prevdegrees#1{\gdef\@prevdegrees{#1}}
+\def\@titleline{}
+\def\@prevdegrees{}
+
+\def\dept#1{\gdef\@dept{#1}}              % Author's Department
+\def\advdept#1{\gdef\@advdept{#1}}       % Advisor's Department
+\def\firstdept#1{\gdef\@firstdept{#1}}    % First Reader Department
+\def\seconddept#1{\gdef\@seconddept{#1}}  % Second Reader Department
+\def\thirddept#1{\gdef\@thirddept{#1}}    % Third Reader Department
+\def\thesistype#1{\gdef\@thesistype{#1}}
+\def\degreeType{Doctor of Philosophy}
+\def\degreeSymbol{Ph.D.}
+
+\def\principaladviser#1#2{\gdef\@adviser{#1}\gdef\@advtitle{#2}}
+\def\advis@r{Adviser} % default spelling
+\def\principaladvisor#1#2{\gdef\@adviser{#1}\gdef\@advtitle{#2}
+    \gdef\advis@r{Advisor}}
+\def\firstreader#1#2{\gdef\@firstreader{#1}\gdef\@firsttitle{#2}}
+\def\secondreader#1#2{\gdef\@secondreader{#1}\gdef\@secondtitle{#2}}
+\def\thirdreader#1#2{\gdef\@thirdreader{#1}\gdef\@thirdtitle{#2}}
+\def\fourthreader#1{\gdef\@fourthreader{#1}}
+\def\grantdate#1#2{\gdef\@grantmonth{#1}\gdef\@grantyear{#2}}
+\def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
+\def\@title{}\def\@author{}\def\@dept{Computer Engineering}
+\def\@firstreader{}\def\@secondreader{}\def\@thirdreader{}\def\@fourthreader{}
+
+\newif\ifcopyright \newif\iffigurespage \newif\iftablespage
+\newif\iffoursigs \newif\iffivesigs \newif\ifMSthesis
+\copyrighttrue \figurespagetrue \tablespagetrue
+\foursigsfalse \fivesigsfalse \MSthesisfalse
+
+\long\def\signature#1#2{%
+\hbox{\hfil\shortstack[l]{{\vrule width \textwidth height 0.4pt} \\ {#1} \\ {#2} }}%
+\vspace{.35in}%
+}
+
+%% Signatures
+\def\signatures{%
+		\vfill
+		\signature{\@adviser, \@advtitle}{\em Thesis Advisor, Department of \@advdept}
+		\vfill
+		\signature{\@firstreader, \@firsttitle}{\em Committee Member, Department of \@firstdept}
+		\vfill
+		\signature{\@secondreader, \@secondtitle}{\em Committee Member, Department of \@seconddept}
+		\vfill
+		\iffoursigs
+        		\signature{\@thirdreader, \@thirdtitle}{\em Committee Member, \@thirddept}
+			\vfill
+		\fi
+		\iffivesigs
+			\signature\@thirdreader
+			\vfill
+			\signature\@fourthreader
+			\vfill
+		\fi
+}
+
+%% Title page with signatures
+\def\titlep{%
+	\large
+    \vspace*{-.5in}
+	\thispagestyle{empty}%
+	\def\baselinestretch{1.1}
+	\null
+	\begin{center}
+		\huge\bf{\@title} \\ [0.2in]
+	\end{center}
+%	\vfill
+	\begin{center}
+		\large by \\ [0.2in] {\Large \bf \@author \rm }\\ [0.3in]
+		\@prevdegrees
+	\end{center}
+%	\vfill
+	\ifMSthesis
+	   \gdef\thesistype{thesis}
+	   \gdef\degreeType{Master of Science}
+	   \gdef\degreeSymbol{M.S.}
+	\fi
+	\begin{center}
+		\large
+		A \@thesistype\
+                Submitted in Partial Fulfillment of the
+		Requirements for the Degree of 
+                \degreeType \\
+                 in 
+                \@dept \\ [0.3in]
+	\end{center}
+
+	%\vskip.2in
+	\begin{center}
+	\large
+                Supervised by\\[0.2in]
+                \@advtitle \ \@adviser \\
+		Department of \@advdept \\
+		Kate Gleason College of Engineering \\
+		Rochester Institute of Technology \\
+		Rochester, New York \\
+			\@grantmonth\ \ \@grantyear
+	\vskip.5in
+	\end{center}
+    Approved by:
+    
+	\vskip.3in
+	\signatures
+
+	\newpage
+
+% Release page
+	\thispagestyle{empty}%
+	\def\baselinestretch{1.1}
+	\null
+	\begin{center}
+		\huge\bf{Thesis Release Permission Form} \\ [0.3in]
+	\end{center}
+
+    \vspace{0.0in}
+	\begin{center}
+		\large Rochester Institute of Technology \\
+        Kate Gleason College of Engineering \\ [0.3in]
+	\end{center}
+
+    \vspace{1.0in}
+	\begin{center}
+    \large{Title: \\ [0.3in]
+    \@titleline}\normalsize
+	\end{center}
+
+    \vspace{1.0in}
+    I, \@author, hereby grant permission to the
+    Wallace Memorial \hbox{Library} to reproduce my thesis in whole or part.
+
+    \vspace{1.0in}
+    \signature{}{\@author}
+
+    \vspace{0.0in}
+    \signature{}{Date}
+\vskip.5in\newpage
+}
+
+\def\copyrightpage{%
+	\def\baselinestretch{1.3}
+	\null\vfill
+	\begin{center}
+		\large
+		\copyright\ Copyright \@copyrightyear\ by \@author\\
+		All Rights Reserved
+	\end{center}
+\vfill\newpage}
+
+%% Copyright page
+\def\beforepreface{
+	\pagenumbering{roman}
+	\thispagestyle{myheadings}
+	\pagestyle{myheadings}
+    \markboth{}{}
+	\titlep
+	\ifcopyright\copyrightpage\fi
+	}
+
+\def\prefacesection#1{%
+    \thispagestyle{myheadings}
+    \markboth{}{}
+	\chapter*{#1}
+	\addcontentsline{toc}{chapter}{#1}
+}
+
+\def\afterpreface{
+  \begin{center}
+  \newpage
+	\begin{singlespace}
+	\tableofcontents
+	\end{singlespace}
+	\newpage
+	\iftablespage
+		\begin{singlespace}
+		\listoftables
+		\end{singlespace}
+		\newpage
+	\fi
+	\iffigurespage
+		\begin{singlespace}
+		\listoffigures
+		\end{singlespace}
+		\newpage
+	\fi
+  \end{center}
+}
+
+\def\abstractpage{
+    \pagestyle{myheadings}
+    \thispagestyle{myheadings}
+    \markboth{}{}
+	\def\@makeschapterhead##1{
+	    %\vspace*{0.25in}
+	    \vspace*{0.15in}
+	    { \center
+	    \huge \bf ##1\par
+	    \nobreak
+            \vskip 20pt } } % CHANGE: from 40pt to 20pt JC
+	\chapter*{Abstract}
+    \pagestyle{myheadings}
+    \thispagestyle{myheadings}
+    \markboth{}{}
+	\addcontentsline{toc}{chapter}{Abstract}
+	\begin{center}
+		\large\bf\expandafter{\@title} \\ [0.15in]
+		\@author \\ [0.15in]
+		Supervising Professor: \@adviser
+	\end{center}
+	%\vskip.25in
+}
+
+\def\body{
+	\newpage
+	\pagenumbering{arabic}
+	\thispagestyle{myheadings}
+	\pagestyle{myheadings}
+    \markboth{}{}
+	\def\chaptermark##1{}
+}
+
+% Redefine \thebibliography to go to a new page and put an entry in the
+% Table of Contents
+\def\thebibliography#1{%
+    \chapter*{\center Bibliography}
+    \list {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+    \advance\leftmargin\labelsep \usecounter{enumi} }
+    \usecounter{enumi}
+    \def\newblock{\hskip .11em plus .33em minus .07em}
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=1000\relax}
+
+% Redefine \thebibliography to not use any page headings except the
+% page number.
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{
+	\newpage
+    \thispagestyle{myheadings}
+    \markboth{}{}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\@ldthebibliography{#1}
+}
+
+% Biography
+% Don't use any chapter numbers, page numbers. Add this entry to the
+% table of contents.
+\def\vita{%
+	\def\@makeschapterhead##1{
+        \thispagestyle{myheadings}
+        \markboth{}{}
+	    \vspace*{0.2in}
+	    { \center
+	    \huge \bf ##1\par
+	    \nobreak \vskip 40pt } }
+	\chapter*{Biographical Note}
+	\addcontentsline{toc}{chapter}{Biographical Note}
+}
+
+% Start out normal
+\pagestyle{myheadings}
+\markboth{}{}
+
+% Redefine \@makeschapterhead and \@makechapterhead so they start
+% out at the top of the page and used \huge rather than \Huge font sizes.
+\def\@makeschapterhead#1{
+    \thispagestyle{myheadings}
+    \markboth{}{}
+    \vspace*{0.2in}
+    { %\center
+    \huge \bf #1\par
+    \nobreak \vskip 40pt }
+}
+\def\@makechapterhead#1{
+    \thispagestyle{myheadings}
+    \markboth{}{}
+    \vspace*{0.2in}
+    { %\center
+    \ifnum \c@secnumdepth >\m@ne \huge\bf \@chapapp{} \thechapter \par
+    \vskip 20pt \fi \huge \bf #1\par
+    \nobreak \vskip 40pt }
+}
