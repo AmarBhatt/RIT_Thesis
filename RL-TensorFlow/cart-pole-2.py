@@ -1,3 +1,5 @@
+#https://medium.com/@awjuliani/super-simple-reinforcement-learning-tutorial-part-2-ded33892c724#.53iejxsba
+
 import numpy as np
 import _pickle as pickle
 import tensorflow as tf
@@ -99,7 +101,7 @@ with tf.Session() as sess:
         
         # Rendering the environment slows things down, 
         # so let's only look at it once our agent is doing a good job.
-        if reward_sum/batch_size > 100 or rendering == True : 
+        if reward_sum/batch_size > 100 or rendering == True: 
             env.render()
             rendering = True
             
