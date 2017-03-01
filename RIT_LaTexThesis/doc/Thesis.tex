@@ -433,7 +433,45 @@ Reinforcement learning is a series of methods and algorithms used to pseudo map 
 \subsection{Maximum Entropy Inverse Reinforcement Learning}
 In many imitation learning problems modeling sequential decision-making behavior is often very difficult due to the lack of foresight in these systems. Ziebart et al.~\cite{ziebart2008maximum} developed an inverse reinforcement technique based on the principle of maximum entropy theory to counter this.  They tackled modeling real-world navigation and driving behaviors by sampling noisy and imperfect data from driving "experts".  Their approach was able to model route preferences of drivers as well as infer destinations and routes based on partial trajectories using GPS data of taxi-cab driving.  The environment they tested in was a known-fixed structure of the world (such as a road network) with known actions characterized by various road features such as speed limit and number of lanes.
 
-START AT BACKGROUND
+The idea of inverse reinforcement learning revolves on an agent optimizing a function that linearly maps features of each state (\textit{$s_j$} to a reward value. Therefore, the reward value of an "expert" data sample, or trajectory, is a sum of state rewards which can be simplified to the reward weights, (\textit{$\theta$}), applied to the feature counts in a trajectory/path ($\zeta$) (\ref{eq:feature_counts}) as shown in (\ref{eq:feature_count_reward}).
+
+\begin{equation}
+            \label{eq:feature_counts}
+            \resizebox{0.20\textwidth}{!}{$f\textsubscript{$\zeta$}= \sum_{s_j\in\zeta}^{}f\textsubscript{$s_j$}$}~\cite{ziebart2008maximum}%
+        \end{equation}
+
+\begin{equation}
+            \label{eq:feature_count_reward}
+            \resizebox{0.44\textwidth}{!}{$reward(f\textsubscript{$\zeta$})= \theta \cdot f\textsubscript{$\zeta$} = \sum_{s_j\in\zeta}^{}\theta \cdot f\textsubscript{$s_j$}$}~\cite{ziebart2008maximum}
+        \end{equation}
+
+A major problem of using "expert" trajectories is that an inverse reinforcement algorithm may find a preference for one path over others.  This poses a problem that an agent will only learn a path and not how features of a state can help in path decision making.  Using maximum entropy this problem is solved by choosing a distribution that does not exhibit preference beyond feature expectations.  Using this probabalistic model for deterministic (no randomness) path distributions, trajectories with the same final reward will be treated equally, where a preference will only be given for trajectories with higher reward.  Trajectories with a higher reward will have an exponentially higher probability. This is shown in (\ref{eq:maximum_entropy}), where \textit{Z($\theta$)} is the partition function which will always converge given trajectories that reach a reward-giving goal in a finite number of steps.
+
+\begin{equation}
+            \label{eq:maximum_entropy}
+            \resizebox{0.44\textwidth}{!}{$reward(P(\zeta\textsubscript{i})|\theta)= \frac{1}{Z(\theta)} e^{\theta \cdot f_{\zeta_i}}=  \frac{1}{Z(\theta)} e^{\sum_{s_j\in\zeta_i}^{}\theta \cdot f\textsubscript{$s_j$}}$}~\cite{ziebart2008maximum}%
+        \end{equation}
+
+For non-deterministic (randomness) path distributions, (\ref{eq:maximum_entropy}) must be altered to take randomness in path distributions into account. Most MDPs (Marko Decision Process) that relate to real-world environments or dynamics will have non-deterministic transitions between states, meaning that an action that is supposed to transition to one state may not do so with some probability $\epsilon$.  Therefore, this distribution over paths produces a stochastic policy where the probability of an action is weighted by the expected rewards of all paths that begin with that action as shown in (\ref{eq:stochastic_policy}).
+
+\begin{equation}
+            \label{eq:stochastic_policy}
+            \resizebox{0.44\textwidth}{!}{$reward(P(action | \theta, T) \propto \sum_{\zeta:action\in\zeta_{t=0}}^{}P(\zeta | \theta, T)$}~\cite{ziebart2008maximum}%
+        \end{equation}
+
+Therefore, to find the optimal weights the likelihood of the observed data is maximized under the maximum entropy distribution (\ref{eq:maxent_weight_update}). Since this function will be convex for deterministic MDPs the optima is found using the gradient  which is defined by the difference between the expected feature counts from the expert and the learner's expected feature counts represented in terms of expected state visitation frequencies, (${{}D_s}_{i}$).  The gradient descent for the weights is shown in (\ref{eq:maxent_gradient}). At the optima, the feature expectations will match which will state that the learner performs equivalently to the demonstrated behavior even if the reward weights found are not the same as the ground truth.
+
+\begin{equation}
+            \label{eq:maxent_weight_update}
+            \resizebox{0.52\textwidth}{!}{$\theta^* = argmax_\theta L(\theta) = argmax_\theta * \sum_{trajectories}^{}\log(\tilde\zeta|\theta,T)$}~\cite{ziebart2008maximum}%
+        \end{equation}
+
+\begin{equation}
+            \label{eq:maxent_gradient}
+            \resizebox{0.44\textwidth}{!}{$\bigtriangledown L(\theta) = \tilde f - \sum_{\zeta}^{} P(\zeta|\theta,T)f_\zeta = \tilde f - \sum_{s_i}^{}D_{s_{i}}F_{s_{i}}$}~\cite{ziebart2008maximum}%
+        \end{equation}
+
+This paper~\cite{ziebart2008maximum} uses Maximum Entropy IRL to recover a reward function for predicting driving behavior and route recommendation. The model of this problem contained over 300,000 states (road segments) and 900,000 actions. All expert trajectories were assumed to reach a goal while optimizing time, safety, stress, fuel costs, and maintenance costs. This is used as the cost function for this system, whereas the destination for all trajectories is the state where no additional cost is incurred. The expert trajectories were GPS traces from 25 taxi drivers which resulted in over 100,000 miles of collected data over 3,000 hours of driving. Each state (road segment) was characterized by: road type, speed, lanes, and transitions. Using the Maximum Entropy IRL model this paper achieved state-of-the-art results for its time for path matching.
 
 \chapter{Deep Reinforcement Learning}
 An advantage to using neural networks with inverse reinforcement learning stems from that fact that not everything can be observed. The demonstrator, or "expert", may not reach every state or move stochastically. Therefore, neural networks allow the system to generalize for unknown states and obstacles. Also, for complex systems with numerous state-action pairs, maintaining a Q-table with that much data becomes infeasible. Neural Networks are great for finding complex features in complex functions, therefore, the traditional \textit{Q-function} is replaced by a network~\cite{matiisen_2015}. The Neural Inverse Reinforcement Learning algorithm in~\cite{xia2016neural} is a model-free implementation of deep reinforcement learning. It uses several sensors on the robot as inputs into the neural network.  It also uses the current state, and any obstacle detected as inputs. Therefore, this method separates a robot's coordinates with its environment so that it can better generalize its navigation~\cite{xia2016neural}.

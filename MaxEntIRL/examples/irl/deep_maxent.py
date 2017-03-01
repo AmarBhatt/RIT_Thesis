@@ -313,6 +313,7 @@ def irl(structure, feature_matrix, n_actions, discount, transition_probability,
     run = th.function([s_feature_matrix], outputs=r)
 
     for e in range(epochs):
+        print(e)
         reward = train(feature_matrix)
 
     return reward.reshape((n_states,))

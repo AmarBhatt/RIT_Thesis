@@ -13,7 +13,7 @@ class Gridworld(object):
     Gridworld MDP.
     """
 
-    def __init__(self, grid_size, wind, discount, obstacles, goal):
+    def __init__(self, grid_size, wind, discount, obstacles, pits, goal):
         """
         grid_size: Grid size. int.
         wind: Chance of moving randomly. float.
@@ -29,6 +29,7 @@ class Gridworld(object):
         self.discount = discount
         self.goal = goal
         self.obstacle_list = obstacles
+        self.pit_list = pits
         self.world_grid = self.create_world()
         self.graph = self.create_graph()
         #print(self.world_grid)
@@ -87,6 +88,8 @@ class Gridworld(object):
             # path found
             if node == end:
                 return path
+            #if node in self.pit_list:
+            #    return path
             # enumerate all adjacent nodes, construct a new path and push it into the queue
             for adjacent in self.graph.get(node, []):
                 new_path = list(path)
@@ -240,6 +243,8 @@ class Gridworld(object):
 
         if state_int == self.goal: #// 2: 
             return 1
+        elif state_int in self.pit_list:
+            return -1
         return 0
 
     def average_reward(self, n_trajectories, trajectory_length, policy):

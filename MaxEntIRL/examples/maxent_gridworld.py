@@ -12,7 +12,7 @@ import irl.maxent as maxent
 import irl.mdp.gridworld_flex as gridworld
 import irl.value_iteration as value_iteration
 
-def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_list, goal, wind):
+def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_list, pit_list, goal, wind):
     """
     Run maximum entropy inverse reinforcement learning on the gridworld MDP.
 
@@ -30,7 +30,7 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
 
     print("Setting up GridWorld")
 
-    gw = gridworld.Gridworld(grid_size, wind, discount,obstacle_list,goal)
+    gw = gridworld.Gridworld(grid_size, wind, discount,obstacle_list,pit_list,goal)
     trajectories = gw.generate_trajectories(n_trajectories,
                                             trajectory_length,
                                             gw.optimal_policy, True)
@@ -106,8 +106,9 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
 
 
 if __name__ == '__main__':
-    main(10, 0.01, 20, 200, 0.01, [15,45,63,65,72,24], 64, 0.3) 
-    #3,17,11,7S
+    main(5, 0.01, 20, 200, 0.01, [], [], 12, 0.3) 
+    #3,17,11,7
+    #15,45,63,65,72,24
 
 #policy map
 #obstacles at negative rewards
