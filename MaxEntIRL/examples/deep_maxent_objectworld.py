@@ -12,6 +12,8 @@ import irl.deep_maxent as deep_maxent
 import irl.mdp.objectworld as objectworld
 from irl.value_iteration import find_policy
 
+from irl.mdp.imageHandler import *
+
 def main(grid_size, discount, n_objects, n_colours, n_trajectories, epochs,
          learning_rate, structure):
     """
@@ -44,6 +46,8 @@ def main(grid_size, discount, n_objects, n_colours, n_trajectories, epochs,
     trajectories = ow.generate_trajectories(n_trajectories,
                                             trajectory_length,
                                             lambda s: policy[s])
+    #print(trajectories)
+
     feature_matrix = ow.feature_matrix(discrete=False)
     r = deep_maxent.irl((feature_matrix.shape[1],) + structure, feature_matrix,
         ow.n_actions, discount, ow.transition_probability, trajectories, epochs,
@@ -66,4 +70,5 @@ def main(grid_size, discount, n_objects, n_colours, n_trajectories, epochs,
     plt.show()
 
 if __name__ == '__main__':
-    main(10, 0.9, 15, 2, 20, 500000, 0.01, (3, 3)) #500,000
+    #main(10, 0.9, 15, 2, 100, 500, 0.01, (100,3, 3)) #20, 500000
+    grid = readImage("test.png")

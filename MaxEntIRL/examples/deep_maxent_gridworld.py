@@ -10,7 +10,9 @@ import matplotlib.pyplot as plt
 
 import irl.deep_maxent as deep_maxent
 import irl.mdp.gridworld_flex as gridworld
-from irl.value_iteration import find_policy
+import irl.value_iteration as value_iteration
+
+from irl.mdp.imageHandler import *
 
 def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_list, pit_list, goal, wind, structure):
     """
@@ -43,25 +45,90 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
                                             trajectory_length,
                                             gw.optimal_policy, True)
     feature_matrix = gw.feature_matrix("ident")
-    r = deep_maxent.irl((feature_matrix.shape[1],) + structure, feature_matrix,
+    r,_ = deep_maxent.irl((feature_matrix.shape[1],) + structure, feature_matrix,
         gw.n_actions, discount, gw.transition_probability, trajectories, epochs,
         learning_rate, l1=l1, l2=l2)
 
-    print(ground_r);
-    print("******************");
-    print(r);
-    print("*******************");
-    print(np.fabs(ground_r-r));
+    #print(ground_r);
+    #print("******************");
+    #print(r);
+    #print("*******************");
+    #print(np.fabs(ground_r-r));
 
+    # plt.subplot(1, 2, 1)
+    # plt.pcolor(ground_r.reshape((grid_size, grid_size)))
+    # plt.colorbar()
+    # plt.title("Groundtruth reward")
+    # plt.subplot(1, 2, 2)
+    # plt.pcolor(r.reshape((grid_size, grid_size)))
+    # plt.colorbar()
+    # plt.title("Recovered reward")
+    # plt.show()
+
+    policy = value_iteration.find_policy(grid_size**2, 4,
+                                         gw.transition_probability, r, discount)
+    #print(policy)
+    policy_map = np.chararray((grid_size, grid_size))
+    actions = [r'$\rightarrow$',r'$\downarrow$',r'$\leftarrow$',r'$\uparrow$']
+    count = 0
+    for s in policy:
+        sx, sy = gw.int_to_point(count)
+        if (count not in  obstacle_list):
+            a = np.argmax(s)
+            policy_map[sy,sx] = actions[a]
+        else:
+            policy_map[sy,sx] = 'X'
+            r[count] = np.amin(r); 
+        if count == goal:
+            policy_map[sy,sx] = 'G'
+        count += 1
+    #print(policy_map)
+
+    print("Plotting")
+    
+    plt.figure() 
     plt.subplot(1, 2, 1)
-    plt.pcolor(ground_r.reshape((grid_size, grid_size)))
+    ax = plt.gca()
+    plt.pcolor(ground_r.reshape((grid_size, grid_size)),cmap='gray')
     plt.colorbar()
     plt.title("Groundtruth reward")
+    plt.gca().invert_yaxis()
+    ax.grid(color='k', linestyle='-', linewidth=2, axis='both')
     plt.subplot(1, 2, 2)
-    plt.pcolor(r.reshape((grid_size, grid_size)))
+    ax = plt.gca()
+    plt.pcolor(r.reshape((grid_size, grid_size)),cmap='gray')
+    count = 0
+    for y in range(grid_size):
+        for x in range(grid_size):
+            a = np.argmax(policy[count])
+            if(count not in obstacle_list):
+                plt.text(x + 0.5, y + 0.5, '%s' % actions[a],
+                         horizontalalignment='center',
+                         verticalalignment='center', color='orange',fontsize='15',
+                         )
+            else:
+                plt.text(x + 0.5, y + 0.5, '%s' % 'X',
+                         horizontalalignment='center',
+                         verticalalignment='center',
+                         color='black',)
+            count += 1
+
     plt.colorbar()
     plt.title("Recovered reward")
+    plt.gca().invert_yaxis()
+    ax.grid(color='k', linestyle='-', linewidth=2)
     plt.show()
+    print("Done")
 
 if __name__ == '__main__':
-    main(10, 0.9, 20, 200, 0.01,[],[],24, 0.3, (3, 3)) #500000
+    grid = readImage("test2.png")
+    obstacles = []
+    count = 0
+    for y in range(grid.shape[0]):
+        for x in range(grid.shape[1]):
+            if(grid[y,x] == 0):
+                obstacles.append(count)
+            count += 1
+    grid_size = grid.shape
+    print(obstacles)
+    main(grid_size[0], 0.9, 20, 200, 0.01,obstacles,[],5456, 0.0, (3, 3)) #500000

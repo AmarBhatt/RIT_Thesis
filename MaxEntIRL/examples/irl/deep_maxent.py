@@ -166,6 +166,7 @@ def find_expected_svf(n_states, r, n_actions, discount,
         """
 
         svf = prev_svf[i] * policy[i, j] * tps[i, j, :]
+        #print(svf)
         return svf, {}
 
     prod = np.array(list(product(range(n_states), range(n_actions))))
@@ -184,7 +185,7 @@ def find_expected_svf(n_states, r, n_actions, discount,
                      non_sequences=[policy, transition_probability, state_range,
                                  action_range])
 
-    return svf.sum(axis=0) + p_start_state
+    return svf.sum(axis=0) + p_start_state, policy
 
 def irl(structure, feature_matrix, n_actions, discount, transition_probability,
         trajectories, epochs, learning_rate, initialisation="normal", l1=0.1,
@@ -272,7 +273,7 @@ def irl(structure, feature_matrix, n_actions, discount, transition_probability,
     # Engineering hack: z-score the reward.
     r = (r - r.mean())/r.std()
     # Associated feature expectations.
-    expected_svf = find_expected_svf(n_states, r,
+    expected_svf,policy = find_expected_svf(n_states, r,
                                      n_actions, discount,
                                      transition_probability,
                                      trajectories)
@@ -316,4 +317,4 @@ def irl(structure, feature_matrix, n_actions, discount, transition_probability,
         print(e)
         reward = train(feature_matrix)
 
-    return reward.reshape((n_states,))
+    return reward.reshape((n_states,)),policy

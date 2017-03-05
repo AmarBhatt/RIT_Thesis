@@ -12,6 +12,8 @@ import irl.maxent as maxent
 import irl.mdp.gridworld_flex as gridworld
 import irl.value_iteration as value_iteration
 
+from irl.mdp.imageHandler import *
+
 def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_list, pit_list, goal, wind):
     """
     Run maximum entropy inverse reinforcement learning on the gridworld MDP.
@@ -31,6 +33,8 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
     print("Setting up GridWorld")
 
     gw = gridworld.Gridworld(grid_size, wind, discount,obstacle_list,pit_list,goal)
+    
+    print("Getting trajectories")
     trajectories = gw.generate_trajectories(n_trajectories,
                                             trajectory_length,
                                             gw.optimal_policy, True)
@@ -49,7 +53,7 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
 
     print(policy)
     policy_map = np.chararray((grid_size, grid_size))
-    actions = ['>','v','<','^']
+    actions = [r'$\rightarrow$',r'$\downarrow$',r'$\leftarrow$',r'$\uparrow$']
     count = 0
     for s in policy:
         sx, sy = gw.int_to_point(count)
@@ -83,13 +87,13 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
             if(count not in obstacle_list):
                 plt.text(x + 0.5, y + 0.5, '%s' % actions[a],
                          horizontalalignment='center',
-                         verticalalignment='center',
+                         verticalalignment='center', color='white',fontsize='15',
                          )
             else:
                 plt.text(x + 0.5, y + 0.5, '%s' % 'X',
                          horizontalalignment='center',
                          verticalalignment='center',
-                         )
+                         color='black',)
             count += 1
 
     plt.colorbar()
@@ -106,7 +110,18 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
 
 
 if __name__ == '__main__':
-    main(5, 0.01, 20, 200, 0.01, [], [], 12, 0.3) 
+    
+    grid = readImage("test2.png")
+    obstacles = []
+    count = 0
+    for y in range(grid.shape[0]):
+        for x in range(grid.shape[1]):
+            if(grid[y,x] == 0):
+                obstacles.append(count)
+            count += 1
+    grid_size = grid.shape
+    print(obstacles)
+    main(grid_size[0], 0.01, 20, 200, 0.01, obstacles, [], 5456, 0.0) 
     #3,17,11,7
     #15,45,63,65,72,24
 

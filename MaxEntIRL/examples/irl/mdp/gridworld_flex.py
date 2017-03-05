@@ -7,6 +7,8 @@ matthew.alger@anu.edu.au
 
 import numpy as np
 import numpy.random as rn
+from collections import deque
+import networkx as nx
 
 class Gridworld(object):
     """
@@ -31,10 +33,14 @@ class Gridworld(object):
         self.obstacle_list = obstacles
         self.pit_list = pits
         self.world_grid = self.create_world()
+        print("Set up graph")
         self.graph = self.create_graph()
+        print("Get shortest paths")
+        self.paths = self.get_all_shortest_paths(self.goal)
         #print(self.world_grid)
         #print(self.graph)
         # Preconstruct the transition probability array.
+        print("Get transition probabilities")
         self.transition_probability = np.array(
             [[[self._transition_probability(i, j, k)
                for k in range(self.n_states)]
@@ -57,25 +63,26 @@ class Gridworld(object):
         return w
 
     def create_graph(self):
-        graph = {}
+        graph = nx.Graph() #{}
         world = self.world_grid
         for y in range(world.shape[0]):
             for x in range(world.shape[1]):
                 neighbor_list = [];
+                node = self.point_to_int((x,y));
                 if not(world[y,x] == 1):
                     if x+1 < len(world) and not(world[y,x+1] == 1):
-                        neighbor_list.append(self.point_to_int((x+1,y)))
+                        neighbor_list.append((node,self.point_to_int((x+1,y))))#(self.point_to_int((x+1,y)))
                     if y+1 < len(world) and not(world[y+1,x] == 1):
-                        neighbor_list.append(self.point_to_int((x,y+1)))
+                        neighbor_list.append((node,self.point_to_int((x,y+1))))#(self.point_to_int((x,y+1)))
                     if x-1 >= 0 and not(world[y,x-1] == 1):
-                        neighbor_list.append(self.point_to_int((x-1,y)))
+                        neighbor_list.append((node,self.point_to_int((x-1,y))))#(self.point_to_int((x-1,y)))
                     if y-1 >= 0 and not(world[y-1,x] == 1):
-                        neighbor_list.append(self.point_to_int((x,y-1)))          
+                        neighbor_list.append((node,self.point_to_int((x,y-1))))#(self.point_to_int((x,y-1)))          
                 
-                graph[self.point_to_int((x,y))] = neighbor_list;
+                graph.add_edges_from(neighbor_list)#graph[self.point_to_int((x,y))] = neighbor_list;
         return graph
 
-    def bfs(self, start, end):
+    def bfs1(self, start, end):
         # maintain a queue of paths
         queue = []
         # push the first path into the queue
@@ -95,6 +102,17 @@ class Gridworld(object):
                 new_path = list(path)
                 new_path.append(adjacent)
                 queue.append(new_path)
+
+
+
+    def get_all_shortest_paths(self,source):
+        return nx.single_source_shortest_path(self.graph,source)
+
+    def bfs(self,start,end):
+        return list(reversed(self.paths[start]))
+
+
+
 
     def feature_vector(self, i, feature_map="ident"):
         """
@@ -245,7 +263,7 @@ class Gridworld(object):
             return 1
         elif state_int in self.pit_list:
             return -1
-        return 0
+        return 0 #if this is negative it may work better
 
     def average_reward(self, n_trajectories, trajectory_length, policy):
         """
@@ -328,9 +346,11 @@ class Gridworld(object):
             if random_start:
                 sx, sy = rn.randint(self.grid_size), rn.randint(self.grid_size)
                 p = self.point_to_int((sx,sy))
+                #print(p)
                 while(p in self.obstacle_list):
                     sx, sy = rn.randint(self.grid_size), rn.randint(self.grid_size)
                     p = self.point_to_int((sx,sy))
+                    #print(p)
             else:
                 sx, sy = 0, 0
 
