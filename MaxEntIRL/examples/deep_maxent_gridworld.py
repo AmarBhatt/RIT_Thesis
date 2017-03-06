@@ -121,7 +121,7 @@ def main(grid_size, discount, n_trajectories, epochs, learning_rate, obstacle_li
     print("Done")
 
 if __name__ == '__main__':
-    grid = readImage("test2.png")
+    grid = readImage("128x128.png")
     obstacles = []
     count = 0
     for y in range(grid.shape[0]):
@@ -131,4 +131,4 @@ if __name__ == '__main__':
             count += 1
     grid_size = grid.shape
     print(obstacles)
-    main(grid_size[0], 0.9, 20, 200, 0.01,obstacles,[],5456, 0.0, (3, 3)) #500000
+    main(grid_size[0], 0.9, 20, 200, 0.01,obstacles,[],8492, 0.0, (3, 3)) #500000

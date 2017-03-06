@@ -100,13 +100,13 @@ true_reward = tf.placeholder(tf.float32,[None,1],name="true_reward")
 true_done = tf.placeholder(tf.float32,[None,1],name="true_done")
 
 
-predicted_state = tf.concat(1,[predicted_observation,predicted_reward,predicted_done])
+predicted_state = tf.concat([predicted_observation,predicted_reward,predicted_done],1)
 
 observation_loss = tf.square(true_observation - predicted_observation)
 
 reward_loss = tf.square(true_reward - predicted_reward)
 
-done_loss = tf.mul(predicted_done, true_done) + tf.mul(1-predicted_done, 1-true_done)
+done_loss = tf.multiply(predicted_done, true_done) + tf.multiply(1-predicted_done, 1-true_done)
 done_loss = -tf.log(done_loss)
 
 model_loss = tf.reduce_mean(observation_loss + done_loss + reward_loss)
@@ -124,7 +124,7 @@ def discount_rewards(r):
     """ take 1D float array of rewards and compute discounted reward """
     discounted_r = np.zeros_like(r)
     running_add = 0
-    for t in reversed(xrange(0, r.size)):
+    for t in reversed(range(0, r.size)):
         running_add = running_add * gamma + r[t]
         discounted_r[t] = running_add
     return discounted_r
@@ -261,7 +261,7 @@ with tf.Session() as sess:
                 
 print (real_episodes)
 
-
+input()
 plt.figure(figsize=(8, 12))
 for i in range(6):
     plt.subplot(6, 2, 2*i + 1)
@@ -269,3 +269,4 @@ for i in range(6):
     plt.subplot(6,2,2*i+1)
     plt.plot(state_nextsAll[:,i])
 plt.tight_layout()
+plt.show()
