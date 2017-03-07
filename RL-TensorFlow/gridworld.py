@@ -24,6 +24,7 @@ class gameEnv():
         self.partial = partial
         a = self.reset()
         plt.imshow(a,interpolation="nearest")
+        #plt.show()
         
         
     def reset(self):

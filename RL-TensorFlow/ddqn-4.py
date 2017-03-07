@@ -135,6 +135,11 @@ total_steps = 0
 if not os.path.exists(path):
     os.makedirs(path)
 
+debug = False; #to plot game
+
+if debug:
+	plt.ion()
+
 with tf.Session() as sess:
     if load_model == True:
         print ('Loading Model...')
@@ -150,6 +155,11 @@ with tf.Session() as sess:
         d = False
         rAll = 0
         j = 0
+        if debug:
+	        plt.imshow(env.renderEnv()) #,interpolation="nearest"
+	        plt.draw()
+	        plt.show(block=False)
+	        plt.pause(0.000001)
         #The Q-Network
         while j < max_epLength: #If the agent takes longer than 200 moves to reach either of the blocks, end the trial.
             j+=1
@@ -162,7 +172,13 @@ with tf.Session() as sess:
             s1 = processState(s1)
             total_steps += 1
             episodeBuffer.add(np.reshape(np.array([s,a,r,s1,d]),[1,5])) #Save the experience to our episode buffer.
-            
+            if debug:
+	            plt.imshow(env.renderEnv()) #,interpolation="nearest"
+	            plt.draw()
+	            plt.show(block=False)
+	            plt.pause(0.000001)
+            #print(np.reshape(np.array([s,a,r,s1,d]),[1,5]))
+
             if total_steps > pre_train_steps:
                 if e > endE:
                     e -= stepDrop
@@ -202,7 +218,7 @@ print ("Percent of succesful episodes: " + str(sum(rList)/num_episodes) + "%")
 
 
 # Check learning
-rMat = np.resize(np.array(rList),[len(rList)/100,100])
+rMat = np.resize(np.array(rList),[len(rList)//100,100])
 rMean = np.average(rMat,1)
 plt.plot(rMean)
 plt.show()
