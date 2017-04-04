@@ -1,0 +1,30 @@
+\select@language {american}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Map Example with Terrain (Sand = Magenta, Forest = Green, Pavement = Black, Water = Blue, Misc. Debris = Red, Start/Goal = White dots)}}{9}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Q-Learning Algorithm~\cite {Eden}}}{11}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Sarsa Algorithm~\cite {Eden}}}{12}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Q-Learning Algorithm Path Example with Punishment}}{13}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Sarsa Algorithm Path Example with Punishment}}{13}{figure.2.5}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Deep Q-Network Architecture. The input consists of an 84x84x4 image. Each hidden layer is followed by a recitifier nonlinearity (max(0,x)).~\cite {atari}}}{23}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Dueling Deep Q-Network Architecture. Two networks are used and combined at the end.~\cite {wang2015dueling}}}{25}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces DRQN Architecture~\cite {HausknechtDRQN}.}}{26}{figure.4.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces System Work Flow}}{32}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces 4WD Rover I from Lynxmotion}}{33}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Various duty cycles on PWM signals}}{34}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces ArUco Array of four markers}}{35}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Webcam used for tracking}}{36}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Basic Flowchart of Procedure}}{37}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Annotated ArUco Array of four markers}}{38}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Path Drawn by user in GUI}}{39}{figure.6.8}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Setting Robot Heading Direction: white star indicates desired point; green indicates current heading direction between center and front of robot ($V_o$); blue indicates desired heading direction between center and desired point ($V_g$); magenta indicates difference between the directions which is the vector from the front of the robot to the desired point ($V_n$)}}{40}{figure.6.9}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Robot following the Path: white star indicates next point to reach; green markings show robot's past positions, yellow star indicates goal}}{41}{figure.6.10}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Results for robot motion with distanceThreshold = 20px and orientationThreshold = 0.95}}{42}{figure.6.11}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Results for robot motion with distanceThreshold = 20px and orientationThreshold = 0.99}}{42}{figure.6.12}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Results for robot motion with distanceThreshold = 15px and orientationThreshold = 0.99}}{43}{figure.6.13}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

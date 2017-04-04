@@ -1,0 +1,44 @@
+\BOOKMARK [0][-]{chapter*.1}{Dedication}{}% 1
+\BOOKMARK [0][-]{chapter*.2}{Acknowledgments}{}% 2
+\BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
+\BOOKMARK [0][-]{chapter.2}{Reinforcement Learning}{}% 5
+\BOOKMARK [1][-]{subsection.2.0.1}{Temporal Difference Learning}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.1}{Q-Learning and Sarsa Implementation}{chapter.2}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{Application}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{Methods}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.3}{Results}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.4}{Conclusion}{section.2.1}% 11
+\BOOKMARK [0][-]{chapter.3}{Apprenticeship Learning \(Inverse Reinforcement Learning\)}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Related Work}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Bayesian Inverse Reinforcement Learning}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{Gaussian Process Inverse Reinforcement Learning}{section.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.1.3}{Maximum Entropy Inverse Reinforcement Learning}{section.3.1}% 16
+\BOOKMARK [1][-]{section.3.2}{Examples}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{Deep Reinforcement Learning}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Related Works}{chapter.4}% 19
+\BOOKMARK [2][-]{subsection.4.1.1}{Reinforcement Learning with Neural Networks \(RL-NN\)}{section.4.1}% 20
+\BOOKMARK [2][-]{subsection.4.1.2}{Deep Q-Networks \(DQN\)}{section.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.1.3}{Double Deep Q-Networks \(DDQN\)}{section.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.1.4}{Dueling Deep Q-Networks \(Dueling DQN\)}{section.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.1.5}{Deep Recurrent Q-Networks \(DRQN\)}{section.4.1}% 24
+\BOOKMARK [1][-]{section.4.2}{Examples}{chapter.4}% 25
+\BOOKMARK [0][-]{chapter.5}{Deep Inverse Reinforcement Learning}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Related Work}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.1.1}{Deep Maximum Entropy IRL}{section.5.1}% 28
+\BOOKMARK [1][-]{section.5.2}{Examples}{chapter.5}% 29
+\BOOKMARK [0][-]{chapter.6}{Platform}{}% 30
+\BOOKMARK [1][-]{section.6.1}{Background}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.2}{System Overview}{chapter.6}% 32
+\BOOKMARK [2][-]{subsection.6.2.1}{Differential Wheel Drive Robot}{section.6.2}% 33
+\BOOKMARK [2][-]{subsection.6.2.2}{OpenCV}{section.6.2}% 34
+\BOOKMARK [2][-]{subsection.6.2.3}{MATLAB}{section.6.2}% 35
+\BOOKMARK [2][-]{subsection.6.2.4}{Environment}{section.6.2}% 36
+\BOOKMARK [1][-]{section.6.3}{Procedure}{chapter.6}% 37
+\BOOKMARK [2][-]{subsection.6.3.1}{Detecting ArUco Markers}{section.6.3}% 38
+\BOOKMARK [2][-]{subsection.6.3.2}{Drawing a Path}{section.6.3}% 39
+\BOOKMARK [2][-]{subsection.6.3.3}{Accuracy Thresholds}{section.6.3}% 40
+\BOOKMARK [2][-]{subsection.6.3.4}{Following the Path}{section.6.3}% 41
+\BOOKMARK [2][-]{subsection.6.3.5}{Accuracy Analysis}{section.6.3}% 42
+\BOOKMARK [0][-]{chapter.7}{Conclusions}{}% 43
+\BOOKMARK [0][-]{appendix.A}{A Long Proof}{}% 44

@@ -1,0 +1,2332 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.12)  29 MAR 2017 21:34
+entering extended mode
+**./revision032917.tex
+(revision032917.tex
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\RITthesis\rit-thesis.sty"
+Document Style Option `rit-thesis v1.2' <March 13, 2009>.
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip43
+\subfigcapskip=\skip44
+\subfigcaptopadj=\dimen103
+\subfigbottomskip=\skip45
+\subfigcapmargin=\dimen104
+\subfiglabelskip=\skip46
+\c@subfigure=\count88
+\c@lofdepth=\count89
+\c@subtable=\count90
+\c@lotdepth=\count91
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+("C:\Program Files\MiKTeX 2.9\tex\latex\subfigure\subfigure.cfg")
+\subfig@top=\skip47
+\subfig@bottom=\skip48
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\gloss\gloss.sty
+Package: gloss 2002/07/26 1.5.2 Gloss package
+\glosshang=\skip49
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2016/04/23 3.9r The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
+Language: english 2017/01/24 v3.3q English support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count92
+\U@D=\dimen105
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count93
+))
+\Gin@req@height=\dimen106
+\Gin@req@width=\dimen107
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks16
+\verbatim@line=\toks17
+\verbatim@in@stream=\read1
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks18
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks19
+\AP@partial=\box26
+\AP@footins=\box27
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\was\gensymb.sty
+Package: gensymb 2003/07/02 v1.0 (WaS)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count94
+\lst@gtempboxa=\box28
+\lst@token=\toks20
+\lst@length=\count95
+\lst@currlwidth=\dimen108
+\lst@column=\count96
+\lst@pos=\count97
+\lst@lostspace=\dimen109
+\lst@width=\dimen110
+\lst@newlines=\count98
+\lst@lineno=\count99
+\lst@maxwidth=\dimen111
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count100
+\lst@skipnumbers=\count101
+\lst@framebox=\box29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count102
+\FV@InFile=\read2
+\FV@TabBox=\box30
+\c@FancyVerbLine=\count103
+\FV@StepNumber=\count104
+\FV@OutFile=\write3
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip50
+\fb@frw=\dimen112
+\fb@frh=\dimen113
+\FrameRule=\dimen114
+\FrameSep=\dimen115
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcolorbox.sty"
+Package: tcolorbox 2016/11/18 version 3.96 text color boxes
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
+\pgfutil@everybye=\toks21
+\pgfutil@tempdima=\dimen116
+\pgfutil@tempdimb=\dimen117
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.te
+x")) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def"
+\pgfutil@abb=\box31
+("C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex"
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex"
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.te
+x"
+\pgfkeys@tmptoks=\toks24
+))
+\pgf@x=\dimen118
+\pgf@y=\dimen119
+\pgf@xa=\dimen120
+\pgf@ya=\dimen121
+\pgf@xb=\dimen122
+\pgf@yb=\dimen123
+\pgf@xc=\dimen124
+\pgf@yc=\dimen125
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count105
+\c@pgf@countb=\count106
+\c@pgf@countc=\count107
+\c@pgf@countd=\count108
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+ ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg"
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+"
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
+ex"
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count109
+\pgfsyssoftpath@bigbuffer@items=\count110
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.t
+ex"
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex"
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
+\pgfmath@dimen=\dimen126
+\pgfmath@count=\count111
+\pgfmath@box=\box32
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometr
+ic.code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code
+.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.
+code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarit
+hmetics.code.tex")))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count112
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+"
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen127
+\pgf@picmaxx=\dimen128
+\pgf@picminy=\dimen129
+\pgf@picmaxy=\dimen130
+\pgf@pathminx=\dimen131
+\pgf@pathmaxx=\dimen132
+\pgf@pathminy=\dimen133
+\pgf@pathmaxy=\dimen134
+\pgf@xx=\dimen135
+\pgf@xy=\dimen136
+\pgf@yx=\dimen137
+\pgf@yy=\dimen138
+\pgf@zx=\dimen139
+\pgf@zy=\dimen140
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.c
+ode.tex"
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen141
+\pgf@path@lasty=\dimen142
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.
+tex"
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen143
+\pgf@shorten@start@additional=\dimen144
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+"
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box33
+\pgf@hbox=\box34
+\pgf@layerbox@main=\box35
+\pgf@picture@serial@count=\count113
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.co
+de.tex"
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen145
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations
+.code.tex"
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen146
+\pgf@pt@y=\dimen147
+\pgf@pt@temp=\dimen148
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex"
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.te
+x"
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.
+code.tex"
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+"
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen149
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen150
+\pgf@sys@shading@range@num=\count114
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.te
+x"
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.t
+ex"
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box36
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+"
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.co
+de.tex"
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.t
+ex"
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box37
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.
+sty"
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen151
+\pgf@nodesepend=\dimen152
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.
+sty"
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\environ\environ.sty"
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty"
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks31
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count115
+)
+\tcb@titlebox=\box38
+\tcb@upperbox=\box39
+\tcb@lowerbox=\box40
+\tcb@phantombox=\box41
+\c@tcbbreakpart=\count116
+\c@tcblayer=\count117
+\tcolorbox@number=\count118
+\tcb@temp=\box42
+\tcb@temp=\box43
+\tcb@temp=\box44
+\tcb@temp=\box45
+\tcb@out=\write5
+\tcb@record@out=\write6
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcblistings.code.tex"
+Library (tcolorbox): 'tcblistings.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcblistingscore.code.tex"
+Library (tcolorbox): 'tcblistingscore.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbprocessing.code.tex"
+Library (tcolorbox): 'tcbprocessing.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty"
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 69.
+))
+\c@tcblisting=\count119
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbskins.code.tex"
+Library (tcolorbox): 'tcbskins.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex"
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex")
+\pgffor@iter=\dimen153
+\pgffor@skip=\dimen154
+\pgffor@stack=\toks32
+\pgffor@toks=\toks33
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex"
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.
+code.tex"
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count120
+\pgfplotmarksize=\dimen155
+)
+\tikz@lastx=\dimen156
+\tikz@lasty=\dimen157
+\tikz@lastxsaved=\dimen158
+\tikz@lastysaved=\dimen159
+\tikzleveldistance=\dimen160
+\tikzsiblingdistance=\dimen161
+\tikz@figbox=\box46
+\tikz@figbox@bg=\box47
+\tikz@tempbox=\box48
+\tikz@tempbox@bg=\box49
+\tikztreelevel=\count121
+\tikznumberofchildren=\count122
+\tikznumberofcurrentchild=\count123
+\tikz@fig@count=\count124
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count125
+\pgfmatrixcurrentcolumn=\count126
+\pgf@matrix@numberofcolumns=\count127
+)
+\tikz@expandcount=\count128
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+\tcb@waterbox=\box50
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbskinsjigsaw.code.tex"
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '3.96'
+))) (C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\mdframed\mdframed.sty
+Package: mdframed 2013/07/01 1.9b: mdframed
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3packages\xparse\xparse.s
+ty (C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
+Package: expl3 2017/02/07 v6846 L3 programming layer (loader) 
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3-code.tex
+Package: expl3 2017/02/07 v6846 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/12/28 v6805 L3 Bootstrap code
+L3 Module: l3names 2016/12/28 v6805 L3 Namespace for primitives
+L3 Module: l3basics 2016/12/28 v6805 L3 Basic definitions
+L3 Module: l3expan 2016/12/28 v6805 L3 Argument expansion
+L3 Module: l3tl 2017/02/06 v6842 L3 Token lists
+L3 Module: l3str 2017/01/01 v6809 L3 Strings
+L3 Module: l3seq 2017/02/06 v6842 L3 Sequences and stacks
+L3 Module: l3int 2016/12/28 v6805 L3 Integers
+\c_max_int=\count129
+\l_tmpa_int=\count130
+\l_tmpb_int=\count131
+\g_tmpa_int=\count132
+\g_tmpb_int=\count133
+L3 Module: l3quark 2016/12/28 v6805 L3 Quarks
+L3 Module: l3prg 2017/01/01 v6811 L3 Control structures
+\g__prg_map_int=\count134
+L3 Module: l3clist 2017/02/06 v6842 L3 Comma separated lists
+L3 Module: l3token 2016/12/28 v6805 L3 Experimental token manipulation
+L3 Module: l3prop 2016/12/28 v6805 L3 Property lists
+L3 Module: l3msg 2016/12/28 v6805 L3 Messages
+L3 Module: l3file 2016/12/28 v6805 L3 File and I/O operations
+\l_iow_line_count_int=\count135
+\l__iow_target_count_int=\count136
+\l__iow_current_line_int=\count137
+\l__iow_current_word_int=\count138
+\l__iow_current_indentation_int=\count139
+L3 Module: l3skip 2017/01/01 v6809 L3 Dimensions and skips
+\c_zero_dim=\dimen162
+\c_max_dim=\dimen163
+\l_tmpa_dim=\dimen164
+\l_tmpb_dim=\dimen165
+\g_tmpa_dim=\dimen166
+\g_tmpb_dim=\dimen167
+\c_zero_skip=\skip51
+\c_max_skip=\skip52
+\l_tmpa_skip=\skip53
+\l_tmpb_skip=\skip54
+\g_tmpa_skip=\skip55
+\g_tmpb_skip=\skip56
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+L3 Module: l3keys 2017/01/01 v6811 L3 Key-value interfaces
+\l_keys_choice_int=\count140
+L3 Module: l3fp 2016/12/28 v6805 L3 Floating points
+\c__fp_leading_shift_int=\count141
+\c__fp_middle_shift_int=\count142
+\c__fp_trailing_shift_int=\count143
+\c__fp_big_leading_shift_int=\count144
+\c__fp_big_middle_shift_int=\count145
+\c__fp_big_trailing_shift_int=\count146
+\c__fp_Bigg_leading_shift_int=\count147
+\c__fp_Bigg_middle_shift_int=\count148
+\c__fp_Bigg_trailing_shift_int=\count149
+\c__fp_rand_size_int=\count150
+\c__fp_rand_four_int=\count151
+\c__fp_rand_eight_int=\count152
+L3 Module: l3sort 2017/02/06 v6842 L3 Sorting functions
+\l__sort_length_int=\count153
+\l__sort_min_int=\count154
+\l__sort_top_int=\count155
+\l__sort_max_int=\count156
+\l__sort_true_max_int=\count157
+\l__sort_block_int=\count158
+\l__sort_begin_int=\count159
+\l__sort_end_int=\count160
+\l__sort_A_int=\count161
+\l__sort_B_int=\count162
+\l__sort_C_int=\count163
+L3 Module: l3box 2016/12/28 v6805 L3 Experimental boxes
+\c_empty_box=\box51
+\l_tmpa_box=\box52
+\l_tmpb_box=\box53
+\g_tmpa_box=\box54
+\g_tmpb_box=\box55
+L3 Module: l3coffins 2016/12/28 v6805 L3 Coffin code layer
+\l__coffin_internal_box=\box56
+\l__coffin_internal_dim=\dimen168
+\l__coffin_offset_x_dim=\dimen169
+\l__coffin_offset_y_dim=\dimen170
+\l__coffin_x_dim=\dimen171
+\l__coffin_y_dim=\dimen172
+\l__coffin_x_prime_dim=\dimen173
+\l__coffin_y_prime_dim=\dimen174
+\c_empty_coffin=\box57
+\l__coffin_aligned_coffin=\box58
+\l__coffin_aligned_internal_coffin=\box59
+\l_tmpa_coffin=\box60
+\l_tmpb_coffin=\box61
+\l__coffin_display_coffin=\box62
+\l__coffin_display_coord_coffin=\box63
+\l__coffin_display_pole_coffin=\box64
+\l__coffin_display_offset_dim=\dimen175
+\l__coffin_display_x_dim=\dimen176
+\l__coffin_display_y_dim=\dimen177
+L3 Module: l3color 2016/12/28 v6805 L3 Experimental color support
+L3 Module: l3sys 2017/01/01 v6811 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2017/01/30 v6835 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen178
+\l__box_bottom_dim=\dimen179
+\l__box_left_dim=\dimen180
+\l__box_right_dim=\dimen181
+\l__box_top_new_dim=\dimen182
+\l__box_bottom_new_dim=\dimen183
+\l__box_left_new_dim=\dimen184
+\l__box_right_new_dim=\dimen185
+\l__box_internal_box=\box65
+\l__coffin_bounding_shift_dim=\dimen186
+\l__coffin_left_corner_dim=\dimen187
+\l__coffin_right_corner_dim=\dimen188
+\l__coffin_bottom_corner_dim=\dimen189
+\l__coffin_top_corner_dim=\dimen190
+\l__coffin_scaled_total_height_dim=\dimen191
+\l__coffin_scaled_width_dim=\dimen192
+L3 Module: l3luatex 2016/12/28 v6805 L3 Experimental LuaTeX-specific functions
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3pdfmode.def
+File: l3pdfmode.def 2016/12/28 v6805 L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count164
+\l__driver_tmp_box=\box66
+))
+Package: xparse 2017/02/07 v6846 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count165
+\l__xparse_m_args_int=\count166
+\l__xparse_mandatory_args_int=\count167
+\l__xparse_processor_int=\count168
+\l__xparse_v_nesting_int=\count169
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-abspage.sty"
+Package: zref-abspage 2016/05/21 v2.26 Module abspage for zref (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-base.sty"
+Package: zref-base 2016/05/21 v2.26 Module base for zref (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+)
+\c@abspage=\count170
+Package zref Info: New property: abspage on input line 62.
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\needspace\needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\mdf@templength=\skip57
+\c@mdf@globalstyle@cnt=\count171
+\mdf@skipabove@length=\skip58
+\mdf@skipbelow@length=\skip59
+\mdf@leftmargin@length=\skip60
+\mdf@rightmargin@length=\skip61
+\mdf@innerleftmargin@length=\skip62
+\mdf@innerrightmargin@length=\skip63
+\mdf@innertopmargin@length=\skip64
+\mdf@innerbottommargin@length=\skip65
+\mdf@splittopskip@length=\skip66
+\mdf@splitbottomskip@length=\skip67
+\mdf@outermargin@length=\skip68
+\mdf@innermargin@length=\skip69
+\mdf@linewidth@length=\skip70
+\mdf@innerlinewidth@length=\skip71
+\mdf@middlelinewidth@length=\skip72
+\mdf@outerlinewidth@length=\skip73
+\mdf@roundcorner@length=\skip74
+\mdf@footenotedistance@length=\skip75
+\mdf@userdefinedwidth@length=\skip76
+\mdf@needspace@length=\skip77
+\mdf@frametitleaboveskip@length=\skip78
+\mdf@frametitlebelowskip@length=\skip79
+\mdf@frametitlerulewidth@length=\skip80
+\mdf@frametitleleftmargin@length=\skip81
+\mdf@frametitlerightmargin@length=\skip82
+\mdf@shadowsize@length=\skip83
+\mdf@extratopheight@length=\skip84
+\mdf@subtitleabovelinewidth@length=\skip85
+\mdf@subtitlebelowlinewidth@length=\skip86
+\mdf@subtitleaboveskip@length=\skip87
+\mdf@subtitlebelowskip@length=\skip88
+\mdf@subtitleinneraboveskip@length=\skip89
+\mdf@subtitleinnerbelowskip@length=\skip90
+\mdf@subsubtitleabovelinewidth@length=\skip91
+\mdf@subsubtitlebelowlinewidth@length=\skip92
+\mdf@subsubtitleaboveskip@length=\skip93
+\mdf@subsubtitlebelowskip@length=\skip94
+\mdf@subsubtitleinneraboveskip@length=\skip95
+\mdf@subsubtitleinnerbelowskip@length=\skip96
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\mdframed\md-frame-0.mdf
+File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
+)
+\mdf@frametitlebox=\box67
+\mdf@footnotebox=\box68
+\mdf@splitbox@one=\box69
+\mdf@splitbox@two=\box70
+\mdf@splitbox@save=\box71
+\mdfsplitboxwidth=\skip97
+\mdfsplitboxtotalwidth=\skip98
+\mdfsplitboxheight=\skip99
+\mdfsplitboxdepth=\skip100
+\mdfsplitboxtotalheight=\skip101
+\mdfframetitleboxwidth=\skip102
+\mdfframetitleboxtotalwidth=\skip103
+\mdfframetitleboxheight=\skip104
+\mdfframetitleboxdepth=\skip105
+\mdfframetitleboxtotalheight=\skip106
+\mdffootnoteboxwidth=\skip107
+\mdffootnoteboxtotalwidth=\skip108
+\mdffootnoteboxheight=\skip109
+\mdffootnoteboxdepth=\skip110
+\mdffootnoteboxtotalheight=\skip111
+\mdftotallinewidth=\skip112
+\mdfboundingboxwidth=\skip113
+\mdfboundingboxtotalwidth=\skip114
+\mdfboundingboxheight=\skip115
+\mdfboundingboxdepth=\skip116
+\mdfboundingboxtotalheight=\skip117
+\mdf@freevspace@length=\skip118
+\mdf@horizontalwidthofbox@length=\skip119
+\mdf@verticalmarginwhole@length=\skip120
+\mdf@horizontalspaceofbox=\skip121
+\mdfsubtitleheight=\skip122
+\mdfsubsubtitleheight=\skip123
+\c@mdfcountframes=\count172
+
+****** mdframed patching \endmdf@trivlist
+
+****** -- success******
+
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newmdtheoremenv with sig. 'O{} m o m o ' on line 601.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
+.................................................
+\mdf@envdepth=\count173
+\c@mdf@env@i=\count174
+\c@mdf@env@ii=\count175
+\c@mdf@zref@counter=\count176
+Package zref Info: New property: mdf@pagevalue on input line 895.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen193
+\lightrulewidth=\dimen194
+\cmidrulewidth=\dimen195
+\belowrulesep=\dimen196
+\belowbottomsep=\dimen197
+\aboverulesep=\dimen198
+\abovetopsep=\dimen199
+\cmidrulesep=\dimen256
+\cmidrulekern=\dimen257
+\defaultaddspace=\dimen258
+\@cmidla=\count177
+\@cmidlb=\count178
+\@aboverulesep=\dimen259
+\@belowrulesep=\dimen260
+\@thisruleclass=\count179
+\@lastruleclass=\count180
+\@thisrulewidth=\dimen261
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen262
+\extrarowheight=\dimen263
+\NC@list=\toks34
+\extratabsurround=\skip124
+\backup@length=\skip125
+)
+\everycr=\toks35
+\minrowclearance=\skip126
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \AP@enddocument detected (standard20110627).
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\@linkdim=\dimen264
+\Hy@linkcounter=\count181
+\Hy@pagecounter=\count182
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count183
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4486.
+Package hyperref Info: Link nesting OFF on input line 4491.
+Package hyperref Info: Hyper index ON on input line 4494.
+Package hyperref Info: Plain pages OFF on input line 4501.
+Package hyperref Info: Backreferencing OFF on input line 4506.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4735.
+\c@Hy@tempcnt=\count184
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5088.
+\XeTeXLinkMargin=\dimen265
+\Fld@menulength=\count185
+\Field@Width=\dimen266
+\Fld@charsize=\dimen267
+Package hyperref Info: Hyper figures OFF on input line 6342.
+Package hyperref Info: Link nesting OFF on input line 6347.
+Package hyperref Info: Hyper index ON on input line 6350.
+Package hyperref Info: backreferencing OFF on input line 6357.
+Package hyperref Info: Link coloring OFF on input line 6362.
+Package hyperref Info: Link coloring with OCG OFF on input line 6367.
+Package hyperref Info: PDF/A mode OFF on input line 6372.
+LaTeX Info: Redefining \ref on input line 6412.
+LaTeX Info: Redefining \pageref on input line 6416.
+\Hy@abspage=\count186
+\c@Item=\count187
+\c@Hfootnote=\count188
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
+\HyAnn@Count=\count189
+\Fld@listcount=\count190
+\c@bookmark@seq@number=\count191
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip127
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip128
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks36
+\ex@=\dimen268
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen269
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count192
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count193
+\leftroot@=\count194
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count195
+\DOTSCASE@=\count196
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box72
+\strutbox@=\box73
+\big@size=\dimen270
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count197
+\c@MaxMatrixCols=\count198
+\dotsspace@=\muskip17
+\c@parentequation=\count199
+\dspbrk@lvl=\count266
+\tag@help=\toks37
+\row@=\count267
+\column@=\count268
+\maxfields@=\count269
+\andhelp@=\toks38
+\eqnshift@=\dimen271
+\alignsep@=\dimen272
+\tagshift@=\dimen273
+\tagwidth@=\dimen274
+\totwidth@=\dimen275
+\lineht@=\dimen276
+\@envbody=\toks39
+\multlinegap=\skip129
+\multlinetaggap=\skip130
+\mathdisplay@stack=\toks40
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count270
+\float@exts=\toks41
+\float@box=\box74
+\@float@everytoks=\toks42
+\@floatcapt=\box75
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks43
+\c@algorithm=\count271
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithmicx\algpseudocode.sty"
+Package: algpseudocode 
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithmicx\algorithmicx.sty"
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count272
+\c@ALG@rem=\count273
+\c@ALG@nested=\count274
+\ALG@tlm=\skip131
+\ALG@thistlm=\skip132
+\c@ALG@Lnr=\count275
+\c@ALG@blocknr=\count276
+\c@ALG@storecount=\count277
+\c@ALG@tmpcounter=\count278
+\ALG@tmplength=\skip133
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\units\nicefrac.sty"
+Package: nicefrac 1998/08/04 v0.9b Nice fractions
+\L@UnitsRaiseDisplaystyle=\skip134
+\L@UnitsRaiseTextstyle=\skip135
+\L@UnitsRaiseScriptstyle=\skip136
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip137
+\LTright=\skip138
+\LTpre=\skip139
+\LTpost=\skip140
+\LTchunksize=\count279
+\LTcapwidth=\dimen277
+\LT@head=\box76
+\LT@firsthead=\box77
+\LT@foot=\box78
+\LT@lastfoot=\box79
+\LT@cols=\count280
+\LT@rows=\count281
+\c@LT@tables=\count282
+\c@LT@chunks=\count283
+\LT@p@ftn=\toks44
+)
+\glsf@default=\write7
+\openout7 = `revision032917.gls.aux'.
+
+Package gloss Info: Writing gloss file revision032917.gls.aux on input line 81.
+
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\ulem\ulem.sty
+\UL@box=\box80
+\UL@hyphenbox=\box81
+\UL@skip=\skip141
+\UL@hook=\toks45
+\UL@height=\dimen278
+\UL@pe=\count284
+\UL@pixel=\dimen279
+\ULC@box=\box82
+Package: ulem 2012/05/18
+\ULdepth=\dimen280
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\settobox.sty"
+Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO
+)
+)
+\DIFdelgraphicsbox=\box83
+\DIFdelgraphicswidth=\skip142
+\DIFdelgraphicsheight=\skip143
+LaTeX Info: Redefining \DIFaddbegin on input line 132.
+LaTeX Info: Redefining \DIFaddend on input line 133.
+LaTeX Info: Redefining \DIFdelbegin on input line 134.
+LaTeX Info: Redefining \DIFdelend on input line 135.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 140.
+LaTeX Info: Redefining \DIFaddendFL on input line 141.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 142.
+LaTeX Info: Redefining \DIFdelendFL on input line 143.
+
+No file revision032917.aux.
+\openout1 = `revision032917.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 146.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count285
+\scratchdimen=\dimen281
+\scratchbox=\box84
+\nofMPsegments=\count286
+\nofMParguments=\count287
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count288
+\MPscratchDim=\dimen282
+\MPnumerator=\count289
+\makeMPintoPDFobject=\count290
+\everyMPtoPDFconversion=\toks47
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+LaTeX Info: Redefining \celsius on input line 146.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 146
+.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 146.
+Package gensymb Info: Using \Omega for \ohm on input line 146.
+
+Package gensymb Warning: Not defining \micro.
+
+\c@lstlisting=\count291
+ABD: EveryShipout initializing macros
+\AtBeginShipoutBox=\box85
+Package hyperref Info: Link coloring OFF on input line 146.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count292
+)
+LaTeX Info: Redefining \ref on input line 146.
+LaTeX Info: Redefining \pageref on input line 146.
+LaTeX Info: Redefining \nameref on input line 146.
+\@outlinefile=\write8
+\openout8 = `revision032917.out'.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 207.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 207.
+
+[1
+
+{C:/Users/bhatt/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+[3] [4
+
+] [5
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 244.
+ [6
+
+]
+\tf@toc=\write9
+\openout9 = `revision032917.toc'.
+
+ [7
+
+]
+\tf@lot=\write10
+\openout10 = `revision032917.lot'.
+
+ [8
+
+]
+\tf@lof=\write11
+\openout11 = `revision032917.lof'.
+
+ [9
+
+]
+No file revision032917.gls.bbl
+Chapter 1.
+
+LaTeX Warning: Citation `atari' on page 1 undefined on input line 267.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 1 undefined on input
+ line 267.
+
+
+LaTeX Warning: Citation `ngoinverse' on page 1 undefined on input line 269.
+
+
+LaTeX Warning: Citation `vasquez2014inverse' on page 1 undefined on input line 
+269.
+
+
+LaTeX Warning: Citation `vasquez2014inverse' on page 1 undefined on input line 
+269.
+
+[1
+
+]
+
+LaTeX Warning: Citation `matiisen_2015' on page 2 undefined on input line 271.
+
+[2]
+Chapter 2.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 276.
+
+
+LaTeX Warning: Citation `o2003temporal' on page 3 undefined on input line 277.
+
+
+LaTeX Warning: Reference `eq:value function' on page 3 undefined on input line 
+277.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 3 unde
+fined on input line 277.
+
+
+LaTeX Warning: Citation `Eden' on page 3 undefined on input line 277.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 277.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 277.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3
+
+]
+
+LaTeX Warning: Reference `eq:discounted_reward' on page 4 undefined on input li
+ne 289.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 4 undefined on input line 289.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 4 unde
+fined on input line 296.
+
+
+LaTeX Warning: Reference `eq:value function' on page 4 undefined on input line 
+296.
+
+
+LaTeX Warning: Citation `Eden' on page 4 undefined on input line 296.
+
+[4]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 299.
+
+
+LaTeX Warning: Reference `eq:bellman' on page 5 undefined on input line 300.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 5 undefined on input line 300.
+
+
+LaTeX Warning: Citation `Watkins:1992' on page 5 undefined on input line 307.
+
+
+LaTeX Warning: Citation `peng2015mobile' on page 5 undefined on input line 307.
+
+
+
+LaTeX Warning: Citation `Greedy' on page 5 undefined on input line 307.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 5 undefined on 
+input line 307.
+
+[5]
+
+LaTeX Warning: Citation `Eden' on page 6 undefined on input line 315.
+
+
+LaTeX Warning: Citation `sprague2003multiple' on page 6 undefined on input line
+ 318.
+
+
+LaTeX Warning: Reference `eq:Sarsa value function' on page 6 undefined on input
+ line 318.
+
+
+LaTeX Warning: Citation `Eden' on page 6 undefined on input line 325.
+
+
+LaTeX Warning: Citation `sprague2003multiple' on page 6 undefined on input line
+ 325.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 6 undefined on input
+ line 325.
+
+[6]
+
+LaTeX Warning: Citation `Eden' on page 7 undefined on input line 328.
+
+
+LaTeX Warning: Citation `Greedy' on page 7 undefined on input line 328.
+
+
+LaTeX Warning: Citation `Eden' on page 7 undefined on input line 328.
+
+[7]
+
+LaTeX Warning: Citation `peng2015mobile' on page 8 undefined on input line 335.
+
+
+
+LaTeX Warning: Reference `fig:map-example' on page 8 undefined on input line 33
+9.
+
+[8] <images/map-example.PNG, id=107, 356.83313pt x 297.61188pt>
+File: images/map-example.PNG Graphic file (type png)
+
+<use images/map-example.PNG>
+Package pdftex.def Info: images/map-example.PNG used on input line 343.
+(pdftex.def)             Requested size: 178.41612pt x 148.80557pt.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 9 undefined on input
+ line 348.
+
+
+LaTeX Warning: Citation `tutorial' on page 9 undefined on input line 348.
+
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1}
+) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.349 
+       <./images/map-example.PNG>]
+
+LaTeX Warning: Reference `fig:q-learning' on page 10 undefined on input line 35
+1.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 10 undefined on
+ input line 351.
+
+
+LaTeX Warning: Citation `Eden' on page 10 undefined on input line 351.
+
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 364.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlptm.fd"
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 364.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 364.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 364.
+
+Overfull \hbox (27.1847pt too wide) in paragraph at lines 364--365
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+] 
+ []
+
+
+LaTeX Warning: Citation `Eden' on page 10 undefined on input line 369.
+
+[10]
+
+LaTeX Warning: Reference `fig:sarsa' on page 11 undefined on input line 376.
+
+
+LaTeX Warning: Reference `eq:Sarsa value function' on page 11 undefined on inpu
+t line 376.
+
+
+LaTeX Warning: Citation `Eden' on page 11 undefined on input line 376.
+
+
+LaTeX Warning: Citation `Eden' on page 11 undefined on input line 399.
+
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.2.2
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.401 \end{figure}
+                  ]
+
+LaTeX Warning: Reference `tab:results' on page 12 undefined on input line 405.
+
+
+LaTeX Warning: Reference `fig:q-learning example' on page 12 undefined on input
+ line 405.
+
+
+LaTeX Warning: Reference `fig:sarsa_example' on page 12 undefined on input line
+ 405.
+
+[12pdfTeX warning (ext4): destination with the same identifier (name{figure.2.3
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.406 
+      ] <images/q-learning-example.PNG, id=165, 329.23pt x 295.1025pt>
+File: images/q-learning-example.PNG Graphic file (type png)
+
+<use images/q-learning-example.PNG>
+Package pdftex.def Info: images/q-learning-example.PNG used on input line 412.
+(pdftex.def)             Requested size: 164.6146pt x 147.55087pt.
+
+<images/sarsa-example.PNG, id=166, 345.79187pt x 297.11pt>
+File: images/sarsa-example.PNG Graphic file (type png)
+
+<use images/sarsa-example.PNG>
+Package pdftex.def Info: images/sarsa-example.PNG used on input line 420.
+(pdftex.def)             Requested size: 172.89551pt x 148.55463pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 425.
+
+
+LaTeX Warning: Citation `tutorial' on page 13 undefined on input line 481.
+
+[13pdfTeX warning (ext4): destination with the same identifier (name{figure.2.4
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.482 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2.5}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.482 
+       <./images/q-learning-example.PNG> <./images/sarsa-example.PNG>] [14pdfTe
+X warning (ext4): destination with the same identifier (name{table.2.1}) has be
+en already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.482 
+      ] [15]
+Chapter 3.
+
+Overfull \hbox (1.8602pt too wide) in paragraph at lines 486--486
+[]\OT1/ptm/b/n/24.88 Apprenticeship Learn-ing (In-verse Re-in-
+ []
+
+
+LaTeX Warning: Citation `jangir_2016' on page 16 undefined on input line 487.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 16 undefined on input l
+ine 489.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 16 undefined on input l
+ine 489.
+
+
+LaTeX Warning: Reference `eq:additional_rewards' on page 16 undefined on input 
+line 489.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 16 undefined on input l
+ine 492.
+
+[16
+
+]
+
+LaTeX Warning: Citation `hamahata2008effective' on page 17 undefined on input l
+ine 494.
+
+
+LaTeX Warning: Citation `atkeson1997robot' on page 17 undefined on input line 4
+96.
+
+
+LaTeX Warning: Citation `atkeson1997robot' on page 17 undefined on input line 4
+96.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 17 undefined on input line
+ 505.
+
+[17]
+
+LaTeX Warning: Reference `eq:feature_counts' on page 18 undefined on input line
+ 507.
+
+
+LaTeX Warning: Reference `eq:feature_count_reward' on page 18 undefined on inpu
+t line 507.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 18 undefined on input line
+ 511.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 18 undefined on input line
+ 516.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy' on page 18 undefined on input lin
+e 519.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 18 undefined on input line
+ 523.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy' on page 18 undefined on input lin
+e 526.
+
+
+LaTeX Warning: Reference `eq:stochastic_policy' on page 18 undefined on input l
+ine 526.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 18 undefined on input line
+ 530.
+
+[18]
+
+LaTeX Warning: Reference `eq:maxent_weight_update' on page 19 undefined on inpu
+t line 533.
+
+
+LaTeX Warning: Reference `eq:maxent_gradient' on page 19 undefined on input lin
+e 533.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 19 undefined on input line
+ 537.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 19 undefined on input line
+ 542.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 19 undefined on input line
+ 545.
+
+[19]
+Chapter 4.
+
+LaTeX Warning: Citation `matiisen_2015' on page 20 undefined on input line 550.
+
+
+
+LaTeX Warning: Citation `xia2016neural' on page 20 undefined on input line 550.
+
+
+
+LaTeX Warning: Citation `xia2016neural' on page 20 undefined on input line 550.
+
+
+
+LaTeX Warning: Citation `atari' on page 20 undefined on input line 550.
+
+
+LaTeX Warning: Citation `mnih2015human' on page 20 undefined on input line 552.
+
+
+
+LaTeX Warning: Citation `mnih2016asynchronous' on page 20 undefined on input li
+ne 552.
+
+
+LaTeX Warning: Citation `mnih2016asynchronous' on page 20 undefined on input li
+ne 552.
+
+
+LaTeX Warning: Citation `mnih2015human' on page 20 undefined on input line 552.
+
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 20 undefined on input li
+ne 552.
+
+[20
+
+]
+
+LaTeX Warning: Citation `duan2016benchmarking' on page 21 undefined on input li
+ne 554.
+
+
+LaTeX Warning: Citation `atari' on page 21 undefined on input line 562.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 21 undefined on
+ input line 562.
+
+
+LaTeX Warning: Reference `fig:DQN-atari' on page 21 undefined on input line 562
+.
+
+
+LaTeX Warning: Citation `atari' on page 21 undefined on input line 562.
+
+[21] <images/DQN-atari.png, id=227, 344.78813pt x 187.19937pt>
+File: images/DQN-atari.png Graphic file (type png)
+
+<use images/DQN-atari.png>
+Package pdftex.def Info: images/DQN-atari.png used on input line 566.
+(pdftex.def)             Requested size: 293.07129pt x 159.12021pt.
+
+
+LaTeX Warning: Citation `atari' on page 22 undefined on input line 567.
+
+
+LaTeX Warning: Citation `atari' on page 22 undefined on input line 567.
+
+
+LaTeX Warning: Citation `atari' on page 22 undefined on input line 574.
+
+[22]
+
+LaTeX Warning: Citation `atari' on page 23 undefined on input line 578.
+
+
+LaTeX Warning: Citation `atari' on page 23 undefined on input line 583.
+
+
+LaTeX Warning: Citation `van2016deep' on page 23 undefined on input line 583.
+
+
+LaTeX Warning: Citation `van2016deep' on page 23 undefined on input line 583.
+
+
+LaTeX Warning: Citation `van2016deep' on page 23 undefined on input line 583.
+
+[23pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.584 
+       <./images/DQN-atari.png>]
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 58
+6.
+
+
+LaTeX Warning: Reference `eq:duelingQ' on page 24 undefined on input line 586.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 58
+6.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 59
+0.
+
+
+LaTeX Warning: Reference `fig:duelingDQN' on page 24 undefined on input line 59
+2.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 59
+2.
+
+<images/duelingDQN.png, id=244, 341.77687pt x 128.48pt>
+File: images/duelingDQN.png Graphic file (type png)
+
+<use images/duelingDQN.png>
+Package pdftex.def Info: images/duelingDQN.png used on input line 596.
+(pdftex.def)             Requested size: 290.5117pt x 109.2085pt.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 59
+7.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 59
+7.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 60
+1.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 24 undefined on input line 60
+1.
+
+[24]
+
+LaTeX Warning: Citation `atari' on page 25 undefined on input line 604.
+
+
+LaTeX Warning: Citation `van2016deep' on page 25 undefined on input line 604.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 25 undefined on input line 60
+4.
+
+[25pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.605 
+       <./images/duelingDQN.png>]
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 26 undefined on input line 606
+.
+
+
+LaTeX Warning: Reference `fig:drqn-arch' on page 26 undefined on input line 606
+.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 26 undefined on input line 606
+.
+
+<images/drqn-arch.png, id=259, 225.84375pt x 243.91125pt>
+File: images/drqn-arch.png Graphic file (type png)
+
+<use images/drqn-arch.png>
+Package pdftex.def Info: images/drqn-arch.png used on input line 610.
+(pdftex.def)             Requested size: 191.96808pt x 207.32553pt.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 26 undefined on input line 611
+.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 26 undefined on input line 615
+.
+
+[26pdfTeX warning (ext4): destination with the same identifier (name{figure.4.3
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.621 \chapter
+              {Deep Inverse Reinforcement Learning} <./images/drqn-arch.png>]
+[27]
+Chapter 5.
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 28 undefined on input li
+ne 626.
+
+
+LaTeX Warning: Reference `sec:maxentirl' on page 28 undefined on input line 626
+.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 28 undefined on input line
+ 626.
+
+
+LaTeX Warning: Reference `sec:maxentirl' on page 28 undefined on input line 628
+.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_loss' on page 28 undefined on inpu
+t line 628.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_loss' on page 28 undefined on inpu
+t line 628.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_gradient' on page 28 undefined on 
+input line 628.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 28 undefined on input line
+ 628.
+
+[28
+
+]
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 29 undefined on input li
+ne 632.
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 29 undefined on input li
+ne 637.
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 29 undefined on input li
+ne 640.
+
+[29] [30]
+Chapter 6.
+[31
+
+]
+
+LaTeX Warning: Reference `fig:workflow' on page 32 undefined on input line 655.
+
+
+<images/workflow.PNG, id=296, 495.35063pt x 294.09875pt>
+File: images/workflow.PNG Graphic file (type png)
+
+<use images/workflow.PNG>
+Package pdftex.def Info: images/workflow.PNG used on input line 658.
+(pdftex.def)             Requested size: 247.67471pt x 147.04901pt.
+
+
+LaTeX Warning: Reference `fig:robot' on page 32 undefined on input line 664.
+
+[32pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.665 
+       <./images/workflow.PNG>]
+<images/robot.PNG, id=304, 356.33125pt x 219.82124pt>
+File: images/robot.PNG Graphic file (type png)
+ <use images/robot.PNG>
+Package pdftex.def Info: images/robot.PNG used on input line 668.
+(pdftex.def)             Requested size: 178.16518pt x 109.91034pt.
+
+
+LaTeX Warning: Reference `fig:pwm' on page 33 undefined on input line 676.
+
+<images/PWM.PNG, id=305, 162.6075pt x 112.92188pt>
+File: images/PWM.PNG Graphic file (type png)
+ <use images/PWM.PNG>
+Package pdftex.def Info: images/PWM.PNG used on input line 681.
+(pdftex.def)             Requested size: 162.6071pt x 112.92159pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `tab:movement' on page 33 undefined on input line 686.
+
+
+
+Overfull \hbox (11.32059pt too wide) in paragraph at lines 694--694
+[]|\OT1/ptm/b/n/12 Command| 
+ []
+
+
+Overfull \hbox (17.55476pt too wide) in paragraph at lines 694--694
+[]|\OT1/ptm/b/n/12 Function| 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 694--694
+[]|\OT1/ptm/b/n/12 Wheel Move-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 695--695
+[]|\OT1/ptm/m/n/12 Move
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 695--695
+\OT1/ptm/m/n/12 For-
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 695--695
+[]|\OT1/ptm/m/n/12 All wheels turn
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 696--696
+[]|\OT1/ptm/m/n/12 Turn
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 697--697
+[]|\OT1/ptm/m/n/12 Turn
+ []
+
+
+Overfull \hbox (1.54353pt too wide) in paragraph at lines 686--701
+\OT1/ptm/m/n/14.4 mands to de-ter-mine mo-tion. Sin-gle char-ac-ter com-mands w
+ere used as shown
+ []
+
+[33pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.701 
+       <./images/robot.PNG>]
+
+LaTeX Warning: Reference `fig:ArUco' on page 34 undefined on input line 704.
+
+[34pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.705 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.6
+.1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.705 
+       <./images/PWM.PNG>]
+<images/ArucoArray.PNG, id=322, 334.24875pt x 332.74312pt>
+File: images/ArucoArray.PNG Graphic file (type png)
+
+<use images/ArucoArray.PNG>
+Package pdftex.def Info: images/ArucoArray.PNG used on input line 708.
+(pdftex.def)             Requested size: 150.41054pt x 149.73302pt.
+
+
+LaTeX Warning: Reference `fig:webcam' on page 35 undefined on input line 719.
+
+[35pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.720 
+       <./images/ArucoArray.PNG>]
+<images/webcam.png, id=331, 654.445pt x 562.1pt>
+File: images/webcam.png Graphic file (type png)
+ <use images/webcam.png>
+Package pdftex.def Info: images/webcam.png used on input line 723.
+(pdftex.def)             Requested size: 98.1625pt x 84.31136pt.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <14.4> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 731.
+
+[36pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.736 \end{itemize}
+                    <./images/webcam.png>]
+
+LaTeX Warning: Reference `fig:flowchart' on page 37 undefined on input line 737
+.
+
+<images/flowchart.PNG, id=339, 332.442pt x 542.025pt>
+File: images/flowchart.PNG Graphic file (type png)
+
+<use images/flowchart.PNG>
+Package pdftex.def Info: images/flowchart.PNG used on input line 741.
+(pdftex.def)             Requested size: 166.22058pt x 271.01183pt.
+
+
+LaTeX Warning: Reference `fig:ArUcodetected' on page 37 undefined on input line
+ 749.
+
+<images/ArucoDetected.PNG, id=340, 290.58563pt x 283.0575pt>
+File: images/ArucoDetected.PNG Graphic file (type png)
+
+<use images/ArucoDetected.PNG>
+Package pdftex.def Info: images/ArucoDetected.PNG used on input line 752.
+(pdftex.def)             Requested size: 145.29245pt x 141.5284pt.
+
+
+LaTeX Warning: Reference `eqn:centerx' on page 37 undefined on input line 756.
+
+
+LaTeX Warning: Reference `eqn:centery' on page 37 undefined on input line 756.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[37pdfTeX warning (ext4): destination with the same identifier (name{figure.6.6
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.760 \end{equation}
+                     <./images/flowchart.PNG>]
+
+LaTeX Warning: Reference `fig:pathdrawn' on page 38 undefined on input line 768
+.
+
+<images/pathDrawn.PNG, id=348, 284.86424pt x 287.27325pt>
+File: images/pathDrawn.PNG Graphic file (type png)
+
+<use images/pathDrawn.PNG>
+Package pdftex.def Info: images/pathDrawn.PNG used on input line 771.
+(pdftex.def)             Requested size: 142.43176pt x 143.63628pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eqn:distance' on page 38 undefined on input line 779.
+
+
+[38pdfTeX warning (ext4): destination with the same identifier (name{figure.6.7
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.780 
+       <./images/ArucoDetected.PNG>]
+
+LaTeX Warning: Reference `fig:orientation' on page 39 undefined on input line 7
+86.
+
+<images/angle.PNG, id=359, 192.72pt x 131.99312pt>
+File: images/angle.PNG Graphic file (type png)
+ <use images/angle.PNG>
+Package pdftex.def Info: images/angle.PNG used on input line 790.
+(pdftex.def)             Requested size: 192.71951pt x 131.99278pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `eqn:orientation' on page 39 undefined on input line 7
+95.
+
+
+LaTeX Warning: Reference `eqn:theta' on page 39 undefined on input line 801.
+
+[39pdfTeX warning (ext4): destination with the same identifier (name{figure.6.8
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.802 \begin{equation}
+                       <./images/pathDrawn.PNG>]
+
+LaTeX Warning: Reference `alg:movement' on page 40 undefined on input line 807.
+
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 809.
+
+LaTeX Warning: Reference `alg:movement' on page 40 undefined on input line 829.
+
+
+
+LaTeX Warning: Reference `fig:pathfollowing' on page 40 undefined on input line
+ 829.
+
+[40pdfTeX warning (ext4): destination with the same identifier (name{figure.6.9
+}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.830 
+       <./images/angle.PNG>] <images/star.PNG, id=378, 281.853pt x 250.536pt>
+File: images/star.PNG Graphic file (type png)
+
+<use images/star.PNG>
+Package pdftex.def Info: images/star.PNG used on input line 833.
+(pdftex.def)             Requested size: 140.92615pt x 125.26768pt.
+
+
+LaTeX Warning: Reference `eqn:esterror' on page 41 undefined on input line 839.
+
+
+[41pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
+0}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.840 
+       <./images/star.PNG>]
+
+LaTeX Warning: Reference `fig:results1' on page 42 undefined on input line 846.
+
+
+
+LaTeX Warning: Reference `fig:results2' on page 42 undefined on input line 846.
+
+
+
+LaTeX Warning: Reference `fig:results3' on page 42 undefined on input line 846.
+
+
+<images/PATH-2095-1.PNG, id=388, 554.57187pt x 429.10312pt>
+File: images/PATH-2095-1.PNG Graphic file (type png)
+
+<use images/PATH-2095-1.PNG>
+Package pdftex.def Info: images/PATH-2095-1.PNG used on input line 850.
+(pdftex.def)             Requested size: 138.64262pt x 107.27551pt.
+
+<images/DATA-2095-1.PNG, id=389, 769.37437pt x 442.65375pt>
+File: images/DATA-2095-1.PNG Graphic file (type png)
+
+<use images/DATA-2095-1.PNG>
+Package pdftex.def Info: images/DATA-2095-1.PNG used on input line 851.
+(pdftex.def)             Requested size: 192.34312pt x 110.66316pt.
+
+<images/PATH-2099.PNG, id=390, 547.54562pt x 421.07312pt>
+File: images/PATH-2099.PNG Graphic file (type png)
+
+<use images/PATH-2099.PNG>
+Package pdftex.def Info: images/PATH-2099.PNG used on input line 858.
+(pdftex.def)             Requested size: 136.88606pt x 105.26802pt.
+
+<images/DATA-2099.PNG, id=391, 779.41188pt x 437.13312pt>
+File: images/DATA-2099.PNG Graphic file (type png)
+
+<use images/DATA-2099.PNG>
+Package pdftex.def Info: images/DATA-2099.PNG used on input line 859.
+(pdftex.def)             Requested size: 194.8525pt x 109.283pt.
+
+<images/PATH-1599.PNG, id=392, 548.54938pt x 422.57875pt>
+File: images/PATH-1599.PNG Graphic file (type png)
+
+<use images/PATH-1599.PNG>
+Package pdftex.def Info: images/PATH-1599.PNG used on input line 866.
+(pdftex.def)             Requested size: 137.13701pt x 105.64442pt.
+
+<images/DATA-1599.PNG, id=393, 789.44937pt x 444.66125pt>
+File: images/DATA-1599.PNG Graphic file (type png)
+
+<use images/DATA-1599.PNG>
+Package pdftex.def Info: images/DATA-1599.PNG used on input line 867.
+(pdftex.def)             Requested size: 197.36185pt x 111.16504pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `tab:error' on page 42 undefined on input line 872.
+
+
+Overfull \hbox (8.4415pt too wide) in paragraph at lines 880--880
+[]|\OT1/ptm/m/n/12 STD| 
+ []
+
+
+Overfull \hbox (5.98418pt too wide) in paragraph at lines 880--880
+[]|\OT1/ptm/m/n/12 Mean
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 880--880
+\OT1/ptm/m/n/12 Er-
+ []
+
+
+Overfull \hbox (0.65625pt too wide) in paragraph at lines 880--880
+[]|\OT1/ptm/m/n/12 Max
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 880--880
+\OT1/ptm/m/n/12 Er-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 880--880
+[]|\OT1/ptm/m/n/12 Min
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 880--880
+\OT1/ptm/m/n/12 Er-
+ []
+
+
+Overfull \hbox (19.54648pt too wide) in paragraph at lines 880--880
+[]|\OT1/ptm/m/n/12 Estimated
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 881--881
+[]|\OT1/ptm/m/n/12 0.95| 
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 881--881
+[]|\OT1/ptm/m/n/12 0.68| 
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 882--882
+[]|\OT1/ptm/m/n/12 0.99| 
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 882--882
+[]|\OT1/ptm/m/n/12 0.68| 
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 883--883
+[]|\OT1/ptm/m/n/12 0.99| 
+ []
+
+
+Overfull \hbox (6.77364pt too wide) in paragraph at lines 883--883
+[]|\OT1/ptm/m/n/12 0.76| 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[42pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1
+1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.892 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+6.12}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.892 
+       <./images/PATH-2095-1.PNG> <./images/DATA-2095-1.PNG> <./images/PATH-209
+9.PNG> <./images/DATA-2099.PNG>] [43pdfTeX warning (ext4): destination with the
+ same identifier (name{figure.6.13}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.894 \chapter
+              {Conclusions}pdfTeX warning (ext4): destination with the same ide
+ntifier (name{table.6.2}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.894 \chapter
+              {Conclusions} <./images/PATH-1599.PNG> <./images/DATA-1599.PNG>]
+Chapter 7.
+No file revision032917.bbl.
+[44
+
+]
+Appendix A.
+[45
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
+ (revision032917.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
+
+
+Package rerunfilecheck Warning: File `revision032917.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `revision032917.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  5D808F8051EDB14295E53087B9AEC9D4;3036.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 913.
+ ) 
+Here is how much of TeX's memory you used:
+ 30697 strings out of 493333
+ 592632 string characters out of 3139194
+ 699163 words of memory out of 3000000
+ 33519 multiletter control sequences out of 15000+200000
+ 33115 words of font info for 88 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 54i,12n,85p,10426b,1269s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/latxfont/lasy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
+mes/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on revision032917.pdf (54 pages, 4400105 bytes).
+PDF statistics:
+ 517 PDF objects out of 1000 (max. 8388607)
+ 187 named destinations out of 1000 (max. 500000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+

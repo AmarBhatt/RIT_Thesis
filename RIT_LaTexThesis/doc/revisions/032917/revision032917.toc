@@ -1,0 +1,52 @@
+\select@language {american}
+\contentsline {chapter}{Dedication}{iv}{chapter*.1}
+\contentsline {chapter}{Acknowledgments}{v}{chapter*.2}
+\contentsline {chapter}{Abstract}{vi}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Reinforcement Learning}{3}{chapter.2}
+\contentsline {subsection}{\numberline {2.0.1}Temporal Difference Learning}{3}{subsection.2.0.1}
+\contentsline {subsubsection}{Off-Policy: Q-Learning}{5}{section*.7}
+\contentsline {subsubsection}{On-Policy: Sarsa}{6}{section*.8}
+\contentsline {subsubsection}{Epsilon Selection Policies}{7}{section*.9}
+\contentsline {section}{\numberline {2.1}Q-Learning and Sarsa Implementation}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Application}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Methods}{9}{subsection.2.1.2}
+\contentsline {subsubsection}{Q-Learning Algorithm}{10}{section*.10}
+\contentsline {subsubsection}{Sarsa Algorithm}{11}{section*.11}
+\contentsline {subsection}{\numberline {2.1.3}Results}{12}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Conclusion}{13}{subsection.2.1.4}
+\contentsline {chapter}{\numberline {3}Apprenticeship Learning (Inverse Reinforcement Learning)}{16}{chapter.3}
+\contentsline {section}{\numberline {3.1}Related Work}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}{\color {blue}\uwave {Bayesian Inverse Reinforcement Learning}}}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}{\color {blue}\uwave {Gaussian Process Inverse Reinforcement Learning}}}{17}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Maximum Entropy Inverse Reinforcement Learning}{17}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Examples}{19}{section.3.2}
+\contentsline {chapter}{\numberline {4}Deep Reinforcement Learning}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Related Works}{22}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Reinforcement Learning with Neural Networks (RL-NN)}{22}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Deep Q-Networks (DQN)}{22}{subsection.4.1.2}
+\contentsline {subsubsection}{Experience Replay}{22}{section*.12}
+\contentsline {subsubsection}{Seperate Target Network}{23}{section*.13}
+\contentsline {subsection}{\numberline {4.1.3}Double Deep Q-Networks (DDQN)}{24}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Dueling Deep Q-Networks (Dueling DQN)}{24}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Deep Recurrent Q-Networks (DRQN)}{25}{subsection.4.1.5}
+\contentsline {section}{\numberline {4.2}Examples}{27}{section.4.2}
+\contentsline {chapter}{\numberline {5}Deep Inverse Reinforcement Learning}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}Related Work}{28}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Deep Maximum Entropy IRL}{28}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Examples}{30}{section.5.2}
+\contentsline {chapter}{\numberline {6}Platform}{31}{chapter.6}
+\contentsline {section}{\numberline {6.1}Background}{31}{section.6.1}
+\contentsline {section}{\numberline {6.2}System Overview}{32}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Differential Wheel Drive Robot}{33}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}OpenCV}{34}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}MATLAB}{35}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}Environment}{35}{subsection.6.2.4}
+\contentsline {section}{\numberline {6.3}Procedure}{36}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Detecting ArUco Markers}{37}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Drawing a Path}{38}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Accuracy Thresholds}{38}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Following the Path}{41}{subsection.6.3.4}
+\contentsline {subsection}{\numberline {6.3.5}Accuracy Analysis}{41}{subsection.6.3.5}
+\contentsline {chapter}{\numberline {7}Conclusions}{44}{chapter.7}
+\contentsline {chapter}{\numberline {A}A Long Proof}{45}{appendix.A}

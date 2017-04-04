@@ -17,8 +17,8 @@ const int motorE1 = 2;
 const int motorE2 = 3;
 
 //Define Speed
-const int SPEED = 255;
-const int TURN_SPEED = 255;
+const int SPEED = 166;
+const int TURN_SPEED = 166;
 int currentSpeed = SPEED;
 
 char inst;
@@ -27,16 +27,21 @@ char inst;
 void setup(){
   Serial.begin(9600);
   
-  pinMode(motor1A, OUTPUT);
-  pinMode(motor1B, OUTPUT);
+  //pinMode(motor1A, OUTPUT);
+  //pinMode(motor1B, OUTPUT);
   
-  pinMode(motor2A, OUTPUT);
-  pinMode(motor2B, OUTPUT);
+  //pinMode(motor2A, OUTPUT);
+  //pinMode(motor2B, OUTPUT);
 
-  digitalWrite(motor1A, LOW);
-  digitalWrite(motor1B, LOW);
-  digitalWrite(motor2A, LOW);
-  digitalWrite(motor2B, LOW);
+  //digitalWrite(motor1A, LOW);
+  //digitalWrite(motor1B, LOW);
+  //digitalWrite(motor2A, LOW);
+  //digitalWrite(motor2B, LOW);
+
+  analogWrite(motor1A, LOW);
+  analogWrite(motor1B, LOW);
+  analogWrite(motor2A, LOW);
+  analogWrite(motor2B, LOW);
   
   Serial.println("Start Motors");
 }
@@ -72,8 +77,8 @@ void loop(){
 }
 
 void go() {
-  analogWrite(motorE1,currentSpeed);
-  analogWrite(motorE2,currentSpeed);
+  analogWrite(motorE1,HIGH);
+  analogWrite(motorE2,HIGH);
   //delay(100);
   //brake();
 }
@@ -81,40 +86,40 @@ void go() {
 void brake() {
   analogWrite(motorE1,0);
   analogWrite(motorE2,0);
-  digitalWrite(motor1A, LOW);
-  digitalWrite(motor1B, LOW);
-  digitalWrite(motor2A, LOW);
-  digitalWrite(motor2B, LOW);
+  analogWrite(motor1A, LOW);
+  analogWrite(motor1B, LOW);
+  analogWrite(motor2A, LOW);
+  analogWrite(motor2B, LOW);
 }
 
 void setDirection (int dir) {
 
   switch(dir){
     case 0: //Forward
-      digitalWrite(motor1B, LOW);
-      digitalWrite(motor2B, LOW);
-      digitalWrite(motor1A, HIGH);
-      digitalWrite(motor2A, HIGH);
+      analogWrite(motor1B, LOW);
+      analogWrite(motor2B, LOW);
+      analogWrite(motor1A, currentSpeed);
+      analogWrite(motor2A, currentSpeed);
       currentSpeed = SPEED;
       break;
     case 1: //Reverse
-      digitalWrite(motor1A, LOW);
-      digitalWrite(motor2A, LOW);
-      digitalWrite(motor1B, HIGH);
-      digitalWrite(motor2B, HIGH);
+      analogWrite(motor1A, LOW);
+      analogWrite(motor2A, LOW);
+      analogWrite(motor1B, currentSpeed);
+      analogWrite(motor2B, currentSpeed);
       break;
     case 2: //Turn left
-      digitalWrite(motor1B, LOW);
-      digitalWrite(motor2A, LOW);      
-      digitalWrite(motor1A, HIGH);
-      digitalWrite(motor2B, HIGH);
+      analogWrite(motor1A, currentSpeed);
+      analogWrite(motor2B, currentSpeed);
+      analogWrite(motor1B, LOW);
+      analogWrite(motor2A, LOW); 
       currentSpeed = TURN_SPEED;
       break;
     default: //Turn right
-      digitalWrite(motor1A, LOW);
-      digitalWrite(motor2B, LOW);      
-      digitalWrite(motor1B, HIGH);
-      digitalWrite(motor2A, HIGH);
+      analogWrite(motor1B, currentSpeed);
+      analogWrite(motor2A, currentSpeed);
+      analogWrite(motor1A, LOW);
+      analogWrite(motor2B, LOW);
       currentSpeed = TURN_SPEED;
       break;
   }       
