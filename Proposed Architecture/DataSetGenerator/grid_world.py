@@ -33,9 +33,9 @@ class Gridworld(object):
         self.obstacle_list = obstacles
         #self.pit_list = pits
         self.world_grid = self.create_world()
-        print("Set up graph")
+        #print("Set up graph")
         self.graph = self.create_graph()
-        print("Get shortest paths")
+        #print("Get shortest paths")
         self.paths = self.get_all_shortest_paths(self.goal)
         #print(self.world_grid)
         #print(self.graph)

@@ -4,12 +4,13 @@
 import random
 from PIL import Image
 import grid_world as gridworld
+#import gifmaker
 
-def generate():
-    imgx = 100; imgy = 100
+def generate(imgx,imgy,mx,my):
+    #imgx = 100; imgy = 100
     image = Image.new("L", (imgx, imgy))
     pixels = image.load()
-    mx = 10; my = 10 # width and height of the maze
+    #mx = 10; my = 10 # width and height of the maze
     maze = [[0 for x in range(mx)] for y in range(my)]
     dx = [0, 1, 0, -1]; dy = [-1, 0, 1, 0] # 4 directions to move in the maze
     #color = [(0,0, 0), (255, 255, 255), (255,255,0)] # RGB colors of the maze
@@ -61,18 +62,18 @@ def generate():
     while (kyy > -1 and maze[my * kyy // imgy][mx * kx // imgx] != 0 and (ky-countup)%my !=0):
         countup += 1
         kyy-=1
-        print(ky)
+        #print(ky)
     #left
     kxx=kx-1
     while (kxx > -1 and maze[my * ky // imgy][mx * kxx // imgx] != 0 and (kx-countleft)%mx !=0):
         countleft += 1
         kxx-=1
-        print(kx)
-    print("Paint!")
+        #print(kx)
+    #print("Paint!")
     for i in range(ky-countup,(ky-countup)+imgy//my):
         for j in range(kx-countleft,(kx-countleft)+imgx//mx):
             pixels[j, i] = color[2]
-            print((j,i))
+            #print((j,i))
     maze[my * ky // imgy][mx * kx // imgx] = 2
 
     image.save("Maze_" + str(mx) + "x" + str(my) + ".png", "PNG")
@@ -115,36 +116,82 @@ def createDataSet(name,gw,maze,image, mx, my):
 
     start = random.randint(0,gw.grid_size**2 - 1)
     sx,sy = gw.int_to_point(start)
+    frames = []
     while(gw.world_grid[sy][sx] > 0):
         start = random.randint(0,gw.grid_size**2 - 1)
         sx,sy = gw.int_to_point(start)
     path = gw.bfs(start,gw.goal)
     count = 0
     color = 64
-    for p in path:
+
+    f = open(name+".txt",'w')
+
+    for p in range(len(path)): #DOES NOT HIT GOAL, but NEXT ACTION REFLECTS GOAL
         i_tmp = image.copy()
         pixels = i_tmp.load()
-        sx,sy = gw.int_to_point(p)
-        print(p,sx,sy)
+        sx,sy = gw.int_to_point(path[p])
+        #print(p,sx,sy)
         for i in range(sy*my+2,sy*my+my-2):
             for j in range(sx*mx+2,sx*mx+mx-2):
                 pixels[j, i] = color
+        if(p == len(path)-1):#at goal so stay there
+            action = 4
+        else:
+            action = gw.optimal_policy(path[p])
+        f.write(str(action))
+        f.write('\n')
+        frames.append(i_tmp)
+    frames[0].save(name+".gif", save_all=True, append_images=frames[1:])
+    f.flush()
+    f.close()
+    #count +=1
 
-        save_str = str(count).zfill(3)
+def processGIF(infile):
+    try:
+        im = Image.open(infile)
+    except IOError:
+        print ("Cant load", infile)
+        sys.exit(1)
+    i = 0
+    mypalette = im.getpalette()
 
-        i_tmp.save(name + "_"+ save_str + ".png", "PNG")
-        count +=1
+    try:
+        while 1:
+            im.putpalette(mypalette)
+            new_im = Image.new("RGBA", im.size)
+            new_im.paste(im)
+            new_im.save('foo'+str(i)+'.png')
+
+            i += 1
+            im.seek(im.tell() + 1)
+
+    except EOFError:
+        pass # end of sequence
 
 
+def main(imgx,imgy,mx,my,num_gen,location,rmaze):
+    if rmaze:
+        for i in range(num_gen):
+            maze, image = generate(imgx,imgy,mx,my)
+            obstacle_list,goal = find_obstacles(maze)
+            gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
+            file = location+"/"+str(i)
+            createDataSet(file,gw,maze,image,mx,my)
+    else: #use the same map
+        maze, image = generate(imgx,imgy,mx,my)
+        obstacle_list,goal = find_obstacles(maze)
+        gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
+        for i in range(num_gen):
+            file = location+"/"+str(i)
+            createDataSet(file,gw,maze,image,mx,my)
+        #print(maze)
+        #processGIF('test.gif')
+
+imgx = 100
+imgy = 100
 mx = 10
 my = 10
-maze, image = generate()
-obstacle_list,goal = find_obstacles(maze)
-gw = gridworld.Gridworld(10, 0.0, obstacle_list,goal)
-createDataSet("1_",gw,maze,image,mx,my)
-print(maze)
-
-
+main(imgx,imgy,mx,my,1000,"expert_data/same",False)
 
 
 # # Random Maze Generator using Depth-first Search

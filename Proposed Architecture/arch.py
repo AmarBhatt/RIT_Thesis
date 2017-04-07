@@ -55,7 +55,7 @@ def DAQN(X,Y,learning_rate=0.01):
 	net = tflearn.input_data(shape=[None,83,83,1],placeholder=X,name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
 
 	# layer 1
-	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=4, activation='relu',name="convlayer1")
+	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], activation='relu',name="convlayer1")
 	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
 			
 	# layer 2
