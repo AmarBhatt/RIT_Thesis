@@ -2,6 +2,8 @@ import numpy as np
 import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
+from daqn import DAQN, sse
+import sys as sys
 
 def getData (location):
 	data = "" #store data as file names s,a,s'
@@ -19,7 +21,7 @@ def train(net,data,labels,n_epoch=1000,batch_size=32,show_metric=True):
 def evaluate(input_data, model):
 	return model.predict(input_data)
 
-def DAQN(X,Y,learning_rate=0.01):
+def _DAQN(X,Y,learning_rate=0.01):
 	"""
 	Input: 83x83x? (? = 1-4)
 
@@ -57,7 +59,7 @@ def DAQN(X,Y,learning_rate=0.01):
 
 	# layer 1
 	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
-	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
+	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=[1,1,1,1], name="maxpool4")
 			
 	# layer 2
 	net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=[4,4], strides=[1,1,1,1],padding="valid",
@@ -74,8 +76,10 @@ def DAQN(X,Y,learning_rate=0.01):
 	layer_presoft = tflearn.fully_connected(net,n_units=5, name="FCpresoft")
 	net = tflearn.fully_connected(layer_presoft,n_units=5, activation='softmax', name="FCpostsoft")
 
-	def sse(y_true, y_pred):
+	def sse(y_pred, y_true):
 		#sum of square error
+		#y_true = tf.Print(y_true, [y_true], message="y_true is: ")
+		#y_pred = tf.Print(y_pred, [y_pred], message="y_pred is: ")
 		loss = tf.square(tf.subtract(y_true,y_pred))
 		loss.set_shape([1,5])
 		return tf.reduce_sum(loss) #SHOULD THIS STILL BE SUMMED?
@@ -161,15 +165,15 @@ def generateNetworkStructure():
 	with graph.as_default():
 		#Place Holder
 		X = tf.placeholder(shape=[1,100,100,1], dtype="float32",name='s')
-		Y = tf.placeholder(shape=[1,1,5], dtype="float32", name='a')
+		Y = tf.placeholder(shape=[1,5], dtype="float32", name='a')
 		daqn,daqn_presoft = DAQN(X,Y,0.05)
-		X2 = tf.placeholder(shape=[1,100,100,1], dtype="float32",name='s')
-		Y2 = tf.placeholder(shape=[1,1,5], dtype="float32", name='r_prime')
-		darn = DARN(X2,Y2,0.05)
+		#X2 = tf.placeholder(shape=[1,100,100,1], dtype="float32",name='s')
+		#Y2 = tf.placeholder(shape=[1,5], dtype="float32", name='r_prime')
+		#darn = DARN(X2,Y2,0.05)
 	#darn = DARN(0.05,0.06)
 
 	print(daqn)
-	print(darn)
+	#print(darn)
 	x_data = np.random.rand(1,100,100,1)
 	y_data = np.random.rand(1,5)
 
@@ -179,7 +183,7 @@ def generateNetworkStructure():
 		sess.run(tf.global_variables_initializer())	
 		writer = tf.summary.FileWriter('DAQN_log',graph=sess.graph)
 		sess.run(daqn,feed_dict={X : x_data, Y : y_data})
-		sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
+		#sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
 		
 		#sess.run(daqn_presoft,feed_dict={X : x_data, Y : y_data})
 		#m = train(daqn,x_data,y_data,n_epoch=1000,batch_size=32,show_metric=True)
@@ -195,22 +199,32 @@ def generateNetworkStructure():
 	#Place Holder
 
 f_data = "same"
-num = 800
-num2 = 1000
+num = 100 #800
+num2 = 150 #1000
+num_epochs = 10#20
+episodes = 20#500
 
-
+episode_lengths = []
+episode_start = []
+episode_total = 0
 image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
 
-x_data = image_set
-y_data = action_set
+x_train = image_set
+y_train = action_set
 
+episode_lengths.append(action_set.shape[0])
+episode_start.append(episode_total)
+episode_total += image_set.shape[0]
 for i in range(1,num):
 	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
-	x_data = np.append(x_data,image_set,axis=0)
-	y_data = np.append(y_data,action_set, axis=0)
-
-print(x_data.shape)
-print(y_data.shape)
+	x_train = np.append(x_train,image_set,axis=0)
+	y_train = np.append(y_train,action_set, axis=0)
+	episode_lengths.append(action_set.shape[0])
+	episode_start.append(episode_total)
+	episode_total += image_set.shape[0]
+#print(episode_lengths)
+print(x_train.shape)
+print(y_train.shape)
 
 image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num))
 
@@ -224,53 +238,166 @@ for i in range(num+1,num2):
 
 print(x_test.shape)
 print(y_test.shape)
+
+
+
+n_classes = 5 #5 actions
+learning_rate = 0.001
+
+
+graph = tf.Graph()
+with graph.as_default():
+
+	# Store layers weight & bias
+	weights = {
+	    # 8x8 conv, 1 input, 16 outputs
+	    'wc1': tf.Variable(tf.random_normal([8, 8, 1, 16])),
+	    # 4x4 conv, 16 inputs, 32 outputs
+	    'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
+	    # fully connected, 7*7*64 inputs, 1024 outputs
+	    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])),
+	    # 1024 inputs, 10 outputs (class prediction)
+	    'out': tf.Variable(tf.random_normal([256, n_classes]))
+	}
+
+	biases = {
+	    'bc1': tf.Variable(tf.random_normal([16])),
+	    'bc2': tf.Variable(tf.random_normal([32])),
+	    'bd1': tf.Variable(tf.random_normal([256])),
+	    'out': tf.Variable(tf.random_normal([n_classes]))
+	}	
+
+
+	#Place Holder
+	X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
+	Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
+	net = DAQN(X,Y, weights, biases)
+	daqn = net.outpost
+	daqn_presoft = net.outpre
+	
+	# Define Loss and optimizer
+	cost = sse(daqn,Y)
+	optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate).minimize(cost)
+
+	# Evaluate model
+	
+	#def correct_pred(net,Y):		
+
+	pred = tf.argmax(daqn, 1)
+	#pred = tf.Print(pred,[pred],message="prediction is: ")
+	true = tf.argmax(Y, 1)
+	#true = tf.Print(true,[true],message="truth is: ")
+
+	#	return tf.equal(pred, true)
+	correct_pred = tf.equal(pred, true) #1 instead of 0?
+	accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+
+	#Initialize variables
+	init = tf.global_variables_initializer()
+#print(daqn)
+#print(darn)
+#x_data = np.random.rand(1,100,100,1)
+#y_data = np.random.rand(1,5)
+
+with tf.Session(graph=graph) as sess:
+	sess.run(init)	
+	writer = tf.summary.FileWriter('DAQN_log_test',graph=sess.graph)
+	for epoch in range(num_epochs):
+			print("Epoch: "+str(epoch))
+			for ep in range(episodes):
+
+				ind = random.sample(range(0, num), 1)[0]
+				indx = episode_start[ind]
+				ind_data = list(range(indx,indx+episode_lengths[ind]))
+
+				#print(ind, indx, len(ind_data))
+				x_data = x_train[ind_data,:,:,:]
+				y_data = y_train[ind_data,:]
+				print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
+				#model.fit(x_data,y_data,n_epoch=1,batch_size=1, validation_set = 0.0, show_metric=True)
+				sess.run(optimizer,feed_dict={X : x_data, Y : y_data})
+
+				# Display loss and accuracy
+				loss, acc = sess.run([cost, accuracy], feed_dict={X: x_data,
+                                                              Y: y_data})
+				print("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
+	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
+	                  "{:.5f}".format(acc))
+			
+				print("Testing Accuracy:", sess.run(accuracy, feed_dict={X: x_test,
+                                      Y: y_test}))
+
+
+			# prediction=tf.argmax(daqn,1)
+			# result = model.predict(x_test)
+			# final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+			# pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+			# for i in range(len(result)):
+			# 	r = result[i]
+			# 	a = np.where(y_test[i] == y_test[i].max())
+			# 	r = r.index(max(r))
+			# 	pred_result[i] = r
+			# 	#print(r,a[0][0])
+			# 	final_result[i] = int(r) == int(a[0][0])
+
+			# print(result)
+			# 	#print(final_result)
+			# print("Test results: " + str(epoch))
+			# print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
+			# print(np.mean(final_result))
+			# print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
+			
+
+			
+	
+
+
+writer.flush()
+writer.close()	
+
+
+
 #x_data = np.random.rand(2,100,100,1)
 #y_data = np.random.rand(2,5)
 
-with tf.Graph().as_default():
-	with tf.Session() as sess:
-		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
-		Y = tf.placeholder(shape=[1,5], dtype="float32", name='a')
-		daqn,daqn_presoft = DAQN(X,None,0.01)
-		model = tflearn.DNN(daqn)
-			
-		model.fit(x_data,y_data,n_epoch=20,batch_size=1, validation_set = 0.2, show_metric=True)
-#result = sess.run(daqn_presoft, feed_dict={X : x_data})
+# with tf.Graph().as_default():
+# 	with tf.Session() as sess:
+# 		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
+# 		Y = tf.placeholder(shape=[1,5], dtype="float32", name='a')
+# 		daqn,daqn_presoft = DAQN(X,None,0.01)
+# 		model = tflearn.DNN(daqn)
+# 		for epoch in range(num_epochs):
+# 			print("Epoch: "+str(epoch))
+# 			for ep in range(episodes):
 
+# 				ind = random.sample(range(0, num), 1)[0]
+# 				indx = episode_start[ind]
+# 				ind_data = list(range(indx,indx+episode_lengths[ind]))
 
+# 				#print(ind, indx, len(ind_data))
+# 				x_data = x_train[ind_data,:,:,:]
+# 				y_data = y_train[ind_data,:]
+# 				print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
+# 				model.fit(x_data,y_data,n_epoch=1,batch_size=1, validation_set = 0.0, show_metric=True)
+# 		#result = sess.run(daqn_presoft, feed_dict={X : x_data})
 
-		prediction=tf.argmax(daqn,1)
-		result = model.predict(x_test)
-		final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-		pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-		for i in range(len(result)):
-			r = result[i]
-			a = np.where(y_test[i] == y_test[i].max())
-			r = r.index(max(r))
-			pred_result[i] = r
-			#print(r,a[0][0])
-			final_result[i] = int(r) == int(a[0][0])
+# 			prediction=tf.argmax(daqn,1)
+# 			result = model.predict(x_test)
+# 			final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+# 			pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+# 			for i in range(len(result)):
+# 				r = result[i]
+# 				a = np.where(y_test[i] == y_test[i].max())
+# 				r = r.index(max(r))
+# 				pred_result[i] = r
+# 				#print(r,a[0][0])
+# 				final_result[i] = int(r) == int(a[0][0])
 
-		#print(result)
-		#print(final_result)
-		print("Test results")
-		print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
-		print(np.mean(final_result))
-		print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
+# 			print(result)
+# 				#print(final_result)
+# 			print("Test results: " + str(epoch))
+# 			print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
+# 			print(np.mean(final_result))
+# 			print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
+# 			input("hello")
 
-# with tf.Session(graph=graph) as sess:
-# 	#sess = tf.Session(graph=graph)
-# 	#tf.reset_default_graph()
-	
-
-# 	#sess.run(tf.global_variables_initializer())	
-# 	writer = tf.summary.FileWriter('DAQN_log',graph=sess.graph)
-# 	#sess.run(daqn,feed_dict={X : x_data, Y : y_data})
-# 	#sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
-	
-# 	#sess.run(daqn_presoft,feed_dict={X : x_data, Y : y_data})
-# 	#m = train(daqn,x_data,y_data,n_epoch=1000,batch_size=32,show_metric=True)
-# 	#daqn_ps = tflearn.DNN(daqn_presoft,session=m.session)
-
-# writer.flush()
-# writer.close()
