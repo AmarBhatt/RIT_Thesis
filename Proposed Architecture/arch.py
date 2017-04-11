@@ -195,8 +195,8 @@ def generateNetworkStructure():
 	#Place Holder
 
 f_data = "same"
-num = 3#800
-num2 = 5#1000
+num = 800
+num2 = 1000
 
 
 image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
@@ -234,7 +234,7 @@ with tf.Graph().as_default():
 		daqn,daqn_presoft = DAQN(X,None,0.01)
 		model = tflearn.DNN(daqn)
 			
-		model.fit(x_data,y_data,n_epoch=20,batch_size=1, show_metric=True)
+		model.fit(x_data,y_data,n_epoch=20,batch_size=1, validation_set = 0.2, show_metric=True)
 #result = sess.run(daqn_presoft, feed_dict={X : x_data})
 
 
