@@ -4,6 +4,9 @@
 import random
 from PIL import Image
 import grid_world as gridworld
+import sys as sys
+import numpy as np
+from matplotlib import pyplot as plt
 #import gifmaker
 
 def generate(imgx,imgy,mx,my):
@@ -148,28 +151,137 @@ def createDataSet(name,gw,maze,image, mx, my):
 
 def processGIF(infile):
     try:
-        im = Image.open(infile)
+        im = Image.open(infile+".gif")
     except IOError:
         print ("Cant load", infile)
         sys.exit(1)
     i = 0
     mypalette = im.getpalette()
 
+    with open(infile+".txt") as f:
+        content = f.readlines()
+        # you may also want to remove whitespace characters like `\n` at the end of each line
+    actions = [int(x.strip()) for x in content]
+    num = len(actions)
+
+    store_image = np.zeros(shape=[num,100,100,1], dtype=np.uint8)
+    store_action = np.zeros(shape=[num,5], dtype=np.uint8)
     try:
         while 1:
             im.putpalette(mypalette)
-            new_im = Image.new("RGBA", im.size)
+            new_im = Image.new("L", im.size)
             new_im.paste(im)
-            new_im.save('foo'+str(i)+'.png')
-
+            #new_im.save('foo'+str(i)+'.png')
+            pixels = list(new_im.getdata())
+            pixels = np.array([pixels[j * 100:(j + 1) * 100] for j in range(100)])
+            pixels = pixels[:,:,np.newaxis]
+            #print(pixels.shape)
+            #print(store_image.shape)
+            #print(i)
+            store_image[i,:,:,:] = pixels#new_im.load()
+            action = np.zeros(shape=[5], dtype=np.uint8)
+            action[actions[i]] = 1
+            store_action[i] = action
             i += 1
             im.seek(im.tell() + 1)
 
     except EOFError:
         pass # end of sequence
 
+    return store_image, store_action
 
-def main(imgx,imgy,mx,my,num_gen,location,rmaze):
+
+def testDataAquisition(fname):
+    image_set,action_set = processGIF('expert_data/random/'+fname)
+    #print(image_set)
+    print(action_set)
+    plt.gray()
+    for i in image_set:
+        #plt.imshow(image_set[i,:,:,:])
+        #plt.show()
+        img = Image.fromarray(i.squeeze(axis=2), 'L')
+        img.show()
+        input("Press Enter to continue...")
+
+
+def environmentStep(action,state,imgx,imgy,mx,my, image = None, gw = None, environment = None):
+    color = 64
+    failed = False
+    done = False
+    if action == -1: #create random enviroment
+        maze, image = generate(imgx,imgy,mx,my)
+        obstacle_list,goal = find_obstacles(maze)
+        gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
+        start = random.randint(0,gw.grid_size**2 - 1)
+        sx,sy = gw.int_to_point(start)
+        while(gw.world_grid[sy][sx] > 0):
+            start = random.randint(0,gw.grid_size**2 - 1)
+            sx,sy = gw.int_to_point(start)
+        i_tmp = image.copy()
+
+        pixels = i_tmp.load()
+        #print(p,sx,sy)
+        for i in range(sy*my+2,sy*my+my-2):
+            for j in range(sx*mx+2,sx*mx+mx-2):
+                pixels[j, i] = color
+
+        data = list(i_tmp.getdata())
+        data = np.array([data[k * 100:(k + 1) * 100] for k in range(100)], dtype=np.uint8)
+        data = data[:,:,np.newaxis]
+        
+        environment = list(image.getdata())
+        environment = np.array([environment[r * 100:(r + 1) * 100] for r in range(100)], dtype=np.uint8)
+
+        new_state = start
+    else:
+        if(action == 0): #go right
+            sx,sy = gw.int_to_point(state)
+            sx += 1
+        if(action == 1): #go down
+            sx,sy = gw.int_to_point(state)
+            sy += 1
+        if(action == 2): #go left
+            sx,sy = gw.int_to_point(state)
+            sx -= 1
+        if(action == 3): #go up
+            sx,sy = gw.int_to_point(state)
+            sy -= 1
+        if(action == 4): #stay
+            sx,sy = gw.int_to_point(state)
+
+        new_state = gw.point_to_int([sx,sy])
+        failed = gw.world_grid[sy][sx] == 1
+        done = gw.world_grid[sy][sx] == 2
+        i_tmp = image.copy()
+        pixels = i_tmp.load()
+        #print(p,sx,sy)
+        for i in range(sy*my+2,sy*my+my-2):
+            for j in range(sx*mx+2,sx*mx+mx-2):
+                pixels[j, i] = color
+        data = list(i_tmp.getdata())
+        data = np.array([data[j * 100:(j + 1) * 100] for j in range(100)], dtype=np.uint8)
+        data = data[:,:,np.newaxis]
+
+
+    return data,new_state,gw,failed,done,environment,image
+
+def environmentStepTest(imgx,imgy,mx,my):
+    data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,imgx,imgy,mx,my, image = None, gw = None, environment = None)
+    img = Image.fromarray(data.squeeze(axis=2), 'L')
+    img.show()
+    while(not done and not failed):
+        x = int(input("Enter action (0-4):"))
+        data,new_state,gw,failed,done,environment,image = environmentStep(x,new_state,imgx,imgy,mx,my,image,gw,environment)
+        print(done,failed)
+        img = Image.fromarray(data.squeeze(axis=2), 'L')
+        img.show()
+    if(failed):
+        print("You hit a wall!")
+    if(done):
+        print("You won!")
+
+
+def bulkCreate(imgx,imgy,mx,my,num_gen,location,rmaze):
     if rmaze:
         for i in range(num_gen):
             maze, image = generate(imgx,imgy,mx,my)
@@ -191,7 +303,8 @@ imgx = 100
 imgy = 100
 mx = 10
 my = 10
-main(imgx,imgy,mx,my,1000,"expert_data/same",False)
+#bulkCreate(imgx,imgy,mx,my,1000,"expert_data/same",False)
+
 
 
 # # Random Maze Generator using Depth-first Search

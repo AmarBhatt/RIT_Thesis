@@ -39,6 +39,9 @@ net = tflearn.regression(net)
 # Define model
 model = tflearn.DNN(net)
 # Start training (apply gradient descent algorithm)
+print(data.shape)
+print(labels.shape)
+
 model.fit(data,labels,n_epoch=10, batch_size=16, show_metric=True)
 
 

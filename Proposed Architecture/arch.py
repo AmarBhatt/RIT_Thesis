@@ -1,6 +1,7 @@
 import numpy as np
 import tflearn
 import tensorflow as tf
+from DataSetGenerator.maze_generator import *
 
 def getData (location):
 	data = "" #store data as file names s,a,s'
@@ -52,33 +53,38 @@ def DAQN(X,Y,learning_rate=0.01):
 
 		
 	# Input
-	net = tflearn.input_data(shape=[None,83,83,1],placeholder=X,name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
+	net = tflearn.input_data(shape=[None,100,100,1], placeholder = X, name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
 
 	# layer 1
-	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], activation='relu',name="convlayer1")
+	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
 	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
 			
 	# layer 2
-	net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=4, strides=4,
+	net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=[4,4], strides=[1,1,1,1],padding="valid",
 				activation='relu',name="convlayer2")
-	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=2,name="maxpool2")
+	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,2,2,1], strides=2,name="maxpool2")
 
 	# layer 3
-	net = tflearn.fully_connected(net,n_units=2048,activation='tanh', name="FC")
+	layer2_flatten = tflearn.flatten(net,name="flatten")#tf.reshape(net,[-1,8*8*32])
+	net = tflearn.fully_connected(layer2_flatten,n_units=256,activation='tanh', name="FC")
 
 	# Output
 	#self.net = tflearn.layers.estimator.regression(self.net,name="FCout")
-	net = tflearn.fully_connected(net,n_units=256, name="FCout")
-	layer_presoft = tflearn.fully_connected(net,n_units=3, name="FCpresoft")
-	net = tflearn.fully_connected(layer_presoft,n_units=3, activation='softmax', name="FCpostsoft")
+	#net = tflearn.fully_connected(net,n_units=256, name="FCout")
+	layer_presoft = tflearn.fully_connected(net,n_units=5, name="FCpresoft")
+	net = tflearn.fully_connected(layer_presoft,n_units=5, activation='softmax', name="FCpostsoft")
 
-	#def sse(y_true, y_pred):
-	#	#sum of square error
-	#	return tf.square(tf.subtract(y_true,y_pred)) #SHOULD THIS STILL BE SUMMED?
+	def sse(y_true, y_pred):
+		#sum of square error
+		loss = tf.square(tf.subtract(y_true,y_pred))
+		loss.set_shape([1,5])
+		return tf.reduce_sum(loss) #SHOULD THIS STILL BE SUMMED?
 
-	loss = tf.square(tf.subtract(net,Y)) #SHOULD THIS STILL BE SUMMED?
+	#loss = tf.square(tf.subtract(net,Y)) #SHOULD THIS STILL BE SUMMED?
 
-	net = tflearn.regression(net, optimizer = tflearn.AdaGrad(learning_rate=learning_rate), loss=loss)
+	net = tflearn.regression(net, optimizer = tflearn.AdaGrad(learning_rate=learning_rate), loss=sse)
+
+	#print(net.get_shape())
 
 	return net, layer_presoft
 
@@ -116,25 +122,26 @@ def DARN(X,Y,learning_rate=0.01):
 
 		
 	# Input
-	net = tflearn.input_data(shape=[None,83,83,1],placeholder=X,name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
+	net = tflearn.input_data(shape=[None,100,100,1],placeholder=X,name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
 
 	# layer 1
-	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=8, strides=4, activation='relu',name="convlayer1")
-	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=4,name="maxpool4")
+	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
+	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
 			
 	# layer 2
-	net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=4, strides=4,
+	net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=[4,4], strides=[1,1,1,1],padding="valid",
 				activation='relu',name="convlayer2")
-	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=2,name="maxpool2")
+	net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,2,2,1], strides=2,name="maxpool2")
 
 	# layer 3
-	net = tflearn.fully_connected(net,n_units=2048,activation='tanh', name="FC")
+	layer2_flatten = tflearn.flatten(net,name="flatten")#tf.reshape(net,[-1,8*8*32])
+	net = tflearn.fully_connected(layer2_flatten,n_units=256,activation='tanh', name="FC")
 
 	# Output
 	#self.net = tflearn.layers.estimator.regression(self.net,name="FCout")
-	net = tflearn.fully_connected(net,n_units=256, name="FCout")
-	net = tflearn.fully_connected(net,n_units=3, name="FCpresoft")
-	net = tflearn.fully_connected(net,n_units=3, activation='softmax', name="FCpostsoft")
+	#net = tflearn.fully_connected(net,n_units=256, name="FCout")
+	layer_presoft = tflearn.fully_connected(net,n_units=5, name="FCpresoft")
+	net = tflearn.fully_connected(layer_presoft,n_units=5, activation='softmax', name="FCpostsoft")
 
 	#def l2(y_true, y_pred):
 		# y_true = q(s,a)[before softmax] - gamma*max(q(s',a')[before softmax])
@@ -149,33 +156,84 @@ def DARN(X,Y,learning_rate=0.01):
 	return net
 
 
+def generateNetworkStructure():
+	graph = tf.Graph()
+	with graph.as_default():
+		#Place Holder
+		X = tf.placeholder(shape=[1,100,100,1], dtype="float32",name='s')
+		Y = tf.placeholder(shape=[1,1,5], dtype="float32", name='a')
+		daqn,daqn_presoft = DAQN(X,Y,0.05)
+		X2 = tf.placeholder(shape=[1,100,100,1], dtype="float32",name='s')
+		Y2 = tf.placeholder(shape=[1,1,5], dtype="float32", name='r_prime')
+		darn = DARN(X2,Y2,0.05)
+	#darn = DARN(0.05,0.06)
 
-graph = tf.Graph()
-with graph.as_default():
+	print(daqn)
+	print(darn)
+	x_data = np.random.rand(1,100,100,1)
+	y_data = np.random.rand(1,5)
+
+	with tf.Session(graph=graph) as sess:
+		#sess = tf.Session(graph=graph)
+
+		sess.run(tf.global_variables_initializer())	
+		writer = tf.summary.FileWriter('DAQN_log',graph=sess.graph)
+		sess.run(daqn,feed_dict={X : x_data, Y : y_data})
+		sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
+		
+		#sess.run(daqn_presoft,feed_dict={X : x_data, Y : y_data})
+		#m = train(daqn,x_data,y_data,n_epoch=1000,batch_size=32,show_metric=True)
+		#daqn_ps = tflearn.DNN(daqn_presoft,session=m.session)
+
+	writer.flush()
+	writer.close()		
+
+
+
+#graph = tf.Graph()
+#with graph.as_default():
 	#Place Holder
-	X = tf.placeholder(shape=[1,83,83,1], dtype="float32",name='s')
-	Y = tf.placeholder(shape=[1,3], dtype="float32", name='a')
-	daqn,daqn_presoft = DAQN(X,Y,0.05)
-	X2 = tf.placeholder(shape=[1,83,83,1], dtype="float32",name='s')
-	Y2 = tf.placeholder(shape=[1,3], dtype="float32", name='r_prime')
-	darn = DARN(X2,Y2,0.05)
-#darn = DARN(0.05,0.06)
 
-print(daqn)
-print(darn)
-x_data = np.random.rand(1,83,83,1)
-y_data = np.random.rand(1,3)
+f_data = "same"
 
-with tf.Session(graph=graph) as sess:
-	#sess = tf.Session(graph=graph)
+daqn,daqn_presoft = DAQN(None,None,0.05)
 
-	sess.run(tf.global_variables_initializer())	
-	writer = tf.summary.FileWriter('DAQN_log',graph=sess.graph)
-	sess.run(daqn,feed_dict={X : x_data, Y : y_data})
-	sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
-	#sess.run(daqn_presoft,feed_dict={X : x_data, Y : y_data})
-	#m = train(daqn,x_data,y_data,n_epoch=1000,batch_size=32,show_metric=True)
-	#daqn_ps = tflearn.DNN(daqn_presoft,session=m.session)
+image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
 
-writer.flush()
-writer.close()
+x_data = image_set
+y_data = action_set
+
+for i in range(1,1000):
+	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
+	x_data = np.append(x_data,image_set,axis=0)
+	y_data = np.append(y_data,action_set, axis=0)
+
+print(x_data.shape)
+print(y_data.shape)
+
+#x_data = np.random.rand(2,100,100,1)
+#y_data = np.random.rand(2,5)
+
+model = tflearn.DNN(daqn)
+	
+model.fit(x_data,y_data,n_epoch=20,batch_size=1, show_metric=True)
+#result = sess.run(daqn_presoft, feed_dict={X : x_data})
+
+
+
+# with tf.Session(graph=graph) as sess:
+# 	#sess = tf.Session(graph=graph)
+# 	#tf.reset_default_graph()
+	
+
+# 	#sess.run(tf.global_variables_initializer())	
+# 	writer = tf.summary.FileWriter('DAQN_log',graph=sess.graph)
+# 	#sess.run(daqn,feed_dict={X : x_data, Y : y_data})
+# 	#sess.run(darn,feed_dict={X2 : x_data, Y2 : y_data})
+	
+# 	#sess.run(daqn_presoft,feed_dict={X : x_data, Y : y_data})
+# 	#m = train(daqn,x_data,y_data,n_epoch=1000,batch_size=32,show_metric=True)
+# 	#daqn_ps = tflearn.DNN(daqn_presoft,session=m.session)
+
+# writer.flush()
+# writer.close()
