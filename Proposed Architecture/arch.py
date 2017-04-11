@@ -195,15 +195,16 @@ def generateNetworkStructure():
 	#Place Holder
 
 f_data = "same"
+num = 3#800
+num2 = 5#1000
 
-daqn,daqn_presoft = DAQN(None,None,0.05)
 
 image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
 
 x_data = image_set
 y_data = action_set
 
-for i in range(1,1000):
+for i in range(1,num):
 	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
 	x_data = np.append(x_data,image_set,axis=0)
 	y_data = np.append(y_data,action_set, axis=0)
@@ -211,15 +212,51 @@ for i in range(1,1000):
 print(x_data.shape)
 print(y_data.shape)
 
+image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num))
+
+x_test = image_set
+y_test = action_set
+
+for i in range(num+1,num2):
+	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
+	x_test = np.append(x_test,image_set,axis=0)
+	y_test = np.append(y_test,action_set, axis=0)
+
+print(x_test.shape)
+print(y_test.shape)
 #x_data = np.random.rand(2,100,100,1)
 #y_data = np.random.rand(2,5)
 
-model = tflearn.DNN(daqn)
-	
-model.fit(x_data,y_data,n_epoch=20,batch_size=1, show_metric=True)
+with tf.Graph().as_default():
+	with tf.Session() as sess:
+		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
+		Y = tf.placeholder(shape=[1,5], dtype="float32", name='a')
+		daqn,daqn_presoft = DAQN(X,None,0.01)
+		model = tflearn.DNN(daqn)
+			
+		model.fit(x_data,y_data,n_epoch=20,batch_size=1, show_metric=True)
 #result = sess.run(daqn_presoft, feed_dict={X : x_data})
 
 
+
+		prediction=tf.argmax(daqn,1)
+		result = model.predict(x_test)
+		final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+		pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
+		for i in range(len(result)):
+			r = result[i]
+			a = np.where(y_test[i] == y_test[i].max())
+			r = r.index(max(r))
+			pred_result[i] = r
+			#print(r,a[0][0])
+			final_result[i] = int(r) == int(a[0][0])
+
+		#print(result)
+		#print(final_result)
+		print("Test results")
+		print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
+		print(np.mean(final_result))
+		print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
 
 # with tf.Session(graph=graph) as sess:
 # 	#sess = tf.Session(graph=graph)
