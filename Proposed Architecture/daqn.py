@@ -45,11 +45,17 @@ class DAQN:
 		#net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
 		conv1 = self.conv2d(X, weights['wc1'], biases['bc1'], strides = 4, padding="VALID")
 		#net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
+		
+		# SKIP MAXPOOL
 		conv1 = self.maxpool2d(conv1,k=4,s=1)	
+		
+		
 		# layer 2
 		#net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=[4,4], strides=[1,1,1,1],padding="valid",activation='relu',name="convlayer2")
 		conv2 = self.conv2d(conv1, weights['wc2'], biases['bc2'], strides = 1, padding="VALID")
 		#net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,2,2,1], strides=2,name="maxpool2")
+		
+		# SKIP MAXPOOL
 		conv2 = self.maxpool2d(conv2,k=2,s=2)	
 
 		# layer 3

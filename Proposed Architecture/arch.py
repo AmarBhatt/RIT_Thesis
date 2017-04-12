@@ -4,6 +4,9 @@ import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
 import sys as sys
+from PIL import Image
+import os.path
+import h5py
 
 def getData (location):
 	data = "" #store data as file names s,a,s'
@@ -198,47 +201,69 @@ def generateNetworkStructure():
 #with graph.as_default():
 	#Place Holder
 
-f_data = "same"
-num = 100 #800
-num2 = 150 #1000
-num_epochs = 10#20
-episodes = 20#500
+f_data = "random"
+f_file = "random.h5"
+num = 80#00
+num2 = 100#00
+num_epochs = 100 #20
+episodes = 5000
 
-episode_lengths = []
-episode_start = []
-episode_total = 0
-image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
+if not os.path.isfile(f_file):
 
-x_train = image_set
-y_train = action_set
+	episode_lengths = []
+	episode_start = []
+	episode_total = 0
+	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
 
-episode_lengths.append(action_set.shape[0])
-episode_start.append(episode_total)
-episode_total += image_set.shape[0]
-for i in range(1,num):
-	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
-	x_train = np.append(x_train,image_set,axis=0)
-	y_train = np.append(y_train,action_set, axis=0)
+	x_train = image_set
+	y_train = action_set
+
 	episode_lengths.append(action_set.shape[0])
 	episode_start.append(episode_total)
 	episode_total += image_set.shape[0]
-#print(episode_lengths)
-print(x_train.shape)
-print(y_train.shape)
+	for i in range(1,num):
+		print(i)
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
+		x_train = np.append(x_train,image_set,axis=0)
+		y_train = np.append(y_train,action_set, axis=0)
+		episode_lengths.append(action_set.shape[0])
+		episode_start.append(episode_total)
+		episode_total += image_set.shape[0]
+	#print(episode_lengths)
+	print(x_train.shape)
+	print(y_train.shape)
 
-image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num))
+	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num))
 
-x_test = image_set
-y_test = action_set
+	x_test = image_set
+	y_test = action_set
 
-for i in range(num+1,num2):
-	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
-	x_test = np.append(x_test,image_set,axis=0)
-	y_test = np.append(y_test,action_set, axis=0)
+	for i in range(num+1,num2):
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
+		x_test = np.append(x_test,image_set,axis=0)
+		y_test = np.append(y_test,action_set, axis=0)
 
-print(x_test.shape)
-print(y_test.shape)
-
+	print(x_test.shape)
+	print(y_test.shape)
+	
+	with h5py.File(f_file,'w') as hf:
+		hf.create_dataset("x_train",data=x_train, shape = x_train.shape)
+		hf.create_dataset("y_train",data=y_train, shape = y_train.shape)
+		hf.create_dataset("episode_lengths",data=episode_lengths)
+		hf.create_dataset("episode_start",data=episode_start)
+		hf.create_dataset("episode_total",data = [episode_total])
+		hf.create_dataset("x_test",data=x_test, shape=x_test.shape)
+		hf.create_dataset("y_test",data=y_test, shape=y_test.shape)
+else:
+	with h5py.File(f_file, 'r') as hf:
+		x_train = hf['x_train'][:]
+		y_train = hf['y_train'][:]
+		episode_lengths = hf['episode_lengths'][:]
+		episode_start = hf['episode_lengths'][:]
+		episode_total = hf['episode_total'][:]
+		episode_total = episode_total[0]
+		x_test = hf['x_test'][:]
+		y_test = hf['y_test'][:]
 
 
 n_classes = 5 #5 actions
@@ -255,7 +280,7 @@ with graph.as_default():
 	    # 4x4 conv, 16 inputs, 32 outputs
 	    'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
 	    # fully connected, 7*7*64 inputs, 1024 outputs
-	    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])),
+	    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])), #was [21*21*32, 256] without Max Pool
 	    # 1024 inputs, 10 outputs (class prediction)
 	    'out': tf.Variable(tf.random_normal([256, n_classes]))
 	}
@@ -284,9 +309,9 @@ with graph.as_default():
 	#def correct_pred(net,Y):		
 
 	pred = tf.argmax(daqn, 1)
-	#pred = tf.Print(pred,[pred],message="prediction is: ")
+	pred = tf.Print(pred,[pred],message="prediction is: ")
 	true = tf.argmax(Y, 1)
-	#true = tf.Print(true,[true],message="truth is: ")
+	true = tf.Print(true,[true],message="truth is: ")
 
 	#	return tf.equal(pred, true)
 	correct_pred = tf.equal(pred, true) #1 instead of 0?
@@ -306,15 +331,19 @@ with tf.Session(graph=graph) as sess:
 			print("Epoch: "+str(epoch))
 			for ep in range(episodes):
 
-				ind = random.sample(range(0, num), 1)[0]
-				indx = episode_start[ind]
-				ind_data = list(range(indx,indx+episode_lengths[ind]))
+				ind =  random.sample(range(0, x_train.shape[0]), 1)#random.sample(range(0, num), 1)[0]
+				#indx = episode_start[ind]
+				ind_data = ind#list(range(indx,indx+episode_lengths[ind]))
 
 				#print(ind, indx, len(ind_data))
 				x_data = x_train[ind_data,:,:,:]
 				y_data = y_train[ind_data,:]
-				print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
-				#model.fit(x_data,y_data,n_epoch=1,batch_size=1, validation_set = 0.0, show_metric=True)
+				
+				im = Image.fromarray(x_data[0].squeeze(axis=2),'L')
+				im.show()
+				input("show image")
+				
+				#print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
 				sess.run(optimizer,feed_dict={X : x_data, Y : y_data})
 
 				# Display loss and accuracy
@@ -324,7 +353,7 @@ with tf.Session(graph=graph) as sess:
 	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	                  "{:.5f}".format(acc))
 			
-				print("Testing Accuracy:", sess.run(accuracy, feed_dict={X: x_test,
+			print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test,
                                       Y: y_test}))
 
 
