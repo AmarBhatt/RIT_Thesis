@@ -203,8 +203,8 @@ def generateNetworkStructure():
 
 f_data = "random"
 f_file = "random.h5"
-num = 80#00
-num2 = 100#00
+num = 8000
+num2 = 10000
 num_epochs = 100 #20
 episodes = 5000
 
@@ -339,9 +339,9 @@ with tf.Session(graph=graph) as sess:
 				x_data = x_train[ind_data,:,:,:]
 				y_data = y_train[ind_data,:]
 				
-				im = Image.fromarray(x_data[0].squeeze(axis=2),'L')
-				im.show()
-				input("show image")
+				# im = Image.fromarray(x_data[0].squeeze(axis=2),'L')
+				# im.show()
+				# input("show image")
 				
 				#print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
 				sess.run(optimizer,feed_dict={X : x_data, Y : y_data})

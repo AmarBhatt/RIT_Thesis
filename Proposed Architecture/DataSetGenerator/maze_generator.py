@@ -161,7 +161,6 @@ def processGIF(infile):
     with open(infile+".txt") as f:
         content = f.readlines()
         # you may also want to remove whitespace characters like `\n` at the end of each line
-        f.close()
     actions = [int(x.strip()) for x in content]
     num = len(actions)
 
@@ -304,7 +303,7 @@ imgx = 100
 imgy = 100
 mx = 10
 my = 10
-#bulkCreate(imgx,imgy,mx,my,10000,"expert_data/random",False)
+#bulkCreate(imgx,imgy,mx,my,10000,"expert_data/random",True)
 
 
 
