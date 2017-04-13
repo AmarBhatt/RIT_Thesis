@@ -3,10 +3,32 @@ import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
+import alexnet
 import sys as sys
 from PIL import Image
 import os.path
 import h5py
+#Load necessary libraries
+import tensorflow.contrib.slim as slim
+#import input_data
+import matplotlib.pyplot as plt
+#%matplotlib inline
+
+from tflearn.layers.core import input_data, dropout, fully_connected
+from tflearn.layers.conv import conv_2d, max_pool_2d
+from tflearn.layers.normalization import local_response_normalization
+from tflearn.layers.estimator import regression
+
+def resUnit(input_layer,i):
+    with tf.variable_scope("res_unit"+str(i)):
+        part1 = slim.batch_norm(input_layer,activation_fn=None)
+        part2 = tf.nn.relu(part1)
+        part3 = slim.conv2d(part2,64,[3,3],activation_fn=None)
+        part4 = slim.batch_norm(part3,activation_fn=None)
+        part5 = tf.nn.relu(part4)
+        part6 = slim.conv2d(part5,64,[3,3],activation_fn=None)
+        output = input_layer + part6
+        return output
 
 def getData (location):
 	data = "" #store data as file names s,a,s'
@@ -203,10 +225,13 @@ def generateNetworkStructure():
 
 f_data = "random"
 f_file = "random.h5"
-num = 8000
-num2 = 10000
-num_epochs = 100 #20
-episodes = 5000
+
+netName = "alexnet" #daqn
+
+num = 80
+num2 = 100
+num_epochs = 10 #20
+episodes = 50
 
 if not os.path.isfile(f_file):
 
@@ -272,61 +297,125 @@ learning_rate = 0.001
 
 graph = tf.Graph()
 with graph.as_default():
-
-	# Store layers weight & bias
-	weights = {
-	    # 8x8 conv, 1 input, 16 outputs
-	    'wc1': tf.Variable(tf.random_normal([8, 8, 1, 16])),
-	    # 4x4 conv, 16 inputs, 32 outputs
-	    'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
-	    # fully connected, 7*7*64 inputs, 1024 outputs
-	    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])), #was [21*21*32, 256] without Max Pool
-	    # 1024 inputs, 10 outputs (class prediction)
-	    'out': tf.Variable(tf.random_normal([256, n_classes]))
-	}
-
-	biases = {
-	    'bc1': tf.Variable(tf.random_normal([16])),
-	    'bc2': tf.Variable(tf.random_normal([32])),
-	    'bd1': tf.Variable(tf.random_normal([256])),
-	    'out': tf.Variable(tf.random_normal([n_classes]))
-	}	
-
-
-	#Place Holder
-	X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
-	Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
-	net = DAQN(X,Y, weights, biases)
-	daqn = net.outpost
-	daqn_presoft = net.outpre
-	
-	# Define Loss and optimizer
-	cost = sse(daqn,Y)
-	optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate).minimize(cost)
-
-	# Evaluate model
-	
-	#def correct_pred(net,Y):		
-
-	pred = tf.argmax(daqn, 1)
-	pred = tf.Print(pred,[pred],message="prediction is: ")
-	true = tf.argmax(Y, 1)
-	true = tf.Print(true,[true],message="truth is: ")
-
-	#	return tf.equal(pred, true)
-	correct_pred = tf.equal(pred, true) #1 instead of 0?
-	accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-
+	#tf.reset_default_graph()
 	#Initialize variables
 	init = tf.global_variables_initializer()
+	if(netName == "daqn"):	
+		# Store layers weight & bias
+		weights = {
+		    # 8x8 conv, 1 input, 16 outputs
+		    'wc1': tf.Variable(tf.random_normal([8, 8, 1, 16])),
+		    # 4x4 conv, 16 inputs, 32 outputs
+		    'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
+		    # fully connected, 7*7*64 inputs, 1024 outputs
+		    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])), #was [21*21*32, 256] without Max Pool
+		    # 1024 inputs, 10 outputs (class prediction)
+		    'out': tf.Variable(tf.random_normal([256, n_classes]))
+		}
+
+		biases = {
+		    'bc1': tf.Variable(tf.random_normal([16])),
+		    'bc2': tf.Variable(tf.random_normal([32])),
+		    'bd1': tf.Variable(tf.random_normal([256])),
+		    'out': tf.Variable(tf.random_normal([n_classes]))
+		}	
+
+
+		#Place Holder
+		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
+		Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
+		net = DAQN(X,Y, weights, biases)
+		daqn = net.outpost
+		daqn_presoft = net.outpre
+		
+		# Define Loss and optimizer
+		cost = sse(daqn,Y)
+		optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate)
+		update = optimizer.minimize(cost)
+		# Evaluate model
+		
+		#def correct_pred(net,Y):		
+
+		pred = tf.argmax(daqn, 1)
+		pred = tf.Print(pred,[pred],message="prediction is: ")
+		true = tf.argmax(Y, 1)
+		true = tf.Print(true,[true],message="truth is: ")
+
+		#	return tf.equal(pred, true)
+		correct_pred = tf.equal(pred, true) #1 instead of 0?
+		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+
+		# #Initialize variables
+		# init = tf.global_variables_initializer()
 #print(daqn)
 #print(darn)
 #x_data = np.random.rand(1,100,100,1)
 #y_data = np.random.rand(1,5)
+	elif (netName == "resnet"):
+		total_layers = 25 #Specify how deep we want our network
+		units_between_stride = total_layers // 5
+		# tf.reset_default_graph()
+		X = tf.placeholder(shape=[None,100,100,1],dtype=tf.float32,name='input')
+		label_layer = tf.placeholder(shape=[None],dtype=tf.int32)
+		Y = slim.layers.one_hot_encoding(label_layer,5)
+
+		layer1 = slim.conv2d(X,64,[3,3],normalizer_fn=slim.batch_norm,scope='conv_'+str(0))
+		for i in range(5):
+		    for j in range(units_between_stride):
+		        layer1 = resUnit(layer1,j + (i*units_between_stride))
+		    layer1 = slim.conv2d(layer1,64,[3,3],stride=[2,2],normalizer_fn=slim.batch_norm,scope='conv_s_'+str(i))
+		    
+		top = slim.conv2d(layer1,5,[3,3],normalizer_fn=slim.batch_norm,activation_fn=None,scope='conv_top')
+
+		output = slim.layers.softmax(slim.layers.flatten(top))
+
+		pred = tf.argmax(output, 1)
+		pred = tf.Print(pred,[pred],message="prediction is: ")
+		true = tf.argmax(Y, 1)
+		true = tf.Print(true,[true],message="truth is: ")
+
+		correct_pred = tf.equal(pred, true) #1 instead of 0?
+		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+
+		cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(output) + 1e-10, axis=[1]))
+		trainer = tf.train.AdamOptimizer(learning_rate=0.001)
+		update = trainer.minimize(cost)
+	elif (netName == "alexnet"):
+		#X = tf.placeholder(shape=[None,100,100,1],dtype=tf.float32,name='input')
+		Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
+		
+		output, X = alexnet.get_graph()
+
+		print(output.shape)
+		print(Y.shape)
+
+		cost = tf.reduce_mean( -tf.reduce_sum(Y * tf.log(output), reduction_indices=[1]) )
+            
+		global_step = tf.Variable(0)
+        
+		
+		gradient_descent_opt = tf.train.GradientDescentOptimizer(0.001)
+
+		pred = tf.argmax(output, 1)
+		pred = tf.Print(pred,[pred],message="prediction is: ")
+		true = tf.argmax(Y, 1)
+		true = tf.Print(true,[true],message="truth is: ")
+
+		correct_pred = tf.equal(pred, true) #1 instead of 0?
+		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+
+		#tf.trainable_variables()
+
+		update = gradient_descent_opt.minimize(cost,global_step=global_step)
+
+#Initialize variables
+#init = tf.global_variables_initializer()
+
 
 with tf.Session(graph=graph) as sess:
 	sess.run(init)	
 	writer = tf.summary.FileWriter('DAQN_log_test',graph=sess.graph)
+	
 	for epoch in range(num_epochs):
 			print("Epoch: "+str(epoch))
 			for ep in range(episodes):
@@ -342,9 +431,7 @@ with tf.Session(graph=graph) as sess:
 				# im = Image.fromarray(x_data[0].squeeze(axis=2),'L')
 				# im.show()
 				# input("show image")
-				
-				#print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
-				sess.run(optimizer,feed_dict={X : x_data, Y : y_data})
+				sess.run(update,feed_dict={X : x_data, Y : y_data})
 
 				# Display loss and accuracy
 				loss, acc = sess.run([cost, accuracy], feed_dict={X: x_data,

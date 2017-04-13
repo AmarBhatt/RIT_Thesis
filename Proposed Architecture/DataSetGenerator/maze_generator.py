@@ -48,6 +48,11 @@ def generate(imgx,imgy,mx,my):
     for ky in range(imgy):
         for kx in range(imgx):
             pixels[kx, ky] = color[maze[my * ky // imgy][mx * kx // imgx]]
+    
+
+    act_mx = imgx//mx
+    act_my = imgy//my
+
     ky = random.randint(0,imgy-1)
     kx = random.randint(0,imgx-1)
 
@@ -56,19 +61,21 @@ def generate(imgx,imgy,mx,my):
         kx = random.randint(0,imgx-1)
 
     countup = 0
-    countdown = 0
     countleft = 0
-    countright = 0
+
+
 
     #up
     kyy=ky-1
-    while (kyy > -1 and maze[my * kyy // imgy][mx * kx // imgx] != 0 and (ky-countup)%my !=0):
+    while (kyy > -1 and maze[my * kyy // imgy][mx * kx // imgx] != 0 and (ky-countup)%act_my !=0):
+        #print(kyy, maze[my * kyy // imgy][mx * kx // imgx],  ky-countup)
         countup += 1
         kyy-=1
         #print(ky)
     #left
     kxx=kx-1
-    while (kxx > -1 and maze[my * ky // imgy][mx * kxx // imgx] != 0 and (kx-countleft)%mx !=0):
+    while (kxx > -1 and maze[my * ky // imgy][mx * kxx // imgx] != 0 and (kx-countleft)%act_mx !=0):
+        #print(kyy, maze[my * kyy // imgy][mx * kx // imgx],  ky-countup)
         countleft += 1
         kxx-=1
         #print(kx)
@@ -115,7 +122,7 @@ def createTrajectories(grid_size, n_trajectories, obstacle_list, goal, wind):
 
 
 
-def createDataSet(name,gw,maze,image, mx, my):
+def createDataSet(name,gw,maze,image, mx, my, imgx,imgy):
 
     start = random.randint(0,gw.grid_size**2 - 1)
     sx,sy = gw.int_to_point(start)
@@ -129,13 +136,17 @@ def createDataSet(name,gw,maze,image, mx, my):
 
     f = open(name+".txt",'w')
 
+    act_mx = imgx//mx
+    act_my = imgy//my
+
     for p in range(len(path)): #DOES NOT HIT GOAL, but NEXT ACTION REFLECTS GOAL
         i_tmp = image.copy()
         pixels = i_tmp.load()
         sx,sy = gw.int_to_point(path[p])
+
         #print(p,sx,sy)
-        for i in range(sy*my+2,sy*my+my-2):
-            for j in range(sx*mx+2,sx*mx+mx-2):
+        for i in range(sy*act_my+2,sy*act_my+act_my-2):
+            for j in range(sx*act_mx+2,sx*act_mx+act_mx-2):
                 pixels[j, i] = color
         if(p == len(path)-1):#at goal so stay there
             action = 4
@@ -149,7 +160,7 @@ def createDataSet(name,gw,maze,image, mx, my):
     f.close()
     #count +=1
 
-def processGIF(infile):
+def processGIF(infile,size):
     try:
         im = Image.open(infile+".gif")
     except IOError:
@@ -164,7 +175,7 @@ def processGIF(infile):
     actions = [int(x.strip()) for x in content]
     num = len(actions)
 
-    store_image = np.zeros(shape=[num,100,100,1], dtype=np.uint8)
+    store_image = np.zeros(shape=[num,size,size,1], dtype=np.uint8)
     store_action = np.zeros(shape=[num,5], dtype=np.uint8)
     try:
         while 1:
@@ -173,7 +184,7 @@ def processGIF(infile):
             new_im.paste(im)
             #new_im.save('foo'+str(i)+'.png')
             pixels = list(new_im.getdata())
-            pixels = np.array([pixels[j * 100:(j + 1) * 100] for j in range(100)])
+            pixels = np.array([pixels[j * size:(j + 1) * size] for j in range(size)])
             pixels = pixels[:,:,np.newaxis]
             #print(pixels.shape)
             #print(store_image.shape)
@@ -288,7 +299,7 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,location,rmaze):
             obstacle_list,goal = find_obstacles(maze)
             gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
             file = location+"/"+str(i)
-            createDataSet(file,gw,maze,image,mx,my)
+            createDataSet(file,gw,maze,image,mx,my,imgx,imgy)
     else: #use the same map
         maze, image = generate(imgx,imgy,mx,my)
         obstacle_list,goal = find_obstacles(maze)
@@ -299,12 +310,13 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,location,rmaze):
         #print(maze)
         #processGIF('test.gif')
 
-imgx = 100
-imgy = 100
-mx = 10
-my = 10
-#bulkCreate(imgx,imgy,mx,my,10000,"expert_data/random",True)
+imgx = 224 #100
+imgy = 224 #100
+mx = 8 #16 #10
+my = 8 #16 #10
+#bulkCreate(imgx,imgy,mx,my,1000,"expert_data/random224_8",True)
 
+#maze, image = generate(imgx,imgy,mx,my)
 
 
 # # Random Maze Generator using Depth-first Search
