@@ -244,11 +244,11 @@ def environmentStep(action,state,imgx,imgy,mx,my, image = None, gw = None, envir
                 pixels[j, i] = color
 
         data = list(i_tmp.getdata())
-        data = np.array([data[k * 100:(k + 1) * 100] for k in range(100)], dtype=np.uint8)
+        data = np.array([data[k * imgx:(k + 1) * imgx] for k in range(imgx)], dtype=np.uint8)
         data = data[:,:,np.newaxis]
         
         environment = list(image.getdata())
-        environment = np.array([environment[r * 100:(r + 1) * 100] for r in range(100)], dtype=np.uint8)
+        environment = np.array([environment[r * imgx:(r + 1) * imgx] for r in range(imgx)], dtype=np.uint8)
 
         new_state = start
     else:
@@ -268,16 +268,20 @@ def environmentStep(action,state,imgx,imgy,mx,my, image = None, gw = None, envir
             sx,sy = gw.int_to_point(state)
 
         new_state = gw.point_to_int([sx,sy])
-        failed = gw.world_grid[sy][sx] == 1
-        done = gw.world_grid[sy][sx] == 2
+        if (sx < 0 or sx == mx or sy < 0 or sy == my):
+            failed = 1
+        else:
+            failed = gw.world_grid[sy][sx] == 1
+            done = gw.world_grid[sy][sx] == 2
         i_tmp = image.copy()
         pixels = i_tmp.load()
         #print(p,sx,sy)
-        for i in range(sy*my+2,sy*my+my-2):
-            for j in range(sx*mx+2,sx*mx+mx-2):
-                pixels[j, i] = color
+        if(not failed):
+            for i in range(sy*my+2,sy*my+my-2):
+                for j in range(sx*mx+2,sx*mx+mx-2):
+                    pixels[j, i] = color
         data = list(i_tmp.getdata())
-        data = np.array([data[j * 100:(j + 1) * 100] for j in range(100)], dtype=np.uint8)
+        data = np.array([data[j * imgx:(j + 1) * imgx] for j in range(imgx)], dtype=np.uint8)
         data = data[:,:,np.newaxis]
 
 
@@ -317,14 +321,14 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,location,rmaze):
         #print(maze)
         #processGIF('test.gif')
 
-imgx = 224 #100
-imgy = 224 #100
-mx = 8 #16 #10
-my = 8 #16 #10
+imgx = 100 #100
+imgy = 100 #100
+mx = 10 #16 #10
+my = 10 #16 #10
 #bulkCreate(imgx,imgy,mx,my,1000,"expert_data/random224_8",True)
 #processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
-
+#environmentStepTest(imgx,imgy,mx,my)
 
 # # Random Maze Generator using Depth-first Search
 # # http://en.wikipedia.org/wiki/Maze_generation_algorithm
