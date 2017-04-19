@@ -3,7 +3,7 @@ import tensorflow as tf
 
 class DAQN:
 
-	def __init__(self,X,Y,weights, biases):
+	def __init__(self,X,Y):
 
 		"""
 			Input: 83x83x? (? = 1-4)
@@ -33,53 +33,116 @@ class DAQN:
 			Trained with: expert trajectories (s,a)
 			Hyperparameters: gamma (discount rate), nu (learning rate)
 		"""
-		# graph = tf.Graph()
-		# with graph.as_default():
 
-			
-		# Input
-		#net = tflearn.input_data(shape=[None,100,100,1], placeholder = X, name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
-		#X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='X')
-		#Y = tf.placeholder(shape=[1,5], dtype="float32", name='Y')
+		
 		# layer 1
-		#net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
-		conv1 = self.conv2d(X, weights['wc1'], biases['bc1'], strides = 4, padding="VALID")
-		#net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,4,4,1], strides=1, name="maxpool4")
 		
-		# SKIP MAXPOOL
-		conv1 = self.maxpool2d(conv1,k=4,s=1)	
+		conv1,_ = self.conv2d(input=X,			  
+			   				num_input_channels=1, 
+			   				filter_size=8,		
+			   				num_filters=16,		
+			   				use_pooling=True,   
+			   				pooling = 4,		
+			   				stride=4, 
+			   				pool_stride = 1,
+			   				padding="VALID",
+			   				pool_pad = "SAME")
 		
 		
-		# layer 2
-		#net = tflearn.layers.conv.conv_2d(net,nb_filter=32,filter_size=[4,4], strides=[1,1,1,1],padding="valid",activation='relu',name="convlayer2")
-		conv2 = self.conv2d(conv1, weights['wc2'], biases['bc2'], strides = 1, padding="VALID")
-		#net = tflearn.layers.conv.max_pool_2d(net,kernel_size=[1,2,2,1], strides=2,name="maxpool2")
-		
-		# SKIP MAXPOOL
-		conv2 = self.maxpool2d(conv2,k=2,s=2)	
+		# layer 2		
+		conv2,_ = self.conv2d(input=conv1,			  
+			   				num_input_channels=16, #num filters from last layer
+			   				filter_size=4,		
+			   				num_filters=32,		
+			   				use_pooling=True,   
+			   				pooling = 2,		
+			   				stride=1, 
+			   				pool_stride = 2,
+			   				padding="VALID",
+			   				pool_pad = "SAME")
+
+	
 
 		# layer 3
-		#layer2_flatten = tflearn.flatten(net,name="flatten")#tf.reshape(net,[-1,8*8*32])
-		fc1 = self.flatten(conv2, weights['wd1'].get_shape().as_list()[0])
-		#net = tflearn.fully_connected(layer2_flatten,n_units=256,activation='tanh', name="FC")
-		fc1 = tf.add(tf.matmul(fc1,weights['wd1']),biases['bd1'])
-		fc1 = tf.nn.tanh(fc1)
+		layer_flat, num_features = self.flatten_layer(conv2)
+		layer_fc1 = self.fc_layer(input=layer_flat,
+					 num_inputs=num_features,
+					 num_outputs=256,
+					 activation="tanh")
+
 		# Output
-		#self.net = tflearn.layers.estimator.regression(self.net,name="FCout")
-		#net = tflearn.fully_connected(net,n_units=256, name="FCout")
-		#layer_presoft = tflearn.fully_connected(net,n_units=5, name="FCpresoft")
-		outpre = tf.add(tf.matmul(fc1,weights['out']),biases['out'])
-		#net = tflearn.fully_connected(layer_presoft,n_units=5, activation='softmax', name="FCpostsoft")
-		outpost = tf.nn.softmax(outpre,dim=-1)		
+		outpre = self.fc_layer(input=layer_fc1,
+					 num_inputs=256,
+					 num_outputs=5,
+					 activation="")
+
+		outpost = tf.nn.softmax(outpre)	
 
 		self.outpre = outpre
 		self.outpost = outpost
 
-	def conv2d(self, x, W, b, strides=1, padding="SAME"):
-    # Conv2D wrapper, with bias and relu activation
-	    x = tf.nn.conv2d(x, W, strides=[1, strides, strides, 1], padding=padding)
-	    x = tf.nn.bias_add(x, b)
-	    return tf.nn.relu(x)
+	def conv2d(self, input,			  # The previous layer.
+			   num_input_channels, # Num. channels in prev. layer.
+			   filter_size,		# Width and height of each filter.
+			   num_filters,		# Number of filters.
+			   use_pooling=True,  # Use max-pooling. 
+			   pooling = 2,		# kernel size
+			   stride=1, 
+			   pool_stride = 1,
+			   padding="SAME",
+			   pool_pad = "SAME"):
+    	# Conv2D wrapper, with bias and relu activation
+
+    	# Shape of the filter-weights for the convolution.
+		# This format is determined by the TensorFlow API.
+		shape = [filter_size, filter_size, num_input_channels, num_filters]
+		# Create new weights aka. filters with the given shape.
+		weights = self.new_weights(shape=shape)
+
+		# Create new biases, one for each filter.
+		biases = self.new_biases(length=num_filters)
+
+		# Create the TensorFlow operation for convolution.
+		# Note the strides are set to 1 in all dimensions.
+		# The first and last stride must always be 1,
+		# because the first is for the image-number and
+		# the last is for the input-channel.
+		# But e.g. strides=[1, 2, 2, 1] would mean that the filter
+		# is moved 2 pixels across the x- and y-axis of the image.
+		# The padding is set to 'SAME' which means the input image
+		# is padded with zeroes so the size of the output is the same.
+		layer = tf.nn.conv2d(input=input,
+						 filter=weights,
+						 strides=[1, stride, stride, 1],
+						 padding=padding)
+
+		# Add the biases to the results of the convolution.
+		# A bias-value is added to each filter-channel.
+		layer += biases
+
+		# Use pooling to down-sample the image resolution?
+		if use_pooling:
+			# This is 2x2 max-pooling, which means that we
+			# consider 2x2 windows and select the largest value
+			# in each window. Then we move 2 pixels to the next window.
+			layer = tf.nn.max_pool(value=layer,
+								   ksize=[1, pooling, pooling, 1],
+								   strides=[1, pool_stride, pool_stride, 1],
+								   padding=pool_pad)
+
+		# Rectified Linear Unit (ReLU).
+		# It calculates max(x, 0) for each input pixel x.
+		# This adds some non-linearity to the formula and allows us
+		# to learn more complicated functions.
+		layer = tf.nn.relu(layer)
+
+		# Note that ReLU is normally executed before the pooling,
+		# but since relu(max_pool(x)) == max_pool(relu(x)) we can
+		# save 75% of the relu-operations by max-pooling first.
+
+		# We return both the resulting layer and the filter-weights
+		# because we will plot the weights later.
+		return layer, weights
 
 	def maxpool2d(self, x, k=2, s=2):
 	    # MaxPool2D wrapper
@@ -90,6 +153,57 @@ class DAQN:
 		#dims = int(np.prod(x.get_shape().as_list()[1:])) #may need to splice [1:] because first x.get_shape().as_list() is None
 		x = tf.reshape(x, [-1,dim])
 		return x
+
+	def flatten_layer(self,layer):
+		# Get the shape of the input layer.
+		layer_shape = layer.get_shape()
+
+		# The shape of the input layer is assumed to be:
+		# layer_shape == [num_images, img_height, img_width, num_channels]
+
+		# The number of features is: img_height * img_width * num_channels
+		# We can use a function from TensorFlow to calculate this.
+		num_features = layer_shape[1:4].num_elements()
+
+		# Reshape the layer to [num_images, num_features].
+		# Note that we just set the size of the second dimension
+		# to num_features and the size of the first dimension to -1
+		# which means the size in that dimension is calculated
+		# so the total size of the tensor is unchanged from the reshaping.
+		layer_flat = tf.reshape(layer, [-1, num_features])
+
+		# The shape of the flattened layer is now:
+		# [num_images, img_height * img_width * num_channels]
+
+		# Return both the flattened layer and the number of features.
+		return layer_flat, num_features
+
+	def fc_layer(self,input,		  # The previous layer.
+			 num_inputs,	 # Num. inputs from prev. layer.
+			 num_outputs,	# Num. outputs.
+			 activation=""): # Use Rectified Linear Unit (ReLU)?
+
+		# Create new weights and biases.
+		weights = self.new_weights(shape=[num_inputs, num_outputs])
+		biases = self.new_biases(length=num_outputs)
+
+		# Calculate the layer as the matrix multiplication of
+		# the input and weights, and then add the bias-values.
+		layer = tf.matmul(input, weights) + biases
+
+		# Use ReLU?
+		if activation == "relu":
+			layer = tf.nn.relu(layer)
+		elif activation == "tanh":
+			layer = tf.nn.tanh(layer)
+
+		return layer
+
+	def new_weights(self,shape):
+		return tf.Variable(tf.random_normal(shape))
+
+	def new_biases(self,length):
+		return tf.Variable(tf.constant(0.05, shape=[length]))
 
 def sse(y_pred, y_true):
 	#sum of square error

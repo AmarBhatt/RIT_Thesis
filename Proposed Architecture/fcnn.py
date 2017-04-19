@@ -51,7 +51,7 @@ batch_size = 16
 validation_size = .2
 
 # how long to wait after validation loss stops improving before terminating training
-early_stopping = None  # use None if you don't want to implement early stoping
+early_stopping = 3  # use None if you don't want to implement early stoping
 
 
 
@@ -65,12 +65,12 @@ test_path='testing_data'
 #test_images, test_ids = dataset.read_test_set(test_path, img_size,classes)
 
 f_data = "random"
-f_file = "random.h5"
+f_file = "random_100.h5"
 
 num = 80
 num2 = 100
-num_epochs = 10 #20
-episodes = 50
+#num_epochs = 10 #20
+#episodes = 50
 
 if not os.path.isfile(f_file):
 
@@ -344,15 +344,15 @@ def optimize(num_iterations):
 		# for placeholder variables in the TensorFlow graph.
 
 		ind =  random.sample(range(0, x_train.shape[0]), batch_size)#random.sample(range(0, num), 1)[0]
-		ind_v = random.sample(range(0, x_train.shape[0]), batch_size)
+		ind_v = random.sample(range(0, x_test.shape[0]), batch_size)
 		#indx = episode_start[ind]
 		ind_data = ind#list(range(indx,indx+episode_lengths[ind]))
 
 		#print(ind, indx, len(ind_data))
 		x_batch = x_train[ind_data,:,:,:]
 		y_true_batch = y_train[ind_data,:]
-		x_valid_batch = x_train[ind_v,:,:,:]
-		y_valid_batch = y_train[ind_v,:]
+		x_valid_batch = x_test[ind_v,:,:,:]
+		y_valid_batch = y_test[ind_v,:]
 
 		feed_dict_train = {x: x_batch,
 						   y_true: y_true_batch}
@@ -373,12 +373,15 @@ def optimize(num_iterations):
 			epoch = int(i / int(x_train.shape[0]/batch_size))
 			
 			print_progress(epoch, feed_dict_train, feed_dict_validate, val_loss)
-			print("Testing Accuracy "+str(epoch)+": ", session.run(accuracy, feed_dict={x: x_test,
-                                      y_true: y_test})*100)
+			
 
 	# Update the total number of iterations performed.
 	total_iterations += num_iterations
-
 	
+	ind =  random.sample(range(0, x_test.shape[0]), batch_size*2)
+	x_test_batch = x_test[ind,:,:,:]
+	y_test_true_batch = y_test[ind,:]
+	print("Testing Accuracy: ", session.run(accuracy, feed_dict={x: x_test_batch,
+                                      y_true: y_test_true_batch}))
 optimize(num_iterations=3000)
 #print_validation_accuracy()

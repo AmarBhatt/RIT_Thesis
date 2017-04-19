@@ -90,7 +90,12 @@ def generate(imgx,imgy,mx,my):
     
     return maze, image
 
-
+def preprocessing(img,size):
+    basewidth = size
+    wpercent = (basewidth/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((basewidth,hsize), Image.LANCZOS)
+    return img
 
 def find_obstacles(maze):
     obstacles = []
@@ -182,6 +187,8 @@ def processGIF(infile,size):
             im.putpalette(mypalette)
             new_im = Image.new("L", im.size)
             new_im.paste(im)
+            #new_im.show()
+            new_im = preprocessing(new_im,size)
             #new_im.save('foo'+str(i)+'.png')
             pixels = list(new_im.getdata())
             pixels = np.array([pixels[j * size:(j + 1) * size] for j in range(size)])
@@ -315,7 +322,7 @@ imgy = 224 #100
 mx = 8 #16 #10
 my = 8 #16 #10
 #bulkCreate(imgx,imgy,mx,my,1000,"expert_data/random224_8",True)
-
+#processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
 
 

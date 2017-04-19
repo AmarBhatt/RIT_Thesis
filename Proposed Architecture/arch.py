@@ -3,7 +3,7 @@ import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
-import alexnet
+#import alexnet
 import sys as sys
 from PIL import Image
 import os.path
@@ -19,23 +19,71 @@ from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.normalization import local_response_normalization
 from tflearn.layers.estimator import regression
 
-def resUnit(input_layer,i):
-    with tf.variable_scope("res_unit"+str(i)):
-        part1 = slim.batch_norm(input_layer,activation_fn=None)
-        part2 = tf.nn.relu(part1)
-        part3 = slim.conv2d(part2,64,[3,3],activation_fn=None)
-        part4 = slim.batch_norm(part3,activation_fn=None)
-        part5 = tf.nn.relu(part4)
-        part6 = slim.conv2d(part5,64,[3,3],activation_fn=None)
-        output = input_layer + part6
-        return output
 
-def getData (location):
-	data = "" #store data as file names s,a,s'
-	return data
+def getData (data_loc,location,data_size,num_train,num_test):
+	f_data = location
+	f_file = data_loc
 
-def preprocess(data):
-	return _data
+	num = num_train
+	num2 = num_train + num_test
+
+	if not os.path.isfile(f_file):
+		print("Premade dataset for "+f_file+" does not exist. Creating new data.")
+		episode_lengths = []
+		episode_start = []
+		episode_total = 0
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0),data_size)
+
+		x_train = image_set
+		y_train = action_set
+
+		episode_lengths.append(action_set.shape[0])
+		episode_start.append(episode_total)
+		episode_total += image_set.shape[0]
+		for i in range(1,num):
+			if (i%(num//10) == 0):
+				print(i)
+			image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i),data_size)
+			x_train = np.append(x_train,image_set,axis=0)
+			y_train = np.append(y_train,action_set, axis=0)
+			episode_lengths.append(action_set.shape[0])
+			episode_start.append(episode_total)
+			episode_total += image_set.shape[0]
+		
+		print("Training set size - X: "+str(x_train.shape)+", Y: "+str(y_train.shape))
+
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num),data_size)
+
+		x_test = image_set
+		y_test = action_set
+
+		for i in range(num+1,num2):
+			image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i),data_size)
+			x_test = np.append(x_test,image_set,axis=0)
+			y_test = np.append(y_test,action_set, axis=0)
+
+		print("Testing set size - X: "+str(x_test.shape)+", Y: "+str(y_test.shape))
+		
+		with h5py.File(f_file,'w') as hf:
+			hf.create_dataset("x_train",data=x_train, shape = x_train.shape)
+			hf.create_dataset("y_train",data=y_train, shape = y_train.shape)
+			hf.create_dataset("episode_lengths",data=episode_lengths)
+			hf.create_dataset("episode_start",data=episode_start)
+			hf.create_dataset("episode_total",data = [episode_total])
+			hf.create_dataset("x_test",data=x_test, shape=x_test.shape)
+			hf.create_dataset("y_test",data=y_test, shape=y_test.shape)
+	else:
+		with h5py.File(f_file, 'r') as hf:
+			x_train = hf['x_train'][:]
+			y_train = hf['y_train'][:]
+			episode_lengths = hf['episode_lengths'][:]
+			episode_start = hf['episode_lengths'][:]
+			episode_total = hf['episode_total'][:]
+			episode_total = episode_total[0]
+			x_test = hf['x_test'][:]
+			y_test = hf['y_test'][:]
+	return x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test 
+
 
 def train(net,data,labels,n_epoch=1000,batch_size=32,show_metric=True):
 	model = tflearn.DNN(net)
@@ -46,7 +94,7 @@ def train(net,data,labels,n_epoch=1000,batch_size=32,show_metric=True):
 def evaluate(input_data, model):
 	return model.predict(input_data)
 
-def _DAQN(X,Y,learning_rate=0.01):
+def _DAQN(X,Y,shape,learning_rate=0.01):
 	"""
 	Input: 83x83x? (? = 1-4)
 
@@ -80,7 +128,7 @@ def _DAQN(X,Y,learning_rate=0.01):
 
 		
 	# Input
-	net = tflearn.input_data(shape=[None,100,100,1], placeholder = X, name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
+	net = tflearn.input_data(shape=[None,shape,shape,1], placeholder = X, name="inputlayer") #CHECK IF THESE ARE THE RIGHT DIMENSIONS!
 
 	# layer 1
 	net = tflearn.layers.conv.conv_2d(net,nb_filter=16,filter_size=[8,8], strides=[1,4,4,1], padding="valid",activation='relu',name="convlayer1")
@@ -217,210 +265,88 @@ def generateNetworkStructure():
 	writer.flush()
 	writer.close()		
 
+data_loc = "same_1000.h5"
+location = "same"
+data_size = 83
+num_train = 800
+num_test = 200
 
+netName = "daqn"
+log = netName + "_log"
 
-#graph = tf.Graph()
-#with graph.as_default():
-	#Place Holder
-
-f_data = "random"
-f_file = "random.h5"
-
-netName = "alexnet" #daqn
-
-num = 80
-num2 = 100
-num_epochs = 10 #20
+num_epochs = 100 #20
 episodes = 50
-
-if not os.path.isfile(f_file):
-
-	episode_lengths = []
-	episode_start = []
-	episode_total = 0
-	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0))
-
-	x_train = image_set
-	y_train = action_set
-
-	episode_lengths.append(action_set.shape[0])
-	episode_start.append(episode_total)
-	episode_total += image_set.shape[0]
-	for i in range(1,num):
-		print(i)
-		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
-		x_train = np.append(x_train,image_set,axis=0)
-		y_train = np.append(y_train,action_set, axis=0)
-		episode_lengths.append(action_set.shape[0])
-		episode_start.append(episode_total)
-		episode_total += image_set.shape[0]
-	#print(episode_lengths)
-	print(x_train.shape)
-	print(y_train.shape)
-
-	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num))
-
-	x_test = image_set
-	y_test = action_set
-
-	for i in range(num+1,num2):
-		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i))
-		x_test = np.append(x_test,image_set,axis=0)
-		y_test = np.append(y_test,action_set, axis=0)
-
-	print(x_test.shape)
-	print(y_test.shape)
-	
-	with h5py.File(f_file,'w') as hf:
-		hf.create_dataset("x_train",data=x_train, shape = x_train.shape)
-		hf.create_dataset("y_train",data=y_train, shape = y_train.shape)
-		hf.create_dataset("episode_lengths",data=episode_lengths)
-		hf.create_dataset("episode_start",data=episode_start)
-		hf.create_dataset("episode_total",data = [episode_total])
-		hf.create_dataset("x_test",data=x_test, shape=x_test.shape)
-		hf.create_dataset("y_test",data=y_test, shape=y_test.shape)
-else:
-	with h5py.File(f_file, 'r') as hf:
-		x_train = hf['x_train'][:]
-		y_train = hf['y_train'][:]
-		episode_lengths = hf['episode_lengths'][:]
-		episode_start = hf['episode_lengths'][:]
-		episode_total = hf['episode_total'][:]
-		episode_total = episode_total[0]
-		x_test = hf['x_test'][:]
-		y_test = hf['y_test'][:]
-
+batch_size = 1
+test_batch_size = 50
 
 n_classes = 5 #5 actions
 learning_rate = 0.001
 
+x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test = getData(data_loc,location,data_size,num_train,num_test)
 
 graph = tf.Graph()
 with graph.as_default():
 	#tf.reset_default_graph()
 	#Initialize variables
-	init = tf.global_variables_initializer()
+	
 	if(netName == "daqn"):	
 		# Store layers weight & bias
-		weights = {
-		    # 8x8 conv, 1 input, 16 outputs
-		    'wc1': tf.Variable(tf.random_normal([8, 8, 1, 16])),
-		    # 4x4 conv, 16 inputs, 32 outputs
-		    'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
-		    # fully connected, 7*7*64 inputs, 1024 outputs
-		    'wd1': tf.Variable(tf.random_normal([11*11*32, 256])), #was [21*21*32, 256] without Max Pool
-		    # 1024 inputs, 10 outputs (class prediction)
-		    'out': tf.Variable(tf.random_normal([256, n_classes]))
-		}
+		# weights = {
+		#     # 8x8 conv, 1 input, 16 outputs
+		#     'wc1': tf.Variable(tf.random_normal([8, 8, 1, 16])),
+		#     # 4x4 conv, 16 inputs, 32 outputs
+		#     'wc2': tf.Variable(tf.random_normal([4, 4, 16, 32])),
+		#     # fully connected, 7*7*64 inputs, 1024 outputs
+		#     'wd1': tf.Variable(tf.random_normal([11*11*32, 256])), #was [21*21*32, 256] without Max Pool
+		#     # 1024 inputs, 10 outputs (class prediction)
+		#     'out': tf.Variable(tf.random_normal([256, n_classes]))
+		# }
 
-		biases = {
-		    'bc1': tf.Variable(tf.random_normal([16])),
-		    'bc2': tf.Variable(tf.random_normal([32])),
-		    'bd1': tf.Variable(tf.random_normal([256])),
-		    'out': tf.Variable(tf.random_normal([n_classes]))
-		}	
-
-
+		# biases = {
+		#     'bc1': tf.Variable(tf.random_normal([16])),
+		#     'bc2': tf.Variable(tf.random_normal([32])),
+		#     'bd1': tf.Variable(tf.random_normal([256])),
+		#     'out': tf.Variable(tf.random_normal([n_classes]))
+		# }
 		#Place Holder
-		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
-		Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
-		net = DAQN(X,Y, weights, biases)
+		X = tf.placeholder(shape=[None,data_size,data_size,1], dtype="float32",name='s')
+		X = tf.reshape(X, [-1, data_size, data_size, 1])
+
+		Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
+		net = DAQN(X,Y)
 		daqn = net.outpost
 		daqn_presoft = net.outpre
 		
 		# Define Loss and optimizer
-		cost = sse(daqn,Y)
+		#cost = sse(daqn,Y)
+		cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=daqn_presoft,
+													labels=Y)
+		cost = tf.reduce_mean(cross_entropy)
+
 		optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate)
 		update = optimizer.minimize(cost)
-		# Evaluate model
 		
-		#def correct_pred(net,Y):		
-
+		# Evaluate model
 		pred = tf.argmax(daqn, 1)
 		pred = tf.Print(pred,[pred],message="prediction is: ")
 		true = tf.argmax(Y, 1)
 		true = tf.Print(true,[true],message="truth is: ")
 
-		#	return tf.equal(pred, true)
-		correct_pred = tf.equal(pred, true) #1 instead of 0?
-		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-
-		# #Initialize variables
-		# init = tf.global_variables_initializer()
-#print(daqn)
-#print(darn)
-#x_data = np.random.rand(1,100,100,1)
-#y_data = np.random.rand(1,5)
-	elif (netName == "resnet"):
-		total_layers = 25 #Specify how deep we want our network
-		units_between_stride = total_layers // 5
-		# tf.reset_default_graph()
-		X = tf.placeholder(shape=[None,100,100,1],dtype=tf.float32,name='input')
-		label_layer = tf.placeholder(shape=[None],dtype=tf.int32)
-		Y = slim.layers.one_hot_encoding(label_layer,5)
-
-		layer1 = slim.conv2d(X,64,[3,3],normalizer_fn=slim.batch_norm,scope='conv_'+str(0))
-		for i in range(5):
-		    for j in range(units_between_stride):
-		        layer1 = resUnit(layer1,j + (i*units_between_stride))
-		    layer1 = slim.conv2d(layer1,64,[3,3],stride=[2,2],normalizer_fn=slim.batch_norm,scope='conv_s_'+str(i))
-		    
-		top = slim.conv2d(layer1,5,[3,3],normalizer_fn=slim.batch_norm,activation_fn=None,scope='conv_top')
-
-		output = slim.layers.softmax(slim.layers.flatten(top))
-
-		pred = tf.argmax(output, 1)
-		pred = tf.Print(pred,[pred],message="prediction is: ")
-		true = tf.argmax(Y, 1)
-		true = tf.Print(true,[true],message="truth is: ")
 
 		correct_pred = tf.equal(pred, true) #1 instead of 0?
 		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-		cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(output) + 1e-10, axis=[1]))
-		trainer = tf.train.AdamOptimizer(learning_rate=0.001)
-		update = trainer.minimize(cost)
-	elif (netName == "alexnet"):
-		#X = tf.placeholder(shape=[None,100,100,1],dtype=tf.float32,name='input')
-		Y = tf.placeholder(shape=[None,5], dtype="float32", name='a')
-		
-		output, X = alexnet.get_graph()
-
-		print(output.shape)
-		print(Y.shape)
-
-		cost = tf.reduce_mean( -tf.reduce_sum(Y * tf.log(output), reduction_indices=[1]) )
-            
-		global_step = tf.Variable(0)
-        
-		
-		gradient_descent_opt = tf.train.GradientDescentOptimizer(0.001)
-
-		pred = tf.argmax(output, 1)
-		pred = tf.Print(pred,[pred],message="prediction is: ")
-		true = tf.argmax(Y, 1)
-		true = tf.Print(true,[true],message="truth is: ")
-
-		correct_pred = tf.equal(pred, true) #1 instead of 0?
-		accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-
-		#tf.trainable_variables()
-
-		update = gradient_descent_opt.minimize(cost,global_step=global_step)
-
-#Initialize variables
-#init = tf.global_variables_initializer()
-
+	init = tf.global_variables_initializer()
 
 with tf.Session(graph=graph) as sess:
 	sess.run(init)	
-	writer = tf.summary.FileWriter('DAQN_log_test',graph=sess.graph)
+	writer = tf.summary.FileWriter(log,graph=sess.graph)
 	
 	for epoch in range(num_epochs):
 			print("Epoch: "+str(epoch))
 			for ep in range(episodes):
 
-				ind =  random.sample(range(0, x_train.shape[0]), 1)#random.sample(range(0, num), 1)[0]
+				ind =  random.sample(range(0, x_train.shape[0]), batch_size)#random.sample(range(0, num), 1)[0]
 				#indx = episode_start[ind]
 				ind_data = ind#list(range(indx,indx+episode_lengths[ind]))
 
@@ -440,80 +366,12 @@ with tf.Session(graph=graph) as sess:
 	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	                  "{:.5f}".format(acc))
 			
-			print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test,
-                                      Y: y_test}))
+			ind =  random.sample(range(0, x_test.shape[0]), test_batch_size)
+			x_test_batch = x_test[ind,:,:,:]
+			y_test_true_batch = y_test[ind,:]	
 
-
-			# prediction=tf.argmax(daqn,1)
-			# result = model.predict(x_test)
-			# final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-			# pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-			# for i in range(len(result)):
-			# 	r = result[i]
-			# 	a = np.where(y_test[i] == y_test[i].max())
-			# 	r = r.index(max(r))
-			# 	pred_result[i] = r
-			# 	#print(r,a[0][0])
-			# 	final_result[i] = int(r) == int(a[0][0])
-
-			# print(result)
-			# 	#print(final_result)
-			# print("Test results: " + str(epoch))
-			# print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
-			# print(np.mean(final_result))
-			# print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
-			
-
-			
-	
-
+			print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test_batch,
+                                      Y: y_test_true_batch}))
 
 writer.flush()
-writer.close()	
-
-
-
-#x_data = np.random.rand(2,100,100,1)
-#y_data = np.random.rand(2,5)
-
-# with tf.Graph().as_default():
-# 	with tf.Session() as sess:
-# 		X = tf.placeholder(shape=[None,100,100,1], dtype="float32",name='s')
-# 		Y = tf.placeholder(shape=[1,5], dtype="float32", name='a')
-# 		daqn,daqn_presoft = DAQN(X,None,0.01)
-# 		model = tflearn.DNN(daqn)
-# 		for epoch in range(num_epochs):
-# 			print("Epoch: "+str(epoch))
-# 			for ep in range(episodes):
-
-# 				ind = random.sample(range(0, num), 1)[0]
-# 				indx = episode_start[ind]
-# 				ind_data = list(range(indx,indx+episode_lengths[ind]))
-
-# 				#print(ind, indx, len(ind_data))
-# 				x_data = x_train[ind_data,:,:,:]
-# 				y_data = y_train[ind_data,:]
-# 				print("Epoch: "+str(epoch)+" Episode: " + str(ep) + " Data: "+str(ind)+" Data Size: " + str(x_data.shape[0]))
-# 				model.fit(x_data,y_data,n_epoch=1,batch_size=1, validation_set = 0.0, show_metric=True)
-# 		#result = sess.run(daqn_presoft, feed_dict={X : x_data})
-
-# 			prediction=tf.argmax(daqn,1)
-# 			result = model.predict(x_test)
-# 			final_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-# 			pred_result = np.zeros(shape=[y_test.shape[0]], dtype=np.uint8)
-# 			for i in range(len(result)):
-# 				r = result[i]
-# 				a = np.where(y_test[i] == y_test[i].max())
-# 				r = r.index(max(r))
-# 				pred_result[i] = r
-# 				#print(r,a[0][0])
-# 				final_result[i] = int(r) == int(a[0][0])
-
-# 			print(result)
-# 				#print(final_result)
-# 			print("Test results: " + str(epoch))
-# 			print("0: "+str((pred_result==0).sum()) +", 1: "+str((pred_result==1).sum()) + ", 2: "+str((pred_result==2).sum()) + ", 3: "+str((pred_result==3).sum()) + ", 4: "+str((pred_result==4).sum()))
-# 			print(np.mean(final_result))
-# 			print(str(np.count_nonzero(final_result)) + '/' + str(y_test.shape[0]))
-# 			input("hello")
-
+writer.close()
