@@ -251,9 +251,12 @@ for t in range(0,num_test):
 	#input("Pause")
 	#print(t,failed,done)
 	count = 0
+	frames = []
+	f = open("results/"+location+"/"+str(t)+".txt",'w')
 	while(not done and not failed):# and count < count_max):
         #preprocess
 		full_image = Image.fromarray(data.squeeze(axis=2), 'L')
+		frames.append(full_image)
 		#full_image.show()
 		#input("Pause")
 		img = preprocessing(full_image,data_size)
@@ -264,6 +267,8 @@ for t in range(0,num_test):
 		action = sess_darn.run(darn_presoft,feed_dict={X_darn: [pixels]})
 		#print(action)
 		action = np.argmax(action[0])
+		f.write(str(action))
+		f.write('\n')
 		#print(action)
 		data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
 		#print(new_state)
@@ -287,7 +292,9 @@ for t in range(0,num_test):
 			#print(str(t)+": Took too long!")
 
 		count+=1
-	
+	frames[0].save("results/"+location+"/"+str(t)+".gif",save_all=True, append_images=frames[1:])
+	f.flush()
+	f.close()
 	#print(result.size,t+1)
 
 
