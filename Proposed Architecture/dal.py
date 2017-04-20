@@ -25,6 +25,7 @@ from tflearn.layers.estimator import regression
 
 data_loc = "same_1000.h5"
 location = "same"
+same = True
 data_size = 83
 num_train = 800
 num_test = 200
@@ -40,7 +41,7 @@ episodes = 5
 num_epochs_darn = 10 #20
 episodes_darn = 5
 batch_size = 5
-batch_size_darn = 10
+batch_size_darn = 50
 test_batch_size = 50
 
 n_classes = 5 #5 actions
@@ -227,14 +228,30 @@ for epoch in range(num_epochs_darn):
 
 result = np.zeros(num_test)
 count_max = 100
+same_image = None
+if same:
+	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+location+"/"+str(0),100)
+	pixels = image_set[0,:,:,:]
+	pixels = pixels.squeeze(axis=2)
+	for i in range(100):
+		for j in range(100):
+			if(pixels[j,i] == 64):
+				pixels[j, i] = 255
+
+	same_image = Image.fromarray(pixels, 'L')
+	#same_image.show()
+	#input("Pause")
+
 
 #Test Network
 for t in range(0,num_test):
 
-	data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None)
+	data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None,feed=same_image)
+	#image.show()
+	#input("Pause")
 	#print(t,failed,done)
 	count = 0
-	while(not done and not failed and count < count_max):
+	while(not done and not failed):# and count < count_max):
         #preprocess
 		full_image = Image.fromarray(data.squeeze(axis=2), 'L')
 		#full_image.show()
@@ -253,15 +270,21 @@ for t in range(0,num_test):
 		#print(done,failed)
 		#img = Image.fromarray(data.squeeze(axis=2), 'L')
 		#img.show()
+		if(count == count_max):
+			failed = 1;
+
 		if(failed):
 			result[t] = 0
-			print(str(t)+": You hit a wall!")
+			if(count >= count_max):
+				print(str(t)+": You took too long")
+			else:
+				print(str(t)+": You hit a wall!")
 		elif(done):
 			result[t] = 1
 			print(str(t)+": You won!")
-		elif(count >= count_max):
-			result[t] = 0
-			print(str(t)+": Took too long!")
+		#elif(count >= count_max):
+			#result[t] = 0
+			#print(str(t)+": Took too long!")
 
 		count+=1
 	
