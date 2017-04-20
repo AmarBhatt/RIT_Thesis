@@ -52,6 +52,7 @@ restore_epoch = num_epochs-1
 
 x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test = getData(data_loc,location,data_size,num_train,num_test)
 
+f = open("results/daqn_logs/"+location+".txt",'w')
 
 graph_daqn = tf.Graph()
 with graph_daqn.as_default():
@@ -113,6 +114,10 @@ with tf.Session(graph=graph_daqn) as sess:
 				print("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
 	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	                  "{:.5f}".format(acc))
+				f.write("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
+	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
+	                  "{:.5f}".format(acc))
+				f.write('\n')
 			if(epoch%(num_epochs//10) == 0):
 				daqn_save_path = saver_daqn.save(sess, daqn_model_path)#, global_step=epoch)
 				print("Model saved in file: %s" % daqn_save_path)
@@ -121,13 +126,18 @@ with tf.Session(graph=graph_daqn) as sess:
 			x_test_batch = x_test[ind,:,:,:]
 			y_test_true_batch = y_test[ind,:]	
 
-			print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test_batch,
-                                      Y: y_test_true_batch}))
+			val = sess.run(accuracy, feed_dict={X: x_test_batch,
+                                      Y: y_test_true_batch})
 
-	#saver.save(sess, 'saved-models/daqn')
+			print("Testing Accuracy "+str(epoch)+": ", val)
+			f.write("Testing Accuracy "+str(epoch)+": "+ str(val))
+			f.write('\n')
+f.flush()
+f.close()
 writer.flush()
 writer.close()
 
+f = open("results/darn_logs/"+location+".txt",'w')
 
 graph_darn = tf.Graph()
 with graph_darn.as_default():
@@ -213,6 +223,10 @@ for epoch in range(num_epochs_darn):
 		print("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
               "{:.6f}".format(loss) + ", Training Accuracy= " + \
               "{:.5f}".format(acc))
+		f.write("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
+	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
+	                  "{:.5f}".format(acc))
+		f.write('\n')
 	if(epoch%(num_epochs//10) == 0):
 		darn_save_path = saver_darn.save(sess_darn, darn_model_path)#, global_step=epoch)
 		print("Model saved in file: %s" % darn_save_path)
@@ -224,7 +238,8 @@ for epoch in range(num_epochs_darn):
 	# print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test_batch,
  #                              Y: y_test_true_batch}))
 
-
+f.flush()
+f.close()
 
 result = np.zeros(num_test)
 count_max = 100
@@ -284,9 +299,13 @@ for t in range(0,num_test):
 				print(str(t)+": You took too long")
 			else:
 				print(str(t)+": You hit a wall!")
+			f.write("FAIL")
+			f.write('\n')
 		elif(done):
 			result[t] = 1
 			print(str(t)+": You won!")
+			f.write("PASS")
+			f.write('\n')
 		#elif(count >= count_max):
 			#result[t] = 0
 			#print(str(t)+": Took too long!")

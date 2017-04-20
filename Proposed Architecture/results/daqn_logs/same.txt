@@ -1,0 +1,60 @@
+Epoch= 0, Episode= 0, Minibatch Loss= 15.243952, Training Accuracy= 0.00000
+Epoch= 0, Episode= 1, Minibatch Loss= 11.621177, Training Accuracy= 0.20000
+Epoch= 0, Episode= 2, Minibatch Loss= 12.740692, Training Accuracy= 0.00000
+Epoch= 0, Episode= 3, Minibatch Loss= 8.699366, Training Accuracy= 0.00000
+Epoch= 0, Episode= 4, Minibatch Loss= 7.454889, Training Accuracy= 0.40000
+Testing Accuracy 0: 0.18
+Epoch= 1, Episode= 0, Minibatch Loss= 6.474813, Training Accuracy= 0.20000
+Epoch= 1, Episode= 1, Minibatch Loss= 5.240227, Training Accuracy= 0.20000
+Epoch= 1, Episode= 2, Minibatch Loss= 7.663466, Training Accuracy= 0.00000
+Epoch= 1, Episode= 3, Minibatch Loss= 2.748048, Training Accuracy= 0.20000
+Epoch= 1, Episode= 4, Minibatch Loss= 4.981768, Training Accuracy= 0.40000
+Testing Accuracy 1: 0.28
+Epoch= 2, Episode= 0, Minibatch Loss= 5.950356, Training Accuracy= 0.40000
+Epoch= 2, Episode= 1, Minibatch Loss= 5.609289, Training Accuracy= 0.00000
+Epoch= 2, Episode= 2, Minibatch Loss= 3.356227, Training Accuracy= 0.20000
+Epoch= 2, Episode= 3, Minibatch Loss= 4.500247, Training Accuracy= 0.20000
+Epoch= 2, Episode= 4, Minibatch Loss= 2.534738, Training Accuracy= 0.20000
+Testing Accuracy 2: 0.16
+Epoch= 3, Episode= 0, Minibatch Loss= 1.243445, Training Accuracy= 0.80000
+Epoch= 3, Episode= 1, Minibatch Loss= 3.367130, Training Accuracy= 0.00000
+Epoch= 3, Episode= 2, Minibatch Loss= 3.077755, Training Accuracy= 0.40000
+Epoch= 3, Episode= 3, Minibatch Loss= 5.648479, Training Accuracy= 0.00000
+Epoch= 3, Episode= 4, Minibatch Loss= 1.160720, Training Accuracy= 0.40000
+Testing Accuracy 3: 0.06
+Epoch= 4, Episode= 0, Minibatch Loss= 1.726186, Training Accuracy= 0.60000
+Epoch= 4, Episode= 1, Minibatch Loss= 5.013829, Training Accuracy= 0.20000
+Epoch= 4, Episode= 2, Minibatch Loss= 4.475802, Training Accuracy= 0.40000
+Epoch= 4, Episode= 3, Minibatch Loss= 2.723247, Training Accuracy= 0.60000
+Epoch= 4, Episode= 4, Minibatch Loss= 1.826771, Training Accuracy= 0.60000
+Testing Accuracy 4: 0.34
+Epoch= 5, Episode= 0, Minibatch Loss= 2.653981, Training Accuracy= 0.00000
+Epoch= 5, Episode= 1, Minibatch Loss= 3.123108, Training Accuracy= 0.20000
+Epoch= 5, Episode= 2, Minibatch Loss= 2.882381, Training Accuracy= 0.20000
+Epoch= 5, Episode= 3, Minibatch Loss= 1.700634, Training Accuracy= 0.60000
+Epoch= 5, Episode= 4, Minibatch Loss= 2.478656, Training Accuracy= 0.40000
+Testing Accuracy 5: 0.14
+Epoch= 6, Episode= 0, Minibatch Loss= 4.459090, Training Accuracy= 0.20000
+Epoch= 6, Episode= 1, Minibatch Loss= 1.051365, Training Accuracy= 0.80000
+Epoch= 6, Episode= 2, Minibatch Loss= 3.498354, Training Accuracy= 0.20000
+Epoch= 6, Episode= 3, Minibatch Loss= 2.694844, Training Accuracy= 0.60000
+Epoch= 6, Episode= 4, Minibatch Loss= 2.198716, Training Accuracy= 0.00000
+Testing Accuracy 6: 0.18
+Epoch= 7, Episode= 0, Minibatch Loss= 3.540899, Training Accuracy= 0.00000
+Epoch= 7, Episode= 1, Minibatch Loss= 2.871378, Training Accuracy= 0.00000
+Epoch= 7, Episode= 2, Minibatch Loss= 2.194722, Training Accuracy= 0.00000
+Epoch= 7, Episode= 3, Minibatch Loss= 2.882096, Training Accuracy= 0.00000
+Epoch= 7, Episode= 4, Minibatch Loss= 1.591805, Training Accuracy= 0.20000
+Testing Accuracy 7: 0.2
+Epoch= 8, Episode= 0, Minibatch Loss= 6.309667, Training Accuracy= 0.20000
+Epoch= 8, Episode= 1, Minibatch Loss= 3.542477, Training Accuracy= 0.20000
+Epoch= 8, Episode= 2, Minibatch Loss= 1.646746, Training Accuracy= 0.20000
+Epoch= 8, Episode= 3, Minibatch Loss= 2.751023, Training Accuracy= 0.20000
+Epoch= 8, Episode= 4, Minibatch Loss= 4.200598, Training Accuracy= 0.20000
+Testing Accuracy 8: 0.24
+Epoch= 9, Episode= 0, Minibatch Loss= 2.263013, Training Accuracy= 0.40000
+Epoch= 9, Episode= 1, Minibatch Loss= 5.314602, Training Accuracy= 0.00000
+Epoch= 9, Episode= 2, Minibatch Loss= 3.311593, Training Accuracy= 0.00000
+Epoch= 9, Episode= 3, Minibatch Loss= 2.606042, Training Accuracy= 0.20000
+Epoch= 9, Episode= 4, Minibatch Loss= 3.124336, Training Accuracy= 0.00000
+Testing Accuracy 9: 0.18
