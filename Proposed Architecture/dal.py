@@ -30,7 +30,7 @@ same = True
 data_size = 83
 num_train = 800
 num_test = 200
-num_reward = 100#0
+num_reward = 1000
 path = os.path.dirname(os.path.realpath(__file__))
 netName = "daqn"
 log = netName + "_log"
@@ -38,11 +38,11 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 10 #20
-episodes = 5
-num_epochs_darn = 10 #20
-episodes_darn = 5
-batch_size = 5
+num_epochs = 1000 #20
+episodes = 50
+num_epochs_darn = 1000 #20
+episodes_darn = 50
+batch_size = 50
 batch_size_darn = 50
 test_batch_size = 50
 
@@ -105,7 +105,7 @@ with tf.Session(graph=graph_daqn) as sess:
 		#print("Epoch: "+str(epoch))
 		for ep in range(episodes):
 
-			ind =  random.sample(range(0, x_train.shape[0]), batch_size)#random.sample(range(0, num), 1)[0]
+			ind =  np.random.choice(range(0, x_train.shape[0]),replace=False,size=batch_size)#random.sample(range(0, num), 1)[0]
 			#indx = episode_start[ind]
 			ind_data = ind#list(range(indx,indx+episode_lengths[ind]))
 
@@ -132,7 +132,7 @@ with tf.Session(graph=graph_daqn) as sess:
 			daqn_save_path = saver_daqn.save(sess, daqn_model_path)#, global_step=epoch)
 			print("Model saved in file: %s" % daqn_save_path)
 
-		ind =  random.sample(range(0, x_test.shape[0]), test_batch_size)
+		ind =  np.random.choice(range(0, x_test.shape[0]),replace=False,size=test_batch_size)
 		x_test_batch = x_test[ind,:,:,:]
 		y_test_true_batch = y_test[ind,:]	
 
@@ -217,7 +217,7 @@ for epoch in range(num_epochs_darn):
 		# action = y_train[state_ind,:]
 		# state_p = x_train[state_ind+1,:,:,:]
 
-		ind = random.sample(range(0,state.shape[0]),batch_size_darn)
+		ind = np.random.choice(range(0,state.shape[0]),replace=False,size=batch_size_darn)
 		st = state[ind,:,:,:]
 		a = action[ind,:]
 		st_p = state_prime[ind,:,:,:]

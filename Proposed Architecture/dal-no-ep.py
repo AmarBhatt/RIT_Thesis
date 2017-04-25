@@ -28,9 +28,9 @@ location = "same"
 rew_location = "same"
 same = True
 data_size = 83
-num_train = 80#0
-num_test = 20#0
-num_reward = 100#0
+num_train = 800
+num_test = 200
+num_reward = 1000
 path = os.path.dirname(os.path.realpath(__file__))
 netName = "daqn"
 log = netName + "_log"
@@ -38,13 +38,13 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 100 #20
-episodes = 5
-num_epochs_darn = 100 #20
-episodes_darn = 5
-batch_size = 5
-batch_size_darn = 5
-test_batch_size = 5
+num_epochs = 2000 #20
+#episodes = 50
+num_epochs_darn = 50000 #20
+#episodes_darn = 50
+batch_size = 20
+batch_size_darn = 30
+test_batch_size = 50
 
 n_classes = 5 #5 actions
 learning_rate = 0.1
@@ -115,9 +115,9 @@ with graph_daqn.as_default():
 	
 	# Evaluate model
 	pred_darn = tf.multiply(daqn_presoft,action_true)
-	pred_darn = tf.Print(pred_darn,[pred_darn],message="prediction is: ")
+	#pred_darn = tf.Print(pred_darn,[pred_darn],message="prediction is: ")
 	true_darn = Y
-	true_darn = tf.Print(true_darn,[true_darn],message="truth is: ")
+	#true_darn = tf.Print(true_darn,[true_darn],message="truth is: ")
 
 	correct_pred_darn = tf.subtract(pred_darn, true_darn) #1 instead of 0?
 	accuracy_darn = tf.cast(tf.reduce_max(tf.abs(correct_pred_darn)), tf.float32)
@@ -131,7 +131,7 @@ with tf.Session(graph=graph_daqn) as sess:
 	writer = tf.summary.FileWriter(log,graph=sess.graph)
 	
 	for epoch in range(num_epochs):
-		ind =  random.sample(range(0, x_train.shape[0]), batch_size)#random.sample(range(0, num), 1)[0]
+		ind =  np.random.choice(range(0, x_train.shape[0]),replace=False, size=batch_size)#random.sample(range(0, num), 1)[0]
 		#indx = episode_start[ind]
 		ind_data = ind#list(range(indx,indx+episode_lengths[ind]))
 
@@ -158,7 +158,7 @@ with tf.Session(graph=graph_daqn) as sess:
 			daqn_save_path = saver_daqn.save(sess, daqn_model_path)#, global_step=epoch)
 			print("Model saved in file: %s" % daqn_save_path)
 
-			ind =  random.sample(range(0, x_test.shape[0]), test_batch_size)
+			ind =  np.random.choice(range(0, x_test.shape[0]),replace=False,size=test_batch_size)
 			x_test_batch = x_test[ind,:,:,:]
 			y_test_true_batch = y_test[ind,:]	
 
@@ -171,7 +171,7 @@ with tf.Session(graph=graph_daqn) as sess:
 	daqn_save_path = saver_daqn.save(sess, daqn_model_path)#, global_step=epoch)
 	print("Model saved in file: %s" % daqn_save_path)
 
-	ind =  random.sample(range(0, x_test.shape[0]), test_batch_size)
+	ind =  np.random.choice(range(0, x_test.shape[0]),replace=False,size=test_batch_size)
 	x_test_batch = x_test[ind,:,:,:]
 	y_test_true_batch = y_test[ind,:]	
 
@@ -256,7 +256,7 @@ for epoch in range(num_epochs_darn):
 	# action = y_train[state_ind,:]
 	# state_p = x_train[state_ind+1,:,:,:]
 
-	ind = random.sample(range(0,state.shape[0]),batch_size_darn)
+	ind = np.random.choice(range(0,state.shape[0]),replace=False,size=batch_size_darn)
 	st = state[ind,:,:,:]
 	a = action[ind,:]
 	st_p = state_prime[ind,:,:,:]

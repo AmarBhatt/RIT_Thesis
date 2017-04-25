@@ -1,2 +1,2 @@
 1
-FAIL
+PASS

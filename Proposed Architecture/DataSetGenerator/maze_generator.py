@@ -368,7 +368,7 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
                     valid = True 
                     sy = sy-1
                     sx = sx   
-            if action == 4:
+            if action == 4 and gw.world_grid[sy,sx] == 2:
                 val_action = 4
                 valid = True 
                 sy = sy
