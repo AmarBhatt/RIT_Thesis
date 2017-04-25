@@ -20,7 +20,7 @@ from tflearn.layers.normalization import local_response_normalization
 from tflearn.layers.estimator import regression
 
 
-def getData (data_loc,location,data_size,num_train,num_test):
+def getData (data_loc,location,rew_location,data_size,num_train,num_test,num_reward):
 	f_data = location
 	f_file = data_loc
 
@@ -52,8 +52,6 @@ def getData (data_loc,location,data_size,num_train,num_test):
 		
 		print("Training set size - X: "+str(x_train.shape)+", Y: "+str(y_train.shape))
 
-		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(num),data_size)
-
 		x_test = image_set
 		y_test = action_set
 
@@ -63,6 +61,27 @@ def getData (data_loc,location,data_size,num_train,num_test):
 			y_test = np.append(y_test,action_set, axis=0)
 
 		print("Testing set size - X: "+str(x_test.shape)+", Y: "+str(y_test.shape))
+
+		image_set,action_set = processGIF('DataSetGenerator/random_data/'+rew_location+"/"+str(i),data_size)
+
+		state = [image_set[0,:,:,:]]
+		action = [action_set[0,:]]
+		state_prime = [image_set[1,:,:,:]]
+		action_prime = [action_set[1,:]]
+
+		for i in range(1,num_reward):
+			image_set,action_set = processGIF('DataSetGenerator/random_data/'+rew_location+"/"+str(i),data_size)
+
+			state = np.append(state,[image_set[0,:,:,:]],axis=0)
+			action = np.append(action,[action_set[0,:]],axis=0)
+			state_prime = np.append(state_prime,[image_set[1,:,:,:]],axis=0)
+			action_prime = np.append(action_prime,[action_set[1,:]],axis=0)
+			
+
+		print("Reward set size - State: "+str(state.shape)+", Action: "+str(action.shape)+", State': "+str(state_prime.shape)+", Action': "+str(action_prime.shape))
+
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0),data_size)
+
 		
 		with h5py.File(f_file,'w') as hf:
 			hf.create_dataset("x_train",data=x_train, shape = x_train.shape)
@@ -72,6 +91,10 @@ def getData (data_loc,location,data_size,num_train,num_test):
 			hf.create_dataset("episode_total",data = [episode_total])
 			hf.create_dataset("x_test",data=x_test, shape=x_test.shape)
 			hf.create_dataset("y_test",data=y_test, shape=y_test.shape)
+			hf.create_dataset("state",data=state, shape=state.shape)
+			hf.create_dataset("action",data=action, shape=action.shape)
+			hf.create_dataset("state_prime",data=state_prime, shape=state_prime.shape)
+			hf.create_dataset("action_prime",data=action_prime, shape=action_prime.shape)
 	else:
 		with h5py.File(f_file, 'r') as hf:
 			x_train = hf['x_train'][:]
@@ -82,7 +105,14 @@ def getData (data_loc,location,data_size,num_train,num_test):
 			episode_total = episode_total[0]
 			x_test = hf['x_test'][:]
 			y_test = hf['y_test'][:]
-	return x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test 
+			state = hf['state'][:]
+			action = hf['action'][:]
+			state_prime = hf['state_prime'][:]
+			action_prime = hf['action_prime'][:]
+			print("Training set size - X: "+str(x_train.shape)+", Y: "+str(y_train.shape))
+			print("Testing set size - X: "+str(x_test.shape)+", Y: "+str(y_test.shape))
+			print("Reward set size - State: "+str(state.shape)+", Action: "+str(action.shape)+", State': "+str(state_prime.shape)+", Action': "+str(action_prime.shape))
+	return x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime
 
 
 def train(net,data,labels,n_epoch=1000,batch_size=32,show_metric=True):
