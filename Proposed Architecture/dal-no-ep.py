@@ -38,12 +38,12 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 2000 #20
+num_epochs = 10000 #20
 #episodes = 50
-num_epochs_darn = 50000 #20
+num_epochs_darn = 10000 #20
 #episodes_darn = 50
-batch_size = 20
-batch_size_darn = 30
+batch_size = 50
+batch_size_darn = 50
 test_batch_size = 50
 
 n_classes = 5 #5 actions

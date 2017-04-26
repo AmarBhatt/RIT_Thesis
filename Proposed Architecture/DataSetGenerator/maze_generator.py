@@ -334,6 +334,10 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
     act_mx = imgx//mx
     act_my = imgy//my
 
+    #print(gw.world_grid)
+    #print(sx,sy)
+    #input("Pause")
+
     for p in range(0,2):
         valid = False
         i_tmp = image.copy()
@@ -342,7 +346,7 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
         for i in range(sy*act_my+2,sy*act_my+act_my-2):
             for j in range(sx*act_mx+2,sx*act_mx+act_mx-2):
                 pixels[j, i] = color
-        action = np.random.randint(5, size=1)
+        action = np.random.choice(5, size=1)[0]
         while not valid:        
             if action == 0 and sx+1 < act_mx:
                 if gw.world_grid[sy,sx+1] == 0 or gw.world_grid[sy,sx+1] == 2:
@@ -350,30 +354,33 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
                     sy = sy
                     sx = sx+1
                     valid = True
-            if action == 2 and sx-1 >= act_mx:
+            elif action == 2 and sx-1 >= 0:
                 if gw.world_grid[sy,sx-1] == 0 or gw.world_grid[sy,sx-1] == 2:
                     val_action = 2
                     valid = True
                     sy = sy
                     sx = sx-1
-            if action == 1 and sy+1 < act_my:
+            elif action == 1 and sy+1 < act_my:
                 if gw.world_grid[sy+1,sx] == 0 or gw.world_grid[sy+1,sx] == 2:
                     val_action = 1
                     valid = True
                     sy = sy+1
                     sx = sx    
-            if action == 3 and sy-1 >= act_my:
+            elif action == 3 and sy-1 >= 0:
                 if gw.world_grid[sy-1,sx] == 0 or gw.world_grid[sy-1,sx] == 2:
                     val_action = 3
                     valid = True 
                     sy = sy-1
                     sx = sx   
-            if action == 4 and gw.world_grid[sy,sx] == 2:
+            elif action == 4 and gw.world_grid[sy,sx] == 2:
                 val_action = 4
                 valid = True 
                 sy = sy
                 sx = sx   
-            action = np.random.randint(5, size=1)
+            #print(sy,sx,action)
+            #input("Pause")
+            action = np.random.choice(5, size=1)[0]
+            #print(action)
 
         f.write(str(val_action))
         f.write('\n')
@@ -383,37 +390,35 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
     f.close()
 
 
-def bulkCreate(imgx,imgy,mx,my,num_gen,location,rmaze,is_random):
-    if is_random:
-        if rmaze:
-            for i in range(num_gen):
-                maze, image = generate(imgx,imgy,mx,my)
-                obstacle_list,goal = find_obstacles(maze)
-                gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
-                file = location+"/"+str(i)
-                createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
-        else: #use the same map
+def bulkCreate(imgx,imgy,mx,my,num_gen,location,rew_location,rmaze):
+    
+    if rmaze:
+        for i in range(num_gen):
+            print(i)
             maze, image = generate(imgx,imgy,mx,my)
             obstacle_list,goal = find_obstacles(maze)
             gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
-            for i in range(num_gen):
-                file = location+"/"+str(i)
-                createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
-    else:
-        if rmaze:
-            for i in range(num_gen):
-                maze, image = generate(imgx,imgy,mx,my)
-                obstacle_list,goal = find_obstacles(maze)
-                gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
-                file = location+"/"+str(i)
-                createDataSet(file,gw,maze,image,mx,my,imgx,imgy)
-        else: #use the same map
+            file = location+"/"+str(i)
+            createDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+        for i in range(num_gen):
+            print(i)
             maze, image = generate(imgx,imgy,mx,my)
             obstacle_list,goal = find_obstacles(maze)
             gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
-            for i in range(num_gen):
-                file = location+"/"+str(i)
-                createDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+            file = rew_location+"/"+str(i)
+            createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+    else: #use the same map
+        maze, image = generate(imgx,imgy,mx,my)
+        obstacle_list,goal = find_obstacles(maze)
+        gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
+        for i in range(num_gen):
+            print(i)
+            file = location+"/"+str(i)
+            createDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+        for i in range(num_gen):
+            print(i)
+            file = rew_location+"/"+str(i)
+            createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
         #print(maze)
         #processGIF('test.gif')
 
@@ -421,7 +426,7 @@ imgx = 100 #100
 imgy = 100 #100
 mx = 10 #16 #10
 my = 10 #16 #10
-#bulkCreate(imgx,imgy,mx,my,1000,"random_data/same",False,True)
+#bulkCreate(imgx,imgy,mx,my,1000,"expert_data/same","random_data/same",False)
 #processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
 #environmentStepTest(imgx,imgy,mx,my)
