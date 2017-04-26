@@ -426,7 +426,7 @@ imgx = 100 #100
 imgy = 100 #100
 mx = 10 #16 #10
 my = 10 #16 #10
-#bulkCreate(imgx,imgy,mx,my,1000,"expert_data/same","random_data/same",False)
+bulkCreate(imgx,imgy,mx,my,10000,"expert_data/random","random_data/random",True)
 #processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
 #environmentStepTest(imgx,imgy,mx,my)
