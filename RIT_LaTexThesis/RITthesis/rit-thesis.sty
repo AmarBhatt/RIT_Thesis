@@ -222,6 +222,7 @@ rit-thesis documentation.}}{}
 \def\firstdept#1{\gdef\@firstdept{#1}}    % First Reader Department
 \def\seconddept#1{\gdef\@seconddept{#1}}  % Second Reader Department
 \def\thirddept#1{\gdef\@thirddept{#1}}    % Third Reader Department
+\def\fourthdept#1{\gdef\@fourthdept{#1}}    % Fourth Reader Department
 \def\thesistype#1{\gdef\@thesistype{#1}}
 \def\degreeType{Doctor of Philosophy}
 \def\degreeSymbol{Ph.D.}
@@ -233,7 +234,7 @@ rit-thesis documentation.}}{}
 \def\firstreader#1#2{\gdef\@firstreader{#1}\gdef\@firsttitle{#2}}
 \def\secondreader#1#2{\gdef\@secondreader{#1}\gdef\@secondtitle{#2}}
 \def\thirdreader#1#2{\gdef\@thirdreader{#1}\gdef\@thirdtitle{#2}}
-\def\fourthreader#1{\gdef\@fourthreader{#1}}
+\def\fourthreader#1#2{\gdef\@fourthreader{#1}\gdef\@fourthtitle{#2}}
 \def\grantdate#1#2{\gdef\@grantmonth{#1}\gdef\@grantyear{#2}}
 \def\copyrightyear#1{\gdef\@copyrightyear{#1}} % \author, \title in report
 \def\@title{}\def\@author{}\def\@dept{Computer Engineering}
@@ -259,13 +260,13 @@ rit-thesis documentation.}}{}
 		\signature{\@secondreader, \@secondtitle}{\em Committee Member, Department of \@seconddept}
 		\vfill
 		\iffoursigs
-        		\signature{\@thirdreader, \@thirdtitle}{\em Committee Member, \@thirddept}
+        		\signature{\@thirdreader, \@thirdtitle}{\em Committee Member, Department of \@thirddept}
 			\vfill
 		\fi
 		\iffivesigs
-			\signature\@thirdreader
+			\signature{\@thirdreader, \@thirdtitle}{\em Committee Member, Department of \@thirddept}
 			\vfill
-			\signature\@fourthreader
+			\signature{\@fourthreader, \@fourthtitle}{\em Committee Member, Department of \@fourthdept}
 			\vfill
 		\fi
 }

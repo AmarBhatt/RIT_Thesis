@@ -3,7 +3,7 @@ import tensorflow as tf
 
 class DAQN:
 
-	def __init__(self,X,Y):
+	def __init__(self,X,Y,pooling_bool = True):
 
 		"""
 			Input: 83x83x? (? = 1-4)
@@ -41,7 +41,7 @@ class DAQN:
 			   				num_input_channels=1, 
 			   				filter_size=8,		
 			   				num_filters=16,		
-			   				use_pooling=True,   
+			   				use_pooling=pooling_bool,   
 			   				pooling = 4,		
 			   				stride=4, 
 			   				pool_stride = 1,
@@ -54,7 +54,7 @@ class DAQN:
 			   				num_input_channels=16, #num filters from last layer
 			   				filter_size=4,		
 			   				num_filters=32,		
-			   				use_pooling=True,   
+			   				use_pooling=pooling_bool,   
 			   				pooling = 2,		
 			   				stride=1, 
 			   				pool_stride = 2,

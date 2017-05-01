@@ -1,4 +1,5 @@
 import numpy as np
+np.set_printoptions(threshold=np.nan)
 import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
@@ -30,7 +31,9 @@ same = True
 data_size = 83
 num_train = 800
 num_test = 200
-num_reward = 1000
+num_reward = 10000
+normalize = 1
+pooling_bool = False #use pooling
 path = os.path.dirname(os.path.realpath(__file__))
 netName = "daqn"
 log = netName + "_log"
@@ -38,10 +41,8 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 10000 #20
-#episodes = 50
-num_epochs_darn = 10000 #20
-#episodes_darn = 50
+num_epochs = 1000 #1000 #20
+num_epochs_darn = 1000#10000 #20
 batch_size = 50
 batch_size_darn = 50
 test_batch_size = 50
@@ -52,7 +53,7 @@ gamma = 0.9
 
 restore_epoch = num_epochs-1
 
-x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward)
+x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize)
 
 f = open("results/daqn_logs/"+location+".txt",'w')
 
@@ -64,7 +65,7 @@ with graph_daqn.as_default():
 
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
 	action_true = tf.placeholder(shape=[None,n_classes], dtype="float32", name='action_true')
-	net = DAQN(X,Y)
+	net = DAQN(X,Y,pooling_bool)
 	daqn = net.outpost
 	daqn_presoft = net.outpre
 	
@@ -96,19 +97,24 @@ with graph_daqn.as_default():
 	merged = tf.summary.merge_all()
 
 
-
 	#X_darn = tf.placeholder(shape=[None,data_size,data_size,1], dtype="float32",name='X_darn')
 	#X_darn = tf.reshape(X_darn, [-1, data_size, data_size, 1])
-
 	#Y_darn = tf.placeholder(shape=[None,5], dtype="float32", name='Y_darn')
-
-	
 	#cost_darn = tf.norm(tf.subtract(darn_presoft,Y_darn), ord='euclidean')
-	cost_darn_0 = tf.square(tf.subtract(tf.multiply(daqn_presoft,action_true),tf.multiply(Y,action_true)))
-	cost_darn_0 = tf.reduce_max(cost_darn_0,axis=1)
-	#cost_darn_0 = tf.Print(cost_darn_0,[cost_darn_0],message="cost is: ")
-	cost_darn = tf.reduce_mean(cost_darn_0)
-	#cost_darn = tf.Print(cost_darn,[cost_darn],message="cost* is: ")
+
+	#daqn_presoft_print = tf.Print(daqn_presoft,[daqn_presoft],message="Predicted Values: ")
+	#Y_print = tf.Print(Y,[Y],message = "Actual Values: ")
+
+	prediction = tf.multiply(daqn_presoft,action_true)
+	# prediction = tf.Print(prediction,[prediction],message="Prediction is: ",summarize=100)
+	truth = tf.multiply(Y,action_true)
+	# truth = tf.Print(truth,[truth],message="Truth is: ",summarize=100)
+	cost_darn_0 = tf.square(tf.subtract(prediction,truth))
+	# cost_darn_0 = tf.Print(cost_darn_0,[cost_darn_0],message="cost 0 is: ",summarize=100)
+	cost_darn_1 = tf.reduce_max(cost_darn_0,axis=1)
+	# cost_darn_1 = tf.Print(cost_darn_1,[cost_darn_1],message="cost 1 is: ",summarize=100)
+	cost_darn = tf.reduce_mean(cost_darn_1)
+	# cost_darn = tf.Print(cost_darn,[cost_darn],message="cost* is: ",summarize=100)
 
 	optimizer_darn = tf.train.AdagradOptimizer(learning_rate=learning_rate)
 	update_darn = optimizer_darn.minimize(cost_darn)
@@ -242,20 +248,6 @@ saver_daqn.restore(sess_darn,daqn_model_path)
 writer_darn = tf.summary.FileWriter('DARN_log',graph=sess.graph)
 
 for epoch in range(num_epochs_darn):
-
-	# episode =  random.sample(range(0, len(episode_lengths)), batch_size_darn)
-	# ep_start = episode_start[episode]
-	# ep_end = ep_start + episode_lengths[episode]
-
-	# state_ind = []
-	# for i in range(ep_end.size):
-	# 	state_ind.append(random.sample(range(ep_start[i], ep_end[i]-1), 1)[0])
-
-	# state_ind = np.array(state_ind)
-	# state = x_train[state_ind,:,:,:]
-	# action = y_train[state_ind,:]
-	# state_p = x_train[state_ind+1,:,:,:]
-
 	ind = np.random.choice(range(0,state.shape[0]),replace=False,size=batch_size_darn)
 	st = state[ind,:,:,:]
 	a = action[ind,:]
@@ -263,20 +255,32 @@ for epoch in range(num_epochs_darn):
 	a_p = action_prime[ind,:]
 	
 	Q = sess_daqn.run(daqn_presoft,feed_dict={X: st,Y: a})
-	#print(Q, action,np.argmax(action))
-	Q = Q[:,np.argmax(a)]
+	# print(Q,Q.shape, a,np.transpose(np.argmax(a,axis=1)))
+	# input("pause")
+	Q = Q[np.arange(Q.shape[0]),np.argmax(a,axis=1)]
+	# print(Q)
+	# input("pause")
 	#print(Q)
 	Q_p = sess_daqn.run(daqn_presoft,feed_dict={X: st_p,Y: a})
-	#print(Q_p)
-	Q_p = np.amax(Q_p)
-	#print(Q_p)
-	r_hat = a
-	r_hat[:,np.argmax(a)] = Q-(gamma*Q_p)
+	# print(Q_p)
+	# input("pause")
+	Q_p = np.amax(Q_p,axis=1)
+	# print(Q_p)
+	# input("pause")
 
+	# print(Q-(gamma*Q_p))
+	# input("pause")
+	#print(Q_p)
+	r_hat = np.zeros(a.shape)#a
+	
+	r_hat[np.arange(r_hat.shape[0]),np.argmax(a,axis=1)] = Q-(gamma*Q_p)
+	# print("Expected value: ",r_hat)
+	# print(a,np.argmax(a,axis=1))
+	# input("pause")
 	#r_hat = [[r_hat]]
 
 	sess_darn.run(update_darn,feed_dict={X: st, Y: r_hat, action_true: a})
-
+	# input("pause")
 	# Display loss and accuracy
 	summary,loss, acc = sess_darn.run([merged,cost_darn, accuracy_darn], feed_dict={X: st,
                                                   Y: r_hat, action_true: a})
@@ -334,6 +338,10 @@ for t in range(0,num_test):
 	f = open("results/"+location+"/"+str(t)+".txt",'w')
 	while(not done and not failed):# and count < count_max):
         #preprocess
+		#data = np.divide(data,normalize)
+		# if(t == 0):
+		# 	print(data)
+		# 	input("data pause")
 		full_image = Image.fromarray(data.squeeze(axis=2), 'L')
 		frames.append(full_image)
 		#full_image.show()
@@ -342,6 +350,7 @@ for t in range(0,num_test):
 		pixels = list(img.getdata())
 		pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
 		pixels = pixels[:,:,np.newaxis]
+		pixels = np.divide(pixels,normalize)
 		
 		action = sess_darn.run(daqn_presoft,feed_dict={X: [pixels]})
 		#print(action)

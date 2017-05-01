@@ -1,4 +1,5 @@
 import numpy as np
+np.set_printoptions(threshold=np.nan)
 import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
@@ -20,7 +21,7 @@ from tflearn.layers.normalization import local_response_normalization
 from tflearn.layers.estimator import regression
 
 
-def getData (data_loc,location,rew_location,data_size,num_train,num_test,num_reward):
+def getData (data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize=1):
 	f_data = location
 	f_file = data_loc
 
@@ -34,7 +35,7 @@ def getData (data_loc,location,rew_location,data_size,num_train,num_test,num_rew
 		episode_total = 0
 		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0),data_size)
 
-		x_train = image_set
+		x_train = np.divide(image_set,normalize)
 		y_train = action_set
 
 		episode_lengths.append(action_set.shape[0])
@@ -44,40 +45,50 @@ def getData (data_loc,location,rew_location,data_size,num_train,num_test,num_rew
 			if (i%(num//10) == 0):
 				print(i)
 			image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i),data_size)
+			image_set = np.divide(image_set,normalize)
 			x_train = np.append(x_train,image_set,axis=0)
 			y_train = np.append(y_train,action_set, axis=0)
 			episode_lengths.append(action_set.shape[0])
 			episode_start.append(episode_total)
 			episode_total += image_set.shape[0]
+		#print(np.array_str(image_set[0,:,:,:],75,3))
+		#input("train pause")
 		
 		print("Training set size - X: "+str(x_train.shape)+", Y: "+str(y_train.shape))
 
-		x_test = image_set
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i),data_size)
+		x_test = np.divide(image_set,normalize)
 		y_test = action_set
 
 		for i in range(num+1,num2):
 			image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(i),data_size)
+			image_set = np.divide(image_set,normalize)
 			x_test = np.append(x_test,image_set,axis=0)
 			y_test = np.append(y_test,action_set, axis=0)
-
+		
+		#print(image_set[0,:,:,:])
+		#input("test pause")
 		print("Testing set size - X: "+str(x_test.shape)+", Y: "+str(y_test.shape))
 
-		image_set,action_set = processGIF('DataSetGenerator/random_data/'+rew_location+"/"+str(i),data_size)
-
+		image_set,action_set = processGIF('DataSetGenerator/random_data/'+rew_location+"/"+str(0),data_size)
+		np.divide(image_set,normalize)
 		state = [image_set[0,:,:,:]]
 		action = [action_set[0,:]]
 		state_prime = [image_set[1,:,:,:]]
 		action_prime = [action_set[1,:]]
 
 		for i in range(1,num_reward):
+			if (i%(num_reward//10) == 0):
+				print(i)
 			image_set,action_set = processGIF('DataSetGenerator/random_data/'+rew_location+"/"+str(i),data_size)
-
+			image_set = np.divide(image_set,normalize)
 			state = np.append(state,[image_set[0,:,:,:]],axis=0)
 			action = np.append(action,[action_set[0,:]],axis=0)
 			state_prime = np.append(state_prime,[image_set[1,:,:,:]],axis=0)
 			action_prime = np.append(action_prime,[action_set[1,:]],axis=0)
 			
-
+		#print(image_set[0,:,:,:])
+		#input("reward pause")
 		print("Reward set size - State: "+str(state.shape)+", Action: "+str(action.shape)+", State': "+str(state_prime.shape)+", Action': "+str(action_prime.shape))
 
 		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+f_data+"/"+str(0),data_size)
