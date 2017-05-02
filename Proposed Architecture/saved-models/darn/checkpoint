@@ -1,3 +1,2 @@
 model_checkpoint_path: "C:\\Users\\bhatt\\Documents\\GitHub\\RIT_Thesis\\Proposed Architecture\\saved-models\\darn\\darn.ckpt"
-all_model_checkpoint_paths: "C:\\Users\\bhatt\\Documents\\GitHub\\RIT_Thesis\\Proposed Architecture\\saved-models\\daqn\\daqn.ckpt"
 all_model_checkpoint_paths: "C:\\Users\\bhatt\\Documents\\GitHub\\RIT_Thesis\\Proposed Architecture\\saved-models\\darn\\darn.ckpt"

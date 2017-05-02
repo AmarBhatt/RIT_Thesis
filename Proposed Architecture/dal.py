@@ -28,9 +28,12 @@ location = "same"
 rew_location = "same"
 same = True
 data_size = 83
+actual_size = 100
 num_train = 800
 num_test = 200
 num_reward = 10000
+test_interval = 2
+tests = 2
 normalize = 1
 pooling_bool = False #use pooling
 path = os.path.dirname(os.path.realpath(__file__))
@@ -40,13 +43,13 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 1000 #20
-episodes = 50
-num_epochs_darn = 1000 #20
-episodes_darn = 50
-batch_size = 50
-batch_size_darn = 50
-test_batch_size = 50
+num_epochs = 10 #20
+episodes = 5
+num_epochs_darn = 10 #20
+episodes_darn = 5
+batch_size = 5
+batch_size_darn = 5
+test_batch_size = 5
 
 n_classes = 5 #5 actions
 learning_rate = 0.01
@@ -55,6 +58,105 @@ gamma = 0.9
 restore_epoch = num_epochs-1
 
 x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize)
+
+
+
+def test_network(epoch, num_test, same, location, normalize, data_size, actual_size,debug=True):
+	result = np.zeros(num_test)
+	count_max = 100
+	same_image = None
+	if same:
+		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+location+"/"+str(0),100)
+		pixels = image_set[0,:,:,:]
+		pixels = pixels.squeeze(axis=2)
+		for i in range(actual_size):
+			for j in range(actual_size):
+				if(pixels[j,i] == 64):
+					pixels[j, i] = 255
+
+		same_image = Image.fromarray(pixels, 'L')
+		#same_image.show()
+		#input("Pause")
+	out_file = open("results/"+location+"/"+str(epoch)+"_Results.txt",'w')
+	#Test Network
+	for t in range(0,num_test):
+		f = open("results/"+location+"/"+str(epoch)+"_"+str(t)+".txt",'w')
+		data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None,feed=same_image)
+		#image.show()
+		#input("Pause")
+		#print(t,failed,done)
+		count = 0
+		frames = []
+		
+		while(not done and not failed):# and count < count_max):
+	        #preprocess
+			#data = np.divide(data,normalize)
+			# if(t == 0):
+			# 	print(data)
+			# 	input("data pause")
+			full_image = Image.fromarray(data.squeeze(axis=2), 'L')
+			frames.append(full_image)
+			#full_image.show()
+			#input("Pause")
+			img = preprocessing(full_image,data_size)
+			pixels = list(img.getdata())
+			pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
+			pixels = pixels[:,:,np.newaxis]
+			pixels = np.divide(pixels,normalize)
+			
+			action = sess_darn.run(darn_presoft,feed_dict={X_darn: [pixels]})
+			f.write(str(action))
+			f.write('\n')
+			action = np.argmax(action[0])
+			f.write(str(action))
+			f.write('\n')
+			#print(action)
+			data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
+			#print(new_state)
+			#print(done,failed)
+			#img = Image.fromarray(data.squeeze(axis=2), 'L')
+			#img.show()
+			if(count == count_max):
+				failed = 1;
+
+			if(failed):
+				result[t] = 0
+				if(count >= count_max):
+					if debug:
+						print(str(t)+": You took too long")
+					out_file.write(str(t)+": You took too long")
+					out_file.write('\n')
+				else:
+					if debug:
+						print(str(t)+": You hit a wall!")
+					out_file.write(str(t)+": You hit a wall!")
+					out_file.write('\n')
+				f.write("FAIL")
+				f.write('\n')
+			elif(done):
+				result[t] = 1
+				if debug:
+					print(str(t)+": You won!")
+				out_file.write(str(t)+": You won!")
+				out_file.write('\n')
+				f.write("PASS")
+				f.write('\n')
+			count+=1
+		frames[0].save("results/"+location+"/"+str(epoch)+"_"+str(t)+".gif",save_all=True, append_images=frames[1:])
+		f.flush()
+		f.close()
+	#print(len(result))
+	result = np.array(result)
+	win = np.sum(result)
+	lose = result.size-win
+	#print(result.size,lose)
+	print("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
+	out_file.write("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
+	out_file.write('\n')
+	out_file.flush()
+	out_file.close()
+
+
 
 f = open("results/daqn_logs/"+location+".txt",'w')
 
@@ -165,9 +267,9 @@ with graph_darn.as_default():
 	darn = net.outpost
 	darn_presoft = net.outpre
 
-	prediction = tf.multiply(daqn_presoft,action_true)
+	prediction = tf.multiply(darn_presoft,action_true)
 	# prediction = tf.Print(prediction,[prediction],message="Prediction is: ",summarize=100)
-	truth = tf.multiply(Y,action_true)
+	truth = tf.multiply(Y_darn,action_true)
 	# truth = tf.Print(truth,[truth],message="Truth is: ",summarize=100)
 	cost_darn_0 = tf.square(tf.subtract(prediction,truth))
 	# cost_darn_0 = tf.Print(cost_darn_0,[cost_darn_0],message="cost 0 is: ",summarize=100)
@@ -180,14 +282,19 @@ with graph_darn.as_default():
 	update_darn = optimizer_darn.minimize(cost_darn)
 	
 	# Evaluate model
-	pred_darn = tf.multiply(daqn_presoft,action_true)
+	pred_darn = tf.multiply(darn_presoft,action_true)
 	#pred_darn = tf.Print(pred_darn,[pred_darn],message="prediction is: ")
-	true_darn = Y
+	true_darn = Y_darn
 	#true_darn = tf.Print(true_darn,[true_darn],message="truth is: ")
 
 	correct_pred_darn = tf.subtract(pred_darn, true_darn) #1 instead of 0?
-	accuracy_darn = tf.cast(tf.reduce_max(tf.abs(correct_pred_darn)), tf.float32)
-
+	# correct_pred_darn = tf.Print(correct_pred_darn,[correct_pred_darn],message="Delta: ", summarize=100)
+	accuracy_darn_0 = tf.abs(correct_pred_darn)
+	# accuracy_darn_0 = tf.Print(accuracy_darn_0,[accuracy_darn_0],message="Abs: ", summarize=100)
+	accuracy_darn_1 = tf.reduce_max(accuracy_darn_0,axis=1)
+	# accuracy_darn_1 = tf.Print(accuracy_darn_1,[accuracy_darn_1],message="Max: ", summarize=100)
+	accuracy_darn = tf.cast(tf.reduce_mean(accuracy_darn_1), tf.float32)
+	# accuracy_darn = tf.Print(accuracy_darn,[accuracy_darn],message="Mean: ", summarize=100)
 	#Grab Summaries
 	tf.summary.scalar('loss', cost_darn)
 	tf.summary.scalar('accuracy', accuracy_darn)
@@ -255,11 +362,12 @@ for epoch in range(num_epochs_darn):
 
 		#r_hat = [[r_hat]]
 
-		sess_darn.run(update_darn,feed_dict={X: st, Y: r_hat, action_true: a})
+		sess_darn.run(update_darn,feed_dict={X_darn: st, Y_darn: r_hat, action_true: a})
 
 		# Display loss and accuracy
-		summary,loss, acc = sess_darn.run([merged,cost_darn, accuracy_darn], feed_dict={X: st,
-	                                                  Y: r_hat, action_true: a})
+		summary,loss, acc = sess_darn.run([merged,cost_darn, accuracy_darn], feed_dict={X_darn: st,
+	                                                  Y_darn: r_hat, action_true: a})
+		# input("pause")
 		writer_darn.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
               "{:.6f}".format(loss) + ", Training Accuracy= " + \
@@ -272,13 +380,13 @@ for epoch in range(num_epochs_darn):
 		darn_save_path = saver_darn.save(sess_darn, darn_model_path)#, global_step=epoch)
 		print("Model saved in file: %s" % darn_save_path)
 
-	# ind =  random.sample(range(0, x_test.shape[0]), test_batch_size)
-	# x_test_batch = x_test[ind,:,:,:]
-	# y_test_true_batch = y_test[ind,:]	
+	if(epoch%test_interval == 0):
+		# Test Network
+		test_network(epoch,tests, same, location, normalize, data_size, actual_size)
 
-	# print("Testing Accuracy "+str(epoch)+": ", sess.run(accuracy, feed_dict={X: x_test_batch,
- #                              Y: y_test_true_batch}))
-
+# Test Network
+test_network(epoch,tests, same, location, normalize, data_size, actual_size)
+	
 f.flush()
 f.close()
 writer_darn.flush()
@@ -300,77 +408,5 @@ if same:
 	same_image = Image.fromarray(pixels, 'L')
 	#same_image.show()
 	#input("Pause")
-
-
-#Test Network
-for t in range(0,num_test):
-
-	data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None,feed=same_image)
-	#image.show()
-	#input("Pause")
-	#print(t,failed,done)
-	count = 0
-	frames = []
-	f = open("results/"+location+"/"+str(t)+".txt",'w')
-	while(not done and not failed):# and count < count_max):
-        #preprocess
-		full_image = Image.fromarray(data.squeeze(axis=2), 'L')
-		frames.append(full_image)
-		#full_image.show()
-		#input("Pause")
-		img = preprocessing(full_image,data_size)
-		pixels = list(img.getdata())
-		pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
-		pixels = pixels[:,:,np.newaxis]
-		pixels = np.divide(pixels,normalize)
-		
-		action = sess_darn.run(darn_presoft,feed_dict={X_darn: [pixels]})
-		f.write(str(action))
-		f.write('\n')
-		action = np.argmax(action[0])
-		f.write(str(action))
-		f.write('\n')
-		#print(action)
-		data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
-		#print(new_state)
-		#print(done,failed)
-		#img = Image.fromarray(data.squeeze(axis=2), 'L')
-		#img.show()
-		if(count == count_max):
-			failed = 1;
-
-		if(failed):
-			result[t] = 0
-			if(count >= count_max):
-				print(str(t)+": You took too long")
-			else:
-				print(str(t)+": You hit a wall!")
-			f.write("FAIL")
-			f.write('\n')
-		elif(done):
-			result[t] = 1
-			print(str(t)+": You won!")
-			f.write("PASS")
-			f.write('\n')
-		#elif(count >= count_max):
-			#result[t] = 0
-			#print(str(t)+": Took too long!")
-
-		count+=1
-	frames[0].save("results/"+location+"/"+str(t)+".gif",save_all=True, append_images=frames[1:])
-	f.flush()
-	f.close()
-	#print(result.size,t+1)
-
-
-
-#print(len(result))
-result = np.array(result)
-win = np.sum(result)
-lose = result.size-win
-#print(result.size,lose)
-print("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
-
-
 
 

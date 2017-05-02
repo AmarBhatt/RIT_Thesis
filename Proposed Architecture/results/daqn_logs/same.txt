@@ -1,0 +1,60 @@
+Epoch= 0, Episode= 0, Minibatch Loss= 47.088936, Training Accuracy= 0.00000
+Epoch= 0, Episode= 1, Minibatch Loss= 30.974766, Training Accuracy= 0.00000
+Epoch= 0, Episode= 2, Minibatch Loss= 30.450583, Training Accuracy= 0.00000
+Epoch= 0, Episode= 3, Minibatch Loss= 24.641071, Training Accuracy= 0.20000
+Epoch= 0, Episode= 4, Minibatch Loss= 21.908432, Training Accuracy= 0.20000
+Testing Accuracy 0: 0.0
+Epoch= 1, Episode= 0, Minibatch Loss= 10.740893, Training Accuracy= 0.40000
+Epoch= 1, Episode= 1, Minibatch Loss= 15.771266, Training Accuracy= 0.20000
+Epoch= 1, Episode= 2, Minibatch Loss= 21.401766, Training Accuracy= 0.20000
+Epoch= 1, Episode= 3, Minibatch Loss= 29.276022, Training Accuracy= 0.00000
+Epoch= 1, Episode= 4, Minibatch Loss= 23.933905, Training Accuracy= 0.20000
+Testing Accuracy 1: 0.2
+Epoch= 2, Episode= 0, Minibatch Loss= 17.730665, Training Accuracy= 0.20000
+Epoch= 2, Episode= 1, Minibatch Loss= 9.787313, Training Accuracy= 0.60000
+Epoch= 2, Episode= 2, Minibatch Loss= 20.869272, Training Accuracy= 0.20000
+Epoch= 2, Episode= 3, Minibatch Loss= 10.686603, Training Accuracy= 0.20000
+Epoch= 2, Episode= 4, Minibatch Loss= 15.961443, Training Accuracy= 0.40000
+Testing Accuracy 2: 0.2
+Epoch= 3, Episode= 0, Minibatch Loss= 26.681183, Training Accuracy= 0.20000
+Epoch= 3, Episode= 1, Minibatch Loss= 27.097971, Training Accuracy= 0.00000
+Epoch= 3, Episode= 2, Minibatch Loss= 14.195518, Training Accuracy= 0.20000
+Epoch= 3, Episode= 3, Minibatch Loss= 18.207066, Training Accuracy= 0.00000
+Epoch= 3, Episode= 4, Minibatch Loss= 16.591187, Training Accuracy= 0.20000
+Testing Accuracy 3: 0.6
+Epoch= 4, Episode= 0, Minibatch Loss= 16.970083, Training Accuracy= 0.40000
+Epoch= 4, Episode= 1, Minibatch Loss= 8.590497, Training Accuracy= 0.20000
+Epoch= 4, Episode= 2, Minibatch Loss= 16.550716, Training Accuracy= 0.20000
+Epoch= 4, Episode= 3, Minibatch Loss= 19.642597, Training Accuracy= 0.00000
+Epoch= 4, Episode= 4, Minibatch Loss= 14.858732, Training Accuracy= 0.40000
+Testing Accuracy 4: 0.2
+Epoch= 5, Episode= 0, Minibatch Loss= 11.890750, Training Accuracy= 0.40000
+Epoch= 5, Episode= 1, Minibatch Loss= 7.503112, Training Accuracy= 0.20000
+Epoch= 5, Episode= 2, Minibatch Loss= 16.459181, Training Accuracy= 0.40000
+Epoch= 5, Episode= 3, Minibatch Loss= 11.623423, Training Accuracy= 0.20000
+Epoch= 5, Episode= 4, Minibatch Loss= 11.474515, Training Accuracy= 0.00000
+Testing Accuracy 5: 0.4
+Epoch= 6, Episode= 0, Minibatch Loss= 15.520050, Training Accuracy= 0.20000
+Epoch= 6, Episode= 1, Minibatch Loss= 11.930104, Training Accuracy= 0.20000
+Epoch= 6, Episode= 2, Minibatch Loss= 9.271413, Training Accuracy= 0.40000
+Epoch= 6, Episode= 3, Minibatch Loss= 10.259151, Training Accuracy= 0.20000
+Epoch= 6, Episode= 4, Minibatch Loss= 9.401480, Training Accuracy= 0.20000
+Testing Accuracy 6: 0.2
+Epoch= 7, Episode= 0, Minibatch Loss= 5.114875, Training Accuracy= 0.40000
+Epoch= 7, Episode= 1, Minibatch Loss= 13.024699, Training Accuracy= 0.40000
+Epoch= 7, Episode= 2, Minibatch Loss= 9.673038, Training Accuracy= 0.20000
+Epoch= 7, Episode= 3, Minibatch Loss= 3.906117, Training Accuracy= 0.80000
+Epoch= 7, Episode= 4, Minibatch Loss= 7.943675, Training Accuracy= 0.40000
+Testing Accuracy 7: 0.0
+Epoch= 8, Episode= 0, Minibatch Loss= 2.897797, Training Accuracy= 0.60000
+Epoch= 8, Episode= 1, Minibatch Loss= 12.178859, Training Accuracy= 0.40000
+Epoch= 8, Episode= 2, Minibatch Loss= 4.936098, Training Accuracy= 0.60000
+Epoch= 8, Episode= 3, Minibatch Loss= 7.947509, Training Accuracy= 0.20000
+Epoch= 8, Episode= 4, Minibatch Loss= 8.850484, Training Accuracy= 0.20000
+Testing Accuracy 8: 0.8
+Epoch= 9, Episode= 0, Minibatch Loss= 4.139378, Training Accuracy= 0.40000
+Epoch= 9, Episode= 1, Minibatch Loss= 10.702429, Training Accuracy= 0.20000
+Epoch= 9, Episode= 2, Minibatch Loss= 6.532676, Training Accuracy= 0.40000
+Epoch= 9, Episode= 3, Minibatch Loss= 5.237057, Training Accuracy= 0.40000
+Epoch= 9, Episode= 4, Minibatch Loss= 6.612611, Training Accuracy= 0.20000
+Testing Accuracy 9: 0.2
