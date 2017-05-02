@@ -353,7 +353,8 @@ for t in range(0,num_test):
 		pixels = np.divide(pixels,normalize)
 		
 		action = sess_darn.run(daqn_presoft,feed_dict={X: [pixels]})
-		#print(action)
+		f.write(str(action))
+		f.write('\n')
 		action = np.argmax(action[0])
 		f.write(str(action))
 		f.write('\n')

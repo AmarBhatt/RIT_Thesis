@@ -30,7 +30,9 @@ same = True
 data_size = 83
 num_train = 800
 num_test = 200
-num_reward = 1000
+num_reward = 10000
+normalize = 1
+pooling_bool = False #use pooling
 path = os.path.dirname(os.path.realpath(__file__))
 netName = "daqn"
 log = netName + "_log"
@@ -52,7 +54,7 @@ gamma = 0.9
 
 restore_epoch = num_epochs-1
 
-x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward)
+x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize)
 
 f = open("results/daqn_logs/"+location+".txt",'w')
 
@@ -63,7 +65,7 @@ with graph_daqn.as_default():
 	X = tf.reshape(X, [-1, data_size, data_size, 1])
 
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
-	net = DAQN(X,Y)
+	net = DAQN(X,Y,pooling_bool)
 	daqn = net.outpost
 	daqn_presoft = net.outpre
 	
@@ -159,25 +161,29 @@ with graph_darn.as_default():
 
 	action_true = tf.placeholder(shape=[None,5], dtype="float32", name='action_true')
 
-	net = DAQN(X_darn,Y_darn)
+	net = DAQN(X_darn,Y_darn,pooling_bool)
 	darn = net.outpost
 	darn_presoft = net.outpre
 
-	#cost_darn = tf.norm(tf.subtract(darn_presoft,Y_darn), ord='euclidean')
-	cost_darn_0 = tf.square(tf.subtract(tf.multiply(darn_presoft,action_true),tf.multiply(Y_darn,action_true)))
-	cost_darn_0 = tf.reduce_max(cost_darn_0,axis=1)
-	#cost_darn_0 = tf.Print(cost_darn_0,[cost_darn_0],message="cost is: ")
-	cost_darn = tf.reduce_mean(cost_darn_0)
-	#cost_darn = tf.Print(cost_darn,[cost_darn],message="cost* is: ")
+	prediction = tf.multiply(daqn_presoft,action_true)
+	# prediction = tf.Print(prediction,[prediction],message="Prediction is: ",summarize=100)
+	truth = tf.multiply(Y,action_true)
+	# truth = tf.Print(truth,[truth],message="Truth is: ",summarize=100)
+	cost_darn_0 = tf.square(tf.subtract(prediction,truth))
+	# cost_darn_0 = tf.Print(cost_darn_0,[cost_darn_0],message="cost 0 is: ",summarize=100)
+	cost_darn_1 = tf.reduce_max(cost_darn_0,axis=1)
+	# cost_darn_1 = tf.Print(cost_darn_1,[cost_darn_1],message="cost 1 is: ",summarize=100)
+	cost_darn = tf.reduce_mean(cost_darn_1)
+	# cost_darn = tf.Print(cost_darn,[cost_darn],message="cost* is: ",summarize=100)
 
 	optimizer_darn = tf.train.AdagradOptimizer(learning_rate=learning_rate)
 	update_darn = optimizer_darn.minimize(cost_darn)
 	
 	# Evaluate model
-	pred_darn = tf.multiply(darn_presoft,action_true)
-	pred_darn = tf.Print(pred_darn,[pred_darn],message="prediction is: ")
-	true_darn = Y_darn
-	true_darn = tf.Print(true_darn,[true_darn],message="truth is: ")
+	pred_darn = tf.multiply(daqn_presoft,action_true)
+	#pred_darn = tf.Print(pred_darn,[pred_darn],message="prediction is: ")
+	true_darn = Y
+	#true_darn = tf.Print(true_darn,[true_darn],message="truth is: ")
 
 	correct_pred_darn = tf.subtract(pred_darn, true_darn) #1 instead of 0?
 	accuracy_darn = tf.cast(tf.reduce_max(tf.abs(correct_pred_darn)), tf.float32)
@@ -224,15 +230,28 @@ for epoch in range(num_epochs_darn):
 		a_p = action_prime[ind,:]
 		
 		Q = sess_daqn.run(daqn_presoft,feed_dict={X: st,Y: a})
-		#print(Q, action,np.argmax(action))
-		Q = Q[:,np.argmax(a)]
+		# print(Q,Q.shape, a,np.transpose(np.argmax(a,axis=1)))
+		# input("pause")
+		Q = Q[np.arange(Q.shape[0]),np.argmax(a,axis=1)]
+		# print(Q)
+		# input("pause")
 		#print(Q)
 		Q_p = sess_daqn.run(daqn_presoft,feed_dict={X: st_p,Y: a})
+		# print(Q_p)
+		# input("pause")
+		Q_p = np.amax(Q_p,axis=1)
+		# print(Q_p)
+		# input("pause")
+
+		# print(Q-(gamma*Q_p))
+		# input("pause")
 		#print(Q_p)
-		Q_p = np.amax(Q_p)
-		#print(Q_p)
-		r_hat = a
-		r_hat[:,np.argmax(a)] = Q-(gamma*Q_p)
+		r_hat = np.zeros(a.shape)#a
+		
+		r_hat[np.arange(r_hat.shape[0]),np.argmax(a,axis=1)] = Q-(gamma*Q_p)
+		# print("Expected value: ",r_hat)
+		# print(a,np.argmax(a,axis=1))
+		# input("pause")
 
 		#r_hat = [[r_hat]]
 
@@ -303,9 +322,11 @@ for t in range(0,num_test):
 		pixels = list(img.getdata())
 		pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
 		pixels = pixels[:,:,np.newaxis]
+		pixels = np.divide(pixels,normalize)
 		
 		action = sess_darn.run(darn_presoft,feed_dict={X_darn: [pixels]})
-		#print(action)
+		f.write(str(action))
+		f.write('\n')
 		action = np.argmax(action[0])
 		f.write(str(action))
 		f.write('\n')
