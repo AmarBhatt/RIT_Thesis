@@ -244,11 +244,16 @@ def environmentStep(action,state,imgx,imgy,mx,my, image = None, gw = None, envir
         maze, image = generate(imgx,imgy,mx,my,image=feed)
         obstacle_list,goal = find_obstacles(maze)
         gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
-        start = random.randint(0,gw.grid_size**2 - 1)
-        sx,sy = gw.int_to_point(start)
-        while(gw.world_grid[sy][sx] > 0):
+        
+        if(state > -1):
+            start = state
+            sx,sy = gw.int_to_point(start)
+        else:
             start = random.randint(0,gw.grid_size**2 - 1)
             sx,sy = gw.int_to_point(start)
+            while(gw.world_grid[sy][sx] > 0):
+                start = random.randint(0,gw.grid_size**2 - 1)
+                sx,sy = gw.int_to_point(start)
         i_tmp = image.copy()
 
         pixels = i_tmp.load()
@@ -390,7 +395,7 @@ def createRandomDataSet(name,gw,maze,image, mx, my, imgx,imgy):
     f.close()
 
 
-def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,location,rew_location,rmaze):
+def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,num_gen_test,location,rew_location,test_location,rmaze):
     
     if rmaze:
         for i in range(num_gen):
@@ -407,6 +412,18 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,location,rew_location,rmaze):
             gw = gridworld.Gridworld(mx, 0.0, obstacle_list,goal)
             file = rew_location+"/"+str(i)
             createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+        for i in range(num_gen_test):
+            print(i)
+            file = test_location+"/"+str(i)
+            maze, image = generate(imgx,imgy,mx,my)
+            im = image.copy()
+            pixels = list(im.getdata())
+            pixels = np.array([pixels[j * imgx:(j + 1) * imgx] for j in range(imgx)])
+            for i in range(imgx):
+                for j in range(imgx):
+                    if(pixels[j,i] == 64):
+                        pixels[j, i] = 255
+            im.save(str(i)+ ".png", "PNG")
     else: #use the same map
         maze, image = generate(imgx,imgy,mx,my)
         obstacle_list,goal = find_obstacles(maze)
@@ -419,6 +436,17 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,location,rew_location,rmaze):
             print(i)
             file = rew_location+"/"+str(i)
             createRandomDataSet(file,gw,maze,image,mx,my,imgx,imgy)
+        for i in range(num_gen_test):
+            print(i)
+            file = test_location+"/"+str(i)
+            im = image.copy()
+            pixels = list(im.getdata())
+            pixels = np.array([pixels[j * imgx:(j + 1) * imgx] for j in range(imgx)])
+            for i in range(imgx):
+                for j in range(imgx):
+                    if(pixels[j,i] == 64):
+                        pixels[j, i] = 255
+            im.save(file+ ".png", "PNG")
         #print(maze)
         #processGIF('test.gif')
 
@@ -426,7 +454,7 @@ imgx = 100 #100
 imgy = 100 #100
 mx = 10 #16 #10
 my = 10 #16 #10
-#bulkCreate(imgx,imgy,mx,my,1000,10000,"expert_data/same","random_data/same",False)
+#bulkCreate(imgx,imgy,mx,my,1000,1000,10,"expert_data/same","random_data/same","test_data/same",False)
 #processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
 #environmentStepTest(imgx,imgy,mx,my)
