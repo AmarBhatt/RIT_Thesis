@@ -423,7 +423,7 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,num_gen_test,location,rew_loc
                 for j in range(imgx):
                     if(pixels[j,i] == 64):
                         pixels[j, i] = 255
-            im.save(str(i)+ ".png", "PNG")
+            im.save(file+ ".png", "PNG")
     else: #use the same map
         maze, image = generate(imgx,imgy,mx,my)
         obstacle_list,goal = find_obstacles(maze)
@@ -450,90 +450,20 @@ def bulkCreate(imgx,imgy,mx,my,num_gen,num_gen_rew,num_gen_test,location,rew_loc
         #print(maze)
         #processGIF('test.gif')
 
+
+def pix2img(pixels,show=False):
+    pixels = np.array(pixels,dtype=np.uint8)
+    image = Image.fromarray(pixels,'L')
+    if show:
+        image.show()
+    return image
+
+
 imgx = 100 #100
 imgy = 100 #100
 mx = 10 #16 #10
 my = 10 #16 #10
-#bulkCreate(imgx,imgy,mx,my,1000,1000,10,"expert_data/same","random_data/same","test_data/same",False)
+#bulkCreate(imgx,imgy,mx,my,10000,10000,10,"expert_data/random","random_data/random","test_data/random",True)
 #processGIF("expert_data/random/0",10)
 #maze, image = generate(imgx,imgy,mx,my)
 #environmentStepTest(imgx,imgy,mx,my)
-
-# # Random Maze Generator using Depth-first Search
-# # http://en.wikipedia.org/wiki/Maze_generation_algorithm
-# # FB36 - 20130106
-# import random
-# from PIL import Image
-# imgx = 500; imgy = 500
-# image = Image.new("RGB", (imgx, imgy))
-# pixels = image.load()
-# mx = 10; my = 10 # width and height of the maze
-# maze = [[0 for x in range(mx)] for y in range(my)]
-# dx = [0, 1, 0, -1]; dy = [-1, 0, 1, 0] # 4 directions to move in the maze
-# color = [(0, 0, 0), (255, 255, 255), (255,255,0)] # RGB colors of the maze
-# # start the maze from a random cell
-# cx = random.randint(0, mx - 1); cy = random.randint(0, my - 1)
-# maze[cy][cx] = 1; stack = [(cx, cy, 0)] # stack element: (x, y, direction)
-
-# while len(stack) > 0:
-#     (cx, cy, cd) = stack[-1]
-#     # to prevent zigzags:
-#     # if changed direction in the last move then cannot change again
-#     if len(stack) > 2:
-#         if cd != stack[-2][2]: dirRange = [cd]
-#         else: dirRange = range(4)
-#     else: dirRange = range(4)
-
-#     # find a new cell to add
-#     nlst = [] # list of available neighbors
-#     for i in dirRange:
-#         nx = cx + dx[i]; ny = cy + dy[i]
-#         if nx >= 0 and nx < mx and ny >= 0 and ny < my:
-#             if maze[ny][nx] == 0:
-#                 ctr = 0 # of occupied neighbors must be 1
-#                 for j in range(4):
-#                     ex = nx + dx[j]; ey = ny + dy[j]
-#                     if ex >= 0 and ex < mx and ey >= 0 and ey < my:
-#                         if maze[ey][ex] == 1: ctr += 1
-#                 if ctr == 1: nlst.append(i)
-
-#     # if 1 or more neighbors available then randomly select one and move
-#     if len(nlst) > 0:
-#         ir = nlst[random.randint(0, len(nlst) - 1)]
-#         cx += dx[ir]; cy += dy[ir]; maze[cy][cx] = 1
-#         stack.append((cx, cy, ir))
-#     else: stack.pop()
-
-# # paint the maze
-# for ky in range(imgy):
-#     for kx in range(imgx):
-#         pixels[kx, ky] = color[maze[my * ky // imgy][mx * kx // imgx]]
-
-# ky = random.randint(0,imgy-1)
-# kx = random.randint(0,imgx-1)
-
-# while(maze[my * ky // imgy][mx * kx // imgx] != 1):
-#     ky = random.randint(0,imgy-1)
-#     kx = random.randint(0,imgx-1)
-
-# countup = 0
-# countdown = 0
-# countleft = 0
-# countright = 0
-
-# #up
-# kyy=ky-1
-# while (kyy > -1 and maze[my * kyy // imgy][mx * kx // imgx] != 0):
-#     countup += 1
-#     kyy-=1
-# #left
-# kxx=kx-1
-# while (kxx > -1 and maze[my * ky // imgy][mx * kxx // imgx] != 0):
-#     countleft += 1
-#     kxx-=1
-# print("Paint!")
-# for i in range(ky-countup,(ky-countup)+imgy//my):
-#     for j in range(kx-countleft,(kx-countleft)+imgx//mx):
-#         pixels[j, i] = color[2]
-
-# image.save("Maze_" + str(mx) + "x" + str(my) + ".png", "PNG")

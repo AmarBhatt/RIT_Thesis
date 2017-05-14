@@ -3,6 +3,7 @@ import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
+from test_network import test_network
 #import alexnet
 import sys as sys
 from PIL import Image
@@ -16,23 +17,22 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-from tflearn.layers.core import input_data, dropout, fully_connected
-from tflearn.layers.conv import conv_2d, max_pool_2d
-from tflearn.layers.normalization import local_response_normalization
-from tflearn.layers.estimator import regression
 
+typeTest = "same"
 
-
-data_loc = "same_1000.h5"
-location = "same"
-rew_location = "same"
-same = True
+data_loc = "same_1000_83_skipgoal.h5"
+location = typeTest
+rew_location = typeTest
+test_image_location = "DataSetGenerator/test_data/"+typeTest
+test_array = [0,9,99,54,26,35,6,90,21,89] if typeTest == "random" else [0,99,90,9,46,22,66,50,58,49]
+same = True if typeTest == "same" else False
+skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if -1 then possible actions = 4 not 5)
 data_size = 83
 actual_size = 100
 num_train = 800
 num_test = 200
-num_reward = 10000
-test_interval = 2
+num_reward = 1000
+test_interval = 100
 tests = 2
 normalize = 1
 pooling_bool = False #use pooling
@@ -43,120 +43,29 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 10 #20
-episodes = 5
-num_epochs_darn = 10 #20
-episodes_darn = 5
-batch_size = 5
-batch_size_darn = 5
-test_batch_size = 5
+num_epochs = 1000 #20
+episodes = 50
+num_epochs_darn = 1000 #20
+episodes_darn = 50
+batch_size = 50
+batch_size_darn = 50
+test_batch_size = 50
 
-n_classes = 5 #5 actions
+n_classes = 5 if skip_goal == None else 4
 learning_rate = 0.01
 gamma = 0.9
 
 restore_epoch = num_epochs-1
 
-x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize)
+x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,skip_goal=skip_goal,normalize=normalize)
 
 
-
-def test_network(epoch, num_test, same, location, normalize, data_size, actual_size,debug=True):
-	result = np.zeros(num_test)
-	count_max = 100
-	same_image = None
-	if same:
-		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+location+"/"+str(0),100)
-		pixels = image_set[0,:,:,:]
-		pixels = pixels.squeeze(axis=2)
-		for i in range(actual_size):
-			for j in range(actual_size):
-				if(pixels[j,i] == 64):
-					pixels[j, i] = 255
-
-		same_image = Image.fromarray(pixels, 'L')
-		#same_image.show()
-		#input("Pause")
-	out_file = open("results/"+location+"/"+str(epoch)+"_Results.txt",'w')
-	#Test Network
-	for t in range(0,num_test):
-		f = open("results/"+location+"/"+str(epoch)+"_"+str(t)+".txt",'w')
-		data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None,feed=same_image)
-		#image.show()
-		#input("Pause")
-		#print(t,failed,done)
-		count = 0
-		frames = []
-		
-		while(not done and not failed):# and count < count_max):
-	        #preprocess
-			#data = np.divide(data,normalize)
-			# if(t == 0):
-			# 	print(data)
-			# 	input("data pause")
-			full_image = Image.fromarray(data.squeeze(axis=2), 'L')
-			frames.append(full_image)
-			#full_image.show()
-			#input("Pause")
-			img = preprocessing(full_image,data_size)
-			pixels = list(img.getdata())
-			pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
-			pixels = pixels[:,:,np.newaxis]
-			pixels = np.divide(pixels,normalize)
-			
-			action = sess_darn.run(darn_presoft,feed_dict={X_darn: [pixels]})
-			f.write(str(action))
-			f.write('\n')
-			action = np.argmax(action[0])
-			f.write(str(action))
-			f.write('\n')
-			#print(action)
-			data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
-			#print(new_state)
-			#print(done,failed)
-			#img = Image.fromarray(data.squeeze(axis=2), 'L')
-			#img.show()
-			if(count == count_max):
-				failed = 1;
-
-			if(failed):
-				result[t] = 0
-				if(count >= count_max):
-					if debug:
-						print(str(t)+": You took too long")
-					out_file.write(str(t)+": You took too long")
-					out_file.write('\n')
-				else:
-					if debug:
-						print(str(t)+": You hit a wall!")
-					out_file.write(str(t)+": You hit a wall!")
-					out_file.write('\n')
-				f.write("FAIL")
-				f.write('\n')
-			elif(done):
-				result[t] = 1
-				if debug:
-					print(str(t)+": You won!")
-				out_file.write(str(t)+": You won!")
-				out_file.write('\n')
-				f.write("PASS")
-				f.write('\n')
-			count+=1
-		frames[0].save("results/"+location+"/"+str(epoch)+"_"+str(t)+".gif",save_all=True, append_images=frames[1:])
-		f.flush()
-		f.close()
-	#print(len(result))
-	result = np.array(result)
-	win = np.sum(result)
-	lose = result.size-win
-	#print(result.size,lose)
-	print("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
-	out_file.write("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
-	out_file.write('\n')
-	out_file.flush()
-	out_file.close()
-
-
+# pix2img(x_train[0,:,:,:].squeeze(axis=2),True)
+# input("pause")
+# pix2img(x_train[308,:,:,:].squeeze(axis=2),True)
+# input("pause")
+# pix2img(x_train[3446,:,:,:].squeeze(axis=2),True)
+# input("pause")
 
 f = open("results/daqn_logs/"+location+".txt",'w')
 
@@ -167,15 +76,15 @@ with graph_daqn.as_default():
 	X = tf.reshape(X, [-1, data_size, data_size, 1])
 
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
-	net = DAQN(X,Y,pooling_bool)
+	net = DAQN(X,Y,n_classes,pooling_bool)
 	daqn = net.outpost
 	daqn_presoft = net.outpre
 	
 	# Define Loss and optimizer
-	#cost = sse(daqn,Y)
-	cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=daqn_presoft,
-												labels=Y)
-	cost = tf.reduce_mean(cross_entropy)
+	cost = sse(daqn,Y)
+	#cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=daqn_presoft,
+												#labels=Y)
+	#cost = tf.reduce_mean(cross_entropy)
 
 	optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate)
 	update = optimizer.minimize(cost)
@@ -263,7 +172,7 @@ with graph_darn.as_default():
 
 	action_true = tf.placeholder(shape=[None,5], dtype="float32", name='action_true')
 
-	net = DAQN(X_darn,Y_darn,pooling_bool)
+	net = DAQN(X_darn,Y_darn,n_classes,pooling_bool)
 	darn = net.outpost
 	darn_presoft = net.outpre
 
@@ -312,7 +221,8 @@ sess_darn = tf.Session(graph=graph_darn)
 sess_darn.run(init_darn)
 
 writer_darn = tf.summary.FileWriter('DARN_log',graph=sess.graph)
-
+best_epoch = 0
+best_score = 0
 for epoch in range(num_epochs_darn):
 	for ep in range(episodes_darn):
 
@@ -376,37 +286,30 @@ for epoch in range(num_epochs_darn):
 	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	                  "{:.5f}".format(acc))
 		f.write('\n')
-	if(epoch%(num_epochs//10) == 0):
+	if(epoch%(num_epochs_darn//10) == 0):
 		darn_save_path = saver_darn.save(sess_darn, darn_model_path)#, global_step=epoch)
 		print("Model saved in file: %s" % darn_save_path)
 
 	if(epoch%test_interval == 0):
 		# Test Network
-		test_network(epoch,tests, same, location, normalize, data_size, actual_size)
+		win,lose,cur_path_total,total_path = test_network(sess_darn,darn_presoft, X_darn, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+		if(best_score < cur_path_total):
+			best_score = cur_path_total
+			best_epoch = epoch
 
 # Test Network
-test_network(epoch,tests, same, location, normalize, data_size, actual_size)
-	
+win,lose,cur_path_total,total_path = test_network(sess_darn,darn_presoft, X_darn, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+if(best_score < cur_path_total):
+	best_score = cur_path_total
+	best_epoch = epoch
+
+print("Best Epoch, Best Score")
+print(best_epoch,best_score)
+
 f.flush()
 f.close()
 writer_darn.flush()
 writer_darn.close()
 
-
-result = np.zeros(num_test)
-count_max = 100
-same_image = None
-if same:
-	image_set,action_set = processGIF('DataSetGenerator/expert_data/'+location+"/"+str(0),100)
-	pixels = image_set[0,:,:,:]
-	pixels = pixels.squeeze(axis=2)
-	for i in range(100):
-		for j in range(100):
-			if(pixels[j,i] == 64):
-				pixels[j, i] = 255
-
-	same_image = Image.fromarray(pixels, 'L')
-	#same_image.show()
-	#input("Pause")
 
 

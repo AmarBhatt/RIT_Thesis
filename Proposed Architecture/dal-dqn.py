@@ -4,6 +4,7 @@ import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
+from test_network import test_network
 #import alexnet
 import sys as sys
 from PIL import Image
@@ -22,20 +23,21 @@ from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.normalization import local_response_normalization
 from tflearn.layers.estimator import regression
 
+typeTest = "same"
 
-
-data_loc = "same_1000.h5"
-location = "same"
-rew_location = "same"
-test_image_location = "DataSetGenerator/test_data/same"
-test_array = [0,99,90,9,46,22,66,50,58,49]
-same = True
+data_loc = typeTest+"_1000_rew_83_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+location = typeTest
+rew_location = typeTest
+test_image_location = "DataSetGenerator/test_data/"+typeTest
+test_array = [0,9,99,54,26,35,6,90,21,89] if typeTest == "random" else [0,99,90,9,46,22,66,50,58,49]
+same = True if typeTest == "same" else False
+skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if -1 then possible actions = 4 not 5)
 data_size = 83
 actual_size = 100
 num_train = 1000
 num_test = 0
 num_reward = 10
-test_interval = 500
+test_interval = 100
 tests = 2
 normalize = 1
 pooling_bool = False #use pooling
@@ -46,13 +48,13 @@ daqn_model_path = path+'\saved-models\daqn\daqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 1000
+num_epochs = 10000
 num_epochs_ran = 10000
 batch_size = 50
-batch_size_ran = 25
+batch_size_ran = 50
 test_batch_size = 50
 
-n_classes = 5 #5 actions
+n_classes = 5 if skip_goal == None else 4
 learning_rate = 0.1
 gamma = 0.9
 
@@ -69,92 +71,12 @@ expert_replay_action = np.zeros(shape=[0,n_classes])
 expert_replay_r =np.zeros(shape=[0])
 expert_replay_state_prime = np.zeros(shape=[0,data_size,data_size,1])
 
+REWARD = 1000
+
 p = 0.1 #expert replay sampling
 
-x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,normalize)
+x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,skip_goal=skip_goal,normalize=normalize)
 
-
-def test_network(epoch, num_test, same, location, test_image_location,test_array, normalize, data_size, actual_size,debug=True):
-	result = np.zeros(num_test)
-	count_max = 100
-	out_file = open("results/"+location+"/"+str(epoch)+"_Results.txt",'w')
-	#Test Network
-	for t in range(0,num_test):
-
-		image = Image.open(test_image_location+"/"+str(t)+".png")
-		state = test_array[t]		
-		pixels = list(image.getdata())
-		pixels = np.array([pixels[j * actual_size:(j + 1) * actual_size] for j in range(actual_size)],dtype=np.uint8)
-		image = Image.fromarray(pixels, 'L')
-
-		f = open("results/"+location+"/"+str(epoch)+"_"+str(t)+".txt",'w')
-		data,new_state,gw,failed,done,environment,image = environmentStep(-1,state,100,100,10,10, image = None, gw = None, environment = None,feed=image)
-		#image.show()
-		#input("Pause")
-		#print(t,failed,done)
-		count = 0
-		frames = []
-		
-		while(not done and not failed):# and count < count_max):
-	        #preprocess
-			full_image = Image.fromarray(data.squeeze(axis=2), 'L')
-			frames.append(full_image)
-			#full_image.show()
-			#input("Pause")
-			img = preprocessing(full_image,data_size)
-			pixels = list(img.getdata())
-			pixels = np.array([pixels[j * data_size:(j + 1) * data_size] for j in range(data_size)])
-			pixels = pixels[:,:,np.newaxis]
-			pixels = np.divide(pixels,normalize)
-			
-			action = sess.run(daqn_presoft,feed_dict={X: [pixels]})
-			f.write(str(action))
-			f.write('\n')
-			action = np.argmax(action[0])
-			f.write(str(action))
-			f.write('\n')
-			#print(action)
-			data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
-
-			if(count == count_max):
-				failed = 1;
-
-			if(failed):
-				result[t] = 0
-				if(count >= count_max):
-					if debug:
-						print(str(t)+": You took too long")
-					out_file.write(str(t)+": You took too long")
-					out_file.write('\n')
-				else:
-					if debug:
-						print(str(t)+": You hit a wall!")
-					out_file.write(str(t)+": You hit a wall!")
-					out_file.write('\n')
-				f.write("FAIL")
-				f.write('\n')
-			elif(done):
-				result[t] = 1
-				if debug:
-					print(str(t)+": You won!")
-				out_file.write(str(t)+": You won!")
-				out_file.write('\n')
-				f.write("PASS")
-				f.write('\n')
-			count+=1
-		frames[0].save("results/"+location+"/"+str(epoch)+"_"+str(t)+".gif",save_all=True, append_images=frames[1:])
-		f.flush()
-		f.close()
-	#print(len(result))
-	result = np.array(result)
-	win = np.sum(result)
-	lose = result.size-win
-	#print(result.size,lose)
-	print("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
-	out_file.write("After %d tests: %d Passed and %d Failed, Accuracy of: %0.2f" % (num_test,win,lose,win/num_test))
-	out_file.write('\n')
-	out_file.flush()
-	out_file.close()
 
 
 expert_replay_state = np.zeros(shape=[x_train.shape[0],data_size,data_size,1])
@@ -163,22 +85,32 @@ expert_replay_r =np.zeros(shape=[x_train.shape[0]])
 expert_replay_state_prime = np.zeros(shape=[x_train.shape[0],data_size,data_size,1])
 
 #create expert replay data
+episode_start_index = 1
 for i in range(0,x_train.shape[0]):
-	#expert_replay_state = np.append(expert_replay_state,[x_train[i,:,:,:]],axis=0)
-	#expert_replay_action = np.append(expert_replay_action,[y_train[i,:]],axis=0)
+	print(i)
 	expert_replay_state[i,:,:,:] = x_train[i,:,:,:]
 	expert_replay_action[i,:] = y_train[i,:]
 	reward = 0
-	if(y_train[i,4] == 1):
-		reward = 1
-		#expert_replay_state_prime[i,:,:,:] = np.append(expert_replay_state_prime,[x_train[i,:,:,:]],axis=0)
-		expert_replay_state_prime[i,:,:,:] = x_train[i,:,:,:]
+	if(skip_goal == -1):
+		if (i == x_train.shape[0]-1):
+			reward = REWARD
+			expert_replay_state_prime[i,:,:,:] = x_train[i,:,:,:]
+		elif(i == episode_start[episode_start_index]-1):
+			reward = REWARD
+			expert_replay_state_prime[i,:,:,:] = x_train[i,:,:,:]
+			#print(x_train[i,:,:,:].squeeze(axis=2))
+			#pix2img(x_train[i,:,:,:].squeeze(axis=2),True)
+			#input("pause")
+			episode_start_index = min(episode_start_index+1,len(episode_start)-1)
+		else:
+			expert_replay_state_prime[i,:,:,:] = x_train[i+1,:,:,:]
 	else:
-		#expert_replay_state_prime = np.append(expert_replay_state_prime,[x_train[i+1,:,:,:]],axis=0)
-		expert_replay_state_prime[i,:,:,:] = x_train[i+1,:,:,:]
-	#expert_replay_r = np.append(expert_replay_r,[reward],axis=0)
+		if(y_train[i,4] == 1):
+			reward = REWARD
+			expert_replay_state_prime[i,:,:,:] = x_train[i,:,:,:]
+		else:
+			expert_replay_state_prime[i,:,:,:] = x_train[i+1,:,:,:]
 	expert_replay_r[i] = reward
-	print(i)
 	
 
 f = open("results/daqn_logs/"+location+".txt",'w')
@@ -198,20 +130,24 @@ with graph_daqn.as_default():
 
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
 	action_true = tf.placeholder(shape=[None,n_classes], dtype="float32", name='action_true')
-	net = DAQN(X,Y,pooling_bool)
+	net = DAQN(X,Y,n_classes,pooling_bool)
 	daqn = net.outpost
 	daqn_presoft = net.outpre
 	
-
+	#daqn_presoft = tf.Print(daqn_presoft,[daqn_presoft],message="Q-values: ", summarize=10)
 	Q = tf.reduce_sum(tf.multiply(daqn_presoft, Y), reduction_indices=1)
-
+	#Q = tf.Print(Q,[Q],message="Q: ", summarize=10)
 	# Define Loss and optimizer
 	#cost_0 = tf.multiply(gamma,Q_prime)
 	cost_1 = tf.add(R,Q_prime)
+	#cost_1 = tf.Print(cost_1,[cost_1],message="cost_1: ", summarize=10)
 	cost_2 = tf.subtract(cost_1,Q)
-	cost = tf.square(cost_2)
+	#cost_2 = tf.Print(cost_2,[cost_2],message="cost_2: ", summarize=10)
+	cost_3 = tf.square(cost_2)
+	#cost_3 = tf.Print(cost_3,[cost_3],message="cost_3: ", summarize=10)
 
-	cost = tf.reduce_mean(cost)
+	cost = tf.reduce_mean(cost_3)
+	#cost = tf.Print(cost,[cost],message="cost: ", summarize=10)
 
 	optimizer = tf.train.AdagradOptimizer(learning_rate=learning_rate)
 	update = optimizer.minimize(cost)
@@ -246,6 +182,8 @@ with tf.Session(graph=graph_daqn) as sess:
 		s = expert_replay_state[ind,:,:,:]
 		a = expert_replay_action[ind,:]
 
+		#print(a)
+
 		#s = sess.run(daqn_presoft,feed_dict={X: st, Y: a})
 
 		#q = s[np.arange(s.shape[0]),np.argmax(a,axis=1)]
@@ -254,11 +192,19 @@ with tf.Session(graph=graph_daqn) as sess:
 
 		s_prime = sess.run(daqn_presoft,feed_dict={X: s_prime, Y: a})
 
+		#print(s_prime)
+
 		q_prime = s_prime[np.arange(s_prime.shape[0]),np.argmax(s_prime,axis=1)]
+
+		#print(q_prime)
 
 		q_prime = np.multiply(gamma, q_prime)
 
+		#print(q_prime)
+
 		r = expert_replay_r[ind]
+
+		#print(r)
 
 		sess.run(update,feed_dict={X : s, Y: a, Q_prime : q_prime, R : r})
 
@@ -307,6 +253,9 @@ with tf.Session(graph=graph_daqn) as sess:
 					pixels[j, i] = 255
 
 		same_image = Image.fromarray(pixels, 'L')
+	
+	best_epoch = 0
+	best_score = 0
 	for epoch in range(0,num_epochs_ran):
 		
 		if (done or failed):# and count < count_max):	
@@ -327,7 +276,7 @@ with tf.Session(graph=graph_daqn) as sess:
 		action = sess.run(daqn_presoft,feed_dict={X: [pixels]})
 		action = np.argmax(action[0:4])
 
-		action_list = np.zeros(shape=[1,5])
+		action_list = np.zeros(shape=[1,n_classes])
 		action_list[0,action] = 1
 
 		replay_action[total_step_count%replay_buffer,:] = action_list
@@ -350,9 +299,9 @@ with tf.Session(graph=graph_daqn) as sess:
 		reward = 0
 
 		if failed:
-			reward = -1
+			reward = -REWARD
 		elif done:
-			reward =1
+			reward = REWARD
 
 		replay_r[total_step_count%replay_buffer] = reward
 
@@ -407,10 +356,18 @@ with tf.Session(graph=graph_daqn) as sess:
 			# f.write('\n')	
 		if(epoch%test_interval == 0):
 			# Test Network
-			test_network(epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+			win,lose,cur_path_total,total_path = test_network(sess,daqn_presoft, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+			if(best_score < cur_path_total):
+				best_score = cur_path_total
+				best_epoch = epoch
+	# Test Network
+	win,lose,cur_path_total,total_path = test_network(sess,daqn_presoft, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+	if(best_score < cur_path_total):
+		best_score = cur_path_total
+		best_epoch = epoch
 
-		# Test Network
-	test_network(epoch,len(test_array), same, location, test_image_location,test_array, normalize, data_size, actual_size)	
+	print("Best Epoch, Best Score")
+	print(best_epoch,best_score)
 
 # f.flush()
 # f.close()

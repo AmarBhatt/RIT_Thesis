@@ -3,7 +3,7 @@ import tensorflow as tf
 
 class DAQN:
 
-	def __init__(self,X,Y,pooling_bool = True):
+	def __init__(self,X,Y,n_classes,pooling_bool = True):
 
 		"""
 			Input: 83x83x? (? = 1-4)
@@ -73,7 +73,7 @@ class DAQN:
 		# Output
 		outpre = self.fc_layer(input=layer_fc1,
 					 num_inputs=256,
-					 num_outputs=5,
+					 num_outputs=n_classes,
 					 activation="")
 
 		outpost = tf.nn.softmax(outpre)	
@@ -210,7 +210,7 @@ def sse(y_pred, y_true):
 	#y_true = tf.Print(y_true, [y_true], message="y_true is: ")
 	#y_pred = tf.Print(y_pred, [y_pred], message="y_pred is: ")
 	loss = tf.square(tf.subtract(y_true,y_pred))
-	loss.set_shape([1,5])
+	loss.set_shape(y_true.shape)
 	return tf.reduce_sum(loss) #SHOULD THIS STILL BE SUMMED?
 
 def generateNetworkStructure():

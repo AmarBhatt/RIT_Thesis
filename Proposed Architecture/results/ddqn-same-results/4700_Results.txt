@@ -1,0 +1,11 @@
+0: You took too long
+1: You hit a wall!
+2: You hit a wall!
+3: You hit a wall!
+4: You won!
+5: You hit a wall!
+6: You took too long
+7: You took too long
+8: You took too long
+9: You hit a wall!
+After 10 tests: 1 Passed and 9 Failed, Accuracy of: 0.10, Total Paths Completed: 14 out of 125
