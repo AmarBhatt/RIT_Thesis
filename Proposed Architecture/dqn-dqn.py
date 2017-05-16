@@ -57,6 +57,8 @@ gamma = 0.9
 REWARD = 1000
 
 p = 0.1 #expert replay sampling
+decay_rate = 0.0
+decay_frequency = 1000000
 
 restore_epoch = num_epochs-1
 
@@ -314,6 +316,9 @@ with tf.Session(graph=graph_dqn) as sess:
 			print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
 	              "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	              "{:.5f}".format(acc))
+
+			if(epoch % decay_frequency == 0):
+				p = max(p-decay_rate,0)
 
 		total_step_count += 1
 		

@@ -57,6 +57,8 @@ gamma = 0.9
 REWARD = 1000
 
 p = 0.1 #expert replay sampling
+decay_rate = 0.0
+decay_frequency = 1000000
 
 update_freq = 4
 tau = 0.001
@@ -306,6 +308,8 @@ with tf.Session(graph=graph_dqn) as sess:
 
 			if(epoch % update_freq == 0):
 				updateTarget(targetOps,sess)
+			if(epoch % decay_frequency == 0):
+				p = max(p-decay_rate,0)
 
 			# Display loss and accuracy
 			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a})

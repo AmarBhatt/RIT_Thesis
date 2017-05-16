@@ -45,7 +45,7 @@ darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 num_epochs = 1000 #20
 episodes = 50
-num_epochs_darn = 1000 #20
+num_epochs_darn = 10000 #20
 episodes_darn = 50
 batch_size = 50
 batch_size_darn = 50
@@ -168,9 +168,9 @@ with graph_darn.as_default():
 	X_darn = tf.placeholder(shape=[None,data_size,data_size,1], dtype="float32",name='X_darn')
 	X_darn = tf.reshape(X_darn, [-1, data_size, data_size, 1])
 
-	Y_darn = tf.placeholder(shape=[None,5], dtype="float32", name='Y_darn')
+	Y_darn = tf.placeholder(shape=[None,n_classes], dtype="float32", name='Y_darn')
 
-	action_true = tf.placeholder(shape=[None,5], dtype="float32", name='action_true')
+	action_true = tf.placeholder(shape=[None,n_classes], dtype="float32", name='action_true')
 
 	net = DAQN(X_darn,Y_darn,n_classes,pooling_bool)
 	darn = net.outpost

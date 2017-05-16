@@ -73,7 +73,7 @@ expert_replay_state_prime = np.zeros(shape=[0,data_size,data_size,1])
 
 REWARD = 1000
 
-p = 0.1 #expert replay sampling
+p = 0.0#0.1 #expert replay sampling
 
 x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,skip_goal=skip_goal,normalize=normalize)
 

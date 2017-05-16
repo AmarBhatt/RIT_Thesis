@@ -121,7 +121,7 @@ with the `report' document style}{You should probably read the
 rit-thesis documentation.}}{}
 
 % All margins should be 1.5", left MUST be 1.5"
-\topmargin -0.25in
+\topmargin -0.5in
 \advance \topmargin by -\headheight
 \headsep 0.5in
 %\textheight 8.4in GPS
@@ -138,7 +138,7 @@ rit-thesis documentation.}}{}
 % Disallow page breaks at hyphens (this will give some underfull vbox's,
 % so an alternative is to use \brokenpenalty=100 and manually search
 % for and fix such page breaks)
-\brokenpenalty=10000
+\brokenpenalty=1000000
 
 % Use 1.5 times the normal baseline-to-baseline skip (double space)
 \renewcommand{\baselinestretch}{1}
@@ -247,7 +247,7 @@ rit-thesis documentation.}}{}
 
 \long\def\signature#1#2{%
 \hbox{\hfil\shortstack[l]{{\vrule width \textwidth height 0.4pt} \\ {#1} \\ {#2} }}%
-\vspace{.35in}%
+\vspace{.30in}%
 }
 
 %% Signatures
@@ -274,16 +274,16 @@ rit-thesis documentation.}}{}
 %% Title page with signatures
 \def\titlep{%
 	\large
-    \vspace*{-.5in}
+    \vspace*{-.75in}
 	\thispagestyle{empty}%
 	\def\baselinestretch{1.1}
 	\null
 	\begin{center}
-		\huge\bf{\@title} \\ [0.2in]
+		\huge\bf{\@title} \\ [0.00in]
 	\end{center}
 %	\vfill
 	\begin{center}
-		\large by \\ [0.2in] {\Large \bf \@author \rm }\\ [0.3in]
+		\large by \\ [0.05in] {\Large \bf \@author \rm }\\ [0.0in]
 		\@prevdegrees
 	\end{center}
 %	\vfill
@@ -299,24 +299,24 @@ rit-thesis documentation.}}{}
 		Requirements for the Degree of 
                 \degreeType \\
                  in 
-                \@dept \\ [0.3in]
+                \@dept \\ [0.00in]
 	\end{center}
 
 	%\vskip.2in
 	\begin{center}
 	\large
-                Supervised by\\[0.2in]
+                Supervised by:\\[0.05in]
                 \@advtitle \ \@adviser \\
 		Department of \@advdept \\
 		Kate Gleason College of Engineering \\
 		Rochester Institute of Technology \\
 		Rochester, New York \\
 			\@grantmonth\ \ \@grantyear
-	\vskip.5in
+	\vskip.15in
 	\end{center}
     Approved by:
     
-	\vskip.3in
+	\vskip.25in
 	\signatures
 
 	\newpage
