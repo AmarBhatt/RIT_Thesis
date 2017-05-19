@@ -8,4 +8,4 @@
 7: You hit a wall!
 8: You hit a wall!
 9: You hit a wall!
-After 10 tests: 0 Passed and 10 Failed, Accuracy of: 0.00, Total Paths Completed: 1 out of 95
+After 10 tests: 0 Passed and 10 Failed, Accuracy of: 0.00, Total Paths Completed: 4 out of 95

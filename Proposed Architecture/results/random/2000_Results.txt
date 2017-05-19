@@ -4,7 +4,7 @@
 3: You hit a wall!
 4: You hit a wall!
 5: You hit a wall!
-6: You hit a wall!
+6: You took too long
 7: You hit a wall!
 8: You hit a wall!
 9: You hit a wall!

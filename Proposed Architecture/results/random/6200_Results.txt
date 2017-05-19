@@ -1,5 +1,5 @@
 0: You hit a wall!
-1: You took too long
+1: You hit a wall!
 2: You hit a wall!
 3: You hit a wall!
 4: You hit a wall!

@@ -16,7 +16,7 @@
 %   The following packages are all optional and depend on the specifics of what
 % is contained in the thesis.  There is no harm in leaving them in.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{subfigure}
+%\usepackage{subfigure}
 \usepackage[refpages]{gloss}
 \usepackage{babel}
 \usepackage{times}
@@ -48,7 +48,7 @@
 
 
 % Support for typesetting subcaptions
-%\usepackage{subcaption}
+\usepackage{subcaption}
 
 % Support for displaying pseudo-code
 \usepackage{algorithm}
@@ -874,7 +874,20 @@ Numpy allows for complex data management and mathematical operations, especially
 h5py is a Python package to implement the HDF5 binary data format.  This format allows for the storage of large datasets in a compressed way.  In this research, the datasets were often large and a huge bottleneck for the system, however, after converting the data and storing it with h5py, reading the data was done in seconds.  This severely cut-down on run-time (from 6 hours for data reading to 30 seconds). 
 
 \section{Architecture Details}
-A number of architectures were created and tested as described in Chapter~\ref{sec:proposed_architectures}.  The hyper-parameters for each of these architectures were tuned to ensure best results for the networks.  These hyper-parameters include:
+\label{sec:arch_details}
+A number of architectures were created and tested as described in Chapter~\ref{sec:proposed_architectures}. The descriptions of each network tested are as follows:
+\begin{itemize}
+	\item \textit{DAL}~\cite{markovikj2014deep}: The Deep Apprenticeship Learning architecture without any modifications.
+	\item \textit{DAL}~\cite{markovikj2014deep} (no pooling): The Deep Apprenticeship Learning architecture without any pooling layers.
+    \item \textit{DAL with Transfer Learning}: The Deep Apprenticeship Learning architecture where the trained DAQN network weights are used to initialize the weights of the DARN.
+    \item \textit{DAL with Bellman}: The Deep Apprenticeship Learning architecture with using Bellman Q-value updates for both the DAQN and DARN, as well as experience replay.
+    \item \textit{DQN-AL}: Deep Q-Network for Apprenticeship Learning which uses the DQN architecture and shared experience replay.
+    \item \textit{DQN-AL with Scheduled Shared Experience}: Same as DQN-AL except that the expert experience for shared experience replay starts at a high percentage and decays over time.
+	\item \textit{Dueling DQN-AL}: Dueling Deep Q-Network for Apprenticeship Learning which uses the Dueling DQN architecture (with Target Q-Network) and shared experience replay.
+    \item \textit{Dueling DQN-AL with Scheduled Shared Experience}: Same as Dueling DQN-AL except that the expert experience for shared experience replay starts at a high percentage and decays over time.
+\end{itemize}
+
+The hyper-parameters for each of these architectures were tuned to ensure best results for the networks.  These hyper-parameters include:
 \begin{itemize}
   \item Dataset Split: Number of training data, number of testing data, and number of random data
   \item Data size: Size of input data
@@ -885,11 +898,11 @@ A number of architectures were created and tested as described in Chapter~\ref{s
   \item Reward Value: Arbitrary value for maximum and minimum award
   \item Shared Experience Ratio (SER): Percentage of expert experience used when training agent
   \item Shared Experience Decay (SED): Rate at which expert experience would disappear
-  \item Shared Experience Decay Frequency (SEF): Rate at which shared experience ratio would be updated
+  \item Shared Experience Decay Frequency (SEF): Rate (number of epochs) at which shared experience ratio would be updated
   \item Replay Buffer: Size of experience memory
 \end{itemize}
 
-For each network the discount factor ($\gamma$) was kept constant at 0.9.  The dataset split for task completion for all DAL networks was 800 training, 200 testing, and 1000 random with a data size of $83\times 83\times 1$. For DQN networks it was 1000 train (the testing and random came from self generated experiences) with a data size of $84\times 84\times 1$. The dataset split for task understanding for all DAL networks was 8000 training, 2000 testing, and 10000 random. For DQN networks it was 10000 train (the testing and random came from self generated experiences).  The hyper-parameters for task completion and task understanding for each network are shown in Tables~\ref{tab:arch_hyp_same} and~\ref{tab:arch_hyp_rand}.
+For each network the discount factor ($\gamma$) was kept constant at 0.9.  The dataset split for task completion for all DAL~\cite{markovikj2014deep} networks was 800 training, 200 testing, and 1000 random with a data size of $83\times 83\times 1$.  These were trained with a batch size of 50. For DQN networks it was 1000 train (the testing and random came from self generated experiences) with a data size of $84\times 84\times 1$. These were trained with a batch size of 32. The dataset split for task understanding for all DAL networks was 8000 training, 2000 testing, and 10000 random. For DQN networks it was 10000 train (the testing and random came from self generated experiences).  Also, for Dueling DQN the target Q-network update frequency was set for 4 epochs for task completion and 10 epochs for task understanding. The hyper-parameters for task completion and task understanding for each network are shown in Tables~\ref{tab:arch_hyp_same} and~\ref{tab:arch_hyp_rand}.
 
 \begin{table}[]
 \centering
@@ -898,14 +911,14 @@ For each network the discount factor ($\gamma$) was kept constant at 0.9.  The d
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
  & \begin{tabular}[c]{@{}l@{}}Pooling\\ (T/F)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
-DAL & T & 50000,100000 & 0.01 &  &  &  \\ \hline
-DAL (no pooling) & F & 50000,100000 & 0.01 &  &  &  \\ \hline
-DAL with Transfer Learning & F & 10000,10000 & 0.01 &  &  &  \\ \hline
-DAL with Bayesian & F & 10000,10000 &  &  &  &  \\ \hline
-DQN-AL & F & 10000,10000 & 0.001 &  &  &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Experience Replay\end{tabular} & F & 10000,10000 & 0.001 &  &  &  \\ \hline
-Dueling DQN-AL & F & 2000,10000 & 0.1 &  &  &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Experience Replay\end{tabular} & F & 2000,10000 & 0.1 &  &  &  \\ \hline
+DAL~\cite{markovikj2014deep} & T & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling) & F & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL with Transfer Learning & F & 10000,10000 & 0.01 & - & - &  \\ \hline
+DAL with Bellman & F & 10000,10000 & 0.01 & - & - & - \\ \hline
+DQN-AL & F & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
+Dueling DQN-AL & F & 2000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 2000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
 \end{tabular}
 \end{table}
 
@@ -916,24 +929,66 @@ Dueling DQN-AL & F & 2000,10000 & 0.1 &  &  &  \\ \hline
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
  & \begin{tabular}[c]{@{}l@{}}Pooling\\ (T/F)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
-DAL & T & 50000,100000 & 0.01 &  &  &  \\ \hline
-DAL (no pooling) & F & 50000,100000 & 0.01 &  &  &  \\ \hline
-DAL with Transfer Learning & F & 10000,10000 & 0.01 &  &  &  \\ \hline
-DAL with Bayesian & F & 10000,10000 &  &  &  &  \\ \hline
-DQN-AL & F & 10000,10000 & 0.001 &  &  &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Experience Replay\end{tabular} & F & 10000,10000 & 0.001 &  &  &  \\ \hline
-Dueling DQN-AL & F & 10000,10000 & 0.1 &  &  &  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Experience Replay\end{tabular} & F & 10000,10000 & 0.1 &  &  &  \\ \hline
+DAL~\cite{markovikj2014deep} & T & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling) & F & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL with Transfer Learning & F & 10000,10000 & 0.01 & - & - & - \\ \hline
+DAL with Bellman & F & 10000,10000 & 0.01 & - & - & - \\ \hline
+DQN-AL & F & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.001 &  &  &  \\ \hline
+Dueling DQN-AL & F & 10000,10000 & 0.1 & 0.1 & - &  -\\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.1 & 0.9 & 0.05 & 500 \\ \hline
 \end{tabular}
 \end{table}
 
 \chapter{Results and Analysis}
 \label{sec:results_and_analysis}
-\section{Task Completion versus Task Understanding}
-\section{Reading the Data}
-Test success and action prediction
+\section{Task Completion and Task Understanding}
+This research explored two concepts, task completion and task understanding. Task completion is the measure of how well a system can complete a specific task.  In this research, task completion was tested using the same maze structure with the agent starting in different locations.  This was used to see if the agent could find the shortest path to a goal in a specific environment.  This tested the systems ability to mimic the expert, as well as its ability to recognize the agent and goal state.  
+Task understanding is the measure of how well a system can generalize the task needing to be completed. Task understanding was tested in this research using different mazes and different agent starting locations.  By feeding the system with expert data from a number of different maze structures it tests the systems ability to generalize the overall task of getting to the goal despite the maze structure.  This tests to see if the system was trained well enough to identify walls, unobstructed path, the agent location, goal location, and the best path towards the goal.
+
+\section{Test Methodology}
+Each trained network was tested with 10 fixed mazes with agent starting locations.  For task completion these fixed tests all had the same maze structure. For task understanding these fixed tests all had different maze structures. The agent starting locations for each tests were chosen so that there was an even distribution of easy positions (next to goal or linear path to goal) and difficult (far from goal or complex path to goal). The fixed tests with agent starting locations for task completion are shown in Fig.~\ref{fig:task_comp_tests}. The fixed tests with agent starting locations for task understanding are shown in Fig.~\ref{fig:task_und_tests}.
+\begin{figure}
+\centering
+\begin{tabular}{ccccc}
+\subcaptionbox{Test 1\label{fig:TC Test 1}}{\includegraphics[scale=1]{images/task_comp_0.jpg}} &
+\subcaptionbox{Test 2\label{fig:TC Test 2}}{\includegraphics[scale=1]{images/task_comp_1.jpg}} &
+\subcaptionbox{Test 3\label{fig:TC Test 3}}{\includegraphics[scale=1]{images/task_comp_2.jpg}} &
+\subcaptionbox{Test 4\label{fig:TC Test 4}}{\includegraphics[scale=1]{images/task_comp_3.jpg}} &
+\subcaptionbox{Test 5\label{fig:TC Test 5}}{\includegraphics[scale=1]{images/task_comp_4.jpg}} \\
+\subcaptionbox{Test 6\label{fig:TC Test 6}}{\includegraphics[scale=1]{images/task_comp_5.jpg}} &
+\subcaptionbox{Test 7\label{fig:TC Test 7}}{\includegraphics[scale=1]{images/task_comp_6.jpg}} &
+\subcaptionbox{Test 8\label{fig:TC Test 8}}{\includegraphics[scale=1]{images/task_comp_7.jpg}} &
+\subcaptionbox{Test 9\label{fig:TC Test 9}}{\includegraphics[scale=1]{images/task_comp_8.jpg}} &
+\subcaptionbox{Test 10\label{fig:TC Test 10}}{\includegraphics[scale=1]{images/task_comp_9.jpg}}\ 
+\end{tabular}
+\caption{Task Completion Fixed Tests (10) with Agent Starting Location.}
+\label{fig:task_comp_tests}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tabular}{ccccc}
+\subcaptionbox{Test 1\label{fig:TU Test 1}}{\includegraphics[scale=1]{images/task_und_0.jpg}} &
+\subcaptionbox{Test 2\label{fig:TU Test 2}}{\includegraphics[scale=1]{images/task_und_1.jpg}} &
+\subcaptionbox{Test 3\label{fig:TU Test 3}}{\includegraphics[scale=1]{images/task_und_2.jpg}} &
+\subcaptionbox{Test 4\label{fig:TU Test 4}}{\includegraphics[scale=1]{images/task_und_3.jpg}} &
+\subcaptionbox{Test 5\label{fig:TU Test 5}}{\includegraphics[scale=1]{images/task_und_4.jpg}} \\
+\subcaptionbox{Test 6\label{fig:TU Test 6}}{\includegraphics[scale=1]{images/task_und_5.jpg}} &
+\subcaptionbox{Test 7\label{fig:TU Test 7}}{\includegraphics[scale=1]{images/task_und_6.jpg}} &
+\subcaptionbox{Test 8\label{fig:TU Test 8}}{\includegraphics[scale=1]{images/task_und_7.jpg}} &
+\subcaptionbox{Test 9\label{fig:TU Test 9}}{\includegraphics[scale=1]{images/task_und_8.jpg}} &
+\subcaptionbox{Test 10\label{fig:TU Test 10}}{\includegraphics[scale=1]{images/task_und_9.jpg}}\
+\end{tabular}
+\caption{Task Understanding Fixed Tests (10) with Agent Starting Location.}
+\label{fig:task_und_tests}
+\end{figure}
+
+Success was measured in two ways; tests completed and correct action prediction.   Tests completed measures the amount of tests (Fig.~\ref{fig:task_comp_tests}, Fig.~\ref{fig:task_und_tests}) completed (agent reaches goal). Correct action prediction is a percentage of correct optimal actions predicted for all the tests.  This test shows how well the network predicted actions even for difficult agent initial states.
+
 \section{Proposed Architecture Performances}
-Table of Task Completion (Same)~\ref{tab:task-complete}
+
+Each architecture described in section~\ref{sec:arch_details} was tested for both task completion and task understanding using the described hyper-parameters.  The results for the task completion tests are shown in Table~\ref{tab:task-complete}.  As shown, the DQN architectures greatly outperform the DAL architectures. Also, the addition of scheduled shared experience replay shows promising results of helping a network learn better and more efficiently.
 \begin{table}[]
 \centering
 \caption{Task Completion Results}
@@ -942,17 +997,18 @@ Table of Task Completion (Same)~\ref{tab:task-complete}
 \hline
 \multicolumn{3}{|c|}{Task Completion Results} \\ \hline
 \textit{\textbf{Networks}} & \textit{\textbf{Tests Completed}} & \textit{\textbf{Correct Action Prediction}} \\ \hline
-DAL & 1/10  & 6.4\% (8/125) \\ \hline
-DAL (no pooling) &  &  \\ \hline
-DAL with Transfer Learning (no pooling) &  &  \\ \hline
-DAL with Bayesian Implementation &  &  \\ \hline
+DAL~\cite{markovikj2014deep} & 1/10 & 6.4\% (8/125) \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling) & 0/10 & 5.6\% (7/125) \\ \hline
+DAL with Transfer Learning (no pooling) & 2/10 & 10.4\% (13/125) \\ \hline
+DAL with Bellman Implementation & 2/10 & 8.8\% (11/125) \\ \hline
 DQN-AL & 2/10 & 18.4\% (23/125) \\ \hline
-Dueling DQN-AL & 9/10 & 76.8\% (96/125) \\ \hline
-Dueling DQN-AL with Scheduled Experience Replay & &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 5/10 & 24.8\% (31/125)  \\ \hline
+Dueling DQN-AL & \textbf{9/10} & \textbf{76.8\%} (96/125) \\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 7/10 & 58.4\% (73/125) \\ \hline
 \end{tabular}
 \end{table}
 
-Table of Task Understanding (Random)~\ref{tab:task-understanding}
+The results for the task understanding tests are shown in Table~\ref{tab:task-understanding}.  As shown, all the networks show poor performance for task understanding.  The DQN architectures do outperform the DAL architectures, but do not display largely significant results.
 \begin{table}[]
 \centering
 \caption{Task Understanding Results}
@@ -961,29 +1017,39 @@ Table of Task Understanding (Random)~\ref{tab:task-understanding}
 \hline
 \multicolumn{3}{|c|}{Task Understanding Results} \\ \hline
 \textit{\textbf{Networks}} & \textit{\textbf{Tests Completed}} & \textit{\textbf{Correct Action Prediction}} \\ \hline
-DAL &  &  \\ \hline
-DAL (no pooling) &  &  \\ \hline
+DAL~\cite{markovikj2014deep} &  &  \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling) &  &  \\ \hline
 DAL with Transfer Learning (no pooling) & 2/10 & 11.6\% (11/95) \\ \hline
-DAL with Bayesian Implementation &  &  \\ \hline
+DAL with Bellman Implementation & 2/10 & 13.7\% (13/95) \\ \hline
 DQN-AL & 0/10 & 9.5\% (9/95) \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 0/10 & 8.4\% (8/95)  \\ \hline
 Dueling DQN-AL & 1/10 & 13.7\% (13/95) \\ \hline
-Dueling DQN-AL with Scheduled Experience Replay & &  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 2/10 & 15.8\% (15/95) \\ \hline
 \end{tabular}
 \end{table}
 
 \section{Result Analysis}
-Include loss graphs
 
-Include example images in sequence
+\subsection{Task Completion}
+As shown in Table~\ref{tab:task-complete}, the DAL networks show very low performance in completing the maze task.  While there is a slight increase in the transfer learning without pooling network (DAL with Transfer Learning) there does not seem to be any significance or note-worthy performance increases using this network.  This in part has to do with this simplicity of this network being only 2 convolution layers deep.  Also, this network architecture performed well in reward based environments and was only ever compared to non-deep algorithms.  These results show that this type of network is not effective in task completion environments and would not fair well in real world environments.  
+
+The DQN networks, on the other hand, showed much more promising results. The DQN-AL architecture performed a bit better in correct action prediction due to its complex architecture made to understand complexities in different worlds. When paired with scheduled experience replay, the network performed considerably better in both test completion and correct action prediction.  This shows that the edition of the scheduled experience replay gives the system a guide throughout its training.  The Dueling DQN-AL architecture performed the best in both test completion and correct action prediction.  Much of this is a credit to the stability of the Q-network using a target Q-network as well as the separation of the fully-connected layer in the Dueling DQN architecture.  In addition, the Dueling DQN architecture was tested with scheduled shared experience as well.  While this did not perform as well, it did out perform all other network architectures by a large margin for both test completion and correct action prediction, showing again the promising contribution of scheduled shared experience.  
+
+The DQN network results also show that the abstract reward values also were a success. By setting the rewards in the Bellman Q-value updater to be descriptive of the completion of the task, abstraction of the reward from the step level to the task level was achieved.  With this modification, DQNs were able to be utilized in the apprenticeship learning space where environments have unknown reward structures. 
+
+\subsection{Task Understanding}
+Unfortunately, each of these networks performed poorly when being tested on task understanding, as shown in Table~\ref{tab:task-understanding}.  The DAL networks performed the same as they did in task completion, further iterating that this type of network architecture is not appropriate for task-based apprenticeship learning. The DQN networks did show improvement over the DAL networks, but did not produce substantial results.  Although, using scheduled shared experience did show to have improved performance.
+
+Task understanding through raw pixel data is still in its infancy in terms of research.  While DQNs have shown to produce superhuman performance on Atari games~\cite{atari}, it does not do well in understanding environments with unknown reward structures.  While the concept of reward abstraction may resemble a reward structure, it is not flexible enough to abstract complex reward structures that may lie in an environment.  For example, with the random structured mazes the underlying reward function needing to be learned involved agent proximity to the goal, each wall block, and each open space, it also involved the goal proximity to the agent, each wall block, and each open space.  This leads to a very complex, non-linear reward structure that is difficult to decipher using only raw pixel data and no other information.  While adding locality information to the data may achieve better results, it does not address the real-world problem of using raw video footage to teach an agent to perform a task. 
 
 
 \chapter{Conclusions and Future Work}
 \label{sec:conclusions}
+This research shows promising performance for task completion using deep apprenticeship learning.  An issue with deep apprenticeship learning was the need to learn an underlying reward structure.  By bypassing that step by using reward abstraction from step level to task level, common Bellman equations and Q-learning algorithms could be used to train a network.  The addition of scheduled experience replay also showed the benefits of giving a learning agent a strong guide in its infancy and a weaker guide at its maturity.  Using the DQN methodology of target Q-networks brought stability to the networks while training, which was lacking in the DAL implementations.  Dueling DQN architecture implementation also proved to be the superior network architecture for task completion as its separation of value and advantage modeled the task completion problem well.  More research is needed in the problem space of task completion.  While scheduled shared experience and DQN implementations proved to be better than the traditional DAL implementations, the novel contributions that succeeded in task completion did benefit the networks in task understanding. An implementation that may allow for better task understanding is a recurrent layer that can learn sequences over time. 
 
+One problem with deep apprenticeship learning with raw pixel data is the unavailability of datasets with both expert data and a simulation environment.  For this research, a dataset with both these criteria was created, however, no dataset like this is available for public use.  One extension to overcome this is to move from a simulation environment to a physical environment.  Using video data from an agent in a physical environment doing a task, that same agent can learn from the expert video data.  While this would eliminate the issue with dataset availability, it comes with its own issues in the realm of hardware, video capture, and extra environment variables, such as lighting and camera angle.
 
-Future Work
-- Task specific, for maze have two networks one for agent location one for maze detection?
-
+Overall, this research shows the promise of deep apprenticeship learning's extension to unknown reward structure and real-world environments. The possibilities of this technology are endless, and can be used to better understand the learning process for humans.  Some example applications of this research include autonomous robotic surgery where the system learns proper cutting techniques from video data from surgeons and factory robots learning how to work in a heterogeneous environment with humans. 
 
   \nocite{*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -31,7 +31,7 @@ skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if
 
 data_size = 84
 actual_size = 100
-num_train = 8
+num_train = 1000
 num_test = 0
 num_reward = 10
 test_interval = 100
@@ -56,9 +56,9 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.1 #expert replay sampling
-decay_rate = 0.0
-decay_frequency = 1000000
+p = 0.9 #expert replay sampling
+decay_rate = 0.05
+decay_frequency = 500
 
 restore_epoch = num_epochs-1
 
@@ -318,7 +318,9 @@ with tf.Session(graph=graph_dqn) as sess:
 	              "{:.5f}".format(acc))
 
 			if(epoch % decay_frequency == 0):
+				print("Old p: ",p)
 				p = max(p-decay_rate,0)
+				print("New p: ",p)
 
 		total_step_count += 1
 		

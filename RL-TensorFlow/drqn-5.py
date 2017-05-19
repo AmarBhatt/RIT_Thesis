@@ -80,6 +80,7 @@ class Qnetwork():
         self.mask = tf.concat([self.maskA,self.maskB],1)
         self.mask = tf.reshape(self.mask,[-1])
         self.loss = tf.reduce_mean(self.td_error * self.mask)
+        self.loss = tf.Print(self.loss,[self.loss],message="Loss: ")
         
         self.trainer = tf.train.AdamOptimizer(learning_rate=0.0001)
         self.updateModel = self.trainer.minimize(self.loss)

@@ -32,7 +32,7 @@ skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if
 data_size = 84
 actual_size = 100
 num_train = 8000
-num_test = 2000
+num_test = 0
 num_reward = 10
 test_interval = 100
 tests = 2
@@ -45,8 +45,8 @@ dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 10000
-num_epochs_ran = 10000
+num_epochs = 100000
+num_epochs_ran = 100000
 batch_size = 32
 batch_size_ran = 32
 
@@ -56,11 +56,11 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.1 #expert replay sampling
-decay_rate = 0.0
-decay_frequency = 1000000
+p = 0.9 #expert replay sampling
+decay_rate = 0.005
+decay_frequency = 500
 
-update_freq = 4
+update_freq = 4 #was 10
 tau = 0.001
 
 restore_epoch = num_epochs-1
@@ -309,14 +309,16 @@ with tf.Session(graph=graph_dqn) as sess:
 			if(epoch % update_freq == 0):
 				updateTarget(targetOps,sess)
 			if(epoch % decay_frequency == 0):
+				print("Old p: ",p)
 				p = max(p-decay_rate,0)
+				print("New p: ",p)
 
 			# Display loss and accuracy
 			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a})
 			#writer.add_summary(summary)
 			print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
 	              "{:.6f}".format(cost) + ", Training Accuracy= " + \
-	              "{:.5f}".format(acc))
+	              "{:.5f}".format(acc) + ", Best Epoch= " + str(best_epoch) + ", Best Score= " + str(best_score))
 
 		total_step_count += 1
 		

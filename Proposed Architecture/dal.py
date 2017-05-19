@@ -20,7 +20,7 @@ from arch import getData
 
 typeTest = "same"
 
-data_loc = "same_1000_83_skipgoal.h5"
+data_loc = typeTest+"_1000_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest

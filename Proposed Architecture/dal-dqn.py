@@ -1,6 +1,5 @@
 import numpy as np
 np.set_printoptions(threshold=np.nan)
-import tflearn
 import tensorflow as tf
 from DataSetGenerator.maze_generator import *
 from daqn import DAQN, sse
@@ -18,14 +17,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-from tflearn.layers.core import input_data, dropout, fully_connected
-from tflearn.layers.conv import conv_2d, max_pool_2d
-from tflearn.layers.normalization import local_response_normalization
-from tflearn.layers.estimator import regression
 
-typeTest = "same"
+typeTest = "random"
 
-data_loc = typeTest+"_1000_rew_83_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+data_loc = typeTest+"_10000_rew_83_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -34,8 +29,8 @@ same = True if typeTest == "same" else False
 skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if -1 then possible actions = 4 not 5)
 data_size = 83
 actual_size = 100
-num_train = 1000
-num_test = 0
+num_train = 8000
+num_test = 2000
 num_reward = 10
 test_interval = 100
 tests = 2
@@ -55,7 +50,7 @@ batch_size_ran = 50
 test_batch_size = 50
 
 n_classes = 5 if skip_goal == None else 4
-learning_rate = 0.1
+learning_rate = 0.01
 gamma = 0.9
 
 restore_epoch = num_epochs-1

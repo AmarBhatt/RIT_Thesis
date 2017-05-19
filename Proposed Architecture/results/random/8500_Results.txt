@@ -3,7 +3,7 @@
 2: You hit a wall!
 3: You hit a wall!
 4: You hit a wall!
-5: You took too long
+5: You hit a wall!
 6: You hit a wall!
 7: You hit a wall!
 8: You hit a wall!

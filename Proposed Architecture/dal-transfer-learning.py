@@ -14,9 +14,9 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "random"
+typeTest = "same"
 
-data_loc = typeTest+"_1000_rew_83_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+data_loc = typeTest+"_1000_83_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -25,9 +25,9 @@ same = True if typeTest == "same" else False
 skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if -1 then possible actions = 4 not 5)
 data_size = 83
 actual_size = 100
-num_train = 8000
-num_test = 2000
-num_reward = 10000
+num_train = 800
+num_test = 200
+num_reward = 1000
 test_interval = 100
 tests = 2
 normalize = 1
