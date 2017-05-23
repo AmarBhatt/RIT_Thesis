@@ -255,6 +255,7 @@ The novel contributions and areas of exploration of this research are as follows
   \item Scheduled Shared Experience: Combining expert experiences and agent experiences with the percent of expert experiences present decaying over time
   \item Target Q-Network Implementation: Implementing methods in DQN of stabilizing Q-networks with a target network updating frequency
   \item Dueling DQN Utilization: Utilizing the concept of split value and advantage Q-values within expert data training and agent training
+  \item DRQN Utilization: Utilizing the concept of recurrent neural networks and LSTMs to learn sequential tasks
 \end{itemize}
 
 
@@ -531,6 +532,7 @@ Therefore, dueling DQNs split the last layer in the DQN into two sub-networks, o
 The idea of separating Q-values into these two value functions is to be able to create robust state value estimates without having it be attached to a specific action.  For example, consider an agent in a room where it receives a very high reward of being in the green zone and a very low reward of being in the red zone. If the agent is in the green zone it is highly rewarding to be in that zone, and no action needs to be taken to receive a reward. Therefore, it does not make sense in this case to consider the value of being in the green zone state being coupled with an action. Therefore, by decoupling the value of being in a state and the advantage of taking an action more complex and robust estimates can be made that allow for greater stability and faster learning~\cite{wang2015dueling}. This paper~\cite{wang2015dueling} also used Atari 2600 as its bench mark and greatly outperformed both DDQN and DQN architectures. 
 
 \subsection{Deep Recurrent Q-Networks (DRQN)}
+\label{sec:drqn}
 DQNs~\cite{atari}, DDQNs~\cite{van2016deep}, and Dueling DQNs~\cite{wang2015dueling} allow the agent to have full access to the information of an environment. In other words, our system has full observability in that it is given full state information of the entire game state.  For example, grid worlds and Atari 2600 games have all the information of the world in a single state (no scrolling game play or worlds). However most real world problems will not give an agent full observability. Assume an agent does not have access to all the information in a world (partial observability), traditional DQN methods will not be able to converge. For example, in cases where there are walls or doors an agent will not know the states that are on the other side. Also, while spatial limitations exist, temporal information is also crucial.  Often, in single image inputs motion, speed, and direction can be lost to an agent. Even in DQN architectures, only 4 frames are used as an input, therefore in environments where past information is even more crucial these 4 frames greatly limit what can be learned. Environments where all information is not available to an agent are called Partially Observable Markov Decision Processes (POMDPs).  
 
 Hausknecht et al.~\cite{HausknechtDRQN} found that the performance of DQNs decline when trying to learn a POMDP and could be better learned using recurrent neural networks. This created the Deep Recurrent Q-Network (DRQN) architecture. Instead of passing in a series of images as input to the network, DRQNs take in a single image. The difference lies in the first fully-connected layer being replaced with a recurrent LSTM layer. This change can be seen in Fig.~\ref{fig:drqn-arch}~\cite{HausknechtDRQN}.
@@ -543,6 +545,8 @@ Hausknecht et al.~\cite{HausknechtDRQN} found that the performance of DQNs decli
 \end{figure}
 
 As shown, the LSTM layer is inserted just before the value and advantage layers are calculated the same as in dueling DRQNs. Another change in this network is in the experience replay.  Instead of selecting a random batch of experiences, DRQNs train on random batches of sequence of experiences at a set length.  This is important so that sequences can be learned which is crucial to the recurrent nature of DRQNs. Using this network with the Atari 2600 framework, DRQNs showed significant improvement on POMDP style game play~\cite{HausknechtDRQN}. 
+
+Lample et al.~\cite{DBLP:journals/corr/LampleC16} made a modification to this network to ensure only accurate gradients were being propagated through the network. Using the replay memory in sequences at a set trace length, only half of the errors of the that sequence are propagated back through the network.  More specifically, the first half of the trace errors are not used.  This was shown to cut-down on non-accurate information from updating the network.  Often the first set of moves in a trace are random, where as the last moves in a trace are more prone to be going on the right track.  By using this method, it was shown that the Atari game Doom was played at a much better rate than traditional DRQN and Dueling DQN~\cite{DBLP:journals/corr/LampleC16}.  However, the size of the trace, number of sampled episodes, and percentage of trace used in updates are hyper-parameters that need to be adjusted for each application the DRQN is used to learn.
 
 
 \section{Apprenticeship Learning (Inverse Reinforcement \\ Learning)}
@@ -730,7 +734,7 @@ Where, $DAQN^{PRESOFT}(s,a)$ are the presoft values of the DAQN with inputs $(s,
 \end{equation}
 \begin{figure}
 \centering
-\includegraphics[scale=1.5]{images/darn-dal.png}
+\includegraphics[scale=1]{images/darn-dal.png}
 \caption{DAL Architecture.~\cite{markovikj2014deep}}
 \label{fig:darn-dal}
 \end{figure}
@@ -858,6 +862,9 @@ Mnih et al.~\cite{atari} also introduced the concept of using a separate target 
 \subsection{Using Dueling DQN}
 Another modification made was using the Dueling Deep Q-Network architecture (section~\ref{sec:DuelingDQN})~\cite{wang2015dueling}.  Splitting the value and advantage functions from the main Q-network, allows for the separation of state estimation and action selection.  By decoupling these two, the network can more accurately predict the best action to take regardless of the state that was predicted. For the dataset used (Maze World), this allows for part of the network to determine the goodness of the current state of the maze, and the other part of the network to determine best action to take. 
 
+\subsection{Using Deep Recurrent Q-Networks (DRQN)}
+\label{sec:drqn-implementation}
+As explained in Section~\ref{sec:drqn}~\cite{HausknechtDRQN}~\cite{DBLP:journals/corr/LampleC16} DRQNs perform well with sequential based Atari games. Using the same concept of training our apprenticeship learning architecture with sequential data and an LSTM, it can be shown that sequential tasks can also be learned.  However, the dataset processing algorithm first needs to be modified to account for this change in experience replay storage.  One problem is that the amount of steps in each episode can vary, which means that having a set trace number may cause a problem when randomly sampling from episodes.  Another problem follows the first problem in that there may not be enough episodes at a certain trace length or higher, although this is rare in large datasets.  To solve both problems, the episodes for the agent and expert were stored with their total lengths.  Then, the hyper-parameters for maximum trace length and maximum episode number were chosen.  During training on expert data, a unique trace length was randomly chosen from the trace lengths stored for the expert.  If the trace length was smaller than the max it would be chosen as the trace length for that epoch, otherwise the maximum trace length was chosen.  The number of episodes meeting the trace length requirement was then found.  If the number of episodes found were less than the maximum number of episodes that number would be chosen as the episode number for that epoch, otherwise the max episode number would be used.  If the max episode number is used, then a random sampling of eligible episodes with the specified trace length was used for training that epoch.  For each chosen episode, a random point step in that episode was chosen as the start of the trace and each step after that up to the trace length was stored.  The stored steps were then fed to the DRQN to update, which used only the first half of each trace as described in~\cite{DBLP:journals/corr/LampleC16}.
 
 \chapter{Implementation}
 \label{sec:implementation}
@@ -885,13 +892,13 @@ A number of architectures were created and tested as described in Chapter~\ref{s
     \item \textit{DQN-AL with Scheduled Shared Experience}: Same as DQN-AL except that the expert experience for shared experience replay starts at a high percentage and decays over time.
 	\item \textit{Dueling DQN-AL}: Dueling Deep Q-Network for Apprenticeship Learning which uses the Dueling DQN architecture (with Target Q-Network) and shared experience replay.
     \item \textit{Dueling DQN-AL with Scheduled Shared Experience}: Same as Dueling DQN-AL except that the expert experience for shared experience replay starts at a high percentage and decays over time.
+ \item \textit{DRQN-AL}: Deep Recurrent Q-Network for Apprenticeship Learning which uses the DRQN architecture with experience replay modifications explained in Section~\ref{sec:drqn-implementation}.
 \end{itemize}
 
 The hyper-parameters for each of these architectures were tuned to ensure best results for the networks.  These hyper-parameters include:
 \begin{itemize}
   \item Dataset Split: Number of training data, number of testing data, and number of random data
   \item Data size: Size of input data
-  \item Pooling: Boolean whether or not to pool after convolution layers
   \item Epochs: Number of epochs for training from expert, number of epochs for training agent
   \item Learning Rate ($\alpha$): Rate at which network weights update
   \item Discount Factor ($\gamma$): Weight of future state values
@@ -901,8 +908,13 @@ The hyper-parameters for each of these architectures were tuned to ensure best r
   \item Shared Experience Decay Frequency (SEF): Rate (number of epochs) at which shared experience ratio would be updated
   \item Replay Buffer: Size of experience memory
 \end{itemize}
+For the DRQN-AL implementation extra parameters needed to be defined.  These include:
+\begin{itemize}
+	\item Maximum Episode Number: Maximum number of episodes from dataset to sample from.
+	\item Maximum Trace Length: Maximum length of trace to extract from each episode.
+\end{itemize}
 
-For each network the discount factor ($\gamma$) was kept constant at 0.9.  The dataset split for task completion for all DAL~\cite{markovikj2014deep} networks was 800 training, 200 testing, and 1000 random with a data size of $83\times 83\times 1$.  These were trained with a batch size of 50. For DQN networks it was 1000 train (the testing and random came from self generated experiences) with a data size of $84\times 84\times 1$. These were trained with a batch size of 32. The dataset split for task understanding for all DAL networks was 8000 training, 2000 testing, and 10000 random. For DQN networks it was 10000 train (the testing and random came from self generated experiences).  Also, for Dueling DQN the target Q-network update frequency was set for 4 epochs for task completion and 10 epochs for task understanding. The hyper-parameters for task completion and task understanding for each network are shown in Tables~\ref{tab:arch_hyp_same} and~\ref{tab:arch_hyp_rand}.
+For each network the discount factor ($\gamma$) was kept constant at 0.9.  The dataset split for task completion for all DAL~\cite{markovikj2014deep} networks was 800 training, 200 testing, and 1000 random with a data size of $83\times 83\times 1$.  These were trained with a batch size of 50. For DQN networks it was 1000 train (the testing and random came from self generated experiences) with a data size of $84\times 84\times 1$. These were trained with a batch size of 32. The dataset split for task understanding for all DAL networks was 8000 training, 2000 testing, and 10000 random. For DQN networks it was 10000 train (the testing and random came from self generated experiences).  Also, for Dueling DQN the target Q-network update frequency was set for 4 epochs for task completion and 10 epochs for task understanding. The DQN implementations used a replay buffer of size 500. For the DRQN implementation, the maximum episode number was set to 8 and the maximum trace length was set to 4 to make an overall count of 32 data inputs per epoch. The DRQN used a replay buffer of size 5000. The hyper-parameters for task completion and task understanding for each network are shown in Tables~\ref{tab:arch_hyp_same} and~\ref{tab:arch_hyp_rand}.  
 
 \begin{table}[]
 \centering
@@ -910,15 +922,16 @@ For each network the discount factor ($\gamma$) was kept constant at 0.9.  The d
 \label{tab:arch_hyp_same}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
- & \begin{tabular}[c]{@{}l@{}}Pooling\\ (T/F)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
-DAL~\cite{markovikj2014deep} & T & 50000,100000 & 0.01 & - & - & - \\ \hline
-DAL~\cite{markovikj2014deep} (no pooling) & F & 50000,100000 & 0.01 & - & - & - \\ \hline
-DAL with Transfer Learning & F & 10000,10000 & 0.01 & - & - &  \\ \hline
-DAL with Bellman & F & 10000,10000 & 0.01 & - & - & - \\ \hline
-DQN-AL & F & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
-\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
-Dueling DQN-AL & F & 2000,10000 & 0.001 & 0.1 & - & - \\ \hline
-\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 2000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
+  & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
+DAL~\cite{markovikj2014deep}  & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling)  & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL with Transfer Learning  & 10000,10000 & 0.01 & - & - &  \\ \hline
+DAL with Bellman  & 10000,10000 & 0.01 & - & - & - \\ \hline
+DQN-AL  & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular}  & 10000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
+Dueling DQN-AL  & 2000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular}  & 2000,10000 & 0.001 & 0.9 & 0.05 & 500  \\ \hline
+DRQN-AL  & 10000,100000 & 0.001 & 0.25 & - & - \\ \hline
 \end{tabular}
 \end{table}
 
@@ -928,15 +941,16 @@ Dueling DQN-AL & F & 2000,10000 & 0.001 & 0.1 & - & - \\ \hline
 \label{tab:arch_hyp_rand}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
- & \begin{tabular}[c]{@{}l@{}}Pooling\\ (T/F)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
-DAL~\cite{markovikj2014deep} & T & 50000,100000 & 0.01 & - & - & - \\ \hline
-DAL~\cite{markovikj2014deep} (no pooling) & F & 50000,100000 & 0.01 & - & - & - \\ \hline
-DAL with Transfer Learning & F & 10000,10000 & 0.01 & - & - & - \\ \hline
-DAL with Bellman & F & 10000,10000 & 0.01 & - & - & - \\ \hline
-DQN-AL & F & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
-\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.001 &  &  &  \\ \hline
-Dueling DQN-AL & F & 10000,10000 & 0.1 & 0.1 & - &  -\\ \hline
-\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & F & 10000,10000 & 0.1 & 0.9 & 0.05 & 500 \\ \hline
+  & \begin{tabular}[c]{@{}l@{}}Epochs\\ (Expert/Agent)\end{tabular} & $\alpha$ & SER & SED & SEDF \\ \hline
+DAL~\cite{markovikj2014deep}  & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL~\cite{markovikj2014deep} (no pooling)  & 50000,100000 & 0.01 & - & - & - \\ \hline
+DAL with Transfer Learning  & 10000,10000 & 0.01 & - & - & - \\ \hline
+DAL with Bellman  & 10000,10000 & 0.01 & - & - & - \\ \hline
+DQN-AL  & 10000,10000 & 0.001 & 0.1 & - & - \\ \hline
+\begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular}  & 10000,10000 & 0.001 & 0.05 & 500 &  \\ \hline
+Dueling DQN-AL  & 10000,10000 & 0.1 & 0.1 & - &  -\\ \hline
+\begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular}  & 10000,10000 & 0.1 & 0.9 & 0.05 & 500 \\ \hline
+DRQN-AL  & 10000,100000 & 0.001 & 0.25 & - & - \\ \hline
 \end{tabular}
 \end{table}
 
@@ -991,7 +1005,7 @@ Success was measured in two ways; tests completed and correct action prediction.
 Each architecture described in section~\ref{sec:arch_details} was tested for both task completion and task understanding using the described hyper-parameters.  The results for the task completion tests are shown in Table~\ref{tab:task-complete}.  As shown, the DQN architectures greatly outperform the DAL architectures. Also, the addition of scheduled shared experience replay shows promising results of helping a network learn better and more efficiently.
 \begin{table}[]
 \centering
-\caption{Task Completion Results}
+\caption{Task Completion Results.}
 \label{tab:task-complete}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -1005,13 +1019,14 @@ DQN-AL & 2/10 & 18.4\% (23/125) \\ \hline
 \begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 5/10 & 24.8\% (31/125)  \\ \hline
 Dueling DQN-AL & \textbf{9/10} & \textbf{76.8\%} (96/125) \\ \hline
 \begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 7/10 & 58.4\% (73/125) \\ \hline
+DRQN-AL & 1/10 & 18.4\% (23/125) \\ \hline
 \end{tabular}
 \end{table}
 
-The results for the task understanding tests are shown in Table~\ref{tab:task-understanding}.  As shown, all the networks show poor performance for task understanding.  The DQN architectures do outperform the DAL architectures, but do not display largely significant results.
+The results for the task understanding tests are shown in Table~\ref{tab:task-understanding}.  As shown, all the networks show poor performance for task understanding.  The DQN architectures do outperform the DAL architectures, although only by a small margin.
 \begin{table}[]
 \centering
-\caption{Task Understanding Results}
+\caption{Task Understanding Results.}
 \label{tab:task-understanding}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -1025,6 +1040,7 @@ DQN-AL & 0/10 & 9.5\% (9/95) \\ \hline
 \begin{tabular}[c]{@{}l@{}}DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 0/10 & 8.4\% (8/95)  \\ \hline
 Dueling DQN-AL & 1/10 & 13.7\% (13/95) \\ \hline
 \begin{tabular}[c]{@{}l@{}}Dueling DQN-AL with \\ Scheduled Shared Experience\end{tabular} & 2/10 & 15.8\% (15/95) \\ \hline
+DRQN-AL & \textbf{2/10} & \textbf{20.0\%} (19/95) \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1033,19 +1049,21 @@ Dueling DQN-AL & 1/10 & 13.7\% (13/95) \\ \hline
 \subsection{Task Completion}
 As shown in Table~\ref{tab:task-complete}, the DAL networks show very low performance in completing the maze task.  While there is a slight increase in the transfer learning without pooling network (DAL with Transfer Learning) there does not seem to be any significance or note-worthy performance increases using this network.  This in part has to do with this simplicity of this network being only 2 convolution layers deep.  Also, this network architecture performed well in reward based environments and was only ever compared to non-deep algorithms.  These results show that this type of network is not effective in task completion environments and would not fair well in real world environments.  
 
-The DQN networks, on the other hand, showed much more promising results. The DQN-AL architecture performed a bit better in correct action prediction due to its complex architecture made to understand complexities in different worlds. When paired with scheduled experience replay, the network performed considerably better in both test completion and correct action prediction.  This shows that the edition of the scheduled experience replay gives the system a guide throughout its training.  The Dueling DQN-AL architecture performed the best in both test completion and correct action prediction.  Much of this is a credit to the stability of the Q-network using a target Q-network as well as the separation of the fully-connected layer in the Dueling DQN architecture.  In addition, the Dueling DQN architecture was tested with scheduled shared experience as well.  While this did not perform as well, it did out perform all other network architectures by a large margin for both test completion and correct action prediction, showing again the promising contribution of scheduled shared experience.  
+The DQN networks, on the other hand, showed much more promising results. The DQN-AL architecture performed a bit better in correct action prediction due to its complex architecture made to understand complexities in different worlds. When paired with scheduled experience replay, the network performed considerably better in both test completion and correct action prediction.  This shows that the edition of the scheduled experience replay gives the system a guide throughout its training.  The Dueling DQN-AL architecture performed the best in both test completion and correct action prediction.  Much of this is a credit to the stability of the Q-network using a target Q-network as well as the separation of the fully-connected layer in the Dueling DQN architecture.  In addition, the Dueling DQN architecture was tested with scheduled shared experience as well.  While this did not perform as well, it did out perform all other network architectures by a large margin for both test completion and correct action prediction, showing again the promising contribution of scheduled shared experience. 
 
 The DQN network results also show that the abstract reward values also were a success. By setting the rewards in the Bellman Q-value updater to be descriptive of the completion of the task, abstraction of the reward from the step level to the task level was achieved.  With this modification, DQNs were able to be utilized in the apprenticeship learning space where environments have unknown reward structures. 
 
+The DRQN implementation did not fair well in the task completion tests. However, much of this may be due to the setting of the hyper-parameters, which as explained in section~\ref{sec:drqn} need to be set specifically for each application.
+
 \subsection{Task Understanding}
-Unfortunately, each of these networks performed poorly when being tested on task understanding, as shown in Table~\ref{tab:task-understanding}.  The DAL networks performed the same as they did in task completion, further iterating that this type of network architecture is not appropriate for task-based apprenticeship learning. The DQN networks did show improvement over the DAL networks, but did not produce substantial results.  Although, using scheduled shared experience did show to have improved performance.
+Unfortunately, each of these networks performed poorly when being tested on task understanding, as shown in Table~\ref{tab:task-understanding}.  The DAL networks performed the same as they did in task completion, further iterating that this type of network architecture is not appropriate for task-based apprenticeship learning. The DQN networks did show improvement over the DAL networks, but did not produce substantial results.  Although, using scheduled shared experience did show to have improved performance.  The DRQN implementation did the best in task understanding, and shows that a recurrent solution to task understanding is promising. 
 
 Task understanding through raw pixel data is still in its infancy in terms of research.  While DQNs have shown to produce superhuman performance on Atari games~\cite{atari}, it does not do well in understanding environments with unknown reward structures.  While the concept of reward abstraction may resemble a reward structure, it is not flexible enough to abstract complex reward structures that may lie in an environment.  For example, with the random structured mazes the underlying reward function needing to be learned involved agent proximity to the goal, each wall block, and each open space, it also involved the goal proximity to the agent, each wall block, and each open space.  This leads to a very complex, non-linear reward structure that is difficult to decipher using only raw pixel data and no other information.  While adding locality information to the data may achieve better results, it does not address the real-world problem of using raw video footage to teach an agent to perform a task. 
 
 
 \chapter{Conclusions and Future Work}
 \label{sec:conclusions}
-This research shows promising performance for task completion using deep apprenticeship learning.  An issue with deep apprenticeship learning was the need to learn an underlying reward structure.  By bypassing that step by using reward abstraction from step level to task level, common Bellman equations and Q-learning algorithms could be used to train a network.  The addition of scheduled experience replay also showed the benefits of giving a learning agent a strong guide in its infancy and a weaker guide at its maturity.  Using the DQN methodology of target Q-networks brought stability to the networks while training, which was lacking in the DAL implementations.  Dueling DQN architecture implementation also proved to be the superior network architecture for task completion as its separation of value and advantage modeled the task completion problem well.  More research is needed in the problem space of task completion.  While scheduled shared experience and DQN implementations proved to be better than the traditional DAL implementations, the novel contributions that succeeded in task completion did benefit the networks in task understanding. An implementation that may allow for better task understanding is a recurrent layer that can learn sequences over time. 
+This research shows promising performance for task completion using deep apprenticeship learning.  An issue with deep apprenticeship learning was the need to learn an underlying reward structure.  By bypassing that step by using reward abstraction from step level to task level, common Bellman equations and Q-learning algorithms could be used to train a network.  The addition of scheduled experience replay also showed the benefits of giving a learning agent a strong guide in its infancy and a weaker guide at its maturity.  Using the DQN methodology of target Q-networks brought stability to the networks while training, which was lacking in the DAL implementations.  Dueling DQN architecture implementation also proved to be the superior network architecture for task completion as its separation of value and advantage modeled the task completion problem well.  More research is needed in the problem space of task completion.  While scheduled shared experience and DQN implementations proved to be better than the traditional DAL implementations, the novel contributions that succeeded in task completion did benefit the networks in task understanding. An implementation that may allow for better task understanding is a recurrent layer that can learn sequences over time.  While this was shown in the DRQN-AL implementation, the hyper-parameters for maximum episode, maximum trace length, and expert data percentage needs to be finely tuned for the problem.  
 
 One problem with deep apprenticeship learning with raw pixel data is the unavailability of datasets with both expert data and a simulation environment.  For this research, a dataset with both these criteria was created, however, no dataset like this is available for public use.  One extension to overcome this is to move from a simulation environment to a physical environment.  Using video data from an agent in a physical environment doing a task, that same agent can learn from the expert video data.  While this would eliminate the issue with dataset availability, it comes with its own issues in the realm of hardware, video capture, and extra environment variables, such as lighting and camera angle.
 

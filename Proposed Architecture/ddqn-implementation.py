@@ -18,10 +18,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "random"
+typeTest = "same"
 
 
-data_loc = typeTest+"_8000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+data_loc = typeTest+"_1000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -45,8 +45,8 @@ dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 100000
-num_epochs_ran = 100000
+num_epochs = 2000
+num_epochs_ran = 10000
 batch_size = 32
 batch_size_ran = 32
 
@@ -56,12 +56,14 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.9 #expert replay sampling
+p = 0.1 #expert replay sampling
 decay_rate = 0.005
-decay_frequency = 500
+decay_frequency = 500000000000000000000
 
 update_freq = 4 #was 10
 tau = 0.001
+
+h_size = 512
 
 restore_epoch = num_epochs-1
 
@@ -126,8 +128,8 @@ with graph_dqn.as_default():
 	#X_prime = tf.reshape(X, [-1, data_size, data_size, 1])
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
 
-	net = DDQN(X,Y,n_classes,learning_rate,pooling_bool=pooling_bool)
-	netTarget = DDQN(X,Y,n_classes,learning_rate,pooling_bool=pooling_bool)
+	net = DDQN(X,Y,n_classes,learning_rate,pooling_bool=pooling_bool,h_size=h_size)
+	netTarget = DDQN(X,Y,n_classes,learning_rate,pooling_bool=pooling_bool,h_size=h_size)
     
 	# Evaluate model
 	#pred = tf.argmax(dqn, 1)

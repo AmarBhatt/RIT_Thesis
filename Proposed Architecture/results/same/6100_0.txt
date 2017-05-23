@@ -1,14 +1,4 @@
-[[ nan  nan  nan  nan]]
-0
-[[ nan  nan  nan  nan]]
-0
-[[ nan  nan  nan  nan]]
-0
-[[ nan  nan  nan  nan]]
-0
-[[ nan  nan  nan  nan]]
-0
-[[ nan  nan  nan  nan]]
-0
+[[-0.20522052 -0.12372159  0.01556681 -0.1350075 ]]
+2
 FAIL
-5/19
+0/19

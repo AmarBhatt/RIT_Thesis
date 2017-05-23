@@ -114,13 +114,12 @@ def test_network(sess, net, X, epoch, num_test, same, location, test_image_locat
 
 
 
-def test_network_drqn(sess, net, X, epoch, num_test, same, location, test_image_location,test_array, normalize, data_size, actual_size,debug=True):
+def test_network_drqn(sess, net, X, epoch, num_test, same, location, test_image_location,test_array, normalize, data_size, actual_size,h_size=512,debug=True):
 	result = np.zeros(num_test)
 	count_max = 100
 	out_file = open("results/"+location+"/"+str(epoch)+"_Results.txt",'w')
 	total_path = 0
 	cur_path_total = 0
-	h_size = 512
 	state_reset = (np.zeros([1,h_size]),np.zeros([1,h_size]))
 	#Test Network
 	for t in range(0,num_test):

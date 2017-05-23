@@ -3,9 +3,8 @@ import tensorflow as tf
 
 class DDQN:
 
-	def __init__(self,X,Y,num_actions,learning_rate=0.0001,pooling_bool = True):
+	def __init__(self,X,Y,num_actions,learning_rate=0.0001,pooling_bool = True,h_size=512):
 
-		h_size = 512
 		self.conv1 = tf.contrib.layers.convolution2d( \
 			inputs=X,num_outputs=32,kernel_size=[8,8],stride=[4,4],padding='VALID', biases_initializer=None)
 		self.conv2 = tf.contrib.layers.convolution2d( \
@@ -13,7 +12,7 @@ class DDQN:
 		self.conv3 = tf.contrib.layers.convolution2d( \
 			inputs=self.conv2,num_outputs=64,kernel_size=[3,3],stride=[1,1],padding='VALID', biases_initializer=None)
 		self.conv4 = tf.contrib.layers.convolution2d( \
-			inputs=self.conv3,num_outputs=512,kernel_size=[7,7],stride=[1,1],padding='VALID', biases_initializer=None)
+			inputs=self.conv3,num_outputs=h_size,kernel_size=[7,7],stride=[1,1],padding='VALID', biases_initializer=None)
 		
 		#We take the output from the final convolutional layer and split it into separate advantage and value streams.
 		self.streamAC,self.streamVC = tf.split(self.conv4,2,3) #self.streamAC,self.streamVC = tf.split(3,2,self.conv4)

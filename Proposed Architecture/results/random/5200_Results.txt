@@ -3,9 +3,9 @@
 2: You hit a wall!
 3: You hit a wall!
 4: You hit a wall!
-5: You hit a wall!
+5: You won!
 6: You hit a wall!
 7: You hit a wall!
-8: You took too long
-9: You hit a wall!
-After 10 tests: 0 Passed and 10 Failed, Accuracy of: 0.00, Total Paths Completed: 2 out of 95
+8: You hit a wall!
+9: You won!
+After 10 tests: 2 Passed and 8 Failed, Accuracy of: 0.20, Total Paths Completed: 9 out of 95

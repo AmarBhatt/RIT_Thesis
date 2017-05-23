@@ -6,23 +6,22 @@ import scipy.misc
 
 class DRQN:
 
-	def __init__(self,X,Y,num_actions,rnn_cell,learning_rate,pooling_bool = True, myScope="drqn"):
+	def __init__(self,X,Y,num_actions,rnn_cell,learning_rate,pooling_bool = True,h_size=512, myScope="drqn"):
 
-		h_size = 512
-		self.conv1 = slim.convolution2d( \
+		self.conv1 = tf.contrib.layers.convolution2d( \
 			inputs=X,num_outputs=32,\
 			kernel_size=[8,8],stride=[4,4],padding='VALID', \
 			biases_initializer=None,scope=myScope+'_conv1')
-		self.conv2 = slim.convolution2d( \
+		self.conv2 = tf.contrib.layers.convolution2d( \
 			inputs=self.conv1,num_outputs=64,\
 			kernel_size=[4,4],stride=[2,2],padding='VALID', \
 			biases_initializer=None,scope=myScope+'_conv2')
-		self.conv3 = slim.convolution2d( \
+		self.conv3 = tf.contrib.layers.convolution2d( \
 			inputs=self.conv2,num_outputs=64,\
 			kernel_size=[3,3],stride=[1,1],padding='VALID', \
 			biases_initializer=None,scope=myScope+'_conv3')
-		self.conv4 = slim.convolution2d( \
-			inputs=self.conv3,num_outputs=512,\
+		self.conv4 = tf.contrib.layers.convolution2d( \
+			inputs=self.conv3,num_outputs=h_size,\
 			kernel_size=[7,7],stride=[1,1],padding='VALID', \
 			biases_initializer=None,scope=myScope+'_conv4')
 		
@@ -31,7 +30,7 @@ class DRQN:
 		#The input must be reshaped into [batch x trace x units] for rnn processing, 
 		#and then returned to [batch x units] when sent through the upper levles.
 		self.batch_size = tf.placeholder(dtype=tf.int32)
-		self.convFlat = tf.reshape(slim.flatten(self.conv4),[self.batch_size,self.trainLength,h_size])
+		self.convFlat = tf.reshape(tf.contrib.layers.flatten(self.conv4),[self.batch_size,self.trainLength,h_size])
 		self.state_in = rnn_cell.zero_state(self.batch_size, tf.float32)
 		self.rnn,self.rnn_state = tf.nn.dynamic_rnn(\
 				inputs=self.convFlat,cell=rnn_cell,dtype=tf.float32,initial_state=self.state_in,scope=myScope+'_rnn')
@@ -60,6 +59,7 @@ class DRQN:
 		#self.td_error = tf.Print(self.td_error,[self.td_error],message="td_error: ")
 		#In order to only propogate accurate gradients through the network, we will mask the first
 		#half of the losses for each trace as per Lample & Chatlot 2016
+		
 		self.maskA = tf.zeros([self.batch_size,self.trainLength//2])
 		self.maskB = tf.ones([self.batch_size,self.trainLength//2])
 		self.mask = tf.concat([self.maskA,self.maskB],1)

@@ -100,7 +100,7 @@ def generate(imgx,imgy,mx,my,image=None):
     
     
 
-    image.save("Maze_" + str(mx) + "x" + str(my) + ".png", "PNG")
+    #image.save("Maze_" + str(mx) + "x" + str(my) + ".png", "PNG")
     
     return maze, image
 

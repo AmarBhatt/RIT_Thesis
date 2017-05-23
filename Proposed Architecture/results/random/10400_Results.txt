@@ -1,0 +1,11 @@
+0: You hit a wall!
+1: You hit a wall!
+2: You hit a wall!
+3: You hit a wall!
+4: You hit a wall!
+5: You won!
+6: You hit a wall!
+7: You hit a wall!
+8: You hit a wall!
+9: You won!
+After 10 tests: 2 Passed and 8 Failed, Accuracy of: 0.20, Total Paths Completed: 11 out of 95

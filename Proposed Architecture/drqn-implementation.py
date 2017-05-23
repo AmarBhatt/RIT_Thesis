@@ -1,24 +1,3 @@
-'''
-
-YOOOOOO!
-
-Find all unique numbers from episode lengths
-Choose random from this list every iteration
-Change batch number if needed
-
-
-
-Still fix trace_length?  Max of 8
-so if 1 then its 1
-if episode is length 9 then still 8 and choose from random set of 8
-if episode is length 40 then still 8 choose from random set of 8
-
-
-Need to store episode lengths and episode starts for agent replay
-expert percentage is still viable but total batch size may be small
-
-
-'''
 import numpy as np
 np.set_printoptions(threshold=np.nan)
 import tflearn
@@ -53,7 +32,7 @@ skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if
 
 data_size = 84
 actual_size = 100
-num_train = 100
+num_train = 8000
 num_test = 0
 num_reward = 10
 test_interval = 100
@@ -67,11 +46,11 @@ dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 10
-num_epochs_ran = 1000
-max_batch_size = 4
-max_batch_size_ran = 4
-max_trace_length = 8
+num_epochs = 2000
+num_epochs_ran = 100000
+max_batch_size = 8
+max_batch_size_ran = 8
+max_trace_length = 4
 
 n_classes = 5 if skip_goal == None else 4
 learning_rate = 0.0001
@@ -79,22 +58,30 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.25 #expert replay sampling
+p = 0.125 #expert replay sampling
 decay_rate = 0.25
 decay_frequency = 2500000000
 
 update_freq = 5
 tau = 0.001
+h_size = 512
 
 restore_epoch = num_epochs-1
 
-replay_buffer = 50
-replay_state = np.zeros(shape=[replay_buffer,data_size,data_size,1])
-replay_action = np.zeros(shape=[replay_buffer,n_classes])
-replay_r =np.zeros(shape=[replay_buffer])
-replay_state_prime = np.zeros(shape=[replay_buffer,data_size,data_size,1])
+replay_buffer = 500
+# replay_state = np.zeros(shape=[replay_buffer,data_size,data_size,1])
+# replay_action = np.zeros(shape=[replay_buffer,n_classes])
+# replay_r =np.zeros(shape=[replay_buffer])
+# replay_state_prime = np.zeros(shape=[replay_buffer,data_size,data_size,1])
 agent_episode_length = np.zeros(shape=[replay_buffer])
 agent_episode_start = np.zeros(shape=[replay_buffer])
+
+replay_state = np.zeros(shape=[replay_buffer,100,data_size,data_size,1])
+replay_action = np.zeros(shape=[replay_buffer,100,n_classes])
+replay_r =np.zeros(shape=[replay_buffer,100])
+replay_state_prime = np.zeros(shape=[replay_buffer,100,data_size,data_size,1])
+replay_all = [replay_state,replay_action,replay_state_prime,replay_r] #np.empty(shape=[replay_buffer,4]) #state, action, state', r
+
 
 x_train, y_train, episode_lengths, episode_start, episode_total, episode_total, x_test, y_test,state,action,state_prime,action_prime = getData(data_loc,location,rew_location,data_size,num_train,num_test,num_reward,skip_goal=skip_goal,normalize=normalize)
 
@@ -148,11 +135,10 @@ with graph_dqn.as_default():
 	#X_prime = tf.reshape(X, [-1, data_size, data_size, 1])
 	Y = tf.placeholder(shape=[None,n_classes], dtype="float32", name='a')
 
-	h_size = 512
 	cell = tf.contrib.rnn.LSTMCell(num_units=h_size,state_is_tuple=True)
 	cellT = tf.contrib.rnn.LSTMCell(num_units=h_size,state_is_tuple=True)
-	net = DRQN(X,Y,n_classes,cell,learning_rate,pooling_bool=pooling_bool,myScope="mainQN")
-	netTarget = DRQN(X,Y,n_classes,cellT,learning_rate,pooling_bool=pooling_bool,myScope="targetQN")
+	net = DRQN(X,Y,n_classes,cell,learning_rate,pooling_bool=pooling_bool,h_size=h_size,myScope="mainQN")
+	netTarget = DRQN(X,Y,n_classes,cellT,learning_rate,pooling_bool=pooling_bool,h_size=h_size,myScope="targetQN")
     
 	# Evaluate model
 	#pred = tf.argmax(dqn, 1)
@@ -227,9 +213,16 @@ with tf.Session(graph=graph_dqn) as sess:
 			s_prime[indStart:indEnd,:,:,:] = expert_replay_state_prime[point:point+trace_length,:,:,:]
 			r[indStart:indEnd] = expert_replay_r[point:point+trace_length]
 
+		# print(indLengths)
 		# print(s.shape)
 		# for m in range(s.shape[0]):
 		# 	pix2img(s[m,:,:,:].squeeze(axis=2),True)
+		# 	print(a[m,:])
+		# 	input("pause")
+		# print(s_prime.shape)
+		# for m in range(s_prime.shape[0]):
+		# 	pix2img(s_prime[m,:,:,:].squeeze(axis=2),True)
+		# 	print(r[m])
 		# 	input("pause")
 
 		Q1 = sess.run(net.predict,feed_dict={X:s_prime,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
@@ -287,6 +280,8 @@ with tf.Session(graph=graph_dqn) as sess:
 	done = True
 
 	total_step_count = 0
+	increment = 0
+	buffer_full = False
 
 	if same:
 		image_set,action_set = processGIF('DataSetGenerator/expert_data/'+location+"/"+str(0),100)
@@ -309,8 +304,10 @@ with tf.Session(graph=graph_dqn) as sess:
 			while(done or failed):
 				data,new_state,gw,failed,done,environment,image = environmentStep(-1,-1,100,100,10,10, image = None, gw = None, environment = None,feed=same_image)
 
-			agent_episode_start[total_step_count%replay_buffer] = total_step_count%replay_buffer
-			length_holder = total_step_count%replay_buffer
+			#agent_episode_start[total_step_count%replay_buffer] = total_step_count%replay_buffer
+			agent_episode_start[increment] = increment
+			#length_holder = total_step_count%replay_buffer
+			length_holder = increment
 			state_holder = np.empty(shape=[100,data_size,data_size,1])
 			action_holder = np.empty(shape=[100,n_classes])
 			state_prime_holder = np.empty(shape=[100,data_size,data_size,1])
@@ -360,31 +357,63 @@ with tf.Session(graph=graph_dqn) as sess:
 
 		if failed:
 			reward = -REWARD
-			agent_episode_length[length_holder] = count
+			state_prime_holder[count-1,:,:,:] = state_holder[count-1,:,:,:]
+			#agent_episode_length[length_holder] = count
 		elif done:
 			reward = REWARD
-			agent_episode_length[length_holder] = count
+			state_prime_holder[count-1,:,:,:] = state_holder[count-1,:,:,:]
+			#agent_episode_length[length_holder] = count
 
 		reward_holder[count-1] = reward
 
 		if failed or done:
 			#Update episodes
-			space_left_in_buffer = replay_buffer - length_holder
+			# space_left_in_buffer = replay_buffer - length_holder
 			episode_length = count
-			if(episode_length > space_left_in_buffer):
-				episode_length = space_left_in_buffer
+			# if(episode_length > space_left_in_buffer):
+				# episode_length = space_left_in_buffer
+			#agent_episode_length[length_holder] = episode_length
+			agent_episode_length[increment] = episode_length
 
-			replay_state[length_holder:length_holder+episode_length,:,:,:] = state_holder[0:episode_length,:,:,:]
-			replay_action[length_holder:length_holder+episode_length,:] = action_holder[0:episode_length,:]
-			replay_state_prime[length_holder:length_holder+episode_length,:,:,:] = state_prime_holder[0:episode_length,:,:,:]
-			replay_r[length_holder:length_holder+episode_length] = reward_holder[0:episode_length]
+			# replay_state[length_holder:length_holder+episode_length,:,:,:] = state_holder[0:episode_length,:,:,:]
+			# replay_action[length_holder:length_holder+episode_length,:] = action_holder[0:episode_length,:]
+			# replay_state_prime[length_holder:length_holder+episode_length,:,:,:] = state_prime_holder[0:episode_length,:,:,:]
+			# replay_r[length_holder:length_holder+episode_length] = reward_holder[0:episode_length]
 
+			state_holder.resize(episode_length,data_size,data_size,1)
+			action_holder.resize(episode_length,n_classes)
+			state_prime_holder.resize(episode_length,data_size,data_size,1)
+			reward_holder.resize(episode_length)
+
+			# print(episode_length)
+			# print(state_holder.shape)
+			# for m in range(state_holder.shape[0]):
+			# 	pix2img(state_holder[m,:,:,:].squeeze(axis=2),True)
+			# 	print(action_holder[m,:])
+			# 	input("pause")
+			# print(state_prime_holder.shape)
+			# for m in range(state_prime_holder.shape[0]):
+			# 	pix2img(state_prime_holder[m,:,:,:].squeeze(axis=2),True)
+			# 	print(reward_holder[m])
+			# 	input("pause")
+
+			replay_all[0][increment,0:episode_length,:,:,:] = state_holder
+			replay_all[1][increment,0:episode_length,:] = action_holder
+			replay_all[2][increment,0:episode_length,:,:,:] = state_prime_holder
+			replay_all[3][increment,0:episode_length] = reward_holder
+
+			increment+=1
+			if(increment == replay_buffer):
+				increment = 0
+				buffer_full = True
+			#print(increment)
 
 		#replay_r[total_step_count%replay_buffer] = reward
 		
 
 
-		if(total_step_count > replay_buffer):
+		#if(total_step_count > replay_buffer):
+		if(buffer_full):
 
 			agent_possible_lengths = np.unique(agent_episode_length)
 
@@ -398,15 +427,17 @@ with tf.Session(graph=graph_dqn) as sess:
 				ep_length -= 1
 
 
+			trace_length = int(min(ep_length,max_trace_length))
+
 			# Find all indices of that trace length or higher
-			indLengths = np.where(agent_possible_lengths >= ep_length)[0]
+			indLengths = np.where(agent_episode_length >= trace_length)[0]
 			batch_size = min(len(indLengths),max_batch_size_ran)
 
 			
 			expert_batch = int(p*batch_size)
 			agent_batch = batch_size - expert_batch
 
-			trace_length = int(min(ep_length,max_trace_length))
+			
 
 
 			#print(len(indLengths),batch_size,ep_length,trace_length,expert_batch,agent_batch)
@@ -416,7 +447,9 @@ with tf.Session(graph=graph_dqn) as sess:
 
 			#Get all the starting positions
 			start_positions = episode_start[indLengths]
-			agent_start_positions = agent_episode_start[indLengths]
+			#agent_start_positions = agent_episode_start[indLengths]
+
+			agent_start_positions = indLengths.copy()
 
 			np.random.shuffle(start_positions)
 			np.random.shuffle(agent_start_positions)
@@ -439,13 +472,40 @@ with tf.Session(graph=graph_dqn) as sess:
 
 			for c in range(expert_batch,batch_size):
 				#print(c)
-				point = np.random.randint(agent_start_positions[c],agent_start_positions[c]+ep_length+1-trace_length)
+				#point = np.random.randint(agent_start_positions[c-expert_batch],agent_start_positions[c-expert_batch]+ep_length+1-trace_length)
+				total_length = agent_episode_length[agent_start_positions[c-expert_batch]]
+				point = np.random.randint(0,ep_length+1-trace_length)
 				indStart = c*trace_length
 				indEnd = c*trace_length+trace_length
-				s[indStart:indEnd,:,:,:] = replay_state[point:point+trace_length,:,:,:]
-				a[indStart:indEnd,:] = replay_action[point:point+trace_length,:]
-				s_prime[indStart:indEnd,:,:,:] = replay_state_prime[point:point+trace_length,:,:,:]
-				r[indStart:indEnd] = replay_r[point:point+trace_length]
+				# s[indStart:indEnd,:,:,:] = replay_state[point:point+trace_length,:,:,:]
+				# a[indStart:indEnd,:] = replay_action[point:point+trace_length,:]
+				# s_prime[indStart:indEnd,:,:,:] = replay_state_prime[point:point+trace_length,:,:,:]
+				# r[indStart:indEnd] = replay_r[point:point+trace_length]
+
+				tmp_state = replay_all[0][agent_start_positions[c-expert_batch],point:point+trace_length,:,:,:]
+				tmp_action = replay_all[1][agent_start_positions[c-expert_batch],point:point+trace_length,:]
+				tmp_state_prime = replay_all[2][agent_start_positions[c-expert_batch],point:point+trace_length,:,:,:]
+				tmp_reward = replay_all[3][agent_start_positions[c-expert_batch],point:point+trace_length]
+
+				s[indStart:indEnd,:,:,:] = tmp_state
+				a[indStart:indEnd,:] = tmp_action
+				s_prime[indStart:indEnd,:,:,:] = tmp_state_prime
+				r[indStart:indEnd] = tmp_reward
+			#print(agent_episode_start)
+			#print(agent_episode_length)
+			#print(agent_possible_lengths)
+			# print(indLengths)
+			# print(agent_start_positions)
+			# print(s.shape)
+			# for m in range(s.shape[0]):
+			# 	pix2img(s[m,:,:,:].squeeze(axis=2),True)
+			# 	print(a[m,:])
+			# 	input("pause")
+			# print(s_prime.shape)
+			# for m in range(s_prime.shape[0]):
+			# 	pix2img(s_prime[m,:,:,:].squeeze(axis=2),True)
+			# 	print(r[m])
+			# 	input("pause")
 
 			Q1 = sess.run(net.predict,feed_dict={X:s_prime,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
 			Q2 = sess.run(netTarget.Qout,feed_dict={X:s_prime,netTarget.trainLength:trace_length,netTarget.state_in:state_train,netTarget.batch_size:batch_size})
@@ -493,13 +553,13 @@ with tf.Session(graph=graph_dqn) as sess:
 			# f.write('\n')	
 		if(epoch%test_interval == 0):
 			# Test Network
-			win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+			win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
 			if(best_score < cur_path_total):
 				best_score = cur_path_total
 				best_epoch = epoch
 
 	# Test Network
-	win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+	win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
 	if(best_score < cur_path_total):
 		best_score = cur_path_total
 		best_epoch = epoch
