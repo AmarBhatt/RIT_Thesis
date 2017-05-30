@@ -1,0 +1,248 @@
+%\chapter{Platform}
+%Generally environments that make use of automatic guided vehicles (AGVs) have to plan the path(s) where the robots should go before installing the tracks, like magnetic strips or metal tracks; this is an investment even before using the robots. If any change to the path(s) is required to be made, then more cost is incurred. For this research a four wheeled differential drive robot has been controlled wirelessly to follow paths drawn on a graphical user interface within a workspace of 1.8m by 1.4m. The robot is controlled by correcting its orientation through visual feedback from a camera. Error analysis was performed to investigate how well the robot followed the path drawn. The estimated error of the robot is within a few centimeters of the path and can be reduced by modifying various thresholds.
+%
+%\section{Background}
+%Robots whose path is controlled by the user are termed as automatic guided vehicles (AGVs). AGVs follow paths using lasers, cameras, or are physically attached to these paths. These mobile robots follow predefined routes and so, are heavily used in industries for materials handling. Apart from transporting loads, these kinds of robots are used in risky environments and explorations, like space, mines and underwater. For guiding some AGVs, lines, magnetic tracts, or wires are installed on warehouse floors. Hence, making use of these robots requires an initial investment. Vision-based AGVs follow a physical line or markers in a room: landmark based navigation.  Combining these ideas a robotic system was created for dynamic path following using vision based control.  
+%
+%This research platform uses a wireless automatic guided robot that does not require any kind of intrusive modifications to be made to the environment apart from installing an overhead camera. The camera above the workspace tracks the robot continuously and is used to help correct it to follow a predefined path. The user is allowed to define the path the robot should follow in a GUI created in MATLAB.
+%
+%Using a live image of the environment from a bird's-eye-view, the robot is tracked in real-time using ArUco fiducial markers.  The live images are fed to a software GUI where the user can freehand draw any path they desire directly on top of the image.  The system then sends commands to the robot to move it along this path by using the camera and ArUco markers as feedback control. Doing this, the user can draw complicated paths around a room and around obstacles for the robot to navigate. 
+%
+%\section{System Overview}
+%This system consisted of four main sub-components; the Robot, OpenCV, MATLAB, and the Environment workspace itself. Fig.~\ref{fig:workflow} shows the entire system architecture and work flow using these four main components.
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/workflow.PNG}
+%\caption{System Work Flow}
+%\label{fig:workflow}
+%\end{figure}
+%
+%\subsection{Differential Wheel Drive Robot}
+%Four-wheeled differential drive robotics platforms are commonly used in navigation applications. The system used in this setup was the 4WD Rover I from Lynxmotion, as shown in Fig.~\ref{fig:robot}.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/robot.PNG}
+%\caption{4WD Rover I from Lynxmotion}
+%\label{fig:robot}
+%\end{figure}
+%
+%In this type of system each pair of wheels can be controlled independently from another pair.
+%Therefore, this allows the robot to rotate about its center, which gives it greater control and speed on
+%sharp angled turns. To control these motors, pulse width modulation (PWM) signals are given to each motor. This type of signal is usually at a fixed frequency and is a digital square wave ranging from 0V to \textit{$V_{max}$}. \textit{$V_{max}$} for the specific application performed was 7.2V. The signal determines on and off time for the motor based on its duty cycle. A duty cycle of 50\% will result in the motors being powered at half their capacity. A duty cycle of 10\% will result in the motors being powered at a tenth of their capacity. A duty cycle of 100\% will result in the motors being powered at full capacity
+%which looks like a DC signal at 7.2V. These duty cycles are shown in Fig~\ref{fig:pwm}. To control the duty cycle, an Arduino Uno was used which is the main controller used for the four-wheeled robot. A value of 0 to 255 was
+%used to set the duty cycle between 0 and 100\%. In this case 0 would represent 0\% or full stop, 128 would represent 50\% or half speed, and 255
+%would represent 100\% or full speed.
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=1]{images/PWM.PNG}
+%\caption{Various duty cycles on PWM signals}
+%\label{fig:pwm}
+%\end{figure}
+%
+%This robot was programmed through the Arduino to take in serial commands to determine motion.  Single character commands were used as shown in Table~\ref{tab:movement}. To take in these serial commands, a Bluetooth module was connected to the Arduino's TX and RX lines.  The module used was the HC-06, which is a low-power slave Bluetooth module. Once the Arduino receives a movement command it sends the appropriate PWM signals to the Pololu Dual MC3926 motor controller board which was wired
+%directly to the motors, battery, and Arduino Uno. 
+%\begin{table}[h!]
+%\centering
+%\caption{Movement Commands}
+%\label{tab:movement}
+%\begin{tabular}{|p{1.5cm}|p{1cm}|p{3cm}|}
+%\hline
+%\textbf{Command} & \textbf{Function} & \textbf{Wheel Movement} \\ \hline
+%F & Move Forward & All wheels turn in same direction, forward \\ \hline
+%L & Turn Left & Left side wheels reverse, right side wheels forward \\ \hline
+%R & Turn Right & Right side wheels forward, left side wheels reverse \\ \hline
+%S & Stop & Duty cycle of all wheels set to 0\%, no movement \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%\subsection{OpenCV}
+%
+%OpenCV is a comprehensive computer vision toolbox used for a variety of real-time applications such as tracking, facial recognition, segmentation, and classification. It is originally written in C++ but wrappers have been made to allow it to be used in Python and MATLAB. For this system, the only component of OpenCV being used is video stream capture and the ArUco Marker detection.  ArUco markers are pattern-based black and white squares that can be easily identified through OpenCV.  Since OpenCV knows what patterns to look for, it can identify ArUco markers in an environment and determine the corners of them as well as the orientation. For this application four ArUco markers were used as shown in Fig.~\ref{fig:ArUco}. This marker array was printed to the size 14.5 cm by 14.5 cm and was  mounted flat on top of the robot so that the center of the array was at the center of the robot.  The top two markers were facing in the direction of the front of the robot and were used as a reference to determine the orientation of the robot.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.45]{images/ArucoArray.PNG}
+%\caption{ArUco Array of four markers}
+%\label{fig:ArUco}
+%\end{figure}
+%
+%\subsection{MATLAB}
+%
+%MATLAB is a powerful computing platform.  It uses a scripting based language which is ideal for fast prototyping.  It has also been built to be computationally efficient especially in terms of matrix math and neural networks. In this system, MATLAB is used to create the main GUI, interface with OpenCV, interface with the camera, path creation and planning, and sending serial commands to the robot via Bluetooth.  
+%
+%\subsection{Environment}
+%
+%The environment that the robot resides in can be variable.  However, the surface on which the robot roams needs to be navigable by the robot chassis. Also, the environment needs to be well lit so that the markers can be detected. A webcam was placed on the ceiling of the room which was about 8 feet from the ground and faced perpendicular to the floor. The webcam used is shown in Fig.~\ref{fig:webcam}. The webcam itself was used with a resolution of 640 px by 480 px.  This created view-able workspace of about 1.8m (6 feet) by 1.4m (4.5 feet). The robot was placed within this static workspace. The webcam was connected to the computer running the MATLAB application through USB.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.15]{images/webcam.png}
+%\caption{Webcam used for tracking}
+%\label{fig:webcam}
+%\end{figure}
+%
+%\section{Procedure}
+%As an overview, the procedure of running this system takes into account all four main components.  First, the camera is set-up to view a bird's-eye view of the workspace.  The robot is then placed within that workspace with its ArUco markers. The application is then started using MATLAB. OpenCV functions are used to detect the ArUco markers and determine the millimeter to pixel ratio since the ArUco markers are a known size. Once the robot is detected the user is prompted to draw a path over the current image. This path is then fed to the path planner code where the robot iteratively follows the following steps:
+%\begin{itemize}
+%\item The robot faces desired point
+%\item The robot goes towards point
+%\item Feedback from OpenCV to determine whether or not robot meets success thresholds
+%\item The robot's movement is adjusted to meet threshold if needed
+%\item Once the point is reached, the desired point moves to the next point
+%\end{itemize}
+%Once the robot completes the desired path the errors from the robot movement versus the ground truth path are found.  The user is then prompted to draw another path. This basic procedure is shown in the flowchart in Fig~\ref{fig:flowchart}.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/flowchart.PNG}
+%\caption{Basic Flowchart of Procedure}
+%\label{fig:flowchart}
+%\end{figure}
+%
+%
+%\subsection{Detecting ArUco Markers} 
+%
+%To detect the 4 ArUco markers on the robot, the ArUco marker library within OpenCV was used. This library contains a function \textit{detectMarkers} which takes in an image (that contains the markers), a dictionary of marker definitions, and some optional parameters. It then returns the corner locations and ID numbers for all markers detected.  Once the corners and IDs are found, as shown in Fig.~\ref{fig:ArUcodetected}, the center point for the array is also found.  
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/ArucoDetected.PNG}
+%\caption{Annotated ArUco Array of four markers}
+%\label{fig:ArUcodetected}
+%\end{figure}
+%This is done by using a centroid function that uses the points of the 4 corners closest to the center of the image.  This is shown in Equation~\ref{eqn:centerx} and~\ref{eqn:centery} where n is equal to 4 to represent the four points used.  This center point is used to determine the center of the robot, which is also its turning axis. 
+%\begin{equation}
+%center_x = \frac{\sum_{k=0}^{n}{x_k}}{n}
+%\label{eqn:centerx}
+%\end{equation}
+%\begin{equation}
+%center_y = \frac{\sum_{k=0}^{n}{y_k}}{n}
+%\label{eqn:centery}
+%\end{equation}
+%
+%\subsection{Drawing a Path}
+%
+%Once the robot and the markers are detected in the frame of the workspace the user is prompted to draw a path.  This is done by using the built in \textit{imfreehand} function on the current image of the workspace.  This allows the user to freely drawing any path within the workspace as shown in Fig.~\ref{fig:pathdrawn}.
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/pathDrawn.PNG}
+%\caption{Path Drawn by user in GUI}
+%\label{fig:pathdrawn}
+%\end{figure}
+% Once the user draws the path the path is represented by a solid red line with a white star at its first point and a yellow star at its end point.
+%
+%\subsection{Accuracy Thresholds}
+%
+%To ensure the robot follows the path accurately, thresholds were created for the allowable distance it was from the desired point and its orientation with respect to the next point. To identify the distance in pixels between the desired point and the robot, denoted as \textit{d}, the euclidean distance between the desired point and the center point of the ArUco marker array was found. This equation is shown in \ref{eqn:distance}, where $x_c$ and $y_c$ are the pixel coordinates for the center of the robot, and $x_g$ and $y_g$ are the pixel coordinates for the desired point (current point on path trying to be reached). If the value of \textit{d} was less than the threshold (by default was 20 pixels) then the robot met the distance criteria.
+%
+%\begin{equation}
+%d = \sqrt[]{(x_c - x_g)^2 + (y_c - y_g)^2}
+%\label{eqn:distance}
+%\end{equation}
+%
+%The second criteria was the orientation of the robot to the next point. This was important to meet so that the robot was always following the trajectory of the path. To do this 3 vectors were found and plotted. The first vector was from the center of the robot to the desired point ($V_g$). The second vector was from the center of the robot to the front of the robot between ArUco markers 31 and 203 ($V_o$). The third vector was from the front of the robot to the desired point ($V_n$). These vectors are shown in Fig.~\ref{fig:orientation}.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=1]{images/angle.PNG}
+%\caption{Setting Robot Heading Direction: white star indicates desired point; green indicates current heading direction between center and front of robot ($V_o$); blue indicates desired heading direction between center and desired point ($V_g$); magenta indicates difference between the directions which is the vector from the front of the robot to the desired point ($V_n$)}
+%\label{fig:orientation}
+%\end{figure}
+%
+%To use these vectors to modify the robot's current heading, they were first normalized by dividing the vector elements ($x$ and $y$) by the magnitude of the vector. The dot product was then taken between $V_o$ and $V_g$ as shown in Equation~\ref{eqn:orientation}. Where $a$ is a value between 1 and -1. The desired orientation value of the robot is 1 which means that the robot's heading is facing towards (parallel) the desired point.  At -1, the robot is facing the opposite way of the desired point. An orientation threshold was defined to be close to 1 to make the robot more accurate in path following.
+%\begin{equation}
+%a = V_o  \bm{\cdot} V_g
+%\label{eqn:orientation}
+%\end{equation}
+%
+%The $a$ value gives us information on heading but does not tell the optimal way for the robot to turn. The system could have been setup to turn left every time the heading was less than the threshold until the orientation threshold was met, but that would not be optimal.  To determine the direction the robot should turn to make the most optimal decision to meet the orientation threshold Equation~\ref{eqn:theta} is used. Where the two parameters of the \textit{atan2} function are the \textit{sin($\theta$)} and \textit{cos($\theta$)}.  This function returns the four quadrant inverse tangent that will give a $\theta$ value between 180$\degree$ and -180$\degree$.  This gives us the exact angle between the $V_g$ and $V_n$ vectors to determine which direction to turn.  Since this angle is in reference to the current heading of the robot, a positive $\theta$ value will mean that the robot needs to turn left, and a negative $\theta$ value will mean that the robot needs to turn right. 
+%\begin{equation}
+%\theta = atan2(V_{g_{x}}*V_{n_{y}}-V_{g_{y}}*V_{n_{x}}, V_{g_{x}}*V_{n_{x}}+V_{g_{y}}*V_{n_{y}}) 
+%\label{eqn:theta}
+%\end{equation}
+%
+%Therefore, using the values $d$, $a$, and $\theta$ the robot's movement is altered using Algorithm~\ref{alg:movement}. To ensure that the robot has enough time to act before another command is sent to it the movement commands were only sent once a certain time threshold was met. Therefore, some movement commands were skipped to allow the robot's movement to be smooth and to ensure that the serial buffer on the robot would not be overflown. 
+%\begin{algorithm}
+%\caption{Robot Next Move}
+%\label{alg:movement}
+%\begin{algorithmic} 
+%\If{$d < distanceThreshold \land a > orientationThreshold$}
+%\State $desiredPoint \leftarrow nextPoint$
+%\ElsIf{$a < orientationThreshold$}
+%\If{$\theta > 0$}
+%\State $Turn Left$
+%\Else
+%\State $Turn Right$
+%\EndIf
+%\ElsIf{$d > distanceThreshold$}
+%\State $Move Forward$
+%\EndIf
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%\subsection{Following the Path} 
+%
+%Using Algorithm~\ref{alg:movement}, the robot went to each point on the path drawn by the user. As it did this, the center point of the robot was plotted every time a point was reached. Using this data the, the overall error of the physical robot path was determined. Fig.~\ref{fig:pathfollowing} shows a snapshot of a robot following a path. 
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{images/star.PNG}
+%\caption{Robot following the Path: white star indicates next point to reach; green markings show robot's past positions, yellow star indicates goal}
+%\label{fig:pathfollowing}
+%\end{figure}
+%
+%\subsection{Accuracy Analysis}
+%To determine the overall accuracy of the robot, error between the physical path the robot took and the actual path was measured. This accuracy was improved by changing the distance and orientation thresholds for the system. At the end of each path taken, the error magnitude for each point is displayed as well as the standard deviation of error, mean error, maximum error, minimum error, and estimated error. The estimated error is defined as the error that will be found 95\% of the time or two standard deviations ($\sigma$) away from the mean ($\mu$), as shown in Equation~\ref{eqn:esterror}. 
+%
+%\begin{equation}
+%Est. Error = \mu + 2*\sigma 
+%\label{eqn:esterror}
+%\end{equation}
+%
+%Three trials were tested with varying threshold values.  Fig.~\ref{fig:results1},~\ref{fig:results2}, and~\ref{fig:results3} show several paths with their corresponding error charts.
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.25]{images/PATH-2095-1.PNG}
+%\includegraphics[scale=.25]{images/DATA-2095-1.PNG}
+%\caption{Results for robot motion with distanceThreshold = 20px and orientationThreshold = 0.95}
+%\label{fig:results1}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.25]{images/PATH-2099.PNG}
+%\includegraphics[scale=.25]{images/DATA-2099.PNG}
+%\caption{Results for robot motion with distanceThreshold = 20px and orientationThreshold = 0.99}
+%\label{fig:results2}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.25]{images/PATH-1599.PNG}
+%\includegraphics[scale=.25]{images/DATA-1599.PNG}
+%\caption{Results for robot motion with distanceThreshold = 15px and orientationThreshold = 0.99}
+%\label{fig:results3}
+%\end{figure}
+%
+%As shown in these figures, the robot's path seems to follow the path drawn by the user.  Table~\ref{tab:error} shows these results in terms of standard deviation of error, mean error, maximum error, minimum error, and estimated error. Each of these values is converted to centimeters from pixels by using the known size of the workspace and the ArUco marker array.
+%
+%\begin{table}[h!]
+%\caption{Error Analysis}
+%\label{tab:error}
+%\begin{tabular}{ | p{0.5cm} | p{0.5cm} | p{0.5cm} | p{0.75cm} | p{0.75cm} | p{0.75cm} | p{1cm} | }
+%
+%\hline
+%	\textit{$a^*$} & \textit{$d^*$} & STD & Mean Error & Max Error & Min Error & Estimated Error \\ \hline
+%	0.95 & 20 & 0.68 & 4.82 & 5.56 & 1.30 & 6.19 \\ \hline
+%	0.99 & 20 & 0.68 & 4.76 & 5.55 & 2.83 & 6.11 \\ \hline
+%	0.99 & 15 & 0.76 & 3.13 & 4.01 & 1.00 & 4.65 \\ \hline
+%\hline    
+%\multicolumn{7}{ |c| }{Error in cm, $d^*$ in px} \\
+%
+%\multicolumn{7}{ |c| }{\textit{$a^*$}= orientation threshold, \textit{$d^*$} = distance threshold} \\ \hline
+%\end{tabular}
+%\end{table}
+%
+%As shown, as the threshold for orientation increased the estimated error decreased.  However, the largest contributor to the decrease in estimated error was the decrease in the distance threshold. Upon performing further tests, it was found that if the distance threshold is decreased then the orientation threshold must be increased, otherwise the robot would reach each point on the path but it will be unable to accurately produce the path due to the over-correction it will need to do. The orientation threshold contributes to lowering the over-correction needed. It was also found that lowering the distance threshold too much would result in the robot not being able to reach a point.  This is because while the ArUco marker detection is robust, it is not very stable and does shift by a few pixels causing errors in the system when the distance threshold is too small.  Another threshold needing to be modified was the time threshold.  This threshold was used to determine how often movement commands would be sent to the robot.  If it was too high the robot would overshoot points, if it was too low then the robot would get overloaded with commands. Therefore, a threshold of 50 ms was used after testing various values.

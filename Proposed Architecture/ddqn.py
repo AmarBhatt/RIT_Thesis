@@ -35,7 +35,15 @@ class DDQN:
 		self.Q = tf.reduce_sum(tf.multiply(self.Qout, self.actions_onehot), reduction_indices=1)
 		
 		self.td_error = tf.square(self.targetQ - self.Q)
-		self.loss = tf.reduce_mean(self.td_error)
+
+		self.cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.Qout,labels=self.actions_onehot)
+		#cost = tf.reduce_mean(cross_entropy)
+
+		self.lambda1 = tf.placeholder(shape=[1],dtype=tf.float32)
+		self.lambda2 = tf.placeholder(shape=[1],dtype=tf.float32)
+
+		self.loss = tf.add(tf.multiply(self.lambda1[0],tf.reduce_mean(self.td_error)), tf.multiply(self.lambda2[0],tf.reduce_mean(self.cross_entropy)))
+		#self.loss = tf.reduce_mean(self.td_error)
 		self.trainer = tf.train.AdamOptimizer(learning_rate=learning_rate) #0.0001
 		self.updateModel = self.trainer.minimize(self.loss)
 		

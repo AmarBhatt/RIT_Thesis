@@ -1,0 +1,163 @@
+\begin{thebibliography}{10}
+
+\bibitem{Greedy}
+How to implement epsilon greedy strategy / policy.
+\newblock
+  \url{https://junedmunshi.wordpress.com/2012/03/30/how-to-implement-epsilon-greedy-strategy-policy/}.
+\newblock Accessed: 2015-11-21.
+
+\bibitem{tutorial}
+Q-learning by examples.
+\newblock
+  \url{http://people.revoledu.com/kardi/tutorial/ReinforcementLearning/}.
+\newblock Accessed: 2015-11-15.
+
+\bibitem{socialcogdef}
+Research areas in social psychology.
+\newblock
+  \url{http://psychology.about.com/od/socialpsychology/p/socialresearch.htm}.
+\newblock Accessed: 2015-31-3.
+
+\bibitem{atkeson1997robot}
+Christopher~G Atkeson and Stefan Schaal.
+\newblock Robot learning from demonstration.
+\newblock In {\em ICML}, volume~97, pages 12--20, 1997.
+
+\bibitem{bennett2015robotic}
+Casey Bennett.
+\newblock Robotic faces: Exploring dynamical patterns of social interaction
+  between humans and robots.
+\newblock 2015.
+
+\bibitem{duan2016benchmarking}
+Yan Duan, Xi~Chen, Rein Houthooft, John Schulman, and Pieter Abbeel.
+\newblock Benchmarking deep reinforcement learning for continuous control.
+\newblock {\em arXiv preprint arXiv:1604.06778}, 2016.
+
+\bibitem{Eden}
+Tim Eden, Anthony Knittel, and Raphael van Uffelen.
+\newblock Reinforcement learning.
+\newblock \url{http://www.cse.unsw.edu.au/~cs9417ml/RL1/index.html}.
+\newblock Accessed: 2015-11-22.
+
+\bibitem{hamahata2008effective}
+Keita Hamahata, Tadahiro Taniguchi, Kazutoshi Sakakibara, Ikuko Nishikawa,
+  Kazuma Tabuchi, and Tetsuo Sawaragi.
+\newblock Effective integration of imitation learning and reinforcement
+  learning by generating internal reward.
+\newblock In {\em 2008 Eighth International Conference on Intelligent Systems
+  Design and Applications}, volume~3, pages 121--126. IEEE, 2008.
+
+\bibitem{jangir_2016}
+Rishabh Jangir.
+\newblock Apprenticeship learning using inverse reinforcement learning, Jul
+  2016.
+
+\bibitem{kretzschmar2016socially}
+Henrik Kretzschmar, Markus Spies, Christoph Sprunk, and Wolfram Burgard.
+\newblock Socially compliant mobile robot navigation via inverse reinforcement
+  learning.
+\newblock {\em The International Journal of Robotics Research}, page
+  0278364915619772, 2016.
+
+\bibitem{matiisen_2015}
+Tambet Matiisen.
+\newblock Guest post (part i): Demystifying deep reinforcement learning -
+  nervana, Dec 2015.
+
+\bibitem{mnih2016asynchronous}
+Volodymyr Mnih, Adria~Puigdomenech Badia, Mehdi Mirza, Alex Graves, Timothy~P
+  Lillicrap, Tim Harley, David Silver, and Koray Kavukcuoglu.
+\newblock Asynchronous methods for deep reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1602.01783}, 2016.
+
+\bibitem{mnih2015human}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A Rusu, Joel Veness,
+  Marc~G Bellemare, Alex Graves, Martin Riedmiller, Andreas~K Fidjeland, Georg
+  Ostrovski, et~al.
+\newblock Human-level control through deep reinforcement learning.
+\newblock {\em Nature}, 518(7540):529--533, 2015.
+
+\bibitem{atari}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A. Rusu, Joel Veness,
+  Marc~G. Bellemare, Alex Graves, Martin Riedmiller, Andreas~K. Fidjeland,
+  Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis
+  Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and
+  Demis Hassabis.
+\newblock Human-level control through deep reinforcement learning.
+\newblock {\em Nature}, 518(7540):529--533, February 2015.
+
+\bibitem{ng2000algorithms}
+Andrew~Y Ng, Stuart~J Russell, et~al.
+\newblock Algorithms for inverse reinforcement learning.
+\newblock In {\em Icml}, pages 663--670, 2000.
+
+\bibitem{ngoinverse}
+Vien Ngo and Marc Toussaint.
+\newblock Inverse reinforcement learning.
+
+\bibitem{o2003temporal}
+John~P O'Doherty, Peter Dayan, Karl Friston, Hugo Critchley, and Raymond~J
+  Dolan.
+\newblock Temporal difference models and reward-related learning in the human
+  brain.
+\newblock {\em Neuron}, 38(2):329--337, 2003.
+
+\bibitem{peng2015mobile}
+Jiansheng Peng.
+\newblock Mobile robot path planning based on improved q learning algorithm.
+\newblock {\em International Journal of Multimedia and Ubiquitous Engineering},
+  10(7):285--294, 2015.
+
+\bibitem{perez2014robot}
+No{\'e} P{\'e}rez-Higueras, Rafael Ram{\'o}n-Vigo, Fernando Caballero, and Luis
+  Merino.
+\newblock Robot local navigation with learned social cost functions.
+\newblock In {\em Informatics in Control, Automation and Robotics (ICINCO),
+  2014 11th International Conference on}, volume~2, pages 618--625. IEEE, 2014.
+
+\bibitem{rothkopf2013modular}
+Constantin~A Rothkopf and Dana~H Ballard.
+\newblock Modular inverse reinforcement learning for visuomotor behavior.
+\newblock {\em Biological cybernetics}, 107(4):477--490, 2013.
+
+\bibitem{sprague2003multiple}
+Nathan Sprague and Dana Ballard.
+\newblock Multiple-goal reinforcement learning with modular sarsa (0).
+\newblock In {\em IJCAI}, pages 1445--1447. Citeseer, 2003.
+
+\bibitem{sutton1996generalization}
+Richard~S Sutton.
+\newblock Generalization in reinforcement learning: Successful examples using
+  sparse coarse coding.
+\newblock {\em Advances in neural information processing systems}, pages
+  1038--1044, 1996.
+
+\bibitem{Tesauro:1995}
+Gerald Tesauro.
+\newblock Temporal difference learning and td-gammon.
+\newblock {\em Commun. ACM}, 38(3):58--68, March 1995.
+
+\bibitem{vasquez2014inverse}
+Dizan Vasquez, Billy Okal, and Kai~O Arras.
+\newblock Inverse reinforcement learning algorithms and features for robot
+  navigation in crowds: an experimental comparison.
+\newblock In {\em Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ
+  International Conference on}, pages 1341--1346. IEEE, 2014.
+
+\bibitem{Watkins:1992}
+Christopher J. C.~H. Watkins and Peter Dayan.
+\newblock Technical note: \cal q-learning.
+\newblock {\em Mach. Learn.}, 8(3-4):279--292, May 1992.
+
+\bibitem{wulfmeier2015maximum}
+Markus Wulfmeier, Peter Ondruska, and Ingmar Posner.
+\newblock Maximum entropy deep inverse reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1507.04888}, 2015.
+
+\bibitem{xia2016neural}
+Chen Xia and Abdelkader El~Kamel.
+\newblock Neural inverse reinforcement learning in autonomous navigation.
+\newblock {\em Robotics and Autonomous Systems}, 2016.
+
+\end{thebibliography}

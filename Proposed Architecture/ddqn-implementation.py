@@ -60,6 +60,12 @@ p = 0.1 #expert replay sampling
 decay_rate = 0.005
 decay_frequency = 500000000000000000000
 
+lambda1S = [1.0]
+lambda2S = [0.0]
+
+lambda1T = [1.0]
+lambda2T = [0.0]
+
 update_freq = 4 #was 10
 tau = 0.001
 
@@ -182,13 +188,14 @@ with tf.Session(graph=graph_dqn) as sess:
 
 		#print(targetQ.shape)
 
-		sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a})
+		sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, net.lambda1:lambda1S, net.lambda2:lambda2S})
 
 		if(epoch % update_freq == 0):
 			updateTarget(targetOps,sess)
 
 		# Display loss and accuracy
-		cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a})
+		cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.lambda1:lambda1S, net.lambda2:lambda2S})
+		#print(cost)
 		#writer.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
               "{:.6f}".format(cost) + ", Training Accuracy= " + \
@@ -306,7 +313,7 @@ with tf.Session(graph=graph_dqn) as sess:
 			targetQ = r + (gamma*doubleQ)#*end_multiplier)
 
 
-			sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a})
+			sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a,net.lambda1:lambda1T, net.lambda2:lambda2T})
 
 			if(epoch % update_freq == 0):
 				updateTarget(targetOps,sess)
@@ -316,7 +323,7 @@ with tf.Session(graph=graph_dqn) as sess:
 				print("New p: ",p)
 
 			# Display loss and accuracy
-			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a})
+			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a, net.lambda1:lambda1T, net.lambda2:lambda2T})
 			#writer.add_summary(summary)
 			print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
 	              "{:.6f}".format(cost) + ", Training Accuracy= " + \

@@ -19,10 +19,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "same"
+typeTest = "random"
 
 
-data_loc = typeTest+"_1000_rew_84_skipgoal.h5"
+data_loc = typeTest+"_10000_rew_84_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -32,7 +32,7 @@ skip_goal = -1 #None if you do not want to skip the goal state, -1 if you do (if
 
 data_size = 84
 actual_size = 100
-num_train = 8000
+num_train = 10000
 num_test = 0
 num_reward = 10
 test_interval = 100
@@ -46,21 +46,27 @@ dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 2000
+num_epochs = 10000
 num_epochs_ran = 100000
 max_batch_size = 8
 max_batch_size_ran = 8
-max_trace_length = 4
+max_trace_length = 32
 
 n_classes = 5 if skip_goal == None else 4
 learning_rate = 0.0001
 gamma = 0.9
 
-REWARD = 1000
+REWARD = 100
+count_max = 50
+STEP_REWARD = -1
+e = 0.7
+e_decay = 0.1
+e_decay_freq = 10000
+
 
 p = 0.125 #expert replay sampling
-decay_rate = 0.25
-decay_frequency = 2500000000
+decay_rate = 0.125
+decay_frequency = 10000000000000000
 
 update_freq = 5
 tau = 0.001
@@ -101,7 +107,7 @@ for i in range(0,x_train.shape[0]):
 	print(i)
 	expert_replay_state[i,:,:,:] = x_train[i,:,:,:]
 	expert_replay_action[i,:] = y_train[i,:]
-	reward = 0
+	reward = STEP_REWARD
 	if(skip_goal == -1):
 		if (i == x_train.shape[0]-1):
 			reward = REWARD
@@ -274,7 +280,6 @@ with tf.Session(graph=graph_dqn) as sess:
 	dqn_save_path = saver_dqn.save(sess, dqn_model_path)#, global_step=epoch)
 	print("Model saved in file: %s" % dqn_save_path)
 
-	count_max = 50
 	same_image = None
 	failed = True
 	done = True
@@ -308,10 +313,10 @@ with tf.Session(graph=graph_dqn) as sess:
 			agent_episode_start[increment] = increment
 			#length_holder = total_step_count%replay_buffer
 			length_holder = increment
-			state_holder = np.empty(shape=[100,data_size,data_size,1])
-			action_holder = np.empty(shape=[100,n_classes])
-			state_prime_holder = np.empty(shape=[100,data_size,data_size,1])
-			reward_holder = np.empty(shape=[100])
+			state_holder = np.empty(shape=[count_max,data_size,data_size,1])
+			action_holder = np.empty(shape=[count_max,n_classes])
+			state_prime_holder = np.empty(shape=[count_max,data_size,data_size,1])
+			reward_holder = np.empty(shape=[count_max])
 			state_reset = (np.zeros([1,h_size]),np.zeros([1,h_size]))
 
 		full_image = Image.fromarray(data.squeeze(axis=2), 'L')
@@ -326,8 +331,16 @@ with tf.Session(graph=graph_dqn) as sess:
 		state_holder[count,:,:,:] = pixels
 
 		#action = sess.run(net.Qout,feed_dict={X: [pixels]})
-		action = sess.run(net.Qout,feed_dict={X: [pixels],net.trainLength:1,net.state_in:state_reset,net.batch_size:1})
-		action = np.argmax(action[0])
+		
+		if np.random.rand(1) > e:
+			action = sess.run(net.Qout,feed_dict={X: [pixels],net.trainLength:1,net.state_in:state_reset,net.batch_size:1})
+			action = np.argmax(action[0])
+			
+		else:
+			action = np.random.randint(0,n_classes)		
+		
+		if(epoch%e_decay_freq == 0):
+			e = max(0,e-e_decay)
 
 		action_list = np.zeros(shape=[1,n_classes])
 		action_list[0,action] = 1
@@ -338,7 +351,7 @@ with tf.Session(graph=graph_dqn) as sess:
 
 		data,new_state,gw,failed,done,environment,image = environmentStep(action,new_state,100,100,10,10,image,gw,environment)
 
-		if(count == count_max):
+		if(count >= count_max):
 			failed = 1;
 
 		count += 1
@@ -353,7 +366,7 @@ with tf.Session(graph=graph_dqn) as sess:
 		state_prime_holder[count-1,:,:,:] = pixels
 
 
-		reward = 0
+		reward = STEP_REWARD
 
 		if failed:
 			reward = -REWARD
@@ -406,7 +419,8 @@ with tf.Session(graph=graph_dqn) as sess:
 			if(increment == replay_buffer):
 				increment = 0
 				buffer_full = True
-			#print(increment)
+			if not buffer_full:
+				print(increment)
 
 		#replay_r[total_step_count%replay_buffer] = reward
 		

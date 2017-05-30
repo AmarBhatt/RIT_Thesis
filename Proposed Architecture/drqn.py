@@ -42,7 +42,10 @@ class DRQN:
 		self.Advantage = tf.matmul(self.streamA,self.AW)
 		self.Value = tf.matmul(self.streamV,self.VW)
 		
-		self.salience = tf.gradients(self.Advantage,X)
+		#self.salience = tf.gradients(self.Advantage,X)
+
+
+
 		#Then combine them together to get our final Q-values.
 		self.Qout = self.Value + tf.subtract(self.Advantage,tf.reduce_mean(self.Advantage,reduction_indices=1,keep_dims=True))
 		self.predict = tf.argmax(self.Qout,1)

@@ -240,9 +240,9 @@ rit-thesis documentation.}}{}
 \def\@title{}\def\@author{}\def\@dept{Computer Engineering}
 \def\@firstreader{}\def\@secondreader{}\def\@thirdreader{}\def\@fourthreader{}
 
-\newif\ifcopyright \newif\iffigurespage \newif\iftablespage
+\newif\ifcopyright \newif\iffigurespage \newif\iftablespage \newif\ifalgorithmspage
 \newif\iffoursigs \newif\iffivesigs \newif\ifMSthesis
-\copyrighttrue \figurespagetrue \tablespagetrue
+\copyrighttrue \figurespagetrue \tablespagetrue \algorithmspagetrue
 \foursigsfalse \fivesigsfalse \MSthesisfalse
 
 \long\def\signature#1#2{%
@@ -396,6 +396,12 @@ rit-thesis documentation.}}{}
 	\iffigurespage
 		\begin{singlespace}
 		\listoffigures
+		\end{singlespace}
+		\newpage
+	\fi
+	\ifalgorithmspage
+		\begin{singlespace}
+		\listofalgorithms
 		\end{singlespace}
 		\newpage
 	\fi

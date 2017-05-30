@@ -45,7 +45,7 @@ darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 num_epochs = 1000 #20
 episodes = 50
-num_epochs_darn = 10000 #20
+num_epochs_darn = 2000 #20
 episodes_darn = 50
 batch_size = 50
 batch_size_darn = 50
@@ -281,7 +281,7 @@ for epoch in range(num_epochs_darn):
 		writer_darn.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
               "{:.6f}".format(loss) + ", Training Accuracy= " + \
-              "{:.5f}".format(acc))
+              "{:.5f}".format(acc)+ ", Best Epoch= " + str(best_epoch) + ", Best Score= " + str(best_score))
 		f.write("Epoch= "+str(epoch)+", Episode= " + str(ep) + ", Minibatch Loss= " + \
 	                  "{:.6f}".format(loss) + ", Training Accuracy= " + \
 	                  "{:.5f}".format(acc))
