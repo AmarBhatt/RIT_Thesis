@@ -1,4 +1,4 @@
-# RIT Thesis
+# Teaching Agents With Deep Apprenticeship Learning (Thesis)
 This project contains all of the code I explored and created for my MS Thesis in Computer Engineering. 
 
 Folders:
