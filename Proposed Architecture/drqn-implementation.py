@@ -19,10 +19,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "random"
+typeTest = "same"
 
 
-data_loc = typeTest+"_10000_rew_84_skipgoal.h5"
+data_loc = typeTest+"_1000_rew_84_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -59,9 +59,15 @@ gamma = 0.9
 REWARD = 100
 count_max = 50
 STEP_REWARD = -1
-e = 0.7
+e = 0.7#0.7
 e_decay = 0.1
 e_decay_freq = 10000
+
+lambda1S = [0.75]
+lambda2S = [0.25]
+
+lambda1T = [1.0]
+lambda2T = [0.0]
 
 
 p = 0.125 #expert replay sampling
@@ -248,13 +254,13 @@ with tf.Session(graph=graph_dqn) as sess:
 		#print(targetQ)
 		#input("pause")
 
-		sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
+		sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size,net.lambda1:lambda1S, net.lambda2:lambda2S})
 
 		if(epoch % update_freq == 0):
 			updateTarget(targetOps,sess)
 
 		# Display loss and accuracy
-		cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
+		cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size,net.lambda1:lambda1S, net.lambda2:lambda2S})
 		#writer.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
               "{:.6f}".format(cost) + ", Training Accuracy= " + \
@@ -532,7 +538,7 @@ with tf.Session(graph=graph_dqn) as sess:
 
 			#print(targetQ.shape)
 
-			sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
+			sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size,net.lambda1:lambda1T, net.lambda2:lambda2T})
 
 
 			if(epoch % update_freq == 0):
@@ -543,7 +549,7 @@ with tf.Session(graph=graph_dqn) as sess:
 				print("New p: ",p)
 
 			# Display loss and accuracy
-			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size})
+			cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.trainLength:trace_length,net.state_in:state_train,net.batch_size:batch_size,net.lambda1:lambda1T, net.lambda2:lambda2T})
 			#writer.add_summary(summary)
 			print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
 	              "{:.6f}".format(cost) + ", Training Accuracy= " + \
@@ -567,13 +573,13 @@ with tf.Session(graph=graph_dqn) as sess:
 			# f.write('\n')	
 		if(epoch%test_interval == 0):
 			# Test Network
-			win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
+			win,lose,cur_path_total,total_path = test_network_drqn(sess,net, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
 			if(best_score < cur_path_total):
 				best_score = cur_path_total
 				best_epoch = epoch
 
 	# Test Network
-	win,lose,cur_path_total,total_path = test_network_drqn(sess,netTarget, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
+	win,lose,cur_path_total,total_path = test_network_drqn(sess,net, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size, h_size)
 	if(best_score < cur_path_total):
 		best_score = cur_path_total
 		best_epoch = epoch

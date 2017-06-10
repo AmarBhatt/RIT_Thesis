@@ -18,13 +18,16 @@ class DDQN:
 		self.streamAC,self.streamVC = tf.split(self.conv4,2,3) #self.streamAC,self.streamVC = tf.split(3,2,self.conv4)
 		self.streamA = tf.contrib.layers.flatten(self.streamAC)
 		self.streamV = tf.contrib.layers.flatten(self.streamVC)
-		self.AW = tf.Variable(tf.random_normal([h_size//2,num_actions]))
-		self.VW = tf.Variable(tf.random_normal([h_size//2,1]))
+		self.AW = tf.Variable(0.01*tf.random_normal([h_size//2,num_actions]))
+		self.VW = tf.Variable(0.01*tf.random_normal([h_size//2,1]))
 		self.Advantage = tf.matmul(self.streamA,self.AW)
 		self.Value = tf.matmul(self.streamV,self.VW)
 
 		 #Then combine them together to get our final Q-values.
 		self.Qout = self.Value + tf.subtract(self.Advantage,tf.reduce_mean(self.Advantage,reduction_indices=1,keep_dims=True))
+		#self.Qout = tf.contrib.layers.fully_connected(self.streamA, num_actions, activation_fn=None)
+		#self.Qout = tf.Print(self.Qout,[self.Qout],message="Qout: ", summarize=100)
+
 		self.predict = tf.argmax(self.Qout,1)
 		
 		#Below we obtain the loss by taking the sum of squares difference between the target and prediction Q values.
@@ -33,18 +36,29 @@ class DDQN:
 		#self.actions_onehot = tf.one_hot(self.actions,env.actions,dtype=tf.float32)
 		
 		self.Q = tf.reduce_sum(tf.multiply(self.Qout, self.actions_onehot), reduction_indices=1)
-		
-		self.td_error = tf.square(self.targetQ - self.Q)
+		#self.Q = tf.Print(self.Q,[self.Q],message="Q: ",summarize=100)
 
+
+		self.td_error = tf.square(self.targetQ - self.Q)
 		self.cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.Qout,labels=self.actions_onehot)
 		#cost = tf.reduce_mean(cross_entropy)
+		#self.cross_entropy = tf.Print(self.cross_entropy,[self.cross_entropy],message="cross_ent: ",summarize=100)	
 
 		self.lambda1 = tf.placeholder(shape=[1],dtype=tf.float32)
 		self.lambda2 = tf.placeholder(shape=[1],dtype=tf.float32)
 
-		self.loss = tf.add(tf.multiply(self.lambda1[0],tf.reduce_mean(self.td_error)), tf.multiply(self.lambda2[0],tf.reduce_mean(self.cross_entropy)))
+		#self.loss = tf.add(tf.multiply(self.lambda1[0],tf.reduce_mean(self.td_error)), tf.multiply(self.lambda2[0],tf.reduce_mean(self.cross_entropy)))
 		#self.loss = tf.reduce_mean(self.td_error)
-		self.trainer = tf.train.AdamOptimizer(learning_rate=learning_rate) #0.0001
+		#self.loss = tf.scalar_mul(1.0,tf.reduce_mean(self.cross_entropy))
+		self.loss = self.lambda2[0]*tf.reduce_mean(self.cross_entropy) + self.lambda1[0]*tf.reduce_mean(self.td_error)
+		#self.tyyy = tf.reduce_mean(self.cross_entropy)
+		#self.tyyy = tf.Print(self.tyyy,[self.tyyy],message="before mult: ")
+		#self.loss = tf.scalar_mul(1.0,self.tyyy)
+		
+		
+		#self.loss = tf.Print(self.loss,[self.loss],message="after mult: ")		
+
+		self.trainer = tf.train.AdamOptimizer(learning_rate=learning_rate) #tf.train.MomentumOptimizer(learning_rate=0.001, momentum=0.9) #0.0001
 		self.updateModel = self.trainer.minimize(self.loss)
 		
 		

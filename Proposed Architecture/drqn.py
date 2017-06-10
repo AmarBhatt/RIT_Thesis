@@ -37,8 +37,8 @@ class DRQN:
 		self.rnn = tf.reshape(self.rnn,shape=[-1,h_size])
 		#The output from the recurrent player is then split into separate Value and Advantage streams
 		self.streamA,self.streamV = tf.split(self.rnn,2,1)
-		self.AW = tf.Variable(tf.random_normal([h_size//2,num_actions]))
-		self.VW = tf.Variable(tf.random_normal([h_size//2,1]))
+		self.AW = tf.Variable(0.01*tf.random_normal([h_size//2,num_actions]))
+		self.VW = tf.Variable(0.01*tf.random_normal([h_size//2,1]))
 		self.Advantage = tf.matmul(self.streamA,self.AW)
 		self.Value = tf.matmul(self.streamV,self.VW)
 		
@@ -59,15 +59,20 @@ class DRQN:
 		self.Q = tf.reduce_sum(tf.multiply(self.Qout, self.actions_onehot), reduction_indices=1)
 		
 		self.td_error = tf.square(self.targetQ - self.Q)
+		self.cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=self.Qout,labels=self.actions_onehot)
+
 		#self.td_error = tf.Print(self.td_error,[self.td_error],message="td_error: ")
 		#In order to only propogate accurate gradients through the network, we will mask the first
 		#half of the losses for each trace as per Lample & Chatlot 2016
 		
+		self.lambda1 = tf.placeholder(shape=[1],dtype=tf.float32)
+		self.lambda2 = tf.placeholder(shape=[1],dtype=tf.float32)
+
 		self.maskA = tf.zeros([self.batch_size,self.trainLength//2])
 		self.maskB = tf.ones([self.batch_size,self.trainLength//2])
 		self.mask = tf.concat([self.maskA,self.maskB],1)
 		self.mask = tf.reshape(self.mask,[-1])
-		self.loss = tf.reduce_mean(self.td_error * self.mask)
+		self.loss = self.lambda2[0]*tf.reduce_mean(self.cross_entropy * self.mask) + self.lambda1[0]*tf.reduce_mean(self.td_error * self.mask)
 		#self.loss = tf.Print(self.loss,[self.loss],message="Loss: ")
 		
 		self.trainer = tf.train.AdamOptimizer(learning_rate=learning_rate)

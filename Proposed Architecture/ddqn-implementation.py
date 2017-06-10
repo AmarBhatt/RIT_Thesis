@@ -18,10 +18,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "same"
+typeTest = "random"
 
 
-data_loc = typeTest+"_1000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+data_loc = typeTest+"_10000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -45,7 +45,7 @@ dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
 
-num_epochs = 2000
+num_epochs = 10000
 num_epochs_ran = 10000
 batch_size = 32
 batch_size_ran = 32
@@ -56,12 +56,14 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.1 #expert replay sampling
-decay_rate = 0.005
-decay_frequency = 500000000000000000000
+p = 0.9 #expert replay sampling
+decay_rate = 0.05
+decay_frequency = 500
 
-lambda1S = [1.0]
-lambda2S = [0.0]
+count_max = 50
+
+lambda1S = [0.25]
+lambda2S = [0.75]
 
 lambda1T = [1.0]
 lambda2T = [0.0]
@@ -139,7 +141,7 @@ with graph_dqn.as_default():
     
 	# Evaluate model
 	#pred = tf.argmax(dqn, 1)
-	#pred = tf.Print(pred,[pred],message="prediction is: ")
+	#net.predict = tf.Print(net.predict,[net.predict],message="prediction is: ")
 	true = tf.argmax(Y, 1)
 	#true = tf.Print(true,[true],message="truth is: ")
 
@@ -171,6 +173,8 @@ with tf.Session(graph=graph_dqn) as sess:
 		s = expert_replay_state[ind,:,:,:]
 		a = expert_replay_action[ind,:]
 
+		#print(a)
+
 		s_prime = expert_replay_state_prime[ind,:,:,:]
 
 		r = expert_replay_r[ind]
@@ -188,13 +192,13 @@ with tf.Session(graph=graph_dqn) as sess:
 
 		#print(targetQ.shape)
 
-		sess.run(net.updateModel,feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, net.lambda1:lambda1S, net.lambda2:lambda2S})
+		_,cost,acc = sess.run([net.updateModel,net.loss, accuracy],feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y:a, net.lambda1:lambda1S, net.lambda2:lambda2S})
 
 		if(epoch % update_freq == 0):
 			updateTarget(targetOps,sess)
 
 		# Display loss and accuracy
-		cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.lambda1:lambda1S, net.lambda2:lambda2S})
+		#cost, acc = sess.run([net.loss, accuracy], feed_dict={X:s,net.targetQ:targetQ,net.actions_onehot:a, Y: a,net.lambda1:lambda1S, net.lambda2:lambda2S})
 		#print(cost)
 		#writer.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
@@ -221,7 +225,7 @@ with tf.Session(graph=graph_dqn) as sess:
 	dqn_save_path = saver_dqn.save(sess, dqn_model_path)#, global_step=epoch)
 	print("Model saved in file: %s" % dqn_save_path)
 
-	count_max = 50
+	
 	same_image = None
 	failed = True
 	done = True
@@ -347,13 +351,13 @@ with tf.Session(graph=graph_dqn) as sess:
 			# f.write('\n')	
 		if(epoch%test_interval == 0):
 			# Test Network
-			win,lose,cur_path_total,total_path = test_network(sess,netTarget.Qout, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+			win,lose,cur_path_total,total_path = test_network(sess,net.Qout, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
 			if(best_score < cur_path_total):
 				best_score = cur_path_total
 				best_epoch = epoch
 
 	# Test Network
-	win,lose,cur_path_total,total_path = test_network(sess,netTarget.Qout, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
+	win,lose,cur_path_total,total_path = test_network(sess,net.Qout, X, epoch,len(test_array), same, location,test_image_location,test_array, normalize, data_size, actual_size)
 	if(best_score < cur_path_total):
 		best_score = cur_path_total
 		best_epoch = epoch

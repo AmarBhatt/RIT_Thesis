@@ -1,0 +1,4966 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.2.12)  1 JUN 2017 12:55
+entering extended mode
+**C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0601
+17/revision-060117.tex
+
+(C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/06011
+7/revision-060117.tex
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\RITthesis\rit-thesis.sty"
+Document Style Option `rit-thesis v1.2' <March 13, 2009>.
+("C:\Program Files\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+))
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\gloss\gloss.sty
+Package: gloss 2002/07/26 1.5.2 Gloss package
+\glosshang=\skip43
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2016/04/23 3.9r The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
+Language: english 2017/01/24 v3.3q English support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2016/04/23 3.9r Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks16
+\verbatim@line=\toks17
+\verbatim@in@stream=\read1
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
+\@enLab=\toks18
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks19
+\AP@partial=\box26
+\AP@footins=\box27
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\was\gensymb.sty
+Package: gensymb 2003/07/02 v1.0 (WaS)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count90
+\lst@gtempboxa=\box28
+\lst@token=\toks20
+\lst@length=\count91
+\lst@currlwidth=\dimen106
+\lst@column=\count92
+\lst@pos=\count93
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count94
+\lst@lineno=\count95
+\lst@maxwidth=\dimen109
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count96
+\lst@skipnumbers=\count97
+\lst@framebox=\box29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count98
+\FV@InFile=\read2
+\FV@TabBox=\box30
+\c@FancyVerbLine=\count99
+\FV@StepNumber=\count100
+\FV@OutFile=\write3
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\framed\framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip44
+\fb@frw=\dimen110
+\fb@frh=\dimen111
+\FrameRule=\dimen112
+\FrameSep=\dimen113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcolorbox.sty"
+Package: tcolorbox 2016/11/18 version 3.96 text color boxes
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
+\pgfutil@everybye=\toks21
+\pgfutil@tempdima=\dimen114
+\pgfutil@tempdimb=\dimen115
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.te
+x")) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def"
+\pgfutil@abb=\box31
+("C:\Program Files\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex"
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex"
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.te
+x"
+\pgfkeys@tmptoks=\toks24
+))
+\pgf@x=\dimen116
+\pgf@y=\dimen117
+\pgf@xa=\dimen118
+\pgf@ya=\dimen119
+\pgf@xb=\dimen120
+\pgf@yb=\dimen121
+\pgf@xc=\dimen122
+\pgf@yc=\dimen123
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count101
+\c@pgf@countb=\count102
+\c@pgf@countc=\count103
+\c@pgf@countd=\count104
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+ ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg"
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+"
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
+ex"
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count105
+\pgfsyssoftpath@bigbuffer@items=\count106
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.t
+ex"
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex"
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
+\pgfmath@dimen=\dimen124
+\pgfmath@count=\count107
+\pgfmath@box=\box32
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometr
+ic.code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code
+.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.
+code.tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.
+tex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.t
+ex")
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarit
+hmetics.code.tex")))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count108
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+"
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen125
+\pgf@picmaxx=\dimen126
+\pgf@picminy=\dimen127
+\pgf@picmaxy=\dimen128
+\pgf@pathminx=\dimen129
+\pgf@pathmaxx=\dimen130
+\pgf@pathminy=\dimen131
+\pgf@pathmaxy=\dimen132
+\pgf@xx=\dimen133
+\pgf@xy=\dimen134
+\pgf@yx=\dimen135
+\pgf@yy=\dimen136
+\pgf@zx=\dimen137
+\pgf@zy=\dimen138
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.c
+ode.tex"
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen139
+\pgf@path@lasty=\dimen140
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.
+tex"
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen141
+\pgf@shorten@start@additional=\dimen142
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+"
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box33
+\pgf@hbox=\box34
+\pgf@layerbox@main=\box35
+\pgf@picture@serial@count=\count109
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.co
+de.tex"
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen143
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations
+.code.tex"
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen144
+\pgf@pt@y=\dimen145
+\pgf@pt@temp=\dimen146
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex"
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.te
+x"
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.
+code.tex"
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+"
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen147
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen148
+\pgf@sys@shading@range@num=\count110
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.te
+x"
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.t
+ex"
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box36
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+"
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.co
+de.tex"
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.t
+ex"
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box37
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.
+sty"
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen149
+\pgf@nodesepend=\dimen150
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.
+sty"
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\environ\environ.sty"
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty"
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks31
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count111
+)
+\tcb@titlebox=\box38
+\tcb@upperbox=\box39
+\tcb@lowerbox=\box40
+\tcb@phantombox=\box41
+\c@tcbbreakpart=\count112
+\c@tcblayer=\count113
+\tcolorbox@number=\count114
+\tcb@temp=\box42
+\tcb@temp=\box43
+\tcb@temp=\box44
+\tcb@temp=\box45
+\tcb@out=\write5
+\tcb@record@out=\write6
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcblistings.code.tex"
+Library (tcolorbox): 'tcblistings.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcblistingscore.code.tex"
+Library (tcolorbox): 'tcblistingscore.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbprocessing.code.tex"
+Library (tcolorbox): 'tcbprocessing.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\shellesc.sty"
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 69.
+))
+\c@tcblisting=\count115
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbskins.code.tex"
+Library (tcolorbox): 'tcbskins.code.tex' version '3.96'
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex"))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex"
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex")
+\pgffor@iter=\dimen151
+\pgffor@skip=\dimen152
+\pgffor@stack=\toks32
+\pgffor@toks=\toks33
+))
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex"
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.
+code.tex"
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count116
+\pgfplotmarksize=\dimen153
+)
+\tikz@lastx=\dimen154
+\tikz@lasty=\dimen155
+\tikz@lastxsaved=\dimen156
+\tikz@lastysaved=\dimen157
+\tikzleveldistance=\dimen158
+\tikzsiblingdistance=\dimen159
+\tikz@figbox=\box46
+\tikz@figbox@bg=\box47
+\tikz@tempbox=\box48
+\tikz@tempbox@bg=\box49
+\tikztreelevel=\count117
+\tikznumberofchildren=\count118
+\tikznumberofcurrentchild=\count119
+\tikz@fig@count=\count120
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count121
+\pgfmatrixcurrentcolumn=\count122
+\pgf@matrix@numberofcolumns=\count123
+)
+\tikz@expandcount=\count124
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
+librarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+\tcb@waterbox=\box50
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcbskinsjigsaw.code.tex"
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '3.96'
+))) (C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\mdframed\mdframed.sty
+Package: mdframed 2013/07/01 1.9b: mdframed
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3packages\xparse\xparse.s
+ty (C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
+Package: expl3 2017/02/07 v6846 L3 programming layer (loader) 
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3-code.tex
+Package: expl3 2017/02/07 v6846 L3 programming layer (code)
+L3 Module: l3bootstrap 2016/12/28 v6805 L3 Bootstrap code
+L3 Module: l3names 2016/12/28 v6805 L3 Namespace for primitives
+L3 Module: l3basics 2016/12/28 v6805 L3 Basic definitions
+L3 Module: l3expan 2016/12/28 v6805 L3 Argument expansion
+L3 Module: l3tl 2017/02/06 v6842 L3 Token lists
+L3 Module: l3str 2017/01/01 v6809 L3 Strings
+L3 Module: l3seq 2017/02/06 v6842 L3 Sequences and stacks
+L3 Module: l3int 2016/12/28 v6805 L3 Integers
+\c_max_int=\count125
+\l_tmpa_int=\count126
+\l_tmpb_int=\count127
+\g_tmpa_int=\count128
+\g_tmpb_int=\count129
+L3 Module: l3quark 2016/12/28 v6805 L3 Quarks
+L3 Module: l3prg 2017/01/01 v6811 L3 Control structures
+\g__prg_map_int=\count130
+L3 Module: l3clist 2017/02/06 v6842 L3 Comma separated lists
+L3 Module: l3token 2016/12/28 v6805 L3 Experimental token manipulation
+L3 Module: l3prop 2016/12/28 v6805 L3 Property lists
+L3 Module: l3msg 2016/12/28 v6805 L3 Messages
+L3 Module: l3file 2016/12/28 v6805 L3 File and I/O operations
+\l_iow_line_count_int=\count131
+\l__iow_target_count_int=\count132
+\l__iow_current_line_int=\count133
+\l__iow_current_word_int=\count134
+\l__iow_current_indentation_int=\count135
+L3 Module: l3skip 2017/01/01 v6809 L3 Dimensions and skips
+\c_zero_dim=\dimen160
+\c_max_dim=\dimen161
+\l_tmpa_dim=\dimen162
+\l_tmpb_dim=\dimen163
+\g_tmpa_dim=\dimen164
+\g_tmpb_dim=\dimen165
+\c_zero_skip=\skip45
+\c_max_skip=\skip46
+\l_tmpa_skip=\skip47
+\l_tmpb_skip=\skip48
+\g_tmpa_skip=\skip49
+\g_tmpb_skip=\skip50
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+L3 Module: l3keys 2017/01/01 v6811 L3 Key-value interfaces
+\l_keys_choice_int=\count136
+L3 Module: l3fp 2016/12/28 v6805 L3 Floating points
+\c__fp_leading_shift_int=\count137
+\c__fp_middle_shift_int=\count138
+\c__fp_trailing_shift_int=\count139
+\c__fp_big_leading_shift_int=\count140
+\c__fp_big_middle_shift_int=\count141
+\c__fp_big_trailing_shift_int=\count142
+\c__fp_Bigg_leading_shift_int=\count143
+\c__fp_Bigg_middle_shift_int=\count144
+\c__fp_Bigg_trailing_shift_int=\count145
+\c__fp_rand_size_int=\count146
+\c__fp_rand_four_int=\count147
+\c__fp_rand_eight_int=\count148
+L3 Module: l3sort 2017/02/06 v6842 L3 Sorting functions
+\l__sort_length_int=\count149
+\l__sort_min_int=\count150
+\l__sort_top_int=\count151
+\l__sort_max_int=\count152
+\l__sort_true_max_int=\count153
+\l__sort_block_int=\count154
+\l__sort_begin_int=\count155
+\l__sort_end_int=\count156
+\l__sort_A_int=\count157
+\l__sort_B_int=\count158
+\l__sort_C_int=\count159
+L3 Module: l3box 2016/12/28 v6805 L3 Experimental boxes
+\c_empty_box=\box51
+\l_tmpa_box=\box52
+\l_tmpb_box=\box53
+\g_tmpa_box=\box54
+\g_tmpb_box=\box55
+L3 Module: l3coffins 2016/12/28 v6805 L3 Coffin code layer
+\l__coffin_internal_box=\box56
+\l__coffin_internal_dim=\dimen166
+\l__coffin_offset_x_dim=\dimen167
+\l__coffin_offset_y_dim=\dimen168
+\l__coffin_x_dim=\dimen169
+\l__coffin_y_dim=\dimen170
+\l__coffin_x_prime_dim=\dimen171
+\l__coffin_y_prime_dim=\dimen172
+\c_empty_coffin=\box57
+\l__coffin_aligned_coffin=\box58
+\l__coffin_aligned_internal_coffin=\box59
+\l_tmpa_coffin=\box60
+\l_tmpb_coffin=\box61
+\l__coffin_display_coffin=\box62
+\l__coffin_display_coord_coffin=\box63
+\l__coffin_display_pole_coffin=\box64
+\l__coffin_display_offset_dim=\dimen173
+\l__coffin_display_x_dim=\dimen174
+\l__coffin_display_y_dim=\dimen175
+L3 Module: l3color 2016/12/28 v6805 L3 Experimental color support
+L3 Module: l3sys 2017/01/01 v6811 L3 Experimental system/runtime functions
+L3 Module: l3candidates 2017/01/30 v6835 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen176
+\l__box_bottom_dim=\dimen177
+\l__box_left_dim=\dimen178
+\l__box_right_dim=\dimen179
+\l__box_top_new_dim=\dimen180
+\l__box_bottom_new_dim=\dimen181
+\l__box_left_new_dim=\dimen182
+\l__box_right_new_dim=\dimen183
+\l__box_internal_box=\box65
+\l__coffin_bounding_shift_dim=\dimen184
+\l__coffin_left_corner_dim=\dimen185
+\l__coffin_right_corner_dim=\dimen186
+\l__coffin_bottom_corner_dim=\dimen187
+\l__coffin_top_corner_dim=\dimen188
+\l__coffin_scaled_total_height_dim=\dimen189
+\l__coffin_scaled_width_dim=\dimen190
+L3 Module: l3luatex 2016/12/28 v6805 L3 Experimental LuaTeX-specific functions
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3pdfmode.def
+File: l3pdfmode.def 2016/12/28 v6805 L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count160
+\l__driver_tmp_box=\box66
+))
+Package: xparse 2017/02/07 v6846 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count161
+\l__xparse_m_args_int=\count162
+\l__xparse_mandatory_args_int=\count163
+\l__xparse_processor_int=\count164
+\l__xparse_v_nesting_int=\count165
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-abspage.sty"
+Package: zref-abspage 2016/05/21 v2.26 Module abspage for zref (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\zref-base.sty"
+Package: zref-base 2016/05/21 v2.26 Module base for zref (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+)
+\c@abspage=\count166
+Package zref Info: New property: abspage on input line 62.
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\needspace\needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\mdf@templength=\skip51
+\c@mdf@globalstyle@cnt=\count167
+\mdf@skipabove@length=\skip52
+\mdf@skipbelow@length=\skip53
+\mdf@leftmargin@length=\skip54
+\mdf@rightmargin@length=\skip55
+\mdf@innerleftmargin@length=\skip56
+\mdf@innerrightmargin@length=\skip57
+\mdf@innertopmargin@length=\skip58
+\mdf@innerbottommargin@length=\skip59
+\mdf@splittopskip@length=\skip60
+\mdf@splitbottomskip@length=\skip61
+\mdf@outermargin@length=\skip62
+\mdf@innermargin@length=\skip63
+\mdf@linewidth@length=\skip64
+\mdf@innerlinewidth@length=\skip65
+\mdf@middlelinewidth@length=\skip66
+\mdf@outerlinewidth@length=\skip67
+\mdf@roundcorner@length=\skip68
+\mdf@footenotedistance@length=\skip69
+\mdf@userdefinedwidth@length=\skip70
+\mdf@needspace@length=\skip71
+\mdf@frametitleaboveskip@length=\skip72
+\mdf@frametitlebelowskip@length=\skip73
+\mdf@frametitlerulewidth@length=\skip74
+\mdf@frametitleleftmargin@length=\skip75
+\mdf@frametitlerightmargin@length=\skip76
+\mdf@shadowsize@length=\skip77
+\mdf@extratopheight@length=\skip78
+\mdf@subtitleabovelinewidth@length=\skip79
+\mdf@subtitlebelowlinewidth@length=\skip80
+\mdf@subtitleaboveskip@length=\skip81
+\mdf@subtitlebelowskip@length=\skip82
+\mdf@subtitleinneraboveskip@length=\skip83
+\mdf@subtitleinnerbelowskip@length=\skip84
+\mdf@subsubtitleabovelinewidth@length=\skip85
+\mdf@subsubtitlebelowlinewidth@length=\skip86
+\mdf@subsubtitleaboveskip@length=\skip87
+\mdf@subsubtitlebelowskip@length=\skip88
+\mdf@subsubtitleinneraboveskip@length=\skip89
+\mdf@subsubtitleinnerbelowskip@length=\skip90
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\mdframed\md-frame-0.mdf
+File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
+)
+\mdf@frametitlebox=\box67
+\mdf@footnotebox=\box68
+\mdf@splitbox@one=\box69
+\mdf@splitbox@two=\box70
+\mdf@splitbox@save=\box71
+\mdfsplitboxwidth=\skip91
+\mdfsplitboxtotalwidth=\skip92
+\mdfsplitboxheight=\skip93
+\mdfsplitboxdepth=\skip94
+\mdfsplitboxtotalheight=\skip95
+\mdfframetitleboxwidth=\skip96
+\mdfframetitleboxtotalwidth=\skip97
+\mdfframetitleboxheight=\skip98
+\mdfframetitleboxdepth=\skip99
+\mdfframetitleboxtotalheight=\skip100
+\mdffootnoteboxwidth=\skip101
+\mdffootnoteboxtotalwidth=\skip102
+\mdffootnoteboxheight=\skip103
+\mdffootnoteboxdepth=\skip104
+\mdffootnoteboxtotalheight=\skip105
+\mdftotallinewidth=\skip106
+\mdfboundingboxwidth=\skip107
+\mdfboundingboxtotalwidth=\skip108
+\mdfboundingboxheight=\skip109
+\mdfboundingboxdepth=\skip110
+\mdfboundingboxtotalheight=\skip111
+\mdf@freevspace@length=\skip112
+\mdf@horizontalwidthofbox@length=\skip113
+\mdf@verticalmarginwhole@length=\skip114
+\mdf@horizontalspaceofbox=\skip115
+\mdfsubtitleheight=\skip116
+\mdfsubsubtitleheight=\skip117
+\c@mdfcountframes=\count168
+
+****** mdframed patching \endmdf@trivlist
+
+****** -- success******
+
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newmdtheoremenv with sig. 'O{} m o m o ' on line 601.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
+.................................................
+\mdf@envdepth=\count169
+\c@mdf@env@i=\count170
+\c@mdf@env@ii=\count171
+\c@mdf@zref@counter=\count172
+Package zref Info: New property: mdf@pagevalue on input line 895.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen191
+\lightrulewidth=\dimen192
+\cmidrulewidth=\dimen193
+\belowrulesep=\dimen194
+\belowbottomsep=\dimen195
+\aboverulesep=\dimen196
+\abovetopsep=\dimen197
+\cmidrulesep=\dimen198
+\cmidrulekern=\dimen199
+\defaultaddspace=\dimen256
+\@cmidla=\count173
+\@cmidlb=\count174
+\@aboverulesep=\dimen257
+\@belowrulesep=\dimen258
+\@thisruleclass=\count175
+\@lastruleclass=\count176
+\@thisrulewidth=\dimen259
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen260
+\extrarowheight=\dimen261
+\NC@list=\toks34
+\extratabsurround=\skip118
+\backup@length=\skip119
+)
+\everycr=\toks35
+\minrowclearance=\skip120
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\physics\physics.sty
+Package: physics 
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip121
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks36
+\ex@=\dimen262
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen263
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count177
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count178
+\leftroot@=\count179
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count180
+\DOTSCASE@=\count181
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box72
+\strutbox@=\box73
+\big@size=\dimen264
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count182
+\c@MaxMatrixCols=\count183
+\dotsspace@=\muskip16
+\c@parentequation=\count184
+\dspbrk@lvl=\count185
+\tag@help=\toks37
+\row@=\count186
+\column@=\count187
+\maxfields@=\count188
+\andhelp@=\toks38
+\eqnshift@=\dimen265
+\alignsep@=\dimen266
+\tagshift@=\dimen267
+\tagwidth@=\dimen268
+\totwidth@=\dimen269
+\lineht@=\dimen270
+\@envbody=\toks39
+\multlinegap=\skip122
+\multlinetaggap=\skip123
+\mathdisplay@stack=\toks40
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vnabla with sig. '' on line 25.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \varE with sig. '' on line 29.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ordersymbol with sig. '' on line 30.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \lparen with sig. '' on line 31.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \rparen with sig. '' on line 32.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \quantity with sig. '' on line 35.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \@quantity with sig. ' t\big t\Big t\bigg t\Bigg g o d()
+. d|| ' on line 62.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qty with sig. '' on line 63.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pqty with sig. ' l m ' on line 64.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bqty with sig. ' l m ' on line 65.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Bqty with sig. ' l m ' on line 66.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vqty with sig. ' l m ' on line 67.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pmqty with sig. 'm' on line 70.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Pmqty with sig. 'm' on line 71.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bmqty with sig. 'm' on line 72.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vmqty with sig. 'm' on line 73.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \matrixquantity with sig. '' on line 74.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \@matrixquantity with sig. ' s g o d() d|| ' on line 100.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mqty with sig. '' on line 101.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \matrixdeterminant with sig. 'm' on line 102.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mdet with sig. '' on line 103.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \spmqty with sig. 'm' on line 105.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sPmqty with sig. 'm' on line 106.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sbmqty with sig. 'm' on line 107.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \svmqty with sig. 'm' on line 108.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smallmatrixquantity with sig. ' s g o d() d|| ' on line
+. 133.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smqty with sig. '' on line 134.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smallmatrixdeterminant with sig. 'm' on line 135.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \smdet with sig. '' on line 136.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \argopen with sig. 's' on line 138.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \argclose with sig. 's' on line 139.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \braces with sig. '' on line 141.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \@braces with sig. ' s t\big t\Big t\bigg t\Bigg m m m ' on
+. line 156.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \fbraces with sig. ' s t\big t\Big t\bigg t\Bigg m m m m '
+. on line 174.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \absolutevalue with sig. ' l m ' on line 176.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \abs with sig. '' on line 177.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \norm with sig. ' l m ' on line 178.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \order with sig. ' l m ' on line 179.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \evaluated with sig. ' s g d[| d(| ' on line 194.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \eval with sig. '' on line 195.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \poissonbracket with sig. ' l m m ' on line 197.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pb with sig. '' on line 198.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \commutator with sig. ' l m m ' on line 201.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \comm with sig. '' on line 202.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \anticommutator with sig. ' l m m ' on line 203.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \acommutator with sig. '' on line 204.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \acomm with sig. '' on line 205.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vectorbold with sig. ' s m ' on line 208.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vb with sig. '' on line 209.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vectorarrow with sig. ' s m ' on line 211.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \va with sig. '' on line 212.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vectorunit with sig. ' s m ' on line 214.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vu with sig. '' on line 215.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \dotproduct with sig. '' on line 217.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vdot with sig. '' on line 218.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \crossproduct with sig. '' on line 220.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \cross with sig. '' on line 221.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \cp with sig. '' on line 222.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \gradient with sig. ' g o d() ' on line 232.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \grad with sig. '' on line 233.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \divergence with sig. ' g o d() ' on line 243.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \div with sig. '' on line 246.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \curl with sig. ' g o d() ' on line 256.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \laplacian with sig. ' g o d() ' on line 266.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \principalvalue with sig. 'g' on line 274.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pv with sig. '' on line 275.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \PV with sig. 'g' on line 276.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \Re with sig. 'g' on line 277.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \Im with sig. 'g' on line 278.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \opbraces with sig. ' m g o d() ' on line 299.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \trigbraces with sig. ' m o d() ' on line 305.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \sin with sig. '' on line 309.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \cos with sig. '' on line 310.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \tan with sig. '' on line 311.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \csc with sig. '' on line 312.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \sec with sig. '' on line 313.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \cot with sig. '' on line 314.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \arcsin with sig. '' on line 316.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \arccos with sig. '' on line 317.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \arctan with sig. '' on line 318.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \arccsc with sig. '' on line 320.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \arcsec with sig. '' on line 322.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \arccot with sig. '' on line 324.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \asin with sig. '' on line 327.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \acos with sig. '' on line 329.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \atan with sig. '' on line 331.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \acsc with sig. '' on line 333.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \asec with sig. '' on line 335.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \acot with sig. '' on line 337.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \sinh with sig. '' on line 339.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \cosh with sig. '' on line 340.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \tanh with sig. '' on line 341.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \csch with sig. '' on line 343.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \sech with sig. '' on line 345.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \coth with sig. '' on line 346.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \exp with sig. '' on line 348.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \log with sig. '' on line 349.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \ln with sig. '' on line 350.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \det with sig. '' on line 351.
+.................................................
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \Pr with sig. '' on line 352.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \tr with sig. '' on line 353.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Tr with sig. '' on line 354.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \Res with sig. '' on line 355.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qqtext with sig. ' s m ' on line 377.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qq with sig. '' on line 378.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qcomma with sig. '' on line 380.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qc with sig. '' on line 381.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qif with sig. 's' on line 383.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qthen with sig. 's' on line 384.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qelse with sig. 's' on line 385.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qotherwise with sig. 's' on line 386.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qunless with sig. 's' on line 387.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qgiven with sig. 's' on line 388.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qusing with sig. 's' on line 389.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qassume with sig. 's' on line 390.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qsince with sig. 's' on line 391.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qlet with sig. 's' on line 392.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qfor with sig. 's' on line 393.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qall with sig. 's' on line 394.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qeven with sig. 's' on line 395.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qodd with sig. 's' on line 396.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qinteger with sig. 's' on line 397.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qand with sig. 's' on line 398.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qor with sig. 's' on line 399.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qas with sig. 's' on line 400.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qin with sig. 's' on line 401.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \qcc with sig. 's' on line 402.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \differential with sig. ' o g d() ' on line 415.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \dd with sig. '' on line 416.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \derivative with sig. ' s o m g d() ' on line 435.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \dv with sig. '' on line 436.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \partialderivative with sig. ' s o m g g d() ' on line 460.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pderivative with sig. '' on line 461.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pdv with sig. '' on line 462.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \variation with sig. ' o g d() ' on line 474.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \var with sig. '' on line 475.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \functionalderivative with sig. ' s o m g d() ' on line
+. 494.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \fderivative with sig. '' on line 495.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \fdv with sig. '' on line 496.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \bra with sig. ' s m t\ket s g ' on line 526.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ket with sig. ' s m ' on line 533.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \innerproduct with sig. ' s m g ' on line 548.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \braket with sig. '' on line 549.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ip with sig. '' on line 550.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \outerproduct with sig. ' s m g ' on line 565.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \dyad with sig. '' on line 566.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \op with sig. '' on line 567.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ketbra with sig. '' on line 568.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \expectationvalue with sig. ' s s m g ' on line 587.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \expval with sig. '' on line 588.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \ev with sig. '' on line 589.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \vev with sig. ' m ' on line 590.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \matrixelement with sig. ' s s m m m ' on line 601.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \matrixel with sig. '' on line 602.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \mel with sig. '' on line 603.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \identitymatrix with sig. 'm' on line 633.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \imat with sig. '' on line 634.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xmatrix with sig. ' s m m m ' on line 659.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \xmat with sig. '' on line 660.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \zeromatrix with sig. ' m g ' on line 662.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \zmat with sig. '' on line 663.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \paulixmatrix with sig. '' on line 665.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pauliymatrix with sig. '' on line 666.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \paulizmatrix with sig. '' on line 667.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \paulimatrix with sig. 'm' on line 678.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pmat with sig. '' on line 679.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \diagonalmatrix with sig. 'O{} >{\SplitList {,}}m ' on line
+. 681.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \@dmat with sig. 'mmggggggg' on line 714.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \dmat with sig. '' on line 715.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \antidiagonalmatrix with sig. 'O{} >{\SplitList {,}}m ' on
+. line 717.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \@admat with sig. 'mmggggggg' on line 750.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \admat with sig. '' on line 751.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \flatfrac with sig. ' m m ' on line 754.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \homework with sig. '' on line 764.
+.................................................
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \AP@enddocument detected (standard20110627).
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\@linkdim=\dimen271
+\Hy@linkcounter=\count189
+\Hy@pagecounter=\count190
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count191
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4486.
+Package hyperref Info: Link nesting OFF on input line 4491.
+Package hyperref Info: Hyper index ON on input line 4494.
+Package hyperref Info: Plain pages OFF on input line 4501.
+Package hyperref Info: Backreferencing OFF on input line 4506.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4735.
+\c@Hy@tempcnt=\count192
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5088.
+\XeTeXLinkMargin=\dimen272
+\Fld@menulength=\count193
+\Field@Width=\dimen273
+\Fld@charsize=\dimen274
+Package hyperref Info: Hyper figures OFF on input line 6342.
+Package hyperref Info: Link nesting OFF on input line 6347.
+Package hyperref Info: Hyper index ON on input line 6350.
+Package hyperref Info: backreferencing OFF on input line 6357.
+Package hyperref Info: Link coloring OFF on input line 6362.
+Package hyperref Info: Link coloring with OCG OFF on input line 6367.
+Package hyperref Info: PDF/A mode OFF on input line 6372.
+LaTeX Info: Redefining \ref on input line 6412.
+LaTeX Info: Redefining \pageref on input line 6416.
+\Hy@abspage=\count194
+\c@Item=\count195
+\c@Hfootnote=\count196
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
+\HyAnn@Count=\count197
+\Fld@listcount=\count198
+\c@bookmark@seq@number=\count199
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip124
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen275
+\captionmargin@=\dimen276
+\captionwidth=\dimen277
+\caption@tempdima=\dimen278
+\caption@indent=\dimen279
+\caption@parindent=\dimen280
+\caption@hangindent=\dimen281
+)
+\c@ContinuedFloat=\count266
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+)
+\c@subfigure=\count267
+\c@subtable=\count268
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count269
+\float@exts=\toks41
+\float@box=\box74
+\@float@everytoks=\toks42
+\@floatcapt=\box75
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks43
+\c@algorithm=\count270
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithmicx\algpseudocode.sty"
+Package: algpseudocode 
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithmicx\algorithmicx.sty"
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count271
+\c@ALG@rem=\count272
+\c@ALG@nested=\count273
+\ALG@tlm=\skip125
+\ALG@thistlm=\skip126
+\c@ALG@Lnr=\count274
+\c@ALG@blocknr=\count275
+\c@ALG@storecount=\count276
+\c@ALG@tmpcounter=\count277
+\ALG@tmplength=\skip127
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\units\nicefrac.sty"
+Package: nicefrac 1998/08/04 v0.9b Nice fractions
+\L@UnitsRaiseDisplaystyle=\skip128
+\L@UnitsRaiseTextstyle=\skip129
+\L@UnitsRaiseScriptstyle=\skip130
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip131
+\LTright=\skip132
+\LTpre=\skip133
+\LTpost=\skip134
+\LTchunksize=\count278
+\LTcapwidth=\dimen282
+\LT@head=\box76
+\LT@firsthead=\box77
+\LT@foot=\box78
+\LT@lastfoot=\box79
+\LT@cols=\count279
+\LT@rows=\count280
+\c@LT@tables=\count281
+\c@LT@chunks=\count282
+\LT@p@ftn=\toks44
+)
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\titlesec\titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box80
+\beforetitleunit=\skip135
+\aftertitleunit=\skip136
+\ttl@plus=\dimen283
+\ttl@minus=\dimen284
+\ttl@toksa=\toks45
+\titlewidth=\dimen285
+\titlewidthlast=\dimen286
+\titlewidthfirst=\dimen287
+)
+\glsf@default=\write7
+\openout7 = `revision-060117.gls.aux'.
+
+Package gloss Info: Writing gloss file revision-060117.gls.aux on input line 94
+.
+
+(C:\Users\bhatt\AppData\Roaming\MiKTeX\2.9\tex\latex\ulem\ulem.sty
+\UL@box=\box81
+\UL@hyphenbox=\box82
+\UL@skip=\skip137
+\UL@hook=\toks46
+\UL@height=\dimen288
+\UL@pe=\count283
+\UL@pixel=\dimen289
+\ULC@box=\box83
+Package: ulem 2012/05/18
+\ULdepth=\dimen290
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\settobox.sty"
+Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO
+)
+)
+\DIFdelgraphicsbox=\box84
+\DIFdelgraphicswidth=\skip138
+\DIFdelgraphicsheight=\skip139
+LaTeX Info: Redefining \DIFaddbegin on input line 145.
+LaTeX Info: Redefining \DIFaddend on input line 146.
+LaTeX Info: Redefining \DIFdelbegin on input line 147.
+LaTeX Info: Redefining \DIFdelend on input line 148.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 153.
+LaTeX Info: Redefining \DIFaddendFL on input line 154.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 155.
+LaTeX Info: Redefining \DIFdelendFL on input line 156.
+
+No file revision-060117.aux.
+\openout1 = `revision-060117.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 159.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count284
+\scratchdimen=\dimen291
+\scratchbox=\box85
+\nofMPsegments=\count285
+\nofMParguments=\count286
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count287
+\MPscratchDim=\dimen292
+\MPnumerator=\count288
+\makeMPintoPDFobject=\count289
+\everyMPtoPDFconversion=\toks48
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+LaTeX Info: Redefining \celsius on input line 159.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 159
+.
+
+
+Package gensymb Warning: Not defining \perthousand.
+
+LaTeX Info: Redefining \ohm on input line 159.
+Package gensymb Info: Using \Omega for \ohm on input line 159.
+
+Package gensymb Warning: Not defining \micro.
+
+\c@lstlisting=\count290
+ABD: EveryShipout initializing macros
+\AtBeginShipoutBox=\box86
+Package hyperref Info: Link coloring OFF on input line 159.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count291
+)
+LaTeX Info: Redefining \ref on input line 159.
+LaTeX Info: Redefining \pageref on input line 159.
+LaTeX Info: Redefining \nameref on input line 159.
+\@outlinefile=\write8
+\openout8 = `revision-060117.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: longtable package is loaded.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\ltcaption.sty"
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 225.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 225.
+ [1
+
+{C:/Users/bhatt/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3
+
+] [4
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 289.
+
+Overfull \hbox (6.59807pt too wide) in paragraph at lines 290--293
+\OT1/ptm/m/n/14.4 ment and ex-plo-ration/-ex-ploita-tion method-ol-ogy with-out
+ the need for datasets.
+ []
+
+[5
+
+]
+\tf@toc=\write9
+\openout9 = `revision-060117.toc'.
+
+ [6
+
+]
+\tf@lot=\write10
+\openout10 = `revision-060117.lot'.
+
+ [7
+
+]
+\tf@lof=\write11
+\openout11 = `revision-060117.lof'.
+
+ [8
+
+]
+\tf@loa=\write12
+\openout12 = `revision-060117.loa'.
+
+ [9
+
+]
+No file revision-060117.gls.bbl
+Chapter 1.
+
+LaTeX Warning: Citation `atari' on page 1 undefined on input line 317.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 1 undefined on input
+ line 317.
+
+
+LaTeX Warning: Citation `ngoinverse' on page 1 undefined on input line 319.
+
+
+LaTeX Warning: Citation `vasquez2014inverse' on page 1 undefined on input line 
+319.
+
+
+LaTeX Warning: Citation `vasquez2014inverse' on page 1 undefined on input line 
+319.
+
+[1
+
+]
+
+LaTeX Warning: Citation `matiisen_2015' on page 2 undefined on input line 321.
+
+
+LaTeX Warning: Reference `sec:introduction' on page 2 undefined on input line 3
+23.
+
+
+LaTeX Warning: Reference `sec:background' on page 2 undefined on input line 323
+.
+
+
+LaTeX Warning: Reference `sec:dataset' on page 2 undefined on input line 323.
+
+
+LaTeX Warning: Reference `sec:datasetandtech' on page 2 undefined on input line
+ 323.
+
+
+LaTeX Warning: Reference `sec:proposed_architectures' on page 2 undefined on in
+put line 323.
+
+
+LaTeX Warning: Reference `sec:implementation' on page 2 undefined on input line
+ 323.
+
+
+LaTeX Warning: Reference `sec:results_and_analysis' on page 2 undefined on inpu
+t line 323.
+
+
+LaTeX Warning: Reference `sec:conclusions' on page 2 undefined on input line 32
+3.
+
+
+Overfull \hbox (14.41737pt too wide) in paragraph at lines 323--324
+\OT1/ptm/m/n/14.4 ar-chi-tec-tures and novel con-tri-bu-tions, Chap-ter [] will
+ run-through the []|   []
+ []
+
+
+Overfull \hbox (2.92502pt too wide) in paragraph at lines 323--324
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+[2]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 327.
+
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <14.4> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 327.
+LaTeX Font Info:    Try loading font information for U+msa on input line 327.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 327.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (0.31766pt too wide) in paragraph at lines 333--333
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]
+ []
+
+[3]
+Chapter 2.
+
+LaTeX Warning: Citation `o2003temporal' on page 4 undefined on input line 344.
+
+
+LaTeX Warning: Reference `eq:value function' on page 4 undefined on input line 
+346.
+
+
+LaTeX Warning: Citation `Eden' on page 4 undefined on input line 346.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 4 unde
+fined on input line 346.
+
+
+LaTeX Warning: Reference `eq:value function' on page 4 undefined on input line 
+346.
+
+
+LaTeX Warning: Citation `Eden' on page 4 undefined on input line 346.
+
+[4
+
+]
+
+LaTeX Warning: Reference `eq:discounted_reward' on page 5 undefined on input li
+ne 354.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 5 undefined on input line 354.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 5 unde
+fined on input line 363.
+
+
+LaTeX Warning: Citation `Eden' on page 5 undefined on input line 363.
+
+[5]
+
+LaTeX Warning: Reference `eq:discounted_reward' on page 6 undefined on input li
+ne 386.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 6 undefined on input line 386.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 6 unde
+fined on input line 397.
+
+
+LaTeX Warning: Reference `eq:value function' on page 6 undefined on input line 
+397.
+
+
+LaTeX Warning: Citation `Eden' on page 6 undefined on input line 406.
+
+
+LaTeX Warning: Reference `eq:temporal difference value function' on page 6 unde
+fined on input line 412.
+
+
+LaTeX Warning: Citation `Eden' on page 6 undefined on input line 412.
+
+[6]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 417.
+
+
+LaTeX Warning: Reference `eq:bellman' on page 7 undefined on input line 418.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 7 undefined on input line 418.
+
+
+LaTeX Warning: Citation `Watkins:1992' on page 7 undefined on input line 425.
+
+
+LaTeX Warning: Citation `peng2015mobile' on page 7 undefined on input line 425.
+
+
+
+LaTeX Warning: Citation `Greedy' on page 7 undefined on input line 425.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 7 undefined on 
+input line 428.
+
+[7]
+
+LaTeX Warning: Citation `Eden' on page 8 undefined on input line 436.
+
+
+LaTeX Warning: Reference `fig:mock-env' on page 8 undefined on input line 440.
+
+<images/mock-env.png, id=101, 267.49937pt x 240.9pt>
+File: images/mock-env.png Graphic file (type png)
+ <use images/mock-env.png>
+Package pdftex.def Info: images/mock-env.png used on input line 442.
+(pdftex.def)             Requested size: 200.62402pt x 180.67455pt.
+
+<images/mock-env-graph.png, id=103, 133.49875pt x 141.52875pt>
+File: images/mock-env-graph.png Graphic file (type png)
+
+<use images/mock-env-graph.png>
+Package pdftex.def Info: images/mock-env-graph.png used on input line 443.
+(pdftex.def)             Requested size: 133.4984pt x 141.5284pt.
+
+
+LaTeX Warning: Reference `fig:mock-env-rewards' on page 8 undefined on input li
+ne 448.
+
+<images/mock-env-rewards.png, id=104, 170.13562pt x 144.03813pt>
+File: images/mock-env-rewards.png Graphic file (type png)
+
+<use images/mock-env-rewards.png>
+Package pdftex.def Info: images/mock-env-rewards.png used on input line 450.
+(pdftex.def)             Requested size: 170.1352pt x 144.03777pt.
+
+
+LaTeX Warning: Reference `fig:mock-env' on page 8 undefined on input line 451.
+
+
+LaTeX Warning: Reference `fig:mock-env' on page 8 undefined on input line 451.
+
+
+LaTeX Warning: Reference `fig:q-mock-env-table' on page 8 undefined on input li
+ne 455.
+
+<images/q-mock-env-table.png, id=105, 211.28937pt x 79.29625pt>
+File: images/q-mock-env-table.png Graphic file (type png)
+
+<use images/q-mock-env-table.png>
+Package pdftex.def Info: images/q-mock-env-table.png used on input line 457.
+(pdftex.def)             Requested size: 316.93327pt x 118.94405pt.
+
+
+LaTeX Warning: Reference `fig:mock-q-table' on page 8 undefined on input line 4
+62.
+
+<images/mock-q-table.png, id=106, 209.28188pt x 75.28125pt>
+File: images/mock-q-table.png Graphic file (type png)
+
+<use images/mock-q-table.png>
+Package pdftex.def Info: images/mock-q-table.png used on input line 464.
+(pdftex.def)             Requested size: 313.92201pt x 112.92157pt.
+
+
+LaTeX Warning: Reference `eq:bellman' on page 8 undefined on input line 470.
+
+
+LaTeX Warning: Citation `matiisen_2015' on page 8 undefined on input line 470.
+
+
+LaTeX Warning: Reference `fig:q-table-update-1' on page 8 undefined on input li
+ne 477.
+
+<images/q-table-update-1.png, id=107, 313.17pt x 113.42375pt>
+File: images/q-table-update-1.png Graphic file (type png)
+
+<use images/q-table-update-1.png>
+Package pdftex.def Info: images/q-table-update-1.png used on input line 479.
+(pdftex.def)             Requested size: 313.16922pt x 113.42346pt.
+
+Overfull \hbox (6.94449pt too wide) in paragraph at lines 440--483
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []   |   []
+ []
+
+[8 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/06
+0117/images/mock-env.png> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTex
+Thesis/doc/revisions/060117/images/mock-env-graph.png>] [9 <C:/Users/bhatt/Docu
+ments/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/mock-env-re
+wards.png> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revi
+sions/060117/images/q-mock-env-table.png>]
+
+LaTeX Warning: Reference `fig:q-table-update-2' on page 10 undefined on input l
+ine 493.
+
+[10 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/mock-q-table.png> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_
+LaTexThesis/doc/revisions/060117/images/q-table-update-1.png>]
+<images/q-table-update-2.png, id=133, 312.16624pt x 109.40875pt>
+File: images/q-table-update-2.png Graphic file (type png)
+
+<use images/q-table-update-2.png>
+Package pdftex.def Info: images/q-table-update-2.png used on input line 497.
+(pdftex.def)             Requested size: 312.16548pt x 109.40846pt.
+
+
+LaTeX Warning: Reference `fig:q-table-update-3' on page 11 undefined on input l
+ine 506.
+
+<images/q-table-update-3.png, id=134, 311.1625pt x 109.40875pt>
+File: images/q-table-update-3.png Graphic file (type png)
+
+<use images/q-table-update-3.png>
+Package pdftex.def Info: images/q-table-update-3.png used on input line 508.
+(pdftex.def)             Requested size: 311.16174pt x 109.40846pt.
+
+
+LaTeX Warning: Reference `eq:Sarsa value function' on page 11 undefined on inpu
+t line 515.
+
+
+LaTeX Warning: Citation `sprague2003multiple' on page 11 undefined on input lin
+e 515.
+
+[11 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/q-table-update-2.png>]
+Overfull \hbox (144.13042pt too wide) detected at line 521
+[]\OML/cmm/m/it/14.4 Q\OT1/cmr/m/n/14.4 (\OML/cmm/m/it/14.4 s[]; a[]\OT1/cmr/m/
+n/14.4 ) = \OML/cmm/m/it/14.4 Q\OT1/cmr/m/n/14.4 (\OML/cmm/m/it/14.4 s[]; a[]\O
+T1/cmr/m/n/14.4 ) + [][][][]
+ []
+
+
+LaTeX Warning: Citation `Eden' on page 12 undefined on input line 523.
+
+
+LaTeX Warning: Citation `sprague2003multiple' on page 12 undefined on input lin
+e 523.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 12 undefined on inpu
+t line 523.
+
+
+LaTeX Warning: Citation `Eden' on page 12 undefined on input line 526.
+
+
+LaTeX Warning: Citation `Greedy' on page 12 undefined on input line 526.
+
+
+LaTeX Warning: Citation `Eden' on page 12 undefined on input line 526.
+
+[12 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/q-table-update-3.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 529.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 529.
+
+[13]
+
+LaTeX Warning: Citation `peng2015mobile' on page 14 undefined on input line 533
+.
+
+
+LaTeX Warning: Reference `fig:map-example' on page 14 undefined on input line 5
+37.
+
+[14] <images/map-example.PNG, id=161, 218.8175pt x 175.65625pt>
+File: images/map-example.PNG Graphic file (type png)
+
+<use images/map-example.PNG>
+Package pdftex.def Info: images/map-example.PNG used on input line 543.
+(pdftex.def)             Requested size: 328.22543pt x 263.4837pt.
+
+
+LaTeX Warning: Reference `fig:qlearning-optimal' on page 15 undefined on input 
+line 548.
+
+
+LaTeX Warning: Reference `fig:sarsa-optimal' on page 15 undefined on input line
+ 548.
+
+<images/qlearning-optimal.png, id=162, 501.37312pt x 222.33063pt>
+File: images/qlearning-optimal.png Graphic file (type png)
+
+<use images/qlearning-optimal.png>
+Package pdftex.def Info: images/qlearning-optimal.png used on input line 551.
+(pdftex.def)             Requested size: 376.02892pt x 166.74754pt.
+
+<images/sarsa-optimal.png, id=163, 504.88625pt x 221.32687pt>
+File: images/sarsa-optimal.png Graphic file (type png)
+
+<use images/sarsa-optimal.png>
+Package pdftex.def Info: images/sarsa-optimal.png used on input line 557.
+(pdftex.def)             Requested size: 378.66374pt x 165.99472pt.
+
+
+LaTeX Warning: Citation `sutton1996generalization' on page 15 undefined on inpu
+t line 561.
+
+
+LaTeX Warning: Citation `tutorial' on page 15 undefined on input line 561.
+
+
+LaTeX Warning: Reference `fig:qlearning-optimal' on page 15 undefined on input 
+line 561.
+
+
+LaTeX Warning: Reference `fig:sarsa-optimal' on page 15 undefined on input line
+ 561.
+
+[15 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/map-example.PNG>] [16 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/
+RIT_LaTexThesis/doc/revisions/060117/images/qlearning-optimal.png> <C:/Users/bh
+att/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/sar
+sa-optimal.png>]
+
+LaTeX Warning: Reference `alg:q-learning' on page 17 undefined on input line 56
+4.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 17 undefined on
+ input line 564.
+
+
+LaTeX Warning: Reference `alg:q-learning' on page 17 undefined on input line 56
+4.
+
+
+LaTeX Warning: Citation `Eden' on page 17 undefined on input line 564.
+
+[17]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 567.
+
+
+LaTeX Warning: Citation `Eden' on page 18 undefined on input line 567.
+
+
+LaTeX Warning: Citation `Eden' on page 18 undefined on input line 567.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 576--578
+[] []|   []
+ []
+
+
+LaTeX Warning: Reference `alg:sarsa' on page 18 undefined on input line 587.
+
+
+LaTeX Warning: Reference `eq:Sarsa value function' on page 18 undefined on inpu
+t line 587.
+
+
+LaTeX Warning: Citation `Eden' on page 18 undefined on input line 587.
+
+[18]
+
+LaTeX Warning: Citation `Eden' on page 19 undefined on input line 592.
+
+
+LaTeX Warning: Citation `Eden' on page 19 undefined on input line 592.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 602--604
+[] []|   []
+ []
+
+
+LaTeX Warning: Reference `tab:results' on page 19 undefined on input line 614.
+
+
+LaTeX Warning: Reference `fig:q-learning example' on page 19 undefined on input
+ line 614.
+
+
+LaTeX Warning: Reference `fig:sarsa_example' on page 19 undefined on input line
+ 614.
+
+[19] <images/q-learning-example.PNG, id=199, 329.23pt x 295.1025pt>
+File: images/q-learning-example.PNG Graphic file (type png)
+
+<use images/q-learning-example.PNG>
+Package pdftex.def Info: images/q-learning-example.PNG used on input line 621.
+(pdftex.def)             Requested size: 246.92189pt x 221.32631pt.
+
+<images/sarsa-example.PNG, id=200, 345.79187pt x 297.11pt>
+File: images/sarsa-example.PNG Graphic file (type png)
+
+<use images/sarsa-example.PNG>
+Package pdftex.def Info: images/sarsa-example.PNG used on input line 629.
+(pdftex.def)             Requested size: 259.34326pt x 222.83194pt.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 634.
+
+
+LaTeX Warning: Citation `tutorial' on page 20 undefined on input line 690.
+
+[20 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/q-learning-example.PNG>] [21]
+
+LaTeX Warning: Citation `matiisen_2015' on page 22 undefined on input line 693.
+
+
+
+LaTeX Warning: Citation `xia2016neural' on page 22 undefined on input line 693.
+
+
+
+LaTeX Warning: Citation `xia2016neural' on page 22 undefined on input line 693.
+
+
+
+LaTeX Warning: Citation `atari' on page 22 undefined on input line 693.
+
+[22 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/sarsa-example.PNG>]
+
+LaTeX Warning: Citation `mnih2015human' on page 23 undefined on input line 695.
+
+
+
+LaTeX Warning: Citation `mnih2016asynchronous' on page 23 undefined on input li
+ne 695.
+
+
+LaTeX Warning: Citation `mnih2016asynchronous' on page 23 undefined on input li
+ne 695.
+
+
+LaTeX Warning: Citation `mnih2015human' on page 23 undefined on input line 695.
+
+
+[23]
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 24 undefined on input li
+ne 698.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 702.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 702.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 702.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 702.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 702.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 702.
+
+
+LaTeX Warning: Citation `atari' on page 24 undefined on input line 704.
+
+
+LaTeX Warning: Citation `atari' on page 24 undefined on input line 704.
+
+
+LaTeX Warning: Reference `eq:Q-learning value function' on page 24 undefined on
+ input line 704.
+
+
+LaTeX Warning: Reference `fig:DQN-atari' on page 24 undefined on input line 704
+.
+
+
+LaTeX Warning: Citation `atari' on page 24 undefined on input line 704.
+
+[24] <images/DQN-atari.png, id=230, 344.78813pt x 187.19937pt>
+File: images/DQN-atari.png Graphic file (type png)
+
+<use images/DQN-atari.png>
+Package pdftex.def Info: images/DQN-atari.png used on input line 708.
+(pdftex.def)             Requested size: 327.54686pt x 177.8384pt.
+
+
+LaTeX Warning: Citation `atari' on page 25 undefined on input line 709.
+
+
+LaTeX Warning: Citation `atari' on page 25 undefined on input line 709.
+
+
+LaTeX Warning: Citation `atari' on page 25 undefined on input line 716.
+
+
+LaTeX Warning: Citation `atari' on page 25 undefined on input line 720.
+
+[25 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/DQN-atari.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 723.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 723.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 723.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 723.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 723.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 723.
+
+
+LaTeX Warning: Citation `atari' on page 26 undefined on input line 725.
+
+
+LaTeX Warning: Citation `van2016deep' on page 26 undefined on input line 725.
+
+
+LaTeX Warning: Citation `van2016deep' on page 26 undefined on input line 725.
+
+
+LaTeX Warning: Citation `van2016deep' on page 26 undefined on input line 725.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 727.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 727.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 727.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 727.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 727.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 727.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 26 undefined on input line 72
+9.
+
+
+LaTeX Warning: Reference `eq:duelingQ' on page 26 undefined on input line 729.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 26 undefined on input line 72
+9.
+
+[26]
+
+LaTeX Warning: Reference `fig:duelingDQN' on page 27 undefined on input line 73
+5.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 27 undefined on input line 73
+5.
+
+<images/duelingDQN.png, id=245, 341.77687pt x 128.48pt>
+File: images/duelingDQN.png Graphic file (type png)
+
+<use images/duelingDQN.png>
+Package pdftex.def Info: images/duelingDQN.png used on input line 739.
+(pdftex.def)             Requested size: 341.77603pt x 128.47968pt.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 27 undefined on input line 74
+0.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 27 undefined on input line 74
+0.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 27 undefined on input line 74
+4.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 27 undefined on input line 74
+4.
+
+[27 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/duelingDQN.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 746.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 746.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 746.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 746.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 746.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 746.
+
+
+LaTeX Warning: Citation `atari' on page 28 undefined on input line 748.
+
+
+LaTeX Warning: Citation `van2016deep' on page 28 undefined on input line 748.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 28 undefined on input line 74
+8.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 28 undefined on input line 750
+.
+
+
+LaTeX Warning: Reference `fig:drqn-arch' on page 28 undefined on input line 750
+.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 28 undefined on input line 750
+.
+
+<images/drqn-arch.png, id=253, 225.84375pt x 243.91125pt>
+File: images/drqn-arch.png Graphic file (type png)
+
+<use images/drqn-arch.png>
+Package pdftex.def Info: images/drqn-arch.png used on input line 754.
+(pdftex.def)             Requested size: 225.84319pt x 243.91064pt.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 28 undefined on input line 755
+.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 28 undefined on input line 755
+.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 28 undefined on input line 759
+.
+
+
+LaTeX Warning: Citation `DBLP:journals/corr/LampleC16' on page 28 undefined on 
+input line 761.
+
+
+LaTeX Warning: Citation `DBLP:journals/corr/LampleC16' on page 28 undefined on 
+input line 761.
+
+[28]
+Overfull \hbox (37.48015pt too wide) in paragraph at lines 765--765
+|[]\OT1/ptm/b/n/17.28 Apprenticeship Learn-ing[]|   []   |   []   [][]|   [][]|
+ 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 765.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 765.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 765.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 765.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 765.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 765.
+
+
+LaTeX Warning: Citation `jangir_2016' on page 29 undefined on input line 766.
+
+[29 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/drqn-arch.png>]
+
+LaTeX Warning: Citation `hamahata2008effective' on page 30 undefined on input l
+ine 768.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 30 undefined on input l
+ine 768.
+
+
+LaTeX Warning: Reference `eq:additional_rewards' on page 30 undefined on input 
+line 768.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 30 undefined on input l
+ine 768.
+
+
+LaTeX Warning: Citation `hamahata2008effective' on page 30 undefined on input l
+ine 773.
+
+
+LaTeX Warning: Citation `atkeson1997robot' on page 30 undefined on input line 7
+75.
+
+
+LaTeX Warning: Citation `atkeson1997robot' on page 30 undefined on input line 7
+75.
+
+[30]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 777.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 31 undefined on inpu
+t line 778.
+
+
+LaTeX Warning: Reference `eq:bayesianindep' on page 31 undefined on input line 
+778.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 31 undefined on inpu
+t line 778.
+
+
+LaTeX Warning: Reference `eq:bayseianliklihood' on page 31 undefined on input l
+ine 784.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 31 undefined on inpu
+t line 784.
+
+[31]
+
+LaTeX Warning: Reference `eq:bayestheorem' on page 32 undefined on input line 7
+90.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 32 undefined on inpu
+t line 790.
+
+
+LaTeX Warning: Reference `eq:bayesianloss' on page 32 undefined on input line 7
+95.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 32 undefined on inpu
+t line 795.
+
+
+LaTeX Warning: Citation `ramachandran2007bayesian' on page 32 undefined on inpu
+t line 800.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 802.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 802.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 802.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 802.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 802.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 802.
+
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 32 undefined on input lin
+e 804.
+
+
+LaTeX Warning: Citation `qiao2011inverse' on page 32 undefined on input line 80
+4.
+
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 32 undefined on input lin
+e 804.
+
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 32 undefined on input lin
+e 804.
+
+
+LaTeX Warning: Reference `eq:GP_full' on page 32 undefined on input line 804.
+
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 32 undefined on input lin
+e 804.
+
+[32]
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 33 undefined on input lin
+e 810.
+
+[33]
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 34 undefined on input lin
+e 812.
+
+
+LaTeX Warning: Citation `levine2011nonlinear' on page 34 undefined on input lin
+e 812.
+
+
+LaTeX Warning: Citation `qiao2011inverse' on page 34 undefined on input line 81
+2.
+
+
+LaTeX Warning: Citation `qiao2011inverse' on page 34 undefined on input line 81
+2.
+
+
+Overfull \hbox (5.18785pt too wide) in paragraph at lines 812--813
+|   []   |   []   |   []   |   []   |   []   |   [][]\OT1/ptm/m/n/14.4 ). In th
+e Grid-
+ []
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 34 undefined on input line
+ 817.
+
+[34]
+
+LaTeX Warning: Reference `eq:feature_counts' on page 35 undefined on input line
+ 819.
+
+
+LaTeX Warning: Reference `eq:feature_count_reward' on page 35 undefined on inpu
+t line 819.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 35 undefined on input line
+ 819.
+
+
+LaTeX Warning: Reference `fig:maxent-example' on page 35 undefined on input lin
+e 831.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy' on page 35 undefined on input lin
+e 831.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 35 undefined on input line
+ 831.
+
+[35] <images/maxent-example.png, id=305, 467.7475pt x 142.03062pt>
+File: images/maxent-example.png Graphic file (type png)
+
+<use images/maxent-example.png>
+Package pdftex.def Info: images/maxent-example.png used on input line 840.
+(pdftex.def)             Requested size: 350.80975pt x 106.52269pt.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 36 undefined on input line
+ 841.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 36 undefined on input line
+ 841.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy' on page 36 undefined on input lin
+e 845.
+
+
+LaTeX Warning: Reference `eq:stochastic_policy' on page 36 undefined on input l
+ine 845.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 36 undefined on input line
+ 845.
+
+
+LaTeX Warning: Reference `eq:maxent_weight_update' on page 36 undefined on inpu
+t line 852.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 36 undefined on input line
+ 852.
+
+
+LaTeX Warning: Reference `eq:maxent_gradient' on page 36 undefined on input lin
+e 852.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 36 undefined on input line
+ 852.
+
+[36 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/maxent-example.png>]
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 37 undefined on input line
+ 864.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 37 undefined on input line
+ 866.
+
+
+LaTeX Warning: Reference `sec:dqn' on page 37 undefined on input line 870.
+
+
+LaTeX Warning: Citation `sharifzadeh2016learning' on page 37 undefined on input
+ line 870.
+
+
+LaTeX Warning: Reference `fig:irl-dqn' on page 37 undefined on input line 870.
+
+<images/irl-dqn.png, id=314, 229.35687pt x 157.08687pt>
+File: images/irl-dqn.png Graphic file (type png)
+
+<use images/irl-dqn.png>
+Package pdftex.def Info: images/irl-dqn.png used on input line 873.
+(pdftex.def)             Requested size: 344.03445pt x 235.6297pt.
+
+
+LaTeX Warning: Citation `sharifzadeh2016learning' on page 37 undefined on input
+ line 874.
+
+
+LaTeX Warning: Citation `sharifzadeh2016learning' on page 37 undefined on input
+ line 874.
+
+[37] [38 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisi
+ons/060117/images/irl-dqn.png>]
+
+LaTeX Warning: Citation `jin2015inverse' on page 39 undefined on input line 885
+.
+
+
+LaTeX Warning: Reference `sec:gpirl' on page 39 undefined on input line 885.
+
+
+LaTeX Warning: Reference `fig:dgpirl-arch' on page 39 undefined on input line 8
+85.
+
+<images/dgpirl-arch.png, id=329, 200.75pt x 84.81688pt>
+File: images/dgpirl-arch.png Graphic file (type png)
+
+<use images/dgpirl-arch.png>
+Package pdftex.def Info: images/dgpirl-arch.png used on input line 888.
+(pdftex.def)             Requested size: 301.12424pt x 127.22498pt.
+
+
+LaTeX Warning: Citation `jin2015inverse' on page 39 undefined on input line 889
+.
+
+
+LaTeX Warning: Citation `jin2015inverse' on page 39 undefined on input line 889
+.
+
+[39]
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 40 undefined on input li
+ne 896.
+
+
+LaTeX Warning: Reference `sec:maxentirl' on page 40 undefined on input line 896
+.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 40 undefined on input line
+ 896.
+
+
+LaTeX Warning: Reference `sec:maxentirl' on page 40 undefined on input line 898
+.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_loss' on page 40 undefined on inpu
+t line 898.
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 40 undefined on input li
+ne 898.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_loss' on page 40 undefined on inpu
+t line 898.
+
+
+LaTeX Warning: Reference `eq:maximum_entropy_gradient' on page 40 undefined on 
+input line 898.
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 40 undefined on input li
+ne 898.
+
+
+LaTeX Warning: Citation `ziebart2008maximum' on page 40 undefined on input line
+ 898.
+
+[40 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/dgpirl-arch.png>]
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 41 undefined on input li
+ne 912.
+
+
+LaTeX Warning: Citation `wulfmeier2015maximum' on page 41 undefined on input li
+ne 918.
+
+
+Overfull \hbox (62.93082pt too wide) in paragraph at lines 916--919
+\OT1/ptm/m/n/14.4 In-clu-sion of con-vo-lu-tional lay-ers[]|   [][][]|   []   [
+]Fully Con-vo-lu-tional Neu-ral Net-work []|   [][][]|   []
+ []
+
+[41]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 920.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 920.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 920.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 920.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 920.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 920.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 42 undefined on input line 
+922.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 42 undefined on input line 
+924.
+
+
+LaTeX Warning: Citation `atari' on page 42 undefined on input line 924.
+
+
+LaTeX Warning: Reference `fig:daqn-dal' on page 42 undefined on input line 924.
+
+
+<images/daqn-dal.png, id=349, 221.82875pt x 247.42438pt>
+File: images/daqn-dal.png Graphic file (type png)
+
+<use images/daqn-dal.png>
+Package pdftex.def Info: images/daqn-dal.png used on input line 927.
+(pdftex.def)             Requested size: 332.74228pt x 371.13565pt.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 42 undefined on input line 
+928.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 42 undefined on input line 
+928.
+
+
+LaTeX Warning: Reference `eq:daqn-loss' on page 42 undefined on input line 931.
+
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 42 undefined on input line 
+931.
+
+[42] [43 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisi
+ons/060117/images/daqn-dal.png>]
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+939.
+
+
+LaTeX Warning: Reference `fig:daqn-dal' on page 44 undefined on input line 939.
+
+
+
+LaTeX Warning: Reference `eq:darn-loss' on page 44 undefined on input line 939.
+
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+939.
+
+
+LaTeX Warning: Reference `eq:darn-bellman' on page 44 undefined on input line 9
+44.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+944.
+
+
+LaTeX Warning: Reference `eq:darn-loss-expanded' on page 44 undefined on input 
+line 949.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+949.
+
+
+LaTeX Warning: Reference `fig:darn-dal' on page 44 undefined on input line 949.
+
+
+
+Overfull \hbox (47.94466pt too wide) in paragraph at lines 948--950
+\OT1/ptm/m/n/14.4 DAQN with in-puts $\OT1/cmr/m/n/14.4 (\OML/cmm/m/it/14.4 s; a
+\OT1/cmr/m/n/14.4 )$ \OT1/ptm/m/n/14.4 and []|   []   [][]|   []
+ []
+
+
+Overfull \hbox (57.53088pt too wide) detected at line 953
+[]\OML/cmm/m/it/14.4 J[]\OT1/cmr/m/n/14.4 (\OML/cmm/m/it/14.4 w\OT1/cmr/m/n/14.
+4 ) = \OMS/cmsy/m/n/14.4 k\OML/cmm/m/it/14.4 r[]\OT1/cmr/m/n/14.4 (\OML/cmm/m/i
+t/14.4 s; a\OT1/cmr/m/n/14.4 ) \OMS/cmsy/m/n/14.4   \OT1/cmr/m/n/14.4 (\OML/cmm
+/m/it/14.4 DAQN[][][][]\OT1/cmr/m/n/14.4 (\OML/cmm/m/it/14.4 s; a\OT1/cmr/m/n/1
+4.4 ) \OMS/cmsy/m/n/14.4   \OML/cmm/m/it/14.4  [] DAQN[][][][]\OT1/cmr/m/n/14.
+4 (\OML/cmm/m/it/14.4 s[]; a[]\OT1/cmr/m/n/14.4 ))\OMS/cmsy/m/n/14.4 k[]
+ []
+
+<images/darn-dal.png, id=363, 442.65375pt x 409.53pt>
+File: images/darn-dal.png Graphic file (type png)
+
+<use images/darn-dal.png>
+Package pdftex.def Info: images/darn-dal.png used on input line 958.
+(pdftex.def)             Requested size: 442.65265pt x 409.52899pt.
+
+Overfull \hbox (15.83264pt too wide) in paragraph at lines 958--959
+ [][][] 
+ []
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+959.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 44 undefined on input line 
+959.
+
+[44] [45 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisi
+ons/060117/images/darn-dal.png>]
+
+LaTeX Warning: Citation `markovikj2014deep' on page 46 undefined on input line 
+965.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 967.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 967.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 967.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 967.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 967.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 967.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 46 undefined on input line
+ 968.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd' on page 46 undefined on input line 968.
+
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd-1' on page 46 undefined on input line 96
+8.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 46 undefined on input line
+ 968.
+
+
+LaTeX Warning: Citation `van2016deep' on page 46 undefined on input line 975.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd' on page 46 undefined on input line 975.
+
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd-2' on page 46 undefined on input line 97
+5.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 46 undefined on input line
+ 975.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd' on page 46 undefined on input line 982.
+
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd-3' on page 46 undefined on input line 98
+2.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 46 undefined on input line
+ 982.
+
+[46]
+Overfull \hbox (35.85175pt too wide) in paragraph at lines 991--992
+[]\OT1/ptm/m/n/14.4 For ex-pe-ri-ence re-play, with prob-a-bil-ity $\OML/cmm/m/
+it/14.4 p$ \OT1/ptm/m/n/14.4 an ex-pert ex-pe-ri-ence $\OT1/cmr/m/n/14.4 (\OML/
+cmm/m/it/14.4 s; a; s[]; reward\OT1/cmr/m/n/14.4 )$
+ []
+
+
+LaTeX Warning: Reference `alg:dqfd' on page 47 undefined on input line 993.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 47 undefined on input line
+ 997.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 47 undefined on input line
+ 997.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd' on page 47 undefined on input line 1002
+.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd-3' on page 47 undefined on input line 10
+02.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd' on page 47 undefined on input line 1010
+.
+
+
+LaTeX Warning: Reference `eq:ddqn-dqfd-3' on page 47 undefined on input line 10
+10.
+
+[47]
+Chapter 3.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1018.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1018.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1018.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1018.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1018.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1018.
+
+
+LaTeX Warning: Reference `fig:maze_world_example' on page 48 undefined on input
+ line 1024.
+
+<images/maze_world_example.png, id=393, 100.375pt x 100.375pt>
+File: images/maze_world_example.png Graphic file (type png)
+
+<use images/maze_world_example.png>
+Package pdftex.def Info: images/maze_world_example.png used on input line 1031.
+
+(pdftex.def)             Requested size: 125.46841pt x 125.46841pt.
+
+
+LaTeX Warning: Citation `maze_code' on page 48 undefined on input line 1034.
+
+[48
+
+ <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0601
+17/images/maze_world_example.png (PNG copy)>]
+
+LaTeX Warning: Reference `fig:maze_with_agent' on page 49 undefined on input li
+ne 1036.
+
+<images/maze_with_agent.jpg, id=401, 75.28125pt x 75.28125pt>
+File: images/maze_with_agent.jpg Graphic file (type jpg)
+
+<use images/maze_with_agent.jpg>
+Package pdftex.def Info: images/maze_with_agent.jpg used on input line 1043.
+(pdftex.def)             Requested size: 112.92157pt x 112.92157pt.
+ [49 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/
+060117/images/maze_with_agent.jpg>]
+
+LaTeX Warning: Reference `fig:maze_with_agent' on page 50 undefined on input li
+ne 1055.
+
+[50] [51]
+
+LaTeX Warning: Citation `tensorflow2015-whitepaper' on page 52 undefined on inp
+ut line 1078.
+
+[52] [53]
+Chapter 4.
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 1087.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1087.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1087.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1087.
+
+
+Overfull \hbox (138.56638pt too wide) in paragraph at lines 1090--1090
+|[]\OT1/ptm/b/n/17.28 Deep Ap-pren-tice-ship Learn-ing []|   []   |   []   [][]
+|   [][][]|   []
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 1090.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1090.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1090.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1090.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 54 undefined on input line 
+1092.
+
+
+LaTeX Warning: Reference `sec:DAL' on page 54 undefined on input line 1092.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 54 undefined on input line 
+1094.
+
+[54
+
+]
+
+LaTeX Warning: Citation `markovikj2014deep' on page 55 undefined on input line 
+1096.
+
+
+LaTeX Warning: Reference `eq:dal-dqn-loss' on page 55 undefined on input line 1
+096.
+
+
+LaTeX Warning: Reference `sec:random_data' on page 55 undefined on input line 1
+103.
+
+[55]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 1108.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1108.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1108.
+
+
+LaTeX Warning: Citation `atari' on page 56 undefined on input line 1109.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1110.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1110.
+
+
+LaTeX Warning: Citation `atari' on page 56 undefined on input line 1111.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 56 undefined on input line
+ 1111.
+
+[56]
+
+LaTeX Warning: Citation `atari' on page 57 undefined on input line 1117.
+
+
+LaTeX Warning: Reference `sec:DuelingDQN' on page 57 undefined on input line 11
+21.
+
+
+LaTeX Warning: Citation `wang2015dueling' on page 57 undefined on input line 11
+21.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1123.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1123.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 1123.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1123.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1123.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1123.
+
+
+LaTeX Warning: Reference `sec:drqn' on page 57 undefined on input line 1125.
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 57 undefined on input line 112
+5.
+
+
+LaTeX Warning: Citation `DBLP:journals/corr/LampleC16' on page 57 undefined on 
+input line 1125.
+
+
+LaTeX Warning: Citation `DBLP:journals/corr/LampleC16' on page 57 undefined on 
+input line 1125.
+
+[57] [58]
+Chapter 5.
+pdfTeX warning (ext4): destination with the same identifier (name{section.4.1})
+ has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1132 \section{\DIFdel{Technologies}}
+                                      
+
+LaTeX Warning: Citation `tensorflow2015-whitepaper' on page 59 undefined on inp
+ut line 1145.
+
+[59
+
+pdfTeX warning (ext4): destination with the same identifier (name{subsection.4.
+0.1}) has been already used, duplicate ignored
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1153 }\subsection{\DIFdel{h5py}}
+                                  pdfTeX warning (ext4): destination with the s
+ame identifier (name{subsection.4.0.1}) has been already used, duplicate ignore
+d
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1153 }\subsection{\DIFdel{h5py}}
+                                  pdfTeX warning (ext4): destination with the s
+ame identifier (name{subsection.4.0.1}) has been already used, duplicate ignore
+d
+
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.1153 }\subsection{\DIFdel{h5py}}
+                                  ]pdfTeX warning (ext4): destination with the 
+same identifier (name{subsection.4.0.1}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.1153 }\subsection{\DIFdel{h5py}}
+                                  
+
+LaTeX Warning: Citation `Eden' on page 60 undefined on input line 1158.
+
+[60]pdfTeX warning (ext4): destination with the same identifier (name{chapter.5
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1160 ...dbegin \chapter{\DIFadd{Implementation}}
+                                                  
+Chapter 5.
+
+LaTeX Warning: Reference `sec:proposed_architectures' on page 61 undefined on i
+nput line 1164.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1166.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1168.
+
+
+Overfull \hbox (19.57127pt too wide) in paragraph at lines 1166--1169
+[]\OT1/ptm/m/it/14.4 DAL \OT1/ptm/m/n/14.4 [[]]: The Deep Ap-pren-tice-ship Lea
+rn-ing ar-chi-tec-ture []|   []   |   [][]without
+ []
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1169.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1171.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1174.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 61 undefined on input line 
+1177.
+
+
+LaTeX Warning: Citation `hester2017learning' on page 61 undefined on input line
+ 1181.
+
+[61
+
+]
+
+LaTeX Warning: Citation `wang2015dueling' on page 62 undefined on input line 11
+84.
+
+
+Overfull \hbox (2.70938pt too wide) in paragraph at lines 1182--1185
+[]\OT1/ptm/m/it/14.4 Dueling DQN-AL\OT1/ptm/m/n/14.4 : Du-el-ing Deep Q-Network
+ for Ap-pren-tice-ship Learn-
+ []
+
+
+Overfull \hbox (27.9099pt too wide) in paragraph at lines 1182--1185
+[]|   []   |   [][]\OT1/ptm/m/n/14.4 and shared ex-pe-ri-ence re-play. []|   []
+   |   []   |   []   |   []   |   []   |   []
+ []
+
+
+Overfull \hbox (4.46542pt too wide) in paragraph at lines 1182--1185
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []
+ []
+
+
+LaTeX Warning: Citation `HausknechtDRQN' on page 62 undefined on input line 118
+8.
+
+
+LaTeX Warning: Reference `sec:drqn-implementation' on page 62 undefined on inpu
+t line 1188.
+
+
+Overfull \hbox (8.46954pt too wide) in paragraph at lines 1203--1205
+[]\OT1/ptm/m/n/14.4 Shared Ex-pe-ri-ence De-cay (SED): []|   []   |   []   |   
+[]   |   []   |   []   |   []
+ []
+
+[62]
+Overfull \hbox (10.0961pt too wide) in paragraph at lines 1215--1216
+[]\OT1/ptm/m/n/14.4 Maximum Episode Num-ber: Max-i-mum num-ber of episodes from
+ dataset
+ []
+
+
+Overfull \hbox (10.85954pt too wide) in paragraph at lines 1221--1221
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]   |   []
+ []
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 63 undefined on input line 
+1223.
+
+
+LaTeX Warning: Reference `tab:arch_hyp_same' on page 63 undefined on input line
+ 1223.
+
+
+LaTeX Warning: Reference `tab:arch_hyp_rand' on page 63 undefined on input line
+ 1223.
+
+
+LaTeX Warning: Reference `tab:arch_hyp_same' on page 63 undefined on input line
+ 1224.
+
+
+LaTeX Warning: Reference `tab:arch_hyp_rand' on page 63 undefined on input line
+ 1224.
+
+[63]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1226.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \let \hskip \vskip \let \vrule \hrule \let...
+l.1233 \DIFaddendFL \hline
+                          
+? r
+OK, entering \nonstopmode...
+! You can't use `\hrule' here except with leaders.
+\vline ->\vrule 
+                \@width \arrayrulewidth 
+l.1233 \DIFaddendFL \hline
+                          
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.1233 \DIFaddendFL \hline
+                          
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.1233 \DIFaddendFL \hline
+                          
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1234.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 64 undefined on input line 
+1238.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 64 undefined on input line 
+1240.
+
+
+Overfull \hbox (335.40913pt too wide) in paragraph at lines 1232--1257
+ [][] 
+ []
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1259.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \let \hskip \vskip \let \vrule \hrule \let...
+l.1266 \DIFaddendFL \hline
+                          
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\vline ->\vrule 
+                \@width \arrayrulewidth 
+l.1266 \DIFaddendFL \hline
+                          
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.1266 \DIFaddendFL \hline
+                          
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.1266 \DIFaddendFL \hline
+                          
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 64 undefined on input line 
+1271.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 64 undefined on input line 
+1273.
+
+
+Overfull \hbox (335.40913pt too wide) in paragraph at lines 1265--1290
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `sec:DAL' on page 64 undefined on input line 1297.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 64 undefined on input line 
+1297.
+
+
+Overfull \hbox (8.58461pt too wide) in paragraph at lines 1297--1298
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []
+ []
+
+
+LaTeX Warning: Reference `eq:new_loss' on page 64 undefined on input line 1301.
+
+
+
+Overfull \hbox (13.6548pt too wide) in paragraph at lines 1301--1301
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []
+ []
+
+[64] [65]
+Overfull \hbox (3.57072pt too wide) in paragraph at lines 1304--1307
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []   |   []
+ []
+
+
+LaTeX Warning: Reference `alg:dqn-al-alg' on page 66 undefined on input line 13
+09.
+
+
+Overfull \hbox (14.14374pt too wide) in paragraph at lines 1309--1310
+[]|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [
+]   |   []
+ []
+
+[66] [67]
+Chapter 6.
+
+LaTeX Warning: Reference `fig:task_comp_tests' on page 68 undefined on input li
+ne 1355.
+
+
+LaTeX Warning: Reference `fig:task_und_tests' on page 68 undefined on input lin
+e 1355.
+
+! Extra }, or forgotten \endgroup.
+l.1360 }
+        {\includegraphics[scale=1]{images/task_comp_0.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_0.jpg, id=521, 75.28125pt x 75.28125pt>
+File: images/task_comp_0.jpg Graphic file (type jpg)
+
+<use images/task_comp_0.jpg>
+Package pdftex.def Info: images/task_comp_0.jpg used on input line 1360.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_0.jpg Graphic file (type jpg)
+ <use images/task_comp_0.jpg>
+Package pdftex.def Info: images/task_comp_0.jpg used on input line 1362.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1364 }
+        {\includegraphics[scale=1]{images/task_comp_1.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_1.jpg, id=522, 75.28125pt x 75.28125pt>
+File: images/task_comp_1.jpg Graphic file (type jpg)
+
+<use images/task_comp_1.jpg>
+Package pdftex.def Info: images/task_comp_1.jpg used on input line 1364.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_1.jpg Graphic file (type jpg)
+ <use images/task_comp_1.jpg>
+Package pdftex.def Info: images/task_comp_1.jpg used on input line 1366.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1368 }
+        {\includegraphics[scale=1]{images/task_comp_2.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_2.jpg, id=523, 75.28125pt x 75.28125pt>
+File: images/task_comp_2.jpg Graphic file (type jpg)
+
+<use images/task_comp_2.jpg>
+Package pdftex.def Info: images/task_comp_2.jpg used on input line 1368.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_2.jpg Graphic file (type jpg)
+ <use images/task_comp_2.jpg>
+Package pdftex.def Info: images/task_comp_2.jpg used on input line 1370.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1372 }
+        {\includegraphics[scale=1]{images/task_comp_3.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_3.jpg, id=524, 75.28125pt x 75.28125pt>
+File: images/task_comp_3.jpg Graphic file (type jpg)
+
+<use images/task_comp_3.jpg>
+Package pdftex.def Info: images/task_comp_3.jpg used on input line 1372.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_3.jpg Graphic file (type jpg)
+ <use images/task_comp_3.jpg>
+Package pdftex.def Info: images/task_comp_3.jpg used on input line 1374.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1376 }
+        {\includegraphics[scale=1]{images/task_comp_4.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_4.jpg, id=525, 75.28125pt x 75.28125pt>
+File: images/task_comp_4.jpg Graphic file (type jpg)
+
+<use images/task_comp_4.jpg>
+Package pdftex.def Info: images/task_comp_4.jpg used on input line 1376.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_4.jpg Graphic file (type jpg)
+ <use images/task_comp_4.jpg>
+Package pdftex.def Info: images/task_comp_4.jpg used on input line 1378.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1380 }
+        {\includegraphics[scale=1]{images/task_comp_5.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_5.jpg, id=526, 75.28125pt x 75.28125pt>
+File: images/task_comp_5.jpg Graphic file (type jpg)
+
+<use images/task_comp_5.jpg>
+Package pdftex.def Info: images/task_comp_5.jpg used on input line 1380.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_5.jpg Graphic file (type jpg)
+ <use images/task_comp_5.jpg>
+Package pdftex.def Info: images/task_comp_5.jpg used on input line 1382.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1384 }
+        {\includegraphics[scale=1]{images/task_comp_6.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_6.jpg, id=527, 75.28125pt x 75.28125pt>
+File: images/task_comp_6.jpg Graphic file (type jpg)
+
+<use images/task_comp_6.jpg>
+Package pdftex.def Info: images/task_comp_6.jpg used on input line 1384.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_6.jpg Graphic file (type jpg)
+ <use images/task_comp_6.jpg>
+Package pdftex.def Info: images/task_comp_6.jpg used on input line 1386.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1388 }
+        {\includegraphics[scale=1]{images/task_comp_7.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_7.jpg, id=528, 75.28125pt x 75.28125pt>
+File: images/task_comp_7.jpg Graphic file (type jpg)
+
+<use images/task_comp_7.jpg>
+Package pdftex.def Info: images/task_comp_7.jpg used on input line 1388.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_7.jpg Graphic file (type jpg)
+ <use images/task_comp_7.jpg>
+Package pdftex.def Info: images/task_comp_7.jpg used on input line 1390.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1392 }
+        {\includegraphics[scale=1]{images/task_comp_8.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_8.jpg, id=529, 75.28125pt x 75.28125pt>
+File: images/task_comp_8.jpg Graphic file (type jpg)
+
+<use images/task_comp_8.jpg>
+Package pdftex.def Info: images/task_comp_8.jpg used on input line 1392.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_8.jpg Graphic file (type jpg)
+ <use images/task_comp_8.jpg>
+Package pdftex.def Info: images/task_comp_8.jpg used on input line 1394.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1396 }
+        {\includegraphics[scale=1]{images/task_comp_9.jpg}}%%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_comp_9.jpg, id=530, 75.28125pt x 75.28125pt>
+File: images/task_comp_9.jpg Graphic file (type jpg)
+
+<use images/task_comp_9.jpg>
+Package pdftex.def Info: images/task_comp_9.jpg used on input line 1396.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_comp_9.jpg Graphic file (type jpg)
+ <use images/task_comp_9.jpg>
+Package pdftex.def Info: images/task_comp_9.jpg used on input line 1398.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+Overfull \hbox (258.98773pt too wide) in paragraph at lines 1358--1400
+ [][] 
+ []
+
+[68
+
+]
+! Extra }, or forgotten \endgroup.
+l.1408 }
+        {\includegraphics[scale=1]{images/task_und_0.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_0.jpg, id=538, 75.28125pt x 75.28125pt>
+File: images/task_und_0.jpg Graphic file (type jpg)
+
+<use images/task_und_0.jpg>
+Package pdftex.def Info: images/task_und_0.jpg used on input line 1408.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_0.jpg Graphic file (type jpg)
+ <use images/task_und_0.jpg>
+Package pdftex.def Info: images/task_und_0.jpg used on input line 1410.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1412 }
+        {\includegraphics[scale=1]{images/task_und_1.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_1.jpg, id=539, 75.28125pt x 75.28125pt>
+File: images/task_und_1.jpg Graphic file (type jpg)
+
+<use images/task_und_1.jpg>
+Package pdftex.def Info: images/task_und_1.jpg used on input line 1412.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_1.jpg Graphic file (type jpg)
+ <use images/task_und_1.jpg>
+Package pdftex.def Info: images/task_und_1.jpg used on input line 1414.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1416 }
+        {\includegraphics[scale=1]{images/task_und_2.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_2.jpg, id=540, 75.28125pt x 75.28125pt>
+File: images/task_und_2.jpg Graphic file (type jpg)
+
+<use images/task_und_2.jpg>
+Package pdftex.def Info: images/task_und_2.jpg used on input line 1416.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_2.jpg Graphic file (type jpg)
+ <use images/task_und_2.jpg>
+Package pdftex.def Info: images/task_und_2.jpg used on input line 1418.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1420 }
+        {\includegraphics[scale=1]{images/task_und_3.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_3.jpg, id=541, 75.28125pt x 75.28125pt>
+File: images/task_und_3.jpg Graphic file (type jpg)
+
+<use images/task_und_3.jpg>
+Package pdftex.def Info: images/task_und_3.jpg used on input line 1420.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_3.jpg Graphic file (type jpg)
+ <use images/task_und_3.jpg>
+Package pdftex.def Info: images/task_und_3.jpg used on input line 1422.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1424 }
+        {\includegraphics[scale=1]{images/task_und_4.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_4.jpg, id=542, 75.28125pt x 75.28125pt>
+File: images/task_und_4.jpg Graphic file (type jpg)
+
+<use images/task_und_4.jpg>
+Package pdftex.def Info: images/task_und_4.jpg used on input line 1424.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_4.jpg Graphic file (type jpg)
+ <use images/task_und_4.jpg>
+Package pdftex.def Info: images/task_und_4.jpg used on input line 1426.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1428 }
+        {\includegraphics[scale=1]{images/task_und_5.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_5.jpg, id=543, 75.28125pt x 75.28125pt>
+File: images/task_und_5.jpg Graphic file (type jpg)
+
+<use images/task_und_5.jpg>
+Package pdftex.def Info: images/task_und_5.jpg used on input line 1428.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_5.jpg Graphic file (type jpg)
+ <use images/task_und_5.jpg>
+Package pdftex.def Info: images/task_und_5.jpg used on input line 1430.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1432 }
+        {\includegraphics[scale=1]{images/task_und_6.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_6.jpg, id=544, 75.28125pt x 75.28125pt>
+File: images/task_und_6.jpg Graphic file (type jpg)
+
+<use images/task_und_6.jpg>
+Package pdftex.def Info: images/task_und_6.jpg used on input line 1432.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_6.jpg Graphic file (type jpg)
+ <use images/task_und_6.jpg>
+Package pdftex.def Info: images/task_und_6.jpg used on input line 1434.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1436 }
+        {\includegraphics[scale=1]{images/task_und_7.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_7.jpg, id=545, 75.28125pt x 75.28125pt>
+File: images/task_und_7.jpg Graphic file (type jpg)
+
+<use images/task_und_7.jpg>
+Package pdftex.def Info: images/task_und_7.jpg used on input line 1436.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_7.jpg Graphic file (type jpg)
+ <use images/task_und_7.jpg>
+Package pdftex.def Info: images/task_und_7.jpg used on input line 1438.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1440 }
+        {\includegraphics[scale=1]{images/task_und_8.jpg}} %%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_8.jpg, id=546, 75.28125pt x 75.28125pt>
+File: images/task_und_8.jpg Graphic file (type jpg)
+
+<use images/task_und_8.jpg>
+Package pdftex.def Info: images/task_und_8.jpg used on input line 1440.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_8.jpg Graphic file (type jpg)
+ <use images/task_und_8.jpg>
+Package pdftex.def Info: images/task_und_8.jpg used on input line 1442.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+! Extra }, or forgotten \endgroup.
+l.1444 }
+        {\includegraphics[scale=1]{images/task_und_9.jpg}}%%%
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+<images/task_und_9.jpg, id=547, 75.28125pt x 75.28125pt>
+File: images/task_und_9.jpg Graphic file (type jpg)
+
+<use images/task_und_9.jpg>
+Package pdftex.def Info: images/task_und_9.jpg used on input line 1444.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+File: images/task_und_9.jpg Graphic file (type jpg)
+ <use images/task_und_9.jpg>
+Package pdftex.def Info: images/task_und_9.jpg used on input line 1446.
+(pdftex.def)             Requested size: 75.28105pt x 75.28105pt.
+
+Overfull \hbox (258.98773pt too wide) in paragraph at lines 1406--1448
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `fig:task_comp_tests' on page 69 undefined on input li
+ne 1452.
+
+
+LaTeX Warning: Reference `fig:task_und_tests' on page 69 undefined on input lin
+e 1452.
+
+
+LaTeX Warning: Reference `sec:arch_details' on page 69 undefined on input line 
+1456.
+
+
+LaTeX Warning: Reference `tab:task-complete' on page 69 undefined on input line
+ 1456.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1457.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \let \hskip \vskip \let \vrule \hrule \let...
+l.1471 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\vline ->\vrule 
+                \@width \arrayrulewidth 
+l.1471 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.1471 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.1471 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 69 undefined on input line 
+1472.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 69 undefined on input line 
+1473.
+
+
+Overfull \hbox (155.66188pt too wide) in paragraph at lines 1461--1483
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `tab:task-understanding' on page 69 undefined on input
+ line 1485.
+
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1486.
+
+! Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \let \hskip \vskip \let \vrule \hrule \let...
+l.1500 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! You can't use `\hrule' here except with leaders.
+\vline ->\vrule 
+                \@width \arrayrulewidth 
+l.1500 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+To put a horizontal rule in an hbox or an alignment,
+you should use \leaders or \hrulefill (see The TeXbook).
+
+! Missing number, treated as zero.
+<to be read again> 
+                   }
+l.1500 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.1500 ...}}}\end{tabular}  \\ \DIFaddendFL \hline
+                                                  
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 69 undefined on input line 
+1501.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 69 undefined on input line 
+1502.
+
+
+Overfull \hbox (155.66188pt too wide) in paragraph at lines 1490--1513
+ [][] 
+ []
+
+[69 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0
+60117/images/task_comp_0.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_L
+aTexThesis/doc/revisions/060117/images/task_comp_1.jpg> <C:/Users/bhatt/Documen
+ts/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_comp_2.jp
+g> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/06
+0117/images/task_comp_3.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_La
+TexThesis/doc/revisions/060117/images/task_comp_4.jpg> <C:/Users/bhatt/Document
+s/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_comp_5.jpg
+> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060
+117/images/task_comp_6.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaT
+exThesis/doc/revisions/060117/images/task_comp_7.jpg> <C:/Users/bhatt/Documents
+/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_comp_8.jpg>
+ <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/0601
+17/images/task_comp_9.jpg>] [70 <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT
+_LaTexThesis/doc/revisions/060117/images/task_und_0.jpg> <C:/Users/bhatt/Docume
+nts/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_und_1.jp
+g> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/06
+0117/images/task_und_2.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaT
+exThesis/doc/revisions/060117/images/task_und_3.jpg> <C:/Users/bhatt/Documents/
+GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_und_4.jpg> <
+C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117
+/images/task_und_5.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexTh
+esis/doc/revisions/060117/images/task_und_6.jpg> <C:/Users/bhatt/Documents/GitH
+ub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/images/task_und_7.jpg> <C:/U
+sers/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis/doc/revisions/060117/ima
+ges/task_und_8.jpg> <C:/Users/bhatt/Documents/GitHub/RIT_Thesis/RIT_LaTexThesis
+/doc/revisions/060117/images/task_und_9.jpg>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFdelincludegraphics' on input line 1515.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\DIFaddincludegraphics' on input line 1515.
+
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\<let>-command' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\includegraphics' on input line 1515.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on input line 1515.
+
+
+LaTeX Warning: Reference `tab:task-complete' on page 71 undefined on input line
+ 1518.
+
+
+LaTeX Warning: Citation `markovikj2014deep' on page 71 undefined on input line 
+1520.
+
+[71]
+
+LaTeX Warning: Reference `sec:drqn' on page 72 undefined on input line 1526.
+
+
+LaTeX Warning: Reference `tab:task-understanding' on page 72 undefined on input
+ line 1530.
+
+[72]
+
+LaTeX Warning: Citation `atari' on page 73 undefined on input line 1532.
+
+[73]
+Chapter 7.
+[74
+
+]
+Overfull \hbox (9.79414pt too wide) in paragraph at lines 1552--1554
+|   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   [] 
+  |   []   |   []   |   []
+ []
+
+[75]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1564
+.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <14.4> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 1564.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1559--1566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1559--1566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1559--1566
+
+ []
+
+
+Overfull \hbox (0.26193pt too wide) in paragraph at lines 1559--1566
+\OT1/pcr/m/sl/14.4 kgcoe-[]git . rit . edu/$[] []|   []   [][]$https : / / gith
+ub . com / AmarBhatt /
+ []
+
+No file revision-060117.bbl.
+[76]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1583.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1583.
+ (revision-060117.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1583.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1583.
+
+
+
+Package rerunfilecheck Warning: File `revision-060117.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `revision-060117.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  B12D9F633CE25AEF21CE3225FF1B6167;5084.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1583.
+ ) 
+Here is how much of TeX's memory you used:
+ 32576 strings out of 493333
+ 623890 string characters out of 3139194
+ 769535 words of memory out of 3000000
+ 35301 multiletter control sequences out of 15000+200000
+ 37453 words of font info for 95 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 54i,21n,85p,10505b,601s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/latxfont/lasy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/la
+txfont/linew10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrro8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on revision-060117.pdf (85 pages, 2479826 bytes).
+PDF statistics:
+ 720 PDF objects out of 1000 (max. 8388607)
+ 239 named destinations out of 1000 (max. 500000)
+ 228 words of extra memory for PDF output out of 10000 (max. 10000000)
+

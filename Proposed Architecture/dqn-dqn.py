@@ -17,10 +17,10 @@ import matplotlib.pyplot as plt
 
 from arch import getData
 
-typeTest = "random"
+typeTest = "same"
 
 
-data_loc = typeTest+"_8000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
+data_loc = typeTest+"_1000_rew_84_skipgoal.h5"#"same_1000_rew_83_skipgoal.h5"
 location = typeTest
 rew_location = typeTest
 test_image_location = "DataSetGenerator/test_data/"+typeTest
@@ -43,6 +43,13 @@ log = netName + "_log"
 dqn_model_path = path+'\saved-models\dqn\dqn.ckpt'
 darn_model_path = path+'\saved-models\darn\darn.ckpt'
 
+lambda1S = [0.75]
+lambda2S = [0.25]
+
+lambda1T = [1.0]
+lambda2T = [0.0]
+
+
 
 num_epochs = 10000
 num_epochs_ran = 10000
@@ -55,7 +62,7 @@ gamma = 0.9
 
 REWARD = 1000
 
-p = 0.9 #expert replay sampling
+p = 0.9#0.9 #expert replay sampling
 decay_rate = 0.05
 decay_frequency = 500
 
@@ -132,8 +139,12 @@ with graph_dqn.as_default():
 	dqn = net.outpost
 	dqn_presoft = net.outpre
 	
+	lambda1 = tf.placeholder(shape=[1],dtype=tf.float32)
+	lambda2 = tf.placeholder(shape=[1],dtype=tf.float32)
 
 	Q = tf.reduce_sum(tf.multiply(dqn_presoft, Y), reduction_indices=1)
+	cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=dqn_presoft,labels=Y)
+
 	#Q = tf.Print(Q,[Q],message="Q: ", summarize=100)
 	# Define Loss and optimizer
 	#cost_0 = tf.multiply(gamma,Q_prime)
@@ -143,7 +154,7 @@ with graph_dqn.as_default():
 	# cost_2 = tf.Print(cost_2,[cost_2],message="cost_2: ", summarize=100)
 	cost_3 = tf.square(cost_2)
 	# cost_3 = tf.Print(cost_3,[cost_3],message="cost_3: ", summarize=100)
-	cost = tf.reduce_mean(cost_3)
+	cost = lambda1[0]*tf.reduce_mean(cost_3) + lambda2[0]*tf.reduce_mean(cross_entropy)
 	# cost = tf.Print(cost,[cost],message="cost: ", summarize=100)
 	optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)#tf.train.AdagradOptimizer(learning_rate=learning_rate)
 	update = optimizer.minimize(cost)
@@ -171,7 +182,6 @@ with graph_dqn.as_default():
 with tf.Session(graph=graph_dqn) as sess:
 	sess.run(init_dqn)	
 	writer = tf.summary.FileWriter(log,graph=sess.graph)
-	
 	for epoch in range(num_epochs):
 		ind =  np.random.choice(range(0, expert_replay_state.shape[0]),replace=False, size=batch_size)#random.sample(range(0, num), 1)[0]
 
@@ -188,10 +198,10 @@ with tf.Session(graph=graph_dqn) as sess:
 
 		r = expert_replay_r[ind]
 
-		sess.run(update,feed_dict={X : s, Y: a, Q_prime : q_prime, R : r})
+		sess.run(update,feed_dict={X : s, Y: a, Q_prime : q_prime, R : r, lambda1:lambda1S, lambda2:lambda2S})
 
 		# Display loss and accuracy
-		loss, acc = sess.run([cost, accuracy], feed_dict={X: s, Y: a, action_true: a, Q_prime : q_prime, R : r})
+		loss, acc = sess.run([cost, accuracy], feed_dict={X: s, Y: a, action_true: a, Q_prime : q_prime, R : r, lambda1:lambda1S, lambda2:lambda2S})
 		#writer.add_summary(summary)
 		print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
               "{:.6f}".format(loss) + ", Training Accuracy= " + \
@@ -306,15 +316,15 @@ with tf.Session(graph=graph_dqn) as sess:
 
 			r = np.concatenate((expert_replay_r[ind_expert_data],replay_r[ind_agent_data]),axis=0)
 
-			sess.run(update,feed_dict={X : s, Y: a, Q_prime : q_prime, R : r})
+			sess.run(update,feed_dict={X : s, Y: a, Q_prime : q_prime, R : r,lambda1:lambda1T, lambda2:lambda2T})
 
 			# Display loss and accuracy
 			loss, acc = sess.run([cost, accuracy], feed_dict={X: s,
-                                                  Y: a, action_true: a, Q_prime : q_prime, R : r})
+                                                  Y: a, action_true: a, Q_prime : q_prime, R : r, lambda1:lambda1T, lambda2:lambda2T})
 			#writer.add_summary(summary)
 			print("Epoch= "+str(epoch)+", Minibatch Loss= " + \
 	              "{:.6f}".format(loss) + ", Training Accuracy= " + \
-	              "{:.5f}".format(acc))
+	              "{:.5f}".format(acc) + ", Best Epoch= " + str(best_epoch) + ", Best Score= " + str(best_score))
 
 			if(epoch % decay_frequency == 0):
 				print("Old p: ",p)
